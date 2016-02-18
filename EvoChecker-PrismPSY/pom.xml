@@ -33,7 +33,28 @@
 			<version>4.12</version>
 	      	<scope>test</scope>
 	    </dependency>
+	    
+		<!--  Antlr4 -->
+		<dependency>
+			<groupId>org.antlr</groupId>
+			<artifactId>antlr4</artifactId>
+			<version>4.5</version>
+		</dependency>
 
+		<!-- JMetal 4.5 -->
+		<dependency>
+			<groupId>org.jmetal</groupId>
+			<artifactId>jmetal</artifactId>
+			<version>4.5</version>
+		</dependency>
+		
+		<!--  Apache Commons Lang: String manipulation -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
+		
 		<!--  Log4J -->
 		<dependency>
 			<groupId>com.log4j</groupId>
