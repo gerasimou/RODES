@@ -70,12 +70,12 @@
 	  	</dependency>
 	  	
 		<!--  PrismPSY -->
-	  	<dependency>
+<!-- 	  	<dependency>
 	  		<groupId>org.PrismPSY</groupId>
 	  		<artifactId>PrismPSY</artifactId>
 	  		<version>1.0</version>
 	  	</dependency>
-
+ -->
     </dependencies>
 
   <build>
