@@ -47,7 +47,7 @@ import evochecker.parser.src.gen.PrismParser;
 public class ParserEngine implements InstantiatorInterface {
 	
 	/** String that keeps the model template */
-	private String internalModelRepresentation;
+	protected String internalModelRepresentation;
 
 	/** properties filename */
 	private String propertiesFilename;
@@ -56,7 +56,7 @@ public class ParserEngine implements InstantiatorInterface {
 	private List<Evolvable> evolvableList;
 	
 	/** map that keeps pairs of genes and evolvable elements*/
-	private Map<AbstractGene, Evolvable> elementsMap;
+	protected Map<AbstractGene, Evolvable> elementsMap;
 
 	
 	/**
