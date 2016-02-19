@@ -1,3 +1,15 @@
+//==============================================================================
+//	
+ //	Copyright (c) 2015-
+//	Authors:
+//	* Simos Gerasimou (University of York)
+//	
+//------------------------------------------------------------------------------
+//	
+//	This file is part of EvoChecker.
+//	
+//==============================================================================
+
 package evochecker.parser.handler;
 
 import java.util.HashMap;
@@ -6,6 +18,12 @@ import java.util.Map;
 import evochecker.parser.src.gen.PrismBaseListener;
 import evochecker.parser.src.gen.PrismParser;
 
+
+/**
+ * Class representing a prism listener
+ * @author sgerasimou
+ *
+ */
 public class PrismListener extends PrismBaseListener {
 	
 	PrismParser parser;

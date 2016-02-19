@@ -1,3 +1,15 @@
+//==============================================================================
+//	
+ //	Copyright (c) 2015-
+//	Authors:
+//	* Simos Gerasimou (University of York)
+//	
+//------------------------------------------------------------------------------
+//	
+//	This file is part of EvoChecker.
+//	
+//==============================================================================
+
 package evochecker.parser.handler;
 
 import java.util.ArrayList;
@@ -26,21 +38,40 @@ import evochecker.parser.src.gen.PrismParser.VarDeclarationContext;
  * 2) assemble a template of the model
  */
 
+/**
+ * Class representing a Prism Visitor that parses 
+ * an evochecker template and creates a list of evolvable elements
+ * @author sgerasimou
+ *
+ */
 public class PrismVisitor extends PrismBaseVisitor<String> {
 
 	/** "memory" for our calculator; variable/value pairs go here */ 
 //	Map<String, Integer> memory = new HashMap<String, Integer>();
 	
+	/** list of evolvables*/
 	private List<Evolvable> 			evolvableList 	 			= new ArrayList<Evolvable>();
+	
+	/** list of evolvable doubles*/
 	private List<EvolvableDouble>		evolvableDoubleList	 		= new ArrayList<EvolvableDouble>();
+	
+	/** list of evolvable integers*/
 	private List<EvolvableInteger>		evolvableIntegerList 		= new ArrayList<EvolvableInteger>();
+	
+	/** list of evolvable distributions*/
 	private List<EvolvableDistribution>	evolvableDistributionList	= new ArrayList<EvolvableDistribution>();
+	
+	/** list of evolvable modules*/
 	private List<EvolvableModule>		evolvableModuleList			= new ArrayList<EvolvableModule>();
+	
+	/** list of evolvable alternative modules*/
 	private List<EvolvableModuleAlternative> evolvableModuleSuperList		= new ArrayList<EvolvableModuleAlternative>();
 	
+	/** model as a string*/
 	private StringBuilder modelString 		= new StringBuilder(100);
 
 		
+	/** Run visitor and create the evolvables list*/
 	@Override
 	public String visitModel(PrismParser.ModelContext ctx) {
 		String str;

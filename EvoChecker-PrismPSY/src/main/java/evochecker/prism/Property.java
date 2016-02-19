@@ -1,5 +1,24 @@
+//==============================================================================
+//	
+ //	Copyright (c) 2015-
+//	Authors:
+//	* Simos Gerasimou (University of York)
+//	
+//------------------------------------------------------------------------------
+//	
+//	This file is part of EvoChecker.
+//	
+//==============================================================================
+
 package evochecker.prism;
 
+
+/**
+ * Class representing a property to be checked
+ * TODO: add constraint handling and property evaluation
+ * @author sgerasimou
+ *
+ */
 public class Property {
 	
 	private boolean maximization;
