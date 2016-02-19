@@ -18,7 +18,7 @@ import jmetal.util.Configuration;
 
 public class Utility {
 	
-	private static String fileName = "res/config.properties";
+	private static String fileName = "resources/config.properties";
 	private static Properties properties;
 	
 	private static void loadPropertiesInstance(){

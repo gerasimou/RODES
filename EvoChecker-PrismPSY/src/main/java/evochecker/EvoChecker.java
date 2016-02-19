@@ -1,10 +1,8 @@
 package evochecker;
 
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 
 import evochecker.auxiliary.Utility;
 import evochecker.genetic.GenotypeFactory;
@@ -27,9 +25,6 @@ import jmetal.core.SolutionSet;
 
 public class EvoChecker {
 
-	/** properties handler*/
-	private static Properties prop = new Properties();
-
 	/** properties list*/
 	private List<Property> propertyList;
 	
@@ -50,15 +45,8 @@ public class EvoChecker {
 	
 	/** algorithm to be executed*/
 	private Algorithm algorithm;
-		
-	/** adaptation step*/
-	public static int adaptationStep;
 	
-	/** get property handler*/
-	public static Properties getProp() {
-		return prop;
-	}
-
+	
 	
 	/**
 	 * Main
@@ -67,11 +55,7 @@ public class EvoChecker {
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();
 		
-		adaptationStep = 1;
-		
-		try {
-			prop.load(new FileInputStream("resources/config.properties"));
-			
+		try {			
 			//instantiate evochecker
 			EvoChecker evoChecker = new EvoChecker();
 			//initialise problem

@@ -327,9 +327,9 @@ public class pgGA extends Algorithm implements AlgorithmSteps{
    * Log intermediate data
    */
   private void logIntermediateData(int iterations){
-	  Utility.exportToFile("data/FUN_SGA_"+ seeding +"_E"+ EvoChecker.adaptationStep +"_"+ iterations, 
+	  Utility.exportToFile("data/FUN_RS_E_"+ iterations, 
 			  			   population.get(0).toString(), true);
-		Utility.printVariablesToFile("data/VAR_SGA_"+ seeding +"_E"+ EvoChecker.adaptationStep +"_"+ iterations,
+		Utility.printVariablesToFile("data/VAR_RS_E_"+ iterations,
 						   population.get(0), true);
   }
   
