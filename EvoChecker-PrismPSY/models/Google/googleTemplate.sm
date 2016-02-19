@@ -3,12 +3,12 @@ ctmc
 // repair rate from hw failure of chunk server
 // default 1; we could try interval [0.5, 2]
 //const double c_hw_repair_rate=1;
-const double c_hw_repair_rate;
+evolve const double c_hw_repair_rate [0.5..0.6];
 
 // rate at which any chunk server failure happens
 //const double c_fail = 0.05;
 // [0.01, 1]
-const double c_fail;
+evolve const double c_fail [0.01..1.0];
 
 
 const int M=20;
