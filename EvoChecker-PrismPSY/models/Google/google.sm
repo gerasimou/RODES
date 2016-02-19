@@ -17,7 +17,7 @@ const double c_sw_repair_rate=12;
 // rate at which any chunk server failure happens
 //const double c_fail = 0.05;
 // [0.01, 1]
-evolve distribution c_fail [1] [0.01..1.0];
+evolve const double c_fail [0.01..1.0];
 
 //  "probability" that a chunk server failure is due to software
 // default 0.95; we could try interval [0.0001, 1-0.0001]
