@@ -45,6 +45,6 @@ public class EvolvableDouble extends Evolvable {
 	 */
 	@Override
 	public String getCommand(Object variable) {
-		return "const double " + name +" = "+ (double)variable  +";\n";
+		return "const double " + name +";";// = "+ (double)variable  +";\n";
 	}
 }

@@ -1,6 +1,6 @@
 //==============================================================================
 //	
- //	Copyright (c) 2015-
+//	Copyright (c) 2015-
 //	Authors:
 //	* Simos Gerasimou (University of York)
 //	
@@ -20,6 +20,7 @@ import evochecker.auxiliary.Utility;
 import evochecker.genetic.GenotypeFactory;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.jmetal.GeneticProblem;
+import evochecker.genetic.jmetal.GeneticProblemPSY;
 import evochecker.genetic.jmetal.metaheuristics.MOCell_Settings;
 import evochecker.genetic.jmetal.metaheuristics.NSGAII_Settings;
 import evochecker.genetic.jmetal.metaheuristics.RandomSearch_Settings;
@@ -29,6 +30,7 @@ import evochecker.genetic.jmetal.single.GeneticProblemSingle;
 import evochecker.genetic.jmetal.single.RandomSearchSingle_Settings;
 import evochecker.genetic.jmetal.single.SingleGA_Settings;
 import evochecker.parser.ParserEngine;
+import evochecker.parser.ParserEnginePrismPSY;
 import evochecker.prism.Property;
 import jmetal.core.Algorithm;
 import jmetal.core.Problem;
@@ -106,7 +108,7 @@ public class EvoChecker {
 		propertiesFilename	= Utility.getProperty("PROPERTIES_FILE");
 		
 		//2) parse model template
-		parserEngine 		= new ParserEngine(modelFilename, propertiesFilename);
+		parserEngine 		= new ParserEnginePrismPSY(modelFilename, propertiesFilename);
 		
 		//3) create chromosome
 		genes				= GenotypeFactory.createChromosome(parserEngine.getEvolvableList());
@@ -131,7 +133,7 @@ public class EvoChecker {
 		int numOfConstraints  = 0;
 
 		//6) instantiate the problem
-		problem = new GeneticProblem(genes, propertyList, parserEngine, numOfConstraints, "GeneticProblem");
+		problem = new GeneticProblemPSY(genes, propertyList, parserEngine, numOfConstraints, "GeneticProblem");
 	}
 	
 

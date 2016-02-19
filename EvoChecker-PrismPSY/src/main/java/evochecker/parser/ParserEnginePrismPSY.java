@@ -26,7 +26,7 @@ import evochecker.genetic.genes.IntegerGene;
  * @author sgerasimou
  *
  */
-public class ParserEnginePrismPSY extends ParserEngine {
+public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorInterfacePrismPSY{
 	/** PrismPSY parameters with ranges: <param_name>=min:max, <param_name>=min:max,... 
 	 * c_fail=0.01:0.1,c_hw_repair_rate=0.5:0.6*/
 	private StringBuilder paramsWithRanges;
@@ -67,6 +67,9 @@ public class ParserEnginePrismPSY extends ParserEngine {
 				else if (gene instanceof AlternativeModuleGene) {
 					prismPSYmodel.append(elementsMap.get(gene).getCommand(gene.getAllele()));
 				}
+				else if (gene instanceof DoubleGene) {
+					prismPSYmodel.append(elementsMap.get(gene).getCommand(gene.getAllele()));
+				}
 			}
 			//before ending prepare String of parameters with min and max
 			prepareParamWithRanges(genes);
@@ -96,7 +99,7 @@ public class ParserEnginePrismPSY extends ParserEngine {
 			} 
 		}
 		paramsWithRanges.deleteCharAt(paramsWithRanges.length()-1); //remove last ','
-		System.out.println(paramsWithRanges.toString());
+//		System.out.println(paramsWithRanges.toString());
 	}
 
 
@@ -108,6 +111,7 @@ public class ParserEnginePrismPSY extends ParserEngine {
 	public String getParamsWithRanges(){
 		return this.paramsWithRanges.toString();
 	}
+
 	
 	/**
 	 * Get decomposition type
@@ -116,6 +120,7 @@ public class ParserEnginePrismPSY extends ParserEngine {
 	public String getDecompositionType(){
 		return this.decompositionType;
 	}
+	
 	
 	/** Get accuracy*/
 	public String getAccuracy(){
