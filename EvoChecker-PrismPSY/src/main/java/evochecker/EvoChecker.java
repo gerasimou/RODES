@@ -56,8 +56,6 @@ public class EvoChecker {
 		
 	/** adaptation step*/
 	public static int adaptationStep;
-
-	
 	
 	/** get property handler*/
 	public static Properties getProp() {
@@ -75,21 +73,16 @@ public class EvoChecker {
 		adaptationStep = 1;
 		
 		try {
-			prop.load(new FileInputStream("res/config.properties"));
+			prop.load(new FileInputStream("resources/config.properties"));
 			
 			//instantiate evochecker
 			EvoChecker evoChecker = new EvoChecker();
-
 			//initialise problem
 			evoChecker.initializeProblem();
-			
 			//initialise algorithm
 			evoChecker.initialiseAlgorithm();
-			
-			//execute adaptation step
-			evoChecker.adaptSystem("models/FX/runtime/fxMedium1.pm");
-//			evoChecker.adaptSystemStep("models/FX/runtime/fxSmall_.pm", 1, 13);
-			
+			//execute 
+			evoChecker.execute();
 			//close down
 			evoChecker.closeDown();
 		} 
@@ -101,41 +94,6 @@ public class EvoChecker {
 		System.err.println("Time:\t" + (end - start)/1000);
 	}
 
-	
-	/**
-	 * Perform an adaptation scenario
-	 * @param modelFilename
-	 * @throws Exception
-	 */
-	private void adaptSystem(String modelFilename) throws Exception{		
-		while (new File(modelFilename).exists()){
-			System.out.println(modelFilename);
-			parserEngine.updateInternalModelRepresentation(Utility.readFile(modelFilename));
-			execute();
-			modelFilename = StringUtils.replace(modelFilename, adaptationStep + ".", ++adaptationStep + ".", 1);
-		}
-	}
-	
-	
-	/**
-	 * Perform a two-step adaptation starting an initial state
-	 * @param modelFilename
-	 * @param eventIndex
-	 * @throws Exception
-	 */
-	private void adaptSystemStep(String modelFilename, int startEventIndex, int endEventIndex) throws Exception{
-		int tempStep = adaptationStep;
-		modelFilename 	= StringUtils.replace(modelFilename, "_.", startEventIndex + ".", 1);		
-		while (new File(modelFilename).exists()){
-			System.out.println(modelFilename);
-			parserEngine.updateInternalModelRepresentation(Utility.readFile(modelFilename));
-			execute();
-			modelFilename 	= StringUtils.replace(modelFilename, startEventIndex + ".", endEventIndex + ".", 1);
-			startEventIndex = endEventIndex;
-			endEventIndex	= -1;
-			adaptationStep	= 13;
-		}
-	}
 	
 	/**
 	 * Initialise the problem and the properties associated with the problem
