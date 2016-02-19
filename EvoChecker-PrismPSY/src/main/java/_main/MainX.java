@@ -60,10 +60,6 @@ public class MainX {
 	}
 
 	
-	
-
-		
-		
 	/** Run Prism-PSY API  as a server and send a string as reponse*/
 	private static void clientAPI(){
 		try{
