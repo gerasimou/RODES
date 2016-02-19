@@ -203,23 +203,20 @@ public class EvoChecker {
 		//Print results to console
 		System.out.println("-------------------------------------------------");
 		System.out.println("SOLUTION: \t" + population.size());
-		for (int i=0; i<population.size(); i++){
-			Solution solution = population.get(i);
-			for (int objective=0; objective<solution.getNumberOfObjectives(); objective++){
-				System.out.printf("%.3f\t", solution.getObjective(objective));
-			}
-			double constraintValue = solution.getOverallConstraintViolation();
-			if (constraintValue<0){
-				System.out.println(constraintValue +"\t"+ Arrays.toString(solution.getDecisionVariables()));
-			}
-		}
+//		for (int i=0; i<population.size(); i++){
+//			Solution solution = population.get(i);
+//			for (int objective=0; objective<solution.getNumberOfObjectives(); objective++){
+//				System.out.printf("%.3f\t", solution.getObjective(objective));
+//			}
+//			double constraintValue = solution.getOverallConstraintViolation();
+//			if (constraintValue<0){
+//				System.out.println(constraintValue +"\t"+ Arrays.toString(solution.getDecisionVariables()));
+//			}
+//		}
 		
 		//Store results
 		String algorithmStr = Utility.getProperty("ALGORITHM").toUpperCase();
-		String seeding = Utility.getProperty("SEEDING").toUpperCase();
-		Utility.exportToFile("data/FUN_"+algorithmStr +"_"+ seeding, population.get(0).toString(), true);
-		Utility.printVariablesToFile("data/VAR_"+algorithmStr +"_"+ seeding, population.get(0), true);
-//		population.printObjectivesToFile("data/FUN_"+algorithmStr +"_"+ seeding);
-//		population.printVariablesToFile("data/VAR_"+algorithmStr  +"_"+ seeding);
+		population.printObjectivesToFile("data/FUN_"+algorithmStr);
+		population.printVariablesToFile("data/VAR_"+algorithmStr);
 	}	
 }

@@ -1,6 +1,8 @@
 package evochecker.auxiliary;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map.Entry;
 
 import com.google.gson.FieldNamingPolicy;
@@ -23,8 +25,27 @@ public class ParserGSON {
 	}
 	
 	
-	public static void parseGSON(String GSONstr){
-		printJSON(gson.fromJson(GSONstr, JsonObject.class));	
+	public static List<String> parseGSON(String GSONstr){
+		List<String> resultList = new ArrayList<String>();
+		
+		//convert string to JSON object
+		JsonObject JSONobject =  gson.fromJson(GSONstr, JsonObject.class);
+		
+		//parse for each property
+		for (Entry<String, JsonElement> entry :  JSONobject.entrySet()){
+			JsonArray propertiesJSON = (JsonArray)entry.getValue();
+			JsonObject JSONsubregion = (JsonObject) propertiesJSON.iterator().next();
+			//find min and max
+			double min 				 = JSONsubregion.get("min").getAsDouble();
+			double max 				 = JSONsubregion.get("max").getAsDouble();
+			System.out.println(entry.getKey() +"\t["+ min +", "+ max +"]");	
+			//append to results list
+			resultList.add((min+max)/2 +"");
+		}
+		
+		return resultList;
+		//print
+//		printJSON(JSONobject);
 	}
 	
 	

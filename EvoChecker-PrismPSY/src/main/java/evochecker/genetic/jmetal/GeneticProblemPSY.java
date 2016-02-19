@@ -124,27 +124,27 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 //		Utility.exportToFile("model.txt", model);
 
 		
-		List<String> resultsList;
 		try {
-			String outputStr = model +"\n@"+ propertyFile +"\n@"+ decompositionType +"\n@"+ paramsWithRanges +"\n@"+ accuracy + "\nEND"; 
-			resultsList 	 = this.invokePrism(in, out, outputStr);
+			String outputStr 			= model +"\n@"+ propertyFile +"\n@"+ decompositionType +"\n@"+ 
+										  paramsWithRanges +"\n@"+ accuracy + "\nEND"; 
+			List<String> resultsList 	= invokePrism(in, out, outputStr);
 
-//			for (int i = 0; i < this.numberOfObjectives_; i++) {
-//				Property p = this.properties.get(i);
-//				double result;
-//				if (p.isMaximization()) {
-//					result = new BigDecimal(- Double.parseDouble(resultsList.get(i))).setScale(3, RoundingMode.HALF_DOWN).doubleValue();
-//				}
-//				else{
-//					result = new BigDecimal(Double.parseDouble(resultsList.get(i))).setScale(3, RoundingMode.HALF_UP).doubleValue();
-//				}
-//				solution.setObjective(i, result);
-//				System.out.print("FITNESS: "+ result +"\t");
-//			}
-//			
-//			if (numberOfConstraints_>0){
-//				this.evaluateConstraints(solution, resultsList);
-//			}
+			for (int i = 0; i < this.numberOfObjectives_; i++) {
+				Property p = this.properties.get(i);
+				double result;
+				if (p.isMaximization()) {
+					result = new BigDecimal(- Double.parseDouble(resultsList.get(i))).setScale(3, RoundingMode.HALF_DOWN).doubleValue();
+				}
+				else{
+					result = new BigDecimal(Double.parseDouble(resultsList.get(i))).setScale(3, RoundingMode.HALF_UP).doubleValue();
+				}
+				solution.setObjective(i, result);
+				System.out.print("FITNESS: "+ result +"\t");
+			}
+			
+			if (numberOfConstraints_>0){
+				this.evaluateConstraints(solution, resultsList);
+			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -169,8 +169,8 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 		out.flush();
 		//read from server
 		String response = in.readLine();
-		ParserGSON.parseGSON(response);
-		return null;//Arrays.asList(res);
+		List<String> resultList = ParserGSON.parseGSON(response);
+		return resultList;
 	}
 	
 	
