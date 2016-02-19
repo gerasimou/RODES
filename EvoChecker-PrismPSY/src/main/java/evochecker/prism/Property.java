@@ -5,11 +5,7 @@ public class Property {
 	private boolean maximization;
 	
 	private double result;
-	
-	public Property(){
-		this.maximization = true;
-	}
-	
+		
 	public Property(boolean maximization){
 		this.maximization = maximization;
 	}

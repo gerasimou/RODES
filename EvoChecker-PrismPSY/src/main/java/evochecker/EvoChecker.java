@@ -1,13 +1,10 @@
 package evochecker;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
-
-import org.apache.commons.lang3.StringUtils;
 
 import evochecker.auxiliary.Utility;
 import evochecker.genetic.GenotypeFactory;
@@ -119,11 +116,17 @@ public class EvoChecker {
 		propertyList = new ArrayList<Property>();
 
 		//FX
+//		propertyList.add(new Property(true));
+//		propertyList.add(new Property(false));
+//		propertyList.add(new Property(false));
+//		propertyList.add(new Property(true));
+//		int numOfConstraints = 1;
+		
+		//Google
 		propertyList.add(new Property(true));
 		propertyList.add(new Property(false));
 		propertyList.add(new Property(false));
-		propertyList.add(new Property(true));
-		int numOfConstraints = 1;
+		int numOfConstraints  = 0;
 
 		//6) instantiate the problem
 		problem = new GeneticProblem(genes, propertyList, parserEngine, numOfConstraints);
