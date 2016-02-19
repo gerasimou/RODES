@@ -114,9 +114,7 @@ public class pNSGAII extends Algorithm {
       population.add(solution) ;
       evaluations ++ ;
     }
-    
-    int times = 1;
-    
+        
     // Generations 
     while (evaluations < maxEvaluations) {
     	System.out.println("Evaluations:\t" + evaluations);
@@ -191,25 +189,13 @@ public class pNSGAII extends Algorithm {
       // of NSGA-II. In particular, it finds the number of evaluations required
       // by the algorithm to obtain a Pareto front with a hypervolume higher
       // than the hypervolume of the true Pareto front.
-      if ((indicators != null) &&
-          (requiredEvaluations == 0)) {
-        double HV = indicators.getHypervolume(population);
-        if (HV >= (0.98 * indicators.getTrueParetoFrontHypervolume())) {
-          requiredEvaluations = evaluations;
-        } // if
-      }// if
-      
-      
-      
-//	  	//Save the pareto set every 25% evaluations
-//	  	if (maxEvaluations*times/4 <= evaluations){
-//	  		System.out.println("Saving Pareto set");
-//	  		Ranking rank = new Ranking(population);
-//	  		SolutionSet paretoSet = rank.getSubfront(0);
-//	  		paretoSet.printVariablesToFile("data/VAR_NSGAII"+times);
-//	  		paretoSet.printObjectivesToFile("data/FUN_NSGAII"+times);
-//	  		times ++;
-//	  	}
+//      if ((indicators != null) &&
+//          (requiredEvaluations == 0)) {
+//        double HV = indicators.getHypervolume(population);
+//        if (HV >= (0.98 * indicators.getTrueParetoFrontHypervolume())) {
+//          requiredEvaluations = evaluations;
+//        } // if
+//      }// if
       
     } // while
 
