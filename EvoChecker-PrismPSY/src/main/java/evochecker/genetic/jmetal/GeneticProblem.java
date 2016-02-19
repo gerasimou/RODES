@@ -243,7 +243,7 @@ public class GeneticProblem extends Problem {
 		this.populateGenesWithIntSolution(solution);
 
 		// Invoke prism....
-		String model = instantiator.getPrismModelInstance(this.genes);
+		String model = instantiator.getValidModelInstance(this.genes);
 		String propertyFile = instantiator.getPrismPropertyFileName();
 //		Utility.exportToFile("model.txt", model);
 

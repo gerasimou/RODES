@@ -9,7 +9,6 @@
 //	This file is part of EvoChecker.
 //	
 //==============================================================================
-
 package evochecker.parser;
 
 import java.util.List;
@@ -17,23 +16,34 @@ import java.util.List;
 import evochecker.genetic.genes.AbstractGene;
 
 /**
- * Interface used to instantiate a concrete model 
+ * Class representing an evolvable template parser
+ * for PRISM-PSY
  * @author sgerasimou
  *
  */
-public interface InstantiatorInterface {
-	
+public class ParserEnginePrismPSY extends ParserEngine {
+
+	/**
+	 * Class constructor
+	 * @param fileName
+	 * @param propertiesFilename
+	 */
+	public ParserEnginePrismPSY(String fileName, String propertiesFilename) {
+		super(fileName, propertiesFilename);
+	}
+
 	
 	/**
-	 * Return a valid prism model instance
+	 * Return a model instance conforming to
+	 * Prism-PSY semantics
 	 * @param individual
 	 * @return
 	 */
-	public String getValidModelInstance(List<AbstractGene> individual);
-	
-	
-	/**
-	 * Return the name of properties file
-	 */
-	public String getPrismPropertyFileName();	
+	@Override
+	public String getValidModelInstance(List<AbstractGene> individual) {
+		
+		return null;
+	}
+
+
 }

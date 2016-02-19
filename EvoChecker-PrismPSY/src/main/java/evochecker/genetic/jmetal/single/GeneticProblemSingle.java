@@ -52,7 +52,7 @@ public class GeneticProblemSingle extends GeneticProblem {
 		this.populateGenesWithIntSolution(solution);
 
 		// Invoke prism....
-		String model = instantiator.getPrismModelInstance(this.genes);
+		String model = instantiator.getValidModelInstance(this.genes);
 //		System.out.println(model);
 		String propertyFile = instantiator.getPrismPropertyFileName();
 

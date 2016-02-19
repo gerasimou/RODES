@@ -212,7 +212,7 @@ public class ParserEngine implements InstantiatorInterface {
 	 * Return a valid prism model instance
 	 */
 	@Override
-	public String getPrismModelInstance(List<AbstractGene> genes) {
+	public String getValidModelInstance(List<AbstractGene> genes) {
 		StringBuilder concreteModel = new StringBuilder(this.internalModelRepresentation);
 		for (AbstractGene gene : genes) {
 			if (gene instanceof IntegerGene) {
