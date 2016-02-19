@@ -21,9 +21,11 @@
 package evochecker.genetic.jmetal;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -145,7 +147,7 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 		try{
 			socket[i] = new Socket("127.0.0.1", portNum);
 			in[i] = new BufferedReader(new InputStreamReader(socket[i].getInputStream()));
-			out[i] = new PrintWriter(socket[i].getOutputStream());		
+			out[i] = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket[i].getOutputStream())),true);
 		} catch (IOException e) {
 			try {
 				Thread.sleep(2000);
@@ -295,8 +297,8 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 //			 System.out.println("Running thread....");
 			for (Solution task : this.solution) {
 				try {
-					if (problem instanceof GeneticProblem){
-						((GeneticProblem) problem).parallelEvaluate(task, out, in);;
+					if (problem instanceof GeneticModelProblem){
+						((GeneticModelProblem) problem).parallelEvaluate(in, out, task);
 					}
 					else throw new IllegalArgumentException("Problem not recognised");
 				} catch (Exception e) {

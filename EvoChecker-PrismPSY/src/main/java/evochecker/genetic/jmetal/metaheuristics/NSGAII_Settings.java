@@ -33,6 +33,7 @@ import jmetal.operators.selection.Selection;
 import jmetal.operators.selection.SelectionFactory;
 import jmetal.util.JMException;
 import evochecker.auxiliary.Utility;
+import evochecker.genetic.jmetal.GeneticModelProblem;
 import evochecker.genetic.jmetal.GeneticProblem;
 import evochecker.genetic.jmetal.MultiProcessEvaluator;
 import evochecker.genetic.jmetal.operators.CrossoverFactory;
@@ -63,12 +64,14 @@ public class NSGAII_Settings extends Settings {
 		realCrossoverProbability_ 	= 0.9;
 		intCrossoverProbability_ 	= 0.9;
 		
-		if (((GeneticProblem)problem_).getNumOfRealVariables() > 0)
-			realMutationProbability_ 	= 1.0 / ((GeneticProblem)problem_).getNumOfRealVariables();
+		if ( (problem_ instanceof GeneticModelProblem) && (((GeneticModelProblem) problem_).getNumOfRealVariables() > 0) ){
+			realMutationProbability_ 	= 1.0 /((GeneticModelProblem) problem_).getNumOfRealVariables();			
+		}
 		else
 			realMutationProbability_ 	= 1.0 / 1.1;
-		if ( ((GeneticProblem)problem_).getNumOfIntVariables() > 0)
-			intMutationProbability_ 	= 1.0 / ((GeneticProblem)problem_).getNumOfIntVariables();
+		if ( (problem_ instanceof GeneticModelProblem) && (((GeneticModelProblem) problem_).getNumOfIntVariables() > 0) ){
+			intMutationProbability_ 	= 1.0 /((GeneticModelProblem) problem_).getNumOfIntVariables();			
+		}
 		else
 			intMutationProbability_ 	= 1.0 / 1.1;
 		

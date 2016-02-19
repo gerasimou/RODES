@@ -47,7 +47,7 @@ public class GeneticProblemSingle extends GeneticProblem {
 
 
 	@Override
-	public void parallelEvaluate(Solution solution, PrintWriter out, BufferedReader in) throws JMException {
+	public void parallelEvaluate(BufferedReader in, PrintWriter out, Solution solution) throws JMException {
 		this.populateGenesWithRealSolution(solution);
 		this.populateGenesWithIntSolution(solution);
 
@@ -57,7 +57,8 @@ public class GeneticProblemSingle extends GeneticProblem {
 		String propertyFile = instantiator.getPrismPropertyFileName();
 
 		try {
-			List<String> fitnessList = this.invokePrism(model, propertyFile, out, in);
+			String outputStr = model + "@" + propertyFile + "\nEND\n";
+			List<String> fitnessList = this.invokePrism(in, out, outputStr);
 			this.evaluateObjectives(solution, fitnessList);
 			this.evaluateConstraints(solution, fitnessList, true);
 		} 
