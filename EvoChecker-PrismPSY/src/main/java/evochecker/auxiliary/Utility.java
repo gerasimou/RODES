@@ -1,3 +1,15 @@
+//==============================================================================
+//	
+ //	Copyright (c) 2015-
+//	Authors:
+//	* Simos Gerasimou (University of York)
+//	
+//------------------------------------------------------------------------------
+//	
+//	This file is part of EvoChecker.
+//	
+//==============================================================================
+
 package evochecker.auxiliary;
 
 import java.io.BufferedReader;
@@ -16,6 +28,11 @@ import java.util.Properties;
 import jmetal.core.Solution;
 import jmetal.util.Configuration;
 
+/**
+ * Utility class with helper functions
+ * @author sgerasimou
+ *
+ */
 public class Utility {
 	
 	private static String fileName = "resources/config.properties";
