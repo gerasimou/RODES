@@ -70,24 +70,23 @@ public class MainX {
 			BufferedReader inFromServer 	= new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			PrintWriter outToServer			= new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())),true);
 			//send to server
-			for (int i=0; i<10; i++){
 			StringBuilder outputString 		= new StringBuilder();
-			outputString.append(Utility.readFile("models/Google/google-source.sm") + "\n@");	//model String
+			outputString.append(Utility.readFile("models/Google/google.sm") + "\n@");	//model String
 			outputString.append("models/Google/google.csl" +"\n@");								//properties filename
 			outputString.append("-psecheck" +"\n@");											//decompositionType	
 			outputString.append("c_fail=0.01:0.1,c_hw_repair_rate=0.5:0.6" +"\n@");				//params and ranges
 			outputString.append("100 \nEND");													//accuracy
+
+			//send to server
 			outToServer.println(outputString.toString());
 			outToServer.flush();
 			//read from server
 			String response = inFromServer.readLine();
-//			System.out.println("Result:\t" + response);
+			System.out.println("Result:\t" + response);
 			printJSON(gson.fromJson(response, JsonObject.class));
 			
-			Thread.sleep(2000);
-			}
 		} 
-		catch (IOException | InterruptedException e) {
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
