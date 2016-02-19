@@ -45,6 +45,7 @@ public class EvolvableDouble extends Evolvable {
 	 */
 	@Override
 	public String getCommand(Object variable) {
+		//change made to accommodate PrismPSY
 		return "const double " + name +";";// = "+ (double)variable  +";\n";
 	}
 }

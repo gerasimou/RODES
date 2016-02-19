@@ -11,7 +11,8 @@ evolve const double c_hw_repair_rate [0.5..0.6];
 evolve const double c_fail [0.01..0.1];
 
 
-const int M=20;
+evolve const int M [20..20];
+
 const int S_ = 5000;
 const int N=100000;
 
