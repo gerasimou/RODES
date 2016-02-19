@@ -108,7 +108,7 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 			String params[] = new String[4];
 			params[0] = Utility.getProperty("JVM");
 			params[1] = "-jar";
-			params[2] = "res/executor.jar";
+			params[2] = Utility.getProperty("EXECUTOR_PATH", "repo/PRISM-PSY-fat.jar");
 			for (int i = 0; i < numberOfProcesses; i++) {
 				
 				boolean isAlive = false;
@@ -295,8 +295,10 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 //			 System.out.println("Running thread....");
 			for (Solution task : this.solution) {
 				try {
-					GeneticProblem geneticProblem = (GeneticProblem) problem;
-					geneticProblem.parallelEvaluate(task, out, in);
+					if (problem instanceof GeneticProblem){
+						((GeneticProblem) problem).parallelEvaluate(task, out, in);;
+					}
+					else throw new IllegalArgumentException("Problem not recognised");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -66,11 +66,11 @@ public class NSGAII_Settings extends Settings {
 		if (((GeneticProblem)problem_).getNumOfRealVariables() > 0)
 			realMutationProbability_ 	= 1.0 / ((GeneticProblem)problem_).getNumOfRealVariables();
 		else
-			realMutationProbability_ 	= 1.0 / 0.9;
+			realMutationProbability_ 	= 1.0 / 1.1;
 		if ( ((GeneticProblem)problem_).getNumOfIntVariables() > 0)
 			intMutationProbability_ 	= 1.0 / ((GeneticProblem)problem_).getNumOfIntVariables();
 		else
-			intMutationProbability_ 	= 1.0 / 0.9;
+			intMutationProbability_ 	= 1.0 / 1.1;
 		
 		distributionIndex_ 			= 20;
 	} // NSGAII_Settings

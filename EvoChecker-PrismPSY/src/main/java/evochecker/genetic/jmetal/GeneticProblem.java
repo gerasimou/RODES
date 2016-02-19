@@ -1,3 +1,15 @@
+//==============================================================================
+//	
+ //	Copyright (c) 2015-
+//	Authors:
+//	* Simos Gerasimou (University of York)
+//	
+//------------------------------------------------------------------------------
+//	
+//	This file is part of EvoChecker.
+//	
+//==============================================================================
+
 package evochecker.genetic.jmetal;
 
 import java.io.BufferedReader;
@@ -16,14 +28,20 @@ import evochecker.auxiliary.Utility;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.AlternativeModuleGene;
 import evochecker.genetic.genes.DiscreteDistributionGene;
-import evochecker.genetic.genes.DoubleConstGene;
-import evochecker.genetic.genes.IntegerConstGene;
+import evochecker.genetic.genes.DoubleGene;
+import evochecker.genetic.genes.IntegerGene;
 import evochecker.genetic.jmetal.encoding.ArrayInt;
 import evochecker.genetic.jmetal.encoding.ArrayReal;
 import evochecker.genetic.jmetal.encoding.ArrayRealIntSolutionType;
 import evochecker.parser.InstantiatorInterface;
 import evochecker.prism.Property;
 
+/**
+ * Class representing a genetic problem to be solved through 
+ * using search-based techniques
+ * @author sgerasimou
+ *
+ */
 public class GeneticProblem extends Problem {
 
 	private static final long serialVersionUID = -2679872853510614319L;
@@ -51,12 +69,14 @@ public class GeneticProblem extends Problem {
 	 * @param instantiator
 	 * @param numOfConstraints
 	 */
-	public GeneticProblem(List<AbstractGene> genes, List<Property> properties, InstantiatorInterface instantiator, int numOfConstraints) {
+	public GeneticProblem(List<AbstractGene> genes, List<Property> properties,
+						  InstantiatorInterface instantiator, int numOfConstraints, String problemName) {
 		this.genes 					= genes;
 		this.instantiator 			= instantiator;
 		this.numberOfConstraints_ 	= numOfConstraints;
 		this.numberOfObjectives_ 	= properties.size()-numberOfConstraints_;
 		this.properties 			= properties;
+		this.problemName_			= problemName;
 		this.initializeLimits();
 	}
 	
@@ -117,7 +137,7 @@ public class GeneticProblem extends Problem {
 				}
 			}
 
-			if (g instanceof DoubleConstGene) {
+			if (g instanceof DoubleGene) {
 				lowerLimit_[realVariables] = g.getMinValue().doubleValue();
 				upperLimit_[realVariables] = g.getMaxValue().doubleValue();
 				realVariables++;
@@ -135,7 +155,7 @@ public class GeneticProblem extends Problem {
 	private int computeIntVariables(int baseIndex) {
 		int intVariables = baseIndex;
 		for (AbstractGene g : genes) {
-			if (g instanceof IntegerConstGene || g instanceof AlternativeModuleGene) {
+			if (g instanceof IntegerGene || g instanceof AlternativeModuleGene) {
 				lowerLimit_[intVariables] = g.getMinValue().doubleValue();
 				upperLimit_[intVariables] = g.getMaxValue().doubleValue();
 				// System.out.println("MIN VALUE: "+
@@ -180,7 +200,7 @@ public class GeneticProblem extends Problem {
 				g.setAllele(outcomesValues);
 			}
 
-			if (g instanceof DoubleConstGene) {
+			if (g instanceof DoubleGene) {
 				double value = realPart.getValue(currentIndex);
 				currentIndex++;
 				g.setAllele(value);
@@ -199,7 +219,7 @@ public class GeneticProblem extends Problem {
 		for (int i = 0; i < genes.size(); i++) {
 			AbstractGene g = genes.get(i);
 
-			if (g instanceof IntegerConstGene
+			if (g instanceof IntegerGene
 					|| g instanceof AlternativeModuleGene) {
 				ArrayInt intPart = (ArrayInt) solution.getDecisionVariables()[1];
 				g.setAllele(intPart.getValue(currentIndex));
@@ -210,7 +230,13 @@ public class GeneticProblem extends Problem {
 	}
 	
 	
-	
+	/** 
+	 * Evaluate 
+	 * @param solution
+	 * @param out
+	 * @param in
+	 * @throws JMException
+	 */
 	public void parallelEvaluate(Solution solution, PrintWriter out, BufferedReader in) throws JMException {
 //		double[] x = new double[numberOfVariables_];
 		this.populateGenesWithRealSolution(solution);
@@ -317,57 +343,21 @@ public class GeneticProblem extends Problem {
 			}
 	  }
 	  
-	
-	  public void evaluateConstraints(Solution solution, List<String> fitnessList, boolean cost) throws JMException {
-		  double costConstraint = Double.parseDouble(Utility.getProperty("TIME_THRESHOLD", "50"));
-			for (int i=0; i < this.numberOfConstraints_; i++){
-				int index		= numberOfObjectives_ + i;
-				double result 	= Double.parseDouble(fitnessList.get(index));
-				double violation = new BigDecimal(costConstraint-result).setScale(3, RoundingMode.HALF_DOWN).doubleValue() ;
-//				System.out.print("Constraint:" + (result) );
-				if (violation < 0){
-					solution.setOverallConstraintViolation(violation);
-					solution.setNumberOfViolatedConstraint(1);
-				}
-				else{
-					solution.setOverallConstraintViolation(0);
-					solution.setNumberOfViolatedConstraint(0);
-				}
-			}
-	  }
 	  
-	  
-	  public void evaluateConstraintsDPM(Solution solution, List<String> fitnessList) throws JMException {
-		  double totalViolation = 0;
-		  for (int i=0; i < this.numberOfConstraints_; i++){
-			  //set up queuesLength
-			  int queueLength 	= ((ArrayInt) solution.getDecisionVariables()[1]).getValue(i);
-			  
-			  int index			= numberOfObjectives_ + i;
-			  double result 	= Double.parseDouble(fitnessList.get(index));
-			  double violation	= new BigDecimal(queueLength*0.9-result).setScale(3, RoundingMode.HALF_DOWN).doubleValue() ;
-//			  System.out.print("Constraint:" + (violation) +"\t" );
-			  
-			  if (violation<0)
-				  totalViolation   += violation*10;
-		  }
-		  if (totalViolation < 0){
-			  solution.setOverallConstraintViolation(totalViolation);
-			  solution.setNumberOfViolatedConstraint(1);
-		  }
-		  else{
-			  solution.setOverallConstraintViolation(0);
-			  solution.setNumberOfViolatedConstraint(0);
-		  }
-	  }
-	  
-	  
-	  public int getNumOfIntVariables(){
-		  return (this.intVariables);
-	  }
+	/** 
+	 * Get number of integer variables
+	 * @return
+	 */
+	public int getNumOfIntVariables(){
+		return (this.intVariables);
+	}
 
-	  
-	  public int getNumOfRealVariables(){
-		  return (this.realVariables);
-	  }
+
+	/**
+	 * Get number of real variables
+	 * @return
+	 */
+	 public int getNumOfRealVariables(){
+		 return (this.realVariables);
+	 }
 }

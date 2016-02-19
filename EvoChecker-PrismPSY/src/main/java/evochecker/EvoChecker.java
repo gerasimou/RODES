@@ -1,3 +1,15 @@
+//==============================================================================
+//	
+ //	Copyright (c) 2015-
+//	Authors:
+//	* Simos Gerasimou (University of York)
+//	
+//------------------------------------------------------------------------------
+//	
+//	This file is part of EvoChecker.
+//	
+//==============================================================================
+
 package evochecker;
 
 import java.util.ArrayList;
@@ -23,6 +35,12 @@ import jmetal.core.Problem;
 import jmetal.core.Solution;
 import jmetal.core.SolutionSet;
 
+
+/**
+ * Main EvoChecker class
+ * @author sgerasimou
+ *
+ */
 public class EvoChecker {
 
 	/** properties list*/
@@ -49,7 +67,7 @@ public class EvoChecker {
 	
 	
 	/**
-	 * Main
+	 * Main 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -113,7 +131,7 @@ public class EvoChecker {
 		int numOfConstraints  = 0;
 
 		//6) instantiate the problem
-		problem = new GeneticProblem(genes, propertyList, parserEngine, numOfConstraints);
+		problem = new GeneticProblem(genes, propertyList, parserEngine, numOfConstraints, "GeneticProblem");
 	}
 	
 
@@ -125,32 +143,32 @@ public class EvoChecker {
 		String algorithmStr = Utility.getProperty("ALGORITHM").toUpperCase();
 		if (algorithmStr != null){
 			if (algorithmStr.equals("NSGAII")){
-				NSGAII_Settings nsgaiiSettings = new NSGAII_Settings("GeneticProblem", problem);
+				NSGAII_Settings nsgaiiSettings = new NSGAII_Settings(problem.getName(), problem);
 				algorithm = nsgaiiSettings.configure();
 			}
 			else if (algorithmStr.equals("RANDOM")){
-				RandomSearch_Settings rsSettings = new RandomSearch_Settings("GeneticProblem", problem);
+				RandomSearch_Settings rsSettings = new RandomSearch_Settings(problem.getName(), problem);
 				algorithm = rsSettings.configure();
 			}
 			else if (algorithmStr.equals("SPEA2")){
-				SPEA2_Settings spea2Settings = new SPEA2_Settings("GeneticProblem", problem);
+				SPEA2_Settings spea2Settings = new SPEA2_Settings(problem.getName(), problem);
 				algorithm = spea2Settings.configure();
 			}
 			else if (algorithmStr.equals("MOCELL")){
-				MOCell_Settings mocellSettings = new MOCell_Settings("GeneticProblem", problem);
+				MOCell_Settings mocellSettings = new MOCell_Settings(problem.getName(), problem);
 				algorithm = mocellSettings.configure();
 			}
 			else if (algorithmStr.equals("SGA")){
 				int numOfConstraints = 1;
 				problem = new GeneticProblemSingle(genes, propertyList, parserEngine, numOfConstraints);
-				SingleGA_Settings sga_settings = new SingleGA_Settings("GeneticProblem", problem);
+				SingleGA_Settings sga_settings = new SingleGA_Settings(problem.getName(), problem);
 				algorithm = sga_settings.configure();
 				((AlgorithmSteps)algorithm).initialise(); //only for single-objective algorithms
 			}
 			else if (algorithmStr.equals("RANDOM_SINGLE")){
 				int numOfConstraints = 1;
 				problem = new GeneticProblemSingle(genes, propertyList, parserEngine, numOfConstraints);
-				RandomSearchSingle_Settings rss_settings = new RandomSearchSingle_Settings("GeneticProblem", problem);
+				RandomSearchSingle_Settings rss_settings = new RandomSearchSingle_Settings(problem.getName(), problem);
 				algorithm = rss_settings.configure();
 				((AlgorithmSteps)algorithm).initialise(); //only for single-objective algorithms
 			}

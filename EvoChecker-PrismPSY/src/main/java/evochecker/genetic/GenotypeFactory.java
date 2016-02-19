@@ -1,3 +1,15 @@
+//==============================================================================
+//	
+ //	Copyright (c) 2015-
+//	Authors:
+//	* Simos Gerasimou (University of York)
+//	
+//------------------------------------------------------------------------------
+//	
+//	This file is part of EvoChecker.
+//	
+//==============================================================================
+
 package evochecker.genetic;
 
 import java.util.ArrayList;
@@ -8,8 +20,8 @@ import java.util.Map;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.AlternativeModuleGene;
 import evochecker.genetic.genes.DiscreteDistributionGene;
-import evochecker.genetic.genes.DoubleConstGene;
-import evochecker.genetic.genes.IntegerConstGene;
+import evochecker.genetic.genes.DoubleGene;
+import evochecker.genetic.genes.IntegerGene;
 import evochecker.parser.evolvable.Evolvable;
 import evochecker.parser.evolvable.EvolvableDistribution;
 import evochecker.parser.evolvable.EvolvableDouble;
@@ -17,12 +29,18 @@ import evochecker.parser.evolvable.EvolvableInteger;
 import evochecker.parser.evolvable.EvolvableModule;
 import evochecker.parser.evolvable.EvolvableModuleAlternative;
 
+/**
+ * Factory constructing the genotype of a proble
+ * @author sgerasimou
+ *
+ */
 public class GenotypeFactory{
 	
+	/** Map between a gene and an evolvable element*/
 	private static Map<AbstractGene,Evolvable> elementsMap = new HashMap<AbstractGene, Evolvable>();
 
 	/**
-	 * Create a chromosome
+	 * Create a list chromosome (or individual) as a sequence of genes
 	 */
 	public static List<AbstractGene> createChromosome(List<Evolvable> evolvableList) throws Exception{
 		List<AbstractGene> genes = new ArrayList<AbstractGene> ();		
@@ -44,10 +62,10 @@ public class GenotypeFactory{
 		Number maxValue = evolvable.getMaxValue();
 		
 		if (evolvable instanceof EvolvableDouble){
-			return new DoubleConstGene(name, (double)minValue, (double)maxValue);
+			return new DoubleGene(name, (double)minValue, (double)maxValue);
 		}
 		else if (evolvable instanceof EvolvableInteger){
-			return new IntegerConstGene(name, (int)minValue, (int)maxValue);
+			return new IntegerGene(name, (int)minValue, (int)maxValue);
 		}
 		else if (evolvable instanceof EvolvableDistribution){
 			//TODO We do not consider specific bounds for distributions yet

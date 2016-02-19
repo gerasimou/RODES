@@ -40,7 +40,7 @@ public class GeneticProblemSingle extends GeneticProblem {
 	 * @param numOfConstraints
 	 */
 	public GeneticProblemSingle(List<AbstractGene> genes, List<Property> properties, InstantiatorInterface instantiator, int numOfConstraints) {
-		super(genes, properties, instantiator, numOfConstraints);
+		super(genes, properties, instantiator, numOfConstraints, "GeneticProblemSingle");
 		//#objectives = #properties - #constraints + 1 (i.e., the aggregated objective results; fitness function)
 		this.numberOfObjectives_ 	= properties.size()-numberOfConstraints_+1;
 	}
