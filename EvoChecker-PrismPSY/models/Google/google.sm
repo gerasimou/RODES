@@ -1,23 +1,26 @@
 ctmc
 
+// repair rate from hw failure of chunk server
+// default 1; we could try interval [0.5, 2]
+//const double c_hw_repair_rate=1;
+evolve const double c_hw_repair_rate [0.5..0.6];
+
+// rate at which any chunk server failure happens
+//const double c_fail = 0.05;
+// [0.01, 1]
+evolve const double c_fail [0.01..1.0];
+
+
 const int M=20;
 const int S_ = 5000;
 const int N=100000;
 
-// repair rate from hw failure of chunk server
-// default 1; we could try interval [0.5, 2]
-//const double c_hw_repair_rate=1;
-const double c_hw_repair_rate;
 
 // repair rate from sw failure of chunk server
 // the actual rate is c_sw_repair_rate multiplied by C_soft_down
 const double c_sw_repair_rate=12;
 //const double c_sw_repair_rate;
 
-// rate at which any chunk server failure happens
-//const double c_fail = 0.05;
-// [0.01, 1]
-evolve const double c_fail [0.01..1.0];
 
 //  "probability" that a chunk server failure is due to software
 // default 0.95; we could try interval [0.0001, 1-0.0001]
