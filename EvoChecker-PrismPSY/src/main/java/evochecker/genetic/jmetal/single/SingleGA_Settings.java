@@ -15,7 +15,7 @@ package evochecker.genetic.jmetal.single;
 import java.util.HashMap;
 
 import evochecker.auxiliary.Utility;
-import evochecker.genetic.jmetal.MultiProcessPrismEvaluator;
+import evochecker.genetic.jmetal.MultiProcessEvaluator;
 import evochecker.genetic.jmetal.operators.CrossoverFactory;
 import evochecker.genetic.jmetal.operators.MutationFactory;
 import jmetal.core.Algorithm;
@@ -70,7 +70,7 @@ public class SingleGA_Settings extends Settings{
 		HashMap<String, Double> parameters; // Operator parameters
 
 		//Create algorithm and parallel objects
-		MultiProcessPrismEvaluator evaluator = new MultiProcessPrismEvaluator(0);
+		MultiProcessEvaluator evaluator = new MultiProcessEvaluator(0);
 		algorithm = new pgGA(problem_, evaluator); //pNSGAII(problem_, evaluator);
 
 		// Algorithm parameters

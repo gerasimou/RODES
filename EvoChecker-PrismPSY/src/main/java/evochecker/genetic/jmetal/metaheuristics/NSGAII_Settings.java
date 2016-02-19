@@ -34,7 +34,7 @@ import jmetal.operators.selection.SelectionFactory;
 import jmetal.util.JMException;
 import evochecker.auxiliary.Utility;
 import evochecker.genetic.jmetal.GeneticProblem;
-import evochecker.genetic.jmetal.MultiProcessPrismEvaluator;
+import evochecker.genetic.jmetal.MultiProcessEvaluator;
 import evochecker.genetic.jmetal.operators.CrossoverFactory;
 import evochecker.genetic.jmetal.operators.MutationFactory;
 
@@ -61,9 +61,17 @@ public class NSGAII_Settings extends Settings {
 		maxEvaluations_ 			= Integer.parseInt(Utility.getProperty("MAX_EVALUATIONS", "100"));
 
 		realCrossoverProbability_ 	= 0.9;
-		intCrossoverProbability_ 	= 0.9;//0.5;
-		realMutationProbability_ 	= 1.0 / ((GeneticProblem)problem_).getNumOfRealVariables();//  0.4;
-		intMutationProbability_ 	= 1.0 / ((GeneticProblem)problem_).getNumOfIntVariables();//0.4;
+		intCrossoverProbability_ 	= 0.9;
+		
+		if (((GeneticProblem)problem_).getNumOfRealVariables() > 0)
+			realMutationProbability_ 	= 1.0 / ((GeneticProblem)problem_).getNumOfRealVariables();
+		else
+			realMutationProbability_ 	= 1.0 / 0.9;
+		if ( ((GeneticProblem)problem_).getNumOfIntVariables() > 0)
+			intMutationProbability_ 	= 1.0 / ((GeneticProblem)problem_).getNumOfIntVariables();
+		else
+			intMutationProbability_ 	= 1.0 / 0.9;
+		
 		distributionIndex_ 			= 20;
 	} // NSGAII_Settings
 
@@ -83,7 +91,7 @@ public class NSGAII_Settings extends Settings {
 		HashMap<String, Double> parameters; // Operator parameters
 
 		// Creating the algorithm. There are two choices: NSGAII and its steady-state variant ssNSGAII
-		MultiProcessPrismEvaluator evaluator = new MultiProcessPrismEvaluator(0);
+		MultiProcessEvaluator evaluator = new MultiProcessEvaluator(0);
 		algorithm = new pNSGAII(problem_, evaluator);
 		// algorithm = new ssNSGAII(problem_) ;
 

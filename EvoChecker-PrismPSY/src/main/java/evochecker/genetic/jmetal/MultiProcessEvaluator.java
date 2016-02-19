@@ -36,7 +36,12 @@ import evochecker.genetic.jmetal.metaheuristics.IParallelEvaluator;
 import jmetal.core.Problem;
 import jmetal.core.Solution;
 
-public class MultiProcessPrismEvaluator implements IParallelEvaluator {
+/**
+ * Class representing a parallel evaluator
+ * @author sgerasimou
+ *
+ */
+public class MultiProcessEvaluator implements IParallelEvaluator {
 	
 	/** number of parallel executions (processes)*/
 	private int numberOfProcesses;
@@ -73,7 +78,7 @@ public class MultiProcessPrismEvaluator implements IParallelEvaluator {
 	 * Constructor
 	 * @param processes
 	 */
-	public MultiProcessPrismEvaluator(int processes) {
+	public MultiProcessEvaluator(int processes) {
 		if (processes <= 0) {
 			String processesNum = Utility.getProperty("PROCESSORS");
 			if (processesNum!=null)
@@ -89,7 +94,7 @@ public class MultiProcessPrismEvaluator implements IParallelEvaluator {
 
 	
 	/** 
-	 * Initialise the executors
+	 * Initialise executors
 	 */
 	private void startExecutors() {
 		try {
@@ -154,7 +159,7 @@ public class MultiProcessPrismEvaluator implements IParallelEvaluator {
 
 	
 	/** 
-	 * Initialise the evaluator 
+	 * Initialise evaluator 
 	 */
 	public void startEvaluator(Problem problem) {
 		System.out.println("Cores: " + numberOfProcesses);
