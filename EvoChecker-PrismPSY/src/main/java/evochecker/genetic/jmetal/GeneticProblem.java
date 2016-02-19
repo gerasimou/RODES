@@ -238,29 +238,28 @@ public class GeneticProblem extends Problem {
 	 * @throws JMException
 	 */
 	public void parallelEvaluate(Solution solution, PrintWriter out, BufferedReader in) throws JMException {
-//		double[] x = new double[numberOfVariables_];
+		//Populate genes
 		this.populateGenesWithRealSolution(solution);
 		this.populateGenesWithIntSolution(solution);
 
 		// Invoke prism....
 		String model = instantiator.getPrismModelInstance(this.genes);
-//		System.out.println(model);
 		String propertyFile = instantiator.getPrismPropertyFileName();
 //		Utility.exportToFile("model.txt", model);
 
 		
-		List<String> fitnessList;
+		List<String> resultsList;
 		try {
-			fitnessList = this.invokePrism(model, propertyFile, out, in);
+			resultsList = this.invokePrism(model, propertyFile, out, in);
 
 			for (int i = 0; i < this.numberOfObjectives_; i++) {
 				Property p = this.properties.get(i);
 				double result;
 				if (p.isMaximization()) {
-					result = new BigDecimal(- Double.parseDouble(fitnessList.get(i))).setScale(3, RoundingMode.HALF_DOWN).doubleValue();
+					result = new BigDecimal(- Double.parseDouble(resultsList.get(i))).setScale(3, RoundingMode.HALF_DOWN).doubleValue();
 				}
 				else{
-					result = new BigDecimal(Double.parseDouble(fitnessList.get(i))).setScale(3, RoundingMode.HALF_UP).doubleValue();
+					result = new BigDecimal(Double.parseDouble(resultsList.get(i))).setScale(3, RoundingMode.HALF_UP).doubleValue();
 				}
 				solution.setObjective(i, result);
 				System.out.print("FITNESS: "+ result +"\t");
@@ -272,9 +271,7 @@ public class GeneticProblem extends Problem {
 			}
 			
 			if (numberOfConstraints_>0){
-				this.evaluateConstraints(solution, fitnessList);
-//				this.evaluateConstraintsDPM(solution, fitnessList);
-//				this.evaluateConstraints(solution, fitnessList, true );
+				this.evaluateConstraints(solution, resultsList);
 			}
 			
 		} catch (IOException e) {
@@ -284,6 +281,15 @@ public class GeneticProblem extends Problem {
 	}
 
 
+	/**
+	 * Prism invocation method
+	 * @param model
+	 * @param propertyFile
+	 * @param out
+	 * @param in
+	 * @return
+	 * @throws IOException
+	 */
 	protected List<String> invokePrism(String model, String propertyFile, PrintWriter out, BufferedReader in)
 			throws IOException {
 //		System.out.println("Sending to PRISM: "+propertyFile);
@@ -307,19 +313,22 @@ public class GeneticProblem extends Problem {
 		return Arrays.asList(res);
 	}
 
-	
+
+	/**
+	 * Evaluate function from JMetal
+	 * throws exception because we use the parallel evaluation
+	 */
 	@Override
 	public void evaluate(Solution arg0) throws JMException {
 		try {
 			System.err.println("evaluate");
-			throw new Exception();
+			throw new IllegalAccessException("Evaluate() function is not used; invoke parallelEvaluate() instead"); 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		// TODO Auto-generated method stub
-		
+			System.exit(-1);
+		}		
 	}
+
 	
 	 /** 
 	  * Evaluates the constraint overhead of a solution 
