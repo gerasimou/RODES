@@ -1,3 +1,15 @@
+//==============================================================================
+//	
+ //	Copyright (c) 2015-
+//	Authors:
+//	* Simos Gerasimou (University of York)
+//	
+//------------------------------------------------------------------------------
+//	
+//	This file is part of EvoChecker.
+//	
+//==============================================================================
+
 package evochecker.parser;
 
 import java.util.HashMap;
@@ -14,8 +26,8 @@ import evochecker.genetic.GenotypeFactory;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.AlternativeModuleGene;
 import evochecker.genetic.genes.DiscreteDistributionGene;
-import evochecker.genetic.genes.DoubleConstGene;
-import evochecker.genetic.genes.IntegerConstGene;
+import evochecker.genetic.genes.DoubleGene;
+import evochecker.genetic.genes.IntegerGene;
 import evochecker.parser.evolvable.Evolvable;
 import evochecker.parser.evolvable.EvolvableDistribution;
 import evochecker.parser.evolvable.EvolvableDouble;
@@ -27,10 +39,12 @@ import evochecker.parser.handler.PrismVisitor;
 import evochecker.parser.src.gen.PrismLexer;
 import evochecker.parser.src.gen.PrismParser;
 
+/**
+ * Class representing an evolvable template parser
+ * @author sgerasimou
+ *
+ */
 public class ParserEngine implements InstantiatorInterface {
-
-	/** model template filename */
-	private String modelFilename;
 	
 	/** String that keeps the model template */
 	private String internalModelRepresentation;
@@ -53,7 +67,6 @@ public class ParserEngine implements InstantiatorInterface {
 	public ParserEngine(String fileName, String propertiesFilename) {
 		String modelString = Utility.readFile(fileName);
 
-		this.modelFilename = fileName;
 		this.propertiesFilename = propertiesFilename;
 		elementsMap = new HashMap<AbstractGene, Evolvable>();
 
@@ -182,17 +195,6 @@ public class ParserEngine implements InstantiatorInterface {
 	public String getInternalModelRepresentation() {
 		return internalModelRepresentation;
 	}
-	
-	
-	/**
-	 * Update internal model representation. 
-	 * Used between adaptation steps
-	 * @param modelString
-	 */
-	public void updateInternalModelRepresentation(String modelString) {
-		this.internalModelRepresentation = modelString;
-	}
-	
 
 	
 	/**
@@ -213,10 +215,10 @@ public class ParserEngine implements InstantiatorInterface {
 	public String getPrismModelInstance(List<AbstractGene> genes) {
 		StringBuilder concreteModel = new StringBuilder(this.internalModelRepresentation);
 		for (AbstractGene gene : genes) {
-			if (gene instanceof IntegerConstGene) {
+			if (gene instanceof IntegerGene) {
 				concreteModel.append(elementsMap.get(gene).getCommand(gene.getAllele()));
 			} 
-			else if (gene instanceof DoubleConstGene) {
+			else if (gene instanceof DoubleGene) {
 				concreteModel.append(elementsMap.get(gene).getCommand(gene.getAllele()));
 			} 
 			else if (gene instanceof DiscreteDistributionGene) {

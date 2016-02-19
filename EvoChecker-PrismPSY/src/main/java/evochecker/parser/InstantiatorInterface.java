@@ -1,9 +1,26 @@
+//==============================================================================
+//	
+ //	Copyright (c) 2015-
+//	Authors:
+//	* Simos Gerasimou (University of York)
+//	
+//------------------------------------------------------------------------------
+//	
+//	This file is part of EvoChecker.
+//	
+//==============================================================================
+
 package evochecker.parser;
 
 import java.util.List;
 
 import evochecker.genetic.genes.AbstractGene;
 
+/**
+ * Interface used to instantiate a concrete model 
+ * @author sgerasimou
+ *
+ */
 public interface InstantiatorInterface {
 	
 	
