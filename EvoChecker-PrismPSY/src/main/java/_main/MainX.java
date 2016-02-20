@@ -51,7 +51,6 @@ public class MainX {
 			params[3] =  String.valueOf(portNum);
 			System.out.println("Starting PRISM-PSY server @ " + params[3]);
 			p = Runtime.getRuntime().exec(params);
-			System.out.println(p.isAlive());
 			Thread.sleep(3000);
 		} 
 		catch (InterruptedException | IOException e) {

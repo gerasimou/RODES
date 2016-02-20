@@ -12,6 +12,7 @@
 package evochecker.parser;
 
 import java.util.List;
+import java.util.Random;
 
 import evochecker.exception.EvoCheckerException;
 import evochecker.genetic.genes.AbstractGene;
@@ -36,6 +37,9 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 	
 	/** PrismPSY accuracy*/
 	private String accuracy;
+	
+	
+	Random rand = new Random(System.currentTimeMillis());
 	
 	/**
 	 * Class constructor
@@ -86,12 +90,25 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 	
 	private void prepareParamWithRanges(List<AbstractGene> genes) throws EvoCheckerException{
 		paramsWithRanges.setLength(0);
+		
 		for (AbstractGene gene : genes){
 			if (gene instanceof DoubleGene) {
-				paramsWithRanges.append("");
+//				paramsWithRanges.append("");
 				paramsWithRanges.append(gene.getName() 		+"=");
-				paramsWithRanges.append(gene.getMinValue() 	+":");
-				paramsWithRanges.append(gene.getMaxValue() 	+",");
+				if (gene.getName().equals("c_hw_repair_rate")){
+					//dummy values
+					double paramMarginError05 = 0.0159;
+					double num1 = Math.max((double)gene.getAllele()-paramMarginError05, (double)gene.getMinValue()); 
+					double num2 = Math.min((double)gene.getAllele()+paramMarginError05, (double)gene.getMaxValue()); 
+					paramsWithRanges.append(num1 +":"+ num2 +",");
+				}
+				else if (gene.getName().equals("c_fail")){
+					//dummy values
+					double paramMarginError05 = 0.0027;
+					double num1 = Math.max((double)gene.getAllele()-paramMarginError05, (double)gene.getMinValue()); 
+					double num2 = Math.min((double)gene.getAllele()+paramMarginError05, (double)gene.getMaxValue()); 
+					paramsWithRanges.append(num1 +":"+ num2 +",");				
+				}				
 			} 
 			else if (gene instanceof DiscreteDistributionGene) {
 				throw new EvoCheckerException("DiscreteDistributionGene not supported yet!");
@@ -99,7 +116,7 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 			} 
 		}
 		paramsWithRanges.deleteCharAt(paramsWithRanges.length()-1); //remove last ','
-//		System.out.println(paramsWithRanges.toString());
+		System.out.println("\n"+paramsWithRanges.toString());
 	}
 
 
