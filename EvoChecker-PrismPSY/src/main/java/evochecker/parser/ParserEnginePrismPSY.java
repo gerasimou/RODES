@@ -61,7 +61,7 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 	 * @return
 	 */
 	@Override
-	public String getValidModelInstance(List<AbstractGene> genes) {
+	public synchronized String getValidModelInstance(List<AbstractGene> genes) {
 		StringBuilder prismPSYmodel = new StringBuilder(this.internalModelRepresentation);
 		try{
 			for (AbstractGene gene : genes) {
@@ -88,7 +88,7 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 	
 	
 	
-	private void prepareParamWithRanges(List<AbstractGene> genes) throws EvoCheckerException{
+	private synchronized void prepareParamWithRanges(List<AbstractGene> genes) throws EvoCheckerException{
 		paramsWithRanges.setLength(0);
 		
 		for (AbstractGene gene : genes){

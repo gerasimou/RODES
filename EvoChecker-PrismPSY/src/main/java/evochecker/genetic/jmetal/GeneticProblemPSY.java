@@ -17,27 +17,20 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Arrays;
 import java.util.List;
 
-import jmetal.core.Problem;
-import jmetal.core.Solution;
-import jmetal.util.JMException;
 import evochecker.auxiliary.ParserGSON;
 import evochecker.auxiliary.Utility;
 import evochecker.exception.EvoCheckerException;
-//import org.apache.commons.lang.NotImplementedException;
 import evochecker.genetic.genes.AbstractGene;
-import evochecker.genetic.genes.AlternativeModuleGene;
 import evochecker.genetic.genes.DiscreteDistributionGene;
 import evochecker.genetic.genes.DoubleGene;
-import evochecker.genetic.genes.IntegerGene;
-import evochecker.genetic.jmetal.encoding.ArrayInt;
 import evochecker.genetic.jmetal.encoding.ArrayReal;
-import evochecker.genetic.jmetal.encoding.ArrayRealIntSolutionType;
 import evochecker.parser.InstantiatorInterface;
 import evochecker.parser.InstantiatorInterfacePrismPSY;
 import evochecker.prism.Property;
+import jmetal.core.Solution;
+import jmetal.util.JMException;
 
 /**
  * Class representing a genetic problem to be solved through 
@@ -169,6 +162,7 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 		out.flush();
 		//read from server
 		String response = in.readLine();
+		System.out.println(response);
 		List<String> resultList = ParserGSON.parseGSON(response);
 		return resultList;
 	}

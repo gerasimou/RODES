@@ -145,9 +145,9 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 	 */
 	private void makeConnection(int portNum, int i, String[] params){
 		try{
-			socket[i] = new Socket("127.0.0.1", portNum);
-			in[i] = new BufferedReader(new InputStreamReader(socket[i].getInputStream()));
-			out[i] = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket[i].getOutputStream())),true);
+			socket[i] 	= new Socket("127.0.0.1", portNum);
+			in[i] 		= new BufferedReader(new InputStreamReader(socket[i].getInputStream()));
+			out[i] 		= new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket[i].getOutputStream())),true);
 		} catch (IOException e) {
 			try {
 				Thread.sleep(2000);
@@ -294,9 +294,9 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 		 */
 		@Override
 		public void run() {
-//			 System.out.println("Running thread....");
 			for (Solution task : this.solution) {
 				try {
+					 System.out.println("Running thread...." + this.hashCode());
 					if (problem instanceof GeneticModelProblem){
 						((GeneticModelProblem) problem).parallelEvaluate(in, out, task);
 					}
