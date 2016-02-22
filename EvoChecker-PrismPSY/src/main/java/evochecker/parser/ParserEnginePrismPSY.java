@@ -88,7 +88,7 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 	
 	
 	
-	private synchronized void prepareParamWithRanges(List<AbstractGene> genes) throws EvoCheckerException{
+	private void prepareParamWithRanges(List<AbstractGene> genes) throws EvoCheckerException{
 		paramsWithRanges.setLength(0);
 		
 		for (AbstractGene gene : genes){
