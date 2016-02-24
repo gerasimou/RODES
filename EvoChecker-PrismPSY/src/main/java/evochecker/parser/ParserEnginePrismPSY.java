@@ -87,7 +87,6 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 	}
 	
 	
-	
 	private void prepareParamWithRanges(List<AbstractGene> genes) throws EvoCheckerException{
 		paramsWithRanges.setLength(0);
 		
@@ -116,7 +115,7 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 			} 
 		}
 		paramsWithRanges.deleteCharAt(paramsWithRanges.length()-1); //remove last ','
-		System.out.println("\n"+paramsWithRanges.toString());
+		System.out.println("\nParams/Ranges:\t"+paramsWithRanges.toString());
 	}
 
 

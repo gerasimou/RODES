@@ -296,7 +296,7 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 		public void run() {
 			for (Solution task : this.solution) {
 				try {
-					 System.out.println("Running thread...." + this.hashCode());
+//					 System.out.println("Running thread...." + this.hashCode());
 					if (problem instanceof GeneticModelProblem){
 						((GeneticModelProblem) problem).parallelEvaluate(in, out, task);
 					}
