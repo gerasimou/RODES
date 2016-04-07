@@ -96,7 +96,6 @@ public class NSGAII_Settings extends Settings {
 		// Creating the algorithm. There are two choices: NSGAII and its steady-state variant ssNSGAII
 		MultiProcessEvaluator evaluator = new MultiProcessEvaluator(0);
 		algorithm = new pNSGAII(problem_, evaluator);
-		// algorithm = new ssNSGAII(problem_) ;
 
 		// Algorithm parameters
 		algorithm.setInputParameter("populationSize", populationSize_);

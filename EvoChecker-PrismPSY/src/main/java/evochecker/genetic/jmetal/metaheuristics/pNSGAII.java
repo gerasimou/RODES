@@ -85,9 +85,9 @@ public class pNSGAII extends Algorithm {
     Distance distance = new Distance();
 
     //Read the parameters
-    populationSize = ((Integer) getInputParameter("populationSize")).intValue();
-    maxEvaluations = ((Integer) getInputParameter("maxEvaluations")).intValue();
-    indicators = (QualityIndicator) getInputParameter("indicators");
+    populationSize 	= ((Integer) getInputParameter("populationSize")).intValue();
+    maxEvaluations 	= ((Integer) getInputParameter("maxEvaluations")).intValue();
+    indicators 		= (QualityIndicator) getInputParameter("indicators");
 
     parallelEvaluator_.startEvaluator(problem_) ;
 
@@ -98,9 +98,9 @@ public class pNSGAII extends Algorithm {
     requiredEvaluations = 0;
 
     //Read the operators
-    mutationOperator = operators_.get("mutation");
-    crossoverOperator = operators_.get("crossover");
-    selectionOperator = operators_.get("selection");
+    mutationOperator 	= operators_.get("mutation");
+    crossoverOperator 	= operators_.get("crossover");
+    selectionOperator 	= operators_.get("selection");
 
     // Create the initial solutionSet
     Solution newSolution;

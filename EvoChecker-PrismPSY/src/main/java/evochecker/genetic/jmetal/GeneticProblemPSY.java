@@ -174,19 +174,7 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 	 * @throws JMException 
 	  */  
 	public void evaluateConstraints(Solution solution, List<String> fitnessList) throws JMException {
-		double reliabilityConstraint = Double.parseDouble(Utility.getProperty("RELIABILITY_THRESHOLD", "0.8"));
-		for (int i=0; i < this.numberOfConstraints_; i++){
-			int index		= numberOfObjectives_ + i;
-			double result 	= new BigDecimal(Double.parseDouble(fitnessList.get(index))- reliabilityConstraint).setScale(3, RoundingMode.HALF_DOWN).doubleValue() ;
-//				System.out.print("Constraint:" + (result) );
-			if (result < 0){
-				solution.setOverallConstraintViolation(result*100);
-				solution.setNumberOfViolatedConstraint(1);
-			}
-			else{
-				solution.setOverallConstraintViolation(0);
-				solution.setNumberOfViolatedConstraint(0);
-			}
-		}  
+		solution.setOverallConstraintViolation(0);
+		solution.setNumberOfViolatedConstraint(0);
 	}
 }

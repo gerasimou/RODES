@@ -13,28 +13,21 @@
 package evochecker;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import evochecker.auxiliary.Utility;
 import evochecker.genetic.GenotypeFactory;
 import evochecker.genetic.genes.AbstractGene;
-import evochecker.genetic.jmetal.GeneticProblem;
 import evochecker.genetic.jmetal.GeneticProblemPSY;
 import evochecker.genetic.jmetal.metaheuristics.MOCell_Settings;
 import evochecker.genetic.jmetal.metaheuristics.NSGAII_Settings;
 import evochecker.genetic.jmetal.metaheuristics.RandomSearch_Settings;
 import evochecker.genetic.jmetal.metaheuristics.SPEA2_Settings;
-import evochecker.genetic.jmetal.single.AlgorithmSteps;
-import evochecker.genetic.jmetal.single.GeneticProblemSingle;
-import evochecker.genetic.jmetal.single.RandomSearchSingle_Settings;
-import evochecker.genetic.jmetal.single.SingleGA_Settings;
 import evochecker.parser.ParserEngine;
 import evochecker.parser.ParserEnginePrismPSY;
 import evochecker.prism.Property;
 import jmetal.core.Algorithm;
 import jmetal.core.Problem;
-import jmetal.core.Solution;
 import jmetal.core.SolutionSet;
 
 
@@ -160,20 +153,6 @@ public class EvoChecker {
 				MOCell_Settings mocellSettings = new MOCell_Settings(problem.getName(), problem);
 				algorithm = mocellSettings.configure();
 			}
-			else if (algorithmStr.equals("SGA")){
-				int numOfConstraints = 1;
-				problem = new GeneticProblemSingle(genes, propertyList, parserEngine, numOfConstraints);
-				SingleGA_Settings sga_settings = new SingleGA_Settings(problem.getName(), problem);
-				algorithm = sga_settings.configure();
-				((AlgorithmSteps)algorithm).initialise(); //only for single-objective algorithms
-			}
-			else if (algorithmStr.equals("RANDOM_SINGLE")){
-				int numOfConstraints = 1;
-				problem = new GeneticProblemSingle(genes, propertyList, parserEngine, numOfConstraints);
-				RandomSearchSingle_Settings rss_settings = new RandomSearchSingle_Settings(problem.getName(), problem);
-				algorithm = rss_settings.configure();
-				((AlgorithmSteps)algorithm).initialise(); //only for single-objective algorithms
-			}
 			else 
 				throw new Exception("Algorithm not recognised");
 		}
@@ -184,9 +163,7 @@ public class EvoChecker {
 	 * Make finalisations of algorithm
 	 */
 	private void closeDown(){
-		//only for single-objective algorithms
-		if (algorithm instanceof AlgorithmSteps)
-			((AlgorithmSteps)algorithm).finalise(); 
+
 	}
 	
 	
