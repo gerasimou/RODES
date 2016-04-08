@@ -22,6 +22,9 @@ package evochecker.genetic.jmetal.metaheuristics;
 
 import java.util.List;
 
+import evochecker.genetic.jmetal.util.RegionDominanceComparator;
+import evochecker.genetic.jmetal.util.RegionRanking;
+import evochecker.genetic.jmetal.util.aDegreeDominanceComparator;
 import jmetal.core.Algorithm;
 import jmetal.core.Operator;
 import jmetal.core.Problem;
@@ -30,7 +33,6 @@ import jmetal.core.SolutionSet;
 import jmetal.qualityIndicator.QualityIndicator;
 import jmetal.util.Distance;
 import jmetal.util.JMException;
-import jmetal.util.Ranking;
 import jmetal.util.comparators.CrowdingComparator;
 
 /** 
@@ -40,8 +42,13 @@ import jmetal.util.comparators.CrowdingComparator;
 
 public class pNSGAIIRegion extends Algorithm {
 
+  /** Parallel evaluator handler*/
   IParallelEvaluator parallelEvaluator_ ; 
 
+  /** Region comparator handler*/
+  RegionDominanceComparator regionDominanceComparator;
+  
+  
   /**
    * Constructor
    * @param problem Problem to solve
@@ -50,9 +57,13 @@ public class pNSGAIIRegion extends Algorithm {
   public pNSGAIIRegion(Problem problem, IParallelEvaluator evaluator) {
     super (problem) ;
 
-    parallelEvaluator_ = evaluator ;
+    this.parallelEvaluator_ = evaluator ;
+    
+    //New commands for regions
+    this.regionDominanceComparator	= new aDegreeDominanceComparator();
   } // pNSGAII
 
+  
   /**   
    * Runs the NSGA-II algorithm.
    * @return a <code>SolutionSet</code> that is a set of non dominated solutions
@@ -63,7 +74,6 @@ public class pNSGAIIRegion extends Algorithm {
     int populationSize;
     int maxEvaluations;
     int evaluations;
-    int numberOfThreads ;
 
     QualityIndicator indicators; // QualityIndicator object
     int requiredEvaluations; // Use in the example of use of the
@@ -141,7 +151,8 @@ public class pNSGAIIRegion extends Algorithm {
       union = ((SolutionSet) population).union(offspringPopulation);
 
       // Ranking the union
-      Ranking ranking = new Ranking(union);
+      //Ranking ranking = new Ranking(union);
+      RegionRanking ecRanking = new RegionRanking(union, regionDominanceComparator);
 
       int remain = populationSize;
       int index = 0;
@@ -149,7 +160,7 @@ public class pNSGAIIRegion extends Algorithm {
       population.clear();
 
       // Obtain the next front
-      front = ranking.getSubfront(index);
+      front = ecRanking.getSubfront(index);
 
       while ((remain > 0) && (remain >= front.size())) {
         //Assign crowding distance to individuals
@@ -165,7 +176,7 @@ public class pNSGAIIRegion extends Algorithm {
         //Obtain the next front
         index++;
         if (remain > 0) {
-          front = ranking.getSubfront(index);
+          front = ecRanking.getSubfront(index);
         } // if        
       } // while
 
@@ -200,7 +211,7 @@ public class pNSGAIIRegion extends Algorithm {
     setOutputParameter("evaluations", requiredEvaluations);
 
     // Return the first non-dominated front
-    Ranking ranking = new Ranking(population);
-    return ranking.getSubfront(0);
+    RegionRanking ecRanking = new RegionRanking(population, regionDominanceComparator);
+    return ecRanking.getSubfront(0);
   } // execute
 } // pNSGAII
