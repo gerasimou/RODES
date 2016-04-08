@@ -22,6 +22,7 @@ package evochecker.genetic.jmetal.metaheuristics;
 
 import java.util.List;
 
+import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
 import evochecker.genetic.jmetal.util.ExampleDominanceComparator;
 import evochecker.genetic.jmetal.util.ExampleRegionDistance;
 import evochecker.genetic.jmetal.util.RegionDistance;
@@ -115,7 +116,7 @@ public class pNSGAIIRegion extends Algorithm {
     // Create the initial solutionSet
     Solution newSolution;
     for (int i = 0; i < populationSize; i++) {
-      newSolution = new Solution(problem_);
+      newSolution = new RegionSolution(problem_); //Solution(problem_);
       parallelEvaluator_.addSolutionForEvaluation(newSolution) ;
     }
 
@@ -140,8 +141,8 @@ public class pNSGAIIRegion extends Algorithm {
           Solution[] offSpring = (Solution[]) crossoverOperator.execute(parents);
           mutationOperator.execute(offSpring[0]);
           mutationOperator.execute(offSpring[1]);
-          parallelEvaluator_.addSolutionForEvaluation(offSpring[0]) ;
-          parallelEvaluator_.addSolutionForEvaluation(offSpring[1]) ;
+          parallelEvaluator_.addSolutionForEvaluation(new RegionSolution(offSpring[0])) ;
+          parallelEvaluator_.addSolutionForEvaluation(new RegionSolution(offSpring[1])) ;
         } // if                            
       } // for
 

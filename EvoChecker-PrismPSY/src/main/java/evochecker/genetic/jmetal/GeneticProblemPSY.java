@@ -20,13 +20,12 @@ import java.math.RoundingMode;
 import java.util.List;
 
 import evochecker.auxiliary.ParserGSON;
-import evochecker.auxiliary.Utility;
 import evochecker.exception.EvoCheckerException;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.DiscreteDistributionGene;
-import evochecker.genetic.genes.DoubleGene;
 import evochecker.genetic.genes.RegionGene;
 import evochecker.genetic.jmetal.encoding.ArrayReal;
+import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
 import evochecker.parser.InstantiatorInterface;
 import evochecker.parser.InstantiatorInterfacePrismPSY;
 import evochecker.prism.Property;
@@ -51,6 +50,7 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 	public GeneticProblemPSY(List<AbstractGene> genes, List<Property> properties,
 						  InstantiatorInterface instantiator, int numOfConstraints, String problemName){
 		super(genes, properties, instantiator, numOfConstraints, problemName);
+		
 		try {
 			if (!(instantiator instanceof InstantiatorInterfacePrismPSY)){
 					throw new EvoCheckerException("InstantiatorInterfacePrismPSY not provided");
@@ -125,15 +125,18 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 
 			for (int i = 0; i < this.numberOfObjectives_; i++) {
 				Property p = this.properties.get(i);
-				double result;
+				double min, max;
 				if (p.isMaximization()) {
-					result = new BigDecimal(- Double.parseDouble(resultsList.get(i))).setScale(3, RoundingMode.HALF_DOWN).doubleValue();
+					max = new BigDecimal(- Double.parseDouble(resultsList.get(i*2))).setScale(3, RoundingMode.HALF_DOWN).doubleValue();
+					min = new BigDecimal(- Double.parseDouble(resultsList.get(i*2+1))).setScale(3, RoundingMode.HALF_DOWN).doubleValue();
 				}
 				else{
-					result = new BigDecimal(Double.parseDouble(resultsList.get(i))).setScale(3, RoundingMode.HALF_UP).doubleValue();
+					min = new BigDecimal(  Double.parseDouble(resultsList.get(i*2))).setScale(3, RoundingMode.HALF_DOWN).doubleValue();
+					max = new BigDecimal(  Double.parseDouble(resultsList.get(i*2+1))).setScale(3, RoundingMode.HALF_DOWN).doubleValue();
 				}
-				solution.setObjective(i, result);
-				System.out.print("FITNESS: "+ result +"\t");
+				((RegionSolution)solution).setObjectiveBounds(i, min, max);
+//				solution.setObjective(i, result);
+				System.out.print("FITNESS: ["+ min +","+ max +"]");
 			}
 			
 			if (numberOfConstraints_>0){

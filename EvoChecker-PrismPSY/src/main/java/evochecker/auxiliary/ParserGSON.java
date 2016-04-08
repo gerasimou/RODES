@@ -40,7 +40,9 @@ public class ParserGSON {
 			double max 				 = JSONsubregion.get("max").getAsDouble();
 			System.out.println(entry.getKey() +"\t["+ min +", "+ max +"]");	
 			//append to results list
-			resultList.add((min+max)/2 +"");
+			resultList.add(min +"");
+			resultList.add(max +"");
+//			resultList.add((min+max)/2 +"");
 		}
 		
 		return resultList;
