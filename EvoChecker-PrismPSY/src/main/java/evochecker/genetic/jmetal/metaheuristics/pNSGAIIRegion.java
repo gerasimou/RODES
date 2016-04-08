@@ -22,18 +22,17 @@ package evochecker.genetic.jmetal.metaheuristics;
 
 import java.util.List;
 
+import evochecker.genetic.jmetal.util.ExampleDominanceComparator;
 import evochecker.genetic.jmetal.util.ExampleRegionDistance;
 import evochecker.genetic.jmetal.util.RegionDistance;
 import evochecker.genetic.jmetal.util.RegionDominanceComparator;
 import evochecker.genetic.jmetal.util.RegionRanking;
-import evochecker.genetic.jmetal.util.aDegreeDominanceComparator;
 import jmetal.core.Algorithm;
 import jmetal.core.Operator;
 import jmetal.core.Problem;
 import jmetal.core.Solution;
 import jmetal.core.SolutionSet;
 import jmetal.qualityIndicator.QualityIndicator;
-import jmetal.util.Distance;
 import jmetal.util.JMException;
 import jmetal.util.comparators.CrowdingComparator;
 
@@ -66,7 +65,7 @@ public class pNSGAIIRegion extends Algorithm {
     this.parallelEvaluator_ = evaluator ;
     
     //New commands for regions
-    this.regionDominanceComparator	= new aDegreeDominanceComparator();
+    this.regionDominanceComparator	= new ExampleDominanceComparator();
     this.regionDistance				= new ExampleRegionDistance();
   } // pNSGAII
 
