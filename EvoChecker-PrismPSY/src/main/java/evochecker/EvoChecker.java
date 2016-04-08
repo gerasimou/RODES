@@ -19,10 +19,8 @@ import evochecker.auxiliary.Utility;
 import evochecker.genetic.GenotypeFactory;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.jmetal.GeneticProblemPSY;
-import evochecker.genetic.jmetal.metaheuristics.MOCell_Settings;
-import evochecker.genetic.jmetal.metaheuristics.NSGAII_Settings;
+import evochecker.genetic.jmetal.metaheuristics.NSGAIIRegion_Settings;
 import evochecker.genetic.jmetal.metaheuristics.RandomSearch_Settings;
-import evochecker.genetic.jmetal.metaheuristics.SPEA2_Settings;
 import evochecker.parser.ParserEngine;
 import evochecker.parser.ParserEnginePrismPSY;
 import evochecker.prism.Property;
@@ -138,20 +136,12 @@ public class EvoChecker {
 		String algorithmStr = Utility.getProperty("ALGORITHM").toUpperCase();
 		if (algorithmStr != null){
 			if (algorithmStr.equals("NSGAII")){
-				NSGAII_Settings nsgaiiSettings = new NSGAII_Settings(problem.getName(), problem);
+				NSGAIIRegion_Settings nsgaiiSettings = new NSGAIIRegion_Settings(problem.getName(), problem);
 				algorithm = nsgaiiSettings.configure();
 			}
 			else if (algorithmStr.equals("RANDOM")){
 				RandomSearch_Settings rsSettings = new RandomSearch_Settings(problem.getName(), problem);
 				algorithm = rsSettings.configure();
-			}
-			else if (algorithmStr.equals("SPEA2")){
-				SPEA2_Settings spea2Settings = new SPEA2_Settings(problem.getName(), problem);
-				algorithm = spea2Settings.configure();
-			}
-			else if (algorithmStr.equals("MOCELL")){
-				MOCell_Settings mocellSettings = new MOCell_Settings(problem.getName(), problem);
-				algorithm = mocellSettings.configure();
 			}
 			else 
 				throw new Exception("Algorithm not recognised");
