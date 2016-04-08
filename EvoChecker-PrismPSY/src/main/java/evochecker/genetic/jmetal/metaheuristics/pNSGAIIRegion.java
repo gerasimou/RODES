@@ -51,7 +51,6 @@ public class pNSGAIIRegion extends Algorithm {
   RegionDominanceComparator regionDominanceComparator;
   
   /** Region distance handler*/
-//  Distance distance = new Distance();
   RegionDistance regionDistance;
   
   
@@ -65,7 +64,7 @@ public class pNSGAIIRegion extends Algorithm {
 
     this.parallelEvaluator_ = evaluator ;
     
-    //New commands for regions
+    //New commands for regions: SET THE DOMINANCE & DISTANCE COMPARATOR
     this.regionDominanceComparator	= new ExampleDominanceComparator();
     this.regionDistance				= new ExampleRegionDistance();
   } // pNSGAII
@@ -113,6 +112,8 @@ public class pNSGAIIRegion extends Algorithm {
     crossoverOperator 	= operators_.get("crossover");
     selectionOperator 	= operators_.get("selection");
 
+    
+    
     // Create the initial solutionSet
     Solution newSolution;
     for (int i = 0; i < populationSize; i++) {

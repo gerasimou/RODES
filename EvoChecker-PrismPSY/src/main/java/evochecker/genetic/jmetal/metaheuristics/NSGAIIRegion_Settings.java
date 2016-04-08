@@ -42,7 +42,7 @@ import evochecker.genetic.jmetal.operators.MutationFactory;
 /**
  * Settings class of algorithm NSGA-II (real encoding)
  */
-public class NSGAII_Settings extends Settings {
+public class NSGAIIRegion_Settings extends Settings {
 	public int populationSize_;
 	public int maxEvaluations_;
 	public double realCrossoverProbability_;
@@ -54,7 +54,7 @@ public class NSGAII_Settings extends Settings {
 	/**
 	 * Constructor
 	 */
-	public NSGAII_Settings(String problemName, Problem problem) {
+	public NSGAIIRegion_Settings(String problemName, Problem problem) {
 		super(problemName);
 		problem_ 					= problem;
 		// Default experiments.settings
@@ -95,7 +95,7 @@ public class NSGAII_Settings extends Settings {
 
 		// Creating the algorithm. There are two choices: NSGAII and its steady-state variant ssNSGAII
 		MultiProcessEvaluator evaluator = new MultiProcessEvaluator(0);
-		algorithm = new pNSGAII(problem_, evaluator);
+		algorithm = new pNSGAIIRegion(problem_, evaluator);
 
 		// Algorithm parameters
 		algorithm.setInputParameter("populationSize", populationSize_);

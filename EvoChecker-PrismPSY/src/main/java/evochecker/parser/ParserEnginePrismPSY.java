@@ -99,14 +99,7 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 				
 				paramsWithRanges.append(gene.getName() 		+"=");
 				paramsWithRanges.append(min +":"+ max +",");
-
-//				if (gene.getName().equals("c_fail")){
-//					//dummy values
-//					double paramMarginError05 = 0.0027;
-//					double num1 = Math.max((double)gene.getAllele()-paramMarginError05, (double)gene.getMinValue()); 
-//					double num2 = Math.min((double)gene.getAllele()+paramMarginError05, (double)gene.getMaxValue()); 
-//					paramsWithRanges.append(num1 +":"+ num2 +",");				
-//				}				
+				
 			} 
 			else if (gene instanceof DiscreteDistributionGene) {
 				throw new EvoCheckerException("DiscreteDistributionGene not supported yet!");
