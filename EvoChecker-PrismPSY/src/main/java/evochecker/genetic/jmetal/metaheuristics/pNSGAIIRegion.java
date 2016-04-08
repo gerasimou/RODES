@@ -22,6 +22,8 @@ package evochecker.genetic.jmetal.metaheuristics;
 
 import java.util.List;
 
+import evochecker.genetic.jmetal.util.ExampleRegionDistance;
+import evochecker.genetic.jmetal.util.RegionDistance;
 import evochecker.genetic.jmetal.util.RegionDominanceComparator;
 import evochecker.genetic.jmetal.util.RegionRanking;
 import evochecker.genetic.jmetal.util.aDegreeDominanceComparator;
@@ -48,6 +50,10 @@ public class pNSGAIIRegion extends Algorithm {
   /** Region comparator handler*/
   RegionDominanceComparator regionDominanceComparator;
   
+  /** Region distance handler*/
+//  Distance distance = new Distance();
+  RegionDistance regionDistance;
+  
   
   /**
    * Constructor
@@ -61,8 +67,10 @@ public class pNSGAIIRegion extends Algorithm {
     
     //New commands for regions
     this.regionDominanceComparator	= new aDegreeDominanceComparator();
+    this.regionDistance				= new ExampleRegionDistance();
   } // pNSGAII
 
+  
   
   /**   
    * Runs the NSGA-II algorithm.
@@ -86,8 +94,6 @@ public class pNSGAIIRegion extends Algorithm {
     Operator mutationOperator;
     Operator crossoverOperator;
     Operator selectionOperator;
-
-    Distance distance = new Distance();
 
     //Read the parameters
     populationSize 	= ((Integer) getInputParameter("populationSize")).intValue();
@@ -164,7 +170,7 @@ public class pNSGAIIRegion extends Algorithm {
 
       while ((remain > 0) && (remain >= front.size())) {
         //Assign crowding distance to individuals
-        distance.crowdingDistanceAssignment(front, problem_.getNumberOfObjectives());
+        regionDistance.crowdingDistanceAssignment(front, problem_.getNumberOfObjectives());
         //Add the individuals of this front
         for (int k = 0; k < front.size(); k++) {
           population.add(front.get(k));
@@ -182,7 +188,7 @@ public class pNSGAIIRegion extends Algorithm {
 
       // Remain is less than front(index).size, insert only the best one
       if (remain > 0) {  // front contains individuals to insert                        
-        distance.crowdingDistanceAssignment(front, problem_.getNumberOfObjectives());
+        regionDistance.crowdingDistanceAssignment(front, problem_.getNumberOfObjectives());
         front.sort(new CrowdingComparator());
         for (int k = 0; k < remain; k++) {
           population.add(front.get(k));
