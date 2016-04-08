@@ -27,6 +27,11 @@ import jmetal.core.SolutionSet;
  * from 0 (in NSGA-II, the numbering starts from 1); thus, subset 0 contains 
  * the non-dominated solutions, subset 1 contains the non-dominated solutions 
  * after removing those belonging to subset 0, and so on.
+ * <br><br>
+ * 
+ * <b>Note:</b>This class is identical to the original {@link jmetal.util.Ranking}
+ * with the addition of requesting a {@link evochecker.genetic.jmetal.util.RegionDominanceComparator} 
+ * instance 
  * 
  * @author sgerasimou
  *
@@ -48,7 +53,7 @@ public class RegionRanking{
 	 * Class constructor: create a new region ranking
      * @param solutionSet The <code>SolutionSet</code> to be ranked.
 	 */
-	public RegionRanking(SolutionSet solutionSet, Comparator dominanceComparator) {
+	public RegionRanking(SolutionSet solutionSet, RegionDominanceComparator dominanceComparator) {
 	    this.solutionSet 			= solutionSet ;
 	    this.dominanceComparator	= dominanceComparator;
 	    doRanking();
