@@ -126,21 +126,6 @@ public class NSGAII_Settings extends Settings {
 
 		return algorithm;
 	} // configure
-
-//	public void setCustomNSGAIIParameters() throws FileNotFoundException, IOException{
-////		Properties properties = new Properties();
-////		properties.load(new FileInputStream("res/config.properties"));
-//		
-//		//get custom population size
-//		String param = Utility.getProperty("POPULATION_SIZE");
-//		if (param!=null){
-//			this.populationSize_ = Integer.parseInt(param);
-//		}
-//		param = Utility.getProperty("MAX_EVALUATIONS");
-//		if (param!=null){
-//			this.maxEvaluations_ = Integer.parseInt(param);
-//		}		
-//	}
 	
 	
 	/**
