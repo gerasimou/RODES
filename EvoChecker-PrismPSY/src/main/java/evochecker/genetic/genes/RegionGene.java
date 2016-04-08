@@ -11,9 +11,6 @@
 //==============================================================================
 package evochecker.genetic.genes;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import evochecker.auxiliary.Utility;
 
 
@@ -49,24 +46,4 @@ public class RegionGene extends AbstractGene {
 	public double getRegionRadius(){
 		return this.regionRadius;
 	}
-
-	
-	/** Get the region represented by this region gene 
-	 * Region is simply an array [min,max]
-	 */
-	 public double[] getRegion(){
-		return new double[]{(double) this.getMinValue(), (double) this.getMaxValue()};
-	}
-	 
-	
-	 /** 
-	  * Decompose this region into <b>subRegionsNum</b> regions
-	  * @param subRegionsNum
-	  * @return
-	  */
-	 public List<RegionGene> decompose(int subRegionsNum){
-		 List<RegionGene> regionGenesList = new ArrayList<RegionGene>();
-		 //TODO: decomposing logic, maybe uniform for start?
-		 return regionGenesList;
-	 }
 }

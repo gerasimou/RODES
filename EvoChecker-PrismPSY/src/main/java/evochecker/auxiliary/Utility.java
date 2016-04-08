@@ -22,11 +22,21 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.channels.FileChannel;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
+import evochecker.genetic.genes.AbstractGene;
+import evochecker.genetic.genes.RegionGene;
+import evochecker.genetic.jmetal.encoding.ArrayInt;
+import evochecker.genetic.jmetal.encoding.ArrayReal;
+import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
+import evochecker.prism.Property;
 import jmetal.core.Solution;
+import jmetal.core.SolutionSet;
 import jmetal.util.Configuration;
+import jmetal.util.JMException;
 
 /**
  * Utility class with helper functions
@@ -167,4 +177,90 @@ public class Utility {
 			e.printStackTrace();
 		}
 	} // printVariablesToFile
+
+
+
+	
+	public static void printVariableRegionsToFile(String path, SolutionSet population, boolean append, Double[] radius) throws JMException{
+		try {
+			FileOutputStream fos = new FileOutputStream(path, append);
+			OutputStreamWriter osw = new OutputStreamWriter(fos);
+			BufferedWriter bw = new BufferedWriter(osw);
+
+			Iterator<Solution> it = population.iterator();
+			
+			while (it.hasNext()){
+				RegionSolution regionSolution = (RegionSolution) it.next();
+			
+				ArrayReal arrayRealVariable = (ArrayReal)regionSolution.getDecisionVariables()[0];
+				for (int i=0; i<arrayRealVariable.getLength(); i++){
+					double value = arrayRealVariable.getValue(i);
+					bw.write(Math.max(value-radius[i], arrayRealVariable.getLowerBound(i)) 
+							+":"+
+							Math.min(value+radius[i], arrayRealVariable.getUpperBound(i))
+							+","
+							);				
+				}
+					
+				ArrayInt  arrayIntVariable  = (ArrayInt)regionSolution.getDecisionVariables()[1];
+				bw.write(arrayIntVariable.toString());
+				bw.newLine();
+			}
+			bw.flush();
+			bw.close();
+		} catch (IOException e) {
+			Configuration.logger_.severe("Error acceding to the file");
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	public static void printObjectiveRegionsToFile(String path, SolutionSet population, boolean append, 
+													List<Property> propertyList) throws JMException{
+		try {
+			FileOutputStream fos = new FileOutputStream(path, append);
+			OutputStreamWriter osw = new OutputStreamWriter(fos);
+			BufferedWriter bw = new BufferedWriter(osw);
+
+			Iterator<Solution> it = population.iterator();
+			
+			while (it.hasNext()){
+				RegionSolution regionSolution = (RegionSolution) it.next();
+				
+				int numOfObjectives = regionSolution.getNumberOfObjectives();
+				
+				for (int i=0; i<numOfObjectives; i++){
+					Double[] bounds = regionSolution.getObjectiveBounds(i);
+					
+					//check if maximisation & negate
+					if (propertyList.get(i).isMaximization()){
+						bw.write(-bounds[1] +":"+ -bounds[0] +",");
+					}
+					else{
+						bw.write(bounds[0] +":"+ bounds[1] +",");
+					}
+				}
+				bw.newLine();
+			}
+			bw.flush();
+			bw.close();
+		} catch (IOException e) {
+			Configuration.logger_.severe("Error acceding to the file");
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	public static Double[] getRadiusAsArray(List<AbstractGene> genes ){
+		List<Double> radiusList = new ArrayList<Double>();
+		for (AbstractGene gene : genes){
+			if (gene instanceof RegionGene){
+				radiusList.add(((RegionGene) gene).getRegionRadius());
+			}
+		}
+		Double[] radius = new Double[radiusList.size()];
+		return radiusList.toArray(radius);
+	}
 }

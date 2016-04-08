@@ -165,25 +165,17 @@ public class EvoChecker {
 		
 		// Execute the Algorithm
 		SolutionSet population = algorithm.execute();
-
 		
 		//Print results to console
 		System.out.println("-------------------------------------------------");
-		System.out.println("SOLUTION: \t" + population.size());
-//		for (int i=0; i<population.size(); i++){
-//			Solution solution = population.get(i);
-//			for (int objective=0; objective<solution.getNumberOfObjectives(); objective++){
-//				System.out.printf("%.3f\t", solution.getObjective(objective));
-//			}
-//			double constraintValue = solution.getOverallConstraintViolation();
-//			if (constraintValue<0){
-//				System.out.println(constraintValue +"\t"+ Arrays.toString(solution.getDecisionVariables()));
-//			}
-//		}
+		System.out.println("SOLUTIONS: \t" + population.size());
 		
 		//Store results
 		String algorithmStr = Utility.getProperty("ALGORITHM").toUpperCase();
 		population.printObjectivesToFile("data/FUN_"+algorithmStr);
 		population.printVariablesToFile("data/VAR_"+algorithmStr);
+		
+		Utility.printVariableRegionsToFile("data/VAR_REGION_"+algorithmStr, population, false, Utility.getRadiusAsArray(genes));
+		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+algorithmStr, population, false, propertyList);
 	}	
 }
