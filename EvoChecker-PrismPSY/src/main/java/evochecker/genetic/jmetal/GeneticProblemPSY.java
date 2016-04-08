@@ -25,6 +25,7 @@ import evochecker.exception.EvoCheckerException;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.DiscreteDistributionGene;
 import evochecker.genetic.genes.DoubleGene;
+import evochecker.genetic.genes.RegionGene;
 import evochecker.genetic.jmetal.encoding.ArrayReal;
 import evochecker.parser.InstantiatorInterface;
 import evochecker.parser.InstantiatorInterfacePrismPSY;
@@ -87,7 +88,7 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 				g.setAllele(outcomesValues);
 			}
 
-			if (g instanceof DoubleGene) {
+			if (g instanceof RegionGene){
 				double value = realPart.getValue(currentIndex);
 				currentIndex++;
 				g.setAllele(value);

@@ -20,6 +20,7 @@ import evochecker.genetic.genes.AlternativeModuleGene;
 import evochecker.genetic.genes.DiscreteDistributionGene;
 import evochecker.genetic.genes.DoubleGene;
 import evochecker.genetic.genes.IntegerGene;
+import evochecker.genetic.genes.RegionGene;
 
 /**
  * Class representing an evolvable template parser
@@ -71,7 +72,7 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 				else if (gene instanceof AlternativeModuleGene) {
 					prismPSYmodel.append(elementsMap.get(gene).getCommand(gene.getAllele()));
 				}
-				else if (gene instanceof DoubleGene) {
+				else if (gene instanceof RegionGene) {
 					prismPSYmodel.append(elementsMap.get(gene).getCommand(gene.getAllele()));
 				}
 			}
@@ -91,23 +92,21 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 		paramsWithRanges.setLength(0);
 		
 		for (AbstractGene gene : genes){
-			if (gene instanceof DoubleGene) {
-//				paramsWithRanges.append("");
+			if (gene instanceof RegionGene) {
+				double regionRadius = ((RegionGene)gene).getRegionRadius();
+				double min = Math.max((double)gene.getAllele()-regionRadius, (double)gene.getMinValue());
+				double max = Math.min((double)gene.getAllele()+regionRadius, (double)gene.getMaxValue()); 
+				
 				paramsWithRanges.append(gene.getName() 		+"=");
-				if (gene.getName().equals("c_hw_repair_rate")){
-					//dummy values
-					double paramMarginError05 = 0.0159;
-					double num1 = Math.max((double)gene.getAllele()-paramMarginError05, (double)gene.getMinValue()); 
-					double num2 = Math.min((double)gene.getAllele()+paramMarginError05, (double)gene.getMaxValue()); 
-					paramsWithRanges.append(num1 +":"+ num2 +",");
-				}
-				else if (gene.getName().equals("c_fail")){
-					//dummy values
-					double paramMarginError05 = 0.0027;
-					double num1 = Math.max((double)gene.getAllele()-paramMarginError05, (double)gene.getMinValue()); 
-					double num2 = Math.min((double)gene.getAllele()+paramMarginError05, (double)gene.getMaxValue()); 
-					paramsWithRanges.append(num1 +":"+ num2 +",");				
-				}				
+				paramsWithRanges.append(min +":"+ max +",");
+
+//				if (gene.getName().equals("c_fail")){
+//					//dummy values
+//					double paramMarginError05 = 0.0027;
+//					double num1 = Math.max((double)gene.getAllele()-paramMarginError05, (double)gene.getMinValue()); 
+//					double num2 = Math.min((double)gene.getAllele()+paramMarginError05, (double)gene.getMaxValue()); 
+//					paramsWithRanges.append(num1 +":"+ num2 +",");				
+//				}				
 			} 
 			else if (gene instanceof DiscreteDistributionGene) {
 				throw new EvoCheckerException("DiscreteDistributionGene not supported yet!");

@@ -22,6 +22,7 @@ import evochecker.genetic.genes.AlternativeModuleGene;
 import evochecker.genetic.genes.DiscreteDistributionGene;
 import evochecker.genetic.genes.DoubleGene;
 import evochecker.genetic.genes.IntegerGene;
+import evochecker.genetic.genes.RegionGene;
 import evochecker.parser.evolvable.Evolvable;
 import evochecker.parser.evolvable.EvolvableDistribution;
 import evochecker.parser.evolvable.EvolvableDouble;
@@ -62,7 +63,8 @@ public class GenotypeFactory{
 		Number maxValue = evolvable.getMaxValue();
 		
 		if (evolvable instanceof EvolvableDouble){
-			return new DoubleGene(name, (double)minValue, (double)maxValue);
+			//for Regions
+			return new RegionGene(name, minValue, maxValue);//DoubleGene(name, (double)minValue, (double)maxValue);
 		}
 		else if (evolvable instanceof EvolvableInteger){
 			return new IntegerGene(name, (int)minValue, (int)maxValue);

@@ -15,26 +15,23 @@ package evochecker.genetic.jmetal;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.Arrays;
 import java.util.List;
 
-import jmetal.core.Problem;
-import jmetal.core.Solution;
-import jmetal.util.JMException;
-import evochecker.auxiliary.Utility;
 //import org.apache.commons.lang.NotImplementedException;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.AlternativeModuleGene;
 import evochecker.genetic.genes.DiscreteDistributionGene;
 import evochecker.genetic.genes.DoubleGene;
 import evochecker.genetic.genes.IntegerGene;
+import evochecker.genetic.genes.RegionGene;
 import evochecker.genetic.jmetal.encoding.ArrayInt;
 import evochecker.genetic.jmetal.encoding.ArrayReal;
 import evochecker.genetic.jmetal.encoding.ArrayRealIntSolutionType;
 import evochecker.parser.InstantiatorInterface;
 import evochecker.prism.Property;
+import jmetal.core.Problem;
+import jmetal.core.Solution;
+import jmetal.util.JMException;
 
 /**
  * Class representing a genetic problem to be solved through 
@@ -137,7 +134,7 @@ public abstract class GeneticModelProblem extends Problem {
 				}
 			}
 
-			if (g instanceof DoubleGene) {
+			if (g instanceof RegionGene) {
 				lowerLimit_[realVariables] = g.getMinValue().doubleValue();
 				upperLimit_[realVariables] = g.getMaxValue().doubleValue();
 				realVariables++;
