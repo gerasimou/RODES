@@ -195,9 +195,9 @@ public class Utility {
 				ArrayReal arrayRealVariable = (ArrayReal)regionSolution.getDecisionVariables()[0];
 				for (int i=0; i<arrayRealVariable.getLength(); i++){
 					double value = arrayRealVariable.getValue(i);
-					bw.write(Math.max(value-radius[i], arrayRealVariable.getLowerBound(i)) 
+					bw.write(Math.max(value-radius[i]/2, arrayRealVariable.getLowerBound(i)) 
 							+":"+
-							Math.min(value+radius[i], arrayRealVariable.getUpperBound(i))
+							Math.min(value+radius[i]/2, arrayRealVariable.getUpperBound(i))
 							+","
 							);				
 				}
