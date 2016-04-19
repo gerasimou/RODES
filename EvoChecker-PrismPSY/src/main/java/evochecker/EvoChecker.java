@@ -120,7 +120,7 @@ public class EvoChecker {
 		//Google
 		propertyList.add(new Property(true));
 		propertyList.add(new Property(false));
-		propertyList.add(new Property(false));
+//		propertyList.add(new Property(false));
 		int numOfConstraints  = 0;
 
 		//6) instantiate the problem
@@ -177,5 +177,7 @@ public class EvoChecker {
 		
 		Utility.printVariableRegionsToFile("data/VAR_REGION_"+algorithmStr, population, false, Utility.getRadiusAsArray(genes));
 		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+algorithmStr, population, false, propertyList);
+		
+		
 	}	
 }
