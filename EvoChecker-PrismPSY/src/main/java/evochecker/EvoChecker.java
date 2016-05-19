@@ -120,7 +120,7 @@ public class EvoChecker {
 		//Google
 		propertyList.add(new Property(true));
 		propertyList.add(new Property(false));
-		propertyList.add(new Property(false));
+		//propertyList.add(new Property(false));
 		int numOfConstraints  = 0;
 
 		//6) instantiate the problem
