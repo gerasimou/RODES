@@ -11,14 +11,16 @@
 //==============================================================================
 package evochecker.genetic.jmetal.util;
 
-public class eWorstCaseDominanceComparator extends RegionDominanceComparator {
+public class eDominanceWorstCaseDominanceComparator extends RegionDominanceComparator {
 
 	double epsilon; //relative epsilon-dominance
+    boolean sensitivity; //use sensitivity in the comparator
     double paramVolume; // volume of the parameter space
 
-	public eWorstCaseDominanceComparator(double epsilon, double paramVolume) {
+	public eDominanceWorstCaseDominanceComparator(double epsilon, double paramVolume, boolean sensitivity) {
 		this.epsilon = epsilon;
         this.paramVolume = paramVolume;
+        this. sensitivity = sensitivity;
 	}
 
 
@@ -53,13 +55,20 @@ public class eWorstCaseDominanceComparator extends RegionDominanceComparator {
 		// No constraints YET
 
 		// Equal number of violated constraints. Applying a dominance Test then
-		double value1, value2;
+		double value1, value2, vol1 = 0, vol2 = 0;
 		for (int i = 0; i < solution1.getNumberOfObjectives(); i++) {
             value1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
 			value2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
-			if ((1-epsilon)*value1 < value2) {
+            if (i == 0){
+                vol1 = value1 - solution1.getObjectiveBounds(i)[0];
+                vol2 = value2 - solution2.getObjectiveBounds(i)[0];
+            } else {
+                vol1 = vol1 * (value1 - solution1.getObjectiveBounds(i)[0]);
+                vol2 = vol2 * (value2 - solution2.getObjectiveBounds(i)[0]);
+            }
+			if ((1+epsilon)*value1 < value2) {
 				flag = -1;
-			} else if (value1 > (1-epsilon)*value2) {
+			} else if (value1 > (1+epsilon)*value2) {
 				flag = 1;
 			} else {
 				flag = 0;
@@ -73,6 +82,25 @@ public class eWorstCaseDominanceComparator extends RegionDominanceComparator {
 				dominate2 = 1;
 			}
 		}
+
+		// sensitivity - I don't use the volume of the parameter space since it is fixed
+        if (sensitivity) {
+            if ((1+epsilon)*vol1 < vol2) {
+                flag = -1;
+            } else if (vol1 > (1+epsilon)*vol2) {
+                flag = 1;
+            } else {
+                flag = 0;
+            }
+
+            if (flag == -1) {
+                dominate1 = 1;
+            }
+
+            if (flag == 1) {
+                dominate2 = 1;
+            }
+        }
 
 		if (dominate1 == dominate2) {
 			return 0; //No one dominate the other

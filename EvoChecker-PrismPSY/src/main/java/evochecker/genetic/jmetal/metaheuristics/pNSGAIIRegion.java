@@ -59,13 +59,16 @@ public class pNSGAIIRegion extends Algorithm {
   public pNSGAIIRegion(Problem problem, IParallelEvaluator evaluator) {
     super (problem) ;
 
-    this.parallelEvaluator_ = evaluator ;
+    this.parallelEvaluator_ = evaluator;
 
-      double paramVolume = 2*Double.parseDouble(Utility.getProperty("REGION_RADIUS_C_FAIL", "1.0"))*
-                            2*Double.parseDouble(Utility.getProperty("REGION_RADIUS_C_HW_REPAIR_RATE", "1.0"));
+    double paramVolume = 2*Double.parseDouble(Utility.getProperty("REGION_RADIUS_C_FAIL", "1.0"))*
+                        2*Double.parseDouble(Utility.getProperty("REGION_RADIUS_C_HW_REPAIR_RATE", "1.0"));
+
+    boolean sensitivity = true;
 
     //New commands for regions: SET THE DOMINANCE & DISTANCE COMPARATOR
-    this.regionDominanceComparator	= new eWorstCaseDominanceComparator(0.0,paramVolume);
+    this.regionDominanceComparator	= new eToleranceWorstCaseDominanceComparator(0.1,paramVolume,sensitivity);
+    //this.regionDominanceComparator	= new eDominanceWorstCaseDominanceComparator(0.1,paramVolume,sensitivity);
     //this.regionDominanceComparator	= new ExampleDominanceComparator();
     this.regionDistance				= new ExampleRegionDistance();
   } // pNSGAII
