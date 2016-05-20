@@ -13,10 +13,12 @@ package evochecker.genetic.jmetal.util;
 
 public class eWorstCaseDominanceComparator extends RegionDominanceComparator {
 
-	double epsilon; //relative
+	double epsilon; //relative epsilon-dominance
+    double paramVolume; // volume of the parameter space
 
-	public eWorstCaseDominanceComparator(double epsilon) {
+	public eWorstCaseDominanceComparator(double epsilon, double paramVolume) {
 		this.epsilon = epsilon;
+        this.paramVolume = paramVolume;
 	}
 
 
@@ -55,9 +57,9 @@ public class eWorstCaseDominanceComparator extends RegionDominanceComparator {
 		for (int i = 0; i < solution1.getNumberOfObjectives(); i++) {
             value1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
 			value2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
-			if (value1 < value2) {
+			if ((1-epsilon)*value1 < value2) {
 				flag = -1;
-			} else if (value1 > value2) {
+			} else if (value1 > (1-epsilon)*value2) {
 				flag = 1;
 			} else {
 				flag = 0;

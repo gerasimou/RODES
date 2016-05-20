@@ -24,6 +24,7 @@ import java.util.List;
 
 import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
 import evochecker.genetic.jmetal.util.*;
+import evochecker.auxiliary.Utility;
 import jmetal.core.Algorithm;
 import jmetal.core.Operator;
 import jmetal.core.Problem;
@@ -59,10 +60,13 @@ public class pNSGAIIRegion extends Algorithm {
     super (problem) ;
 
     this.parallelEvaluator_ = evaluator ;
-    
+
+      double paramVolume = 2*Double.parseDouble(Utility.getProperty("REGION_RADIUS_C_FAIL", "1.0"))*
+                            2*Double.parseDouble(Utility.getProperty("REGION_RADIUS_C_HW_REPAIR_RATE", "1.0"));
+
     //New commands for regions: SET THE DOMINANCE & DISTANCE COMPARATOR
-    //this.regionDominanceComparator	= new eWorstCaseDominanceComparator(0.1);
-    this.regionDominanceComparator	= new ExampleDominanceComparator();
+    this.regionDominanceComparator	= new eWorstCaseDominanceComparator(0.0,paramVolume);
+    //this.regionDominanceComparator	= new ExampleDominanceComparator();
     this.regionDistance				= new ExampleRegionDistance();
   } // pNSGAII
 
