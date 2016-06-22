@@ -11,16 +11,18 @@
 //==============================================================================
 package evochecker.genetic.jmetal.util;
 
+import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
+
 public class eToleranceWorstCaseDominanceComparator extends RegionDominanceComparator {
 
-	double epsilon; //relative epsilon-dominance
-    boolean sensitivity; //use sensitivity in the comparator
-    double paramVolume; // volume of the parameter space
+	double epsilon; 		//relative epsilon-dominance
+    boolean sensitivity; 	//use sensitivity in the comparator
+    double paramVolume; 	// volume of the parameter space
 
 	public eToleranceWorstCaseDominanceComparator(double epsilon, double paramVolume, boolean sensitivity) {
-		this.epsilon = epsilon;
-        this.paramVolume = paramVolume;
-        this. sensitivity = sensitivity;
+		this.epsilon 		= epsilon;
+        this.paramVolume 	= paramVolume;
+        this. sensitivity 	= sensitivity;
 	}
 
 
@@ -39,8 +41,8 @@ public class eToleranceWorstCaseDominanceComparator extends RegionDominanceCompa
 		else if (object2 == null)
 			return -1;
 
-        evochecker.genetic.jmetal.encoding.solution.RegionSolution solution1 = (evochecker.genetic.jmetal.encoding.solution.RegionSolution)object1;
-        evochecker.genetic.jmetal.encoding.solution.RegionSolution solution2 = (evochecker.genetic.jmetal.encoding.solution.RegionSolution)object2;
+        RegionSolution solution1 = (RegionSolution)object1;
+        RegionSolution solution2 = (RegionSolution)object2;
 
 		int dominate1 ; // dominate1 indicates if some objective of solution1
 		// dominates the same objective in solution2. dominate2
@@ -55,20 +57,24 @@ public class eToleranceWorstCaseDominanceComparator extends RegionDominanceCompa
 		// No constraints YET
 
 		// Equal number of violated constraints. Applying a dominance Test then
-		double value1, value2, vol1 = 0, vol2 = 0;
+		double value1, value2;//, vol1 = 0, vol2 = 0;
 		for (int i = 0; i < solution1.getNumberOfObjectives(); i++) {
-            value1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
+			
+			value1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
 			value2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
-            if (i == 0){
-                vol1 = value1 - solution1.getObjectiveBounds(i)[0];
-                vol2 = value2 - solution2.getObjectiveBounds(i)[0];
-            } else {
-                vol1 = vol1 * (value1 - solution1.getObjectiveBounds(i)[0]);
-                vol2 = vol2 * (value2 - solution2.getObjectiveBounds(i)[0]);
-            }
-			if ((1-epsilon)*value1 < value2) {
+			
+//			//check the volume
+//			if (i == 0){
+//                vol1 = value1 - solution1.getObjectiveBounds(i)[0];
+//                vol2 = value2 - solution2.getObjectiveBounds(i)[0];
+//            } else {
+//                vol1 = vol1 * (value1 - solution1.getObjectiveBounds(i)[0]);
+//                vol2 = vol2 * (value2 - solution2.getObjectiveBounds(i)[0]);
+//            }
+            
+			if ((1+epsilon)*value1 < value2) {
 				flag = -1;
-			} else if (value1 > (1-epsilon)*value2) {
+			} else if (value1 > (1+epsilon)*value2) {
 				flag = 1;
 			} else {
 				flag = 0;
