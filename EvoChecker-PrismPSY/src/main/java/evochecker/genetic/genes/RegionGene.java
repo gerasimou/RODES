@@ -12,6 +12,7 @@
 package evochecker.genetic.genes;
 
 import evochecker.auxiliary.Utility;
+import evochecker.exception.EvoCheckerException;
 
 
 /**
@@ -26,6 +27,10 @@ public class RegionGene extends AbstractGene {
 	 */
 	private double regionRadius;
 	
+	/** region boundaries*/
+	private double regionMin;
+	private double regionMax;
+	
 	/**
 	 * Class constructor
 	 * @param name
@@ -34,7 +39,9 @@ public class RegionGene extends AbstractGene {
 	 */
 	public RegionGene(String name, Number minValue, Number maxValue) {
 		super(name, minValue, maxValue);
-		this.regionRadius = Double.parseDouble(Utility.getProperty("REGION_RADIUS_".concat(name).toUpperCase()));
+		this.regionMin 	= Double.parseDouble(Utility.getProperty("REGION_RADIUS_".concat(name +"_MIN").toUpperCase()));
+		this.regionMax 	= Double.parseDouble(Utility.getProperty("REGION_RADIUS_".concat(name +"_MAX").toUpperCase()));
+//		this.regionRadius = Double.parseDouble(Utility.getProperty("REGION_RADIUS_".concat(name).toUpperCase()));
 	}
 	
 	
@@ -45,5 +52,22 @@ public class RegionGene extends AbstractGene {
 	 */
 	public double getRegionRadius(){
 		return this.regionRadius;
+	}
+	
+	
+	public void setRegionRadius(double radius) throws EvoCheckerException{
+		if (radius<this.regionMin || radius>this.regionMax)
+			throw new EvoCheckerException("Radius outside boundaries");
+		this.regionRadius = radius;
+	}
+	
+	
+	public double getRegionMin(){
+		return this.regionMin;
+	}
+	
+	
+	public double getRegionMax(){
+		return this.regionMax;
 	}
 }

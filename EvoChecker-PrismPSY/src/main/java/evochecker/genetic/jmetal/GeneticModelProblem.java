@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import evochecker.exception.EvoCheckerException;
 //import org.apache.commons.lang.NotImplementedException;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.AlternativeModuleGene;
@@ -109,6 +110,9 @@ public abstract class GeneticModelProblem extends Problem {
 				int outcomes = ((DiscreteDistributionGene) g).getNumberOfOutcomes();
 				this.numberOfVariables_ += outcomes;
 			} 
+			else if (g instanceof RegionGene){
+				this.numberOfVariables_ += 2;
+			}
 			else {
 				this.numberOfVariables_++;
 			}
@@ -136,7 +140,10 @@ public abstract class GeneticModelProblem extends Problem {
 
 			if (g instanceof RegionGene) {
 				lowerLimit_[realVariables] = g.getMinValue().doubleValue();
-				upperLimit_[realVariables] = g.getMaxValue().doubleValue();
+				upperLimit_[realVariables] = g.getMaxValue().doubleValue();				
+				realVariables++;
+				lowerLimit_[realVariables] = ((RegionGene)g).getRegionMin();
+				upperLimit_[realVariables] = ((RegionGene)g).getRegionMax();								
 				realVariables++;
 			}
 		}
@@ -170,8 +177,9 @@ public abstract class GeneticModelProblem extends Problem {
 	 * Populate the values for the gene as specified by the solution parameter
 	 * @param solution
 	 * @throws JMException
+	 * @throws EvoCheckerException 
 	 */
-	protected void populateGenesWithRealSolution(Solution solution) throws JMException {
+	protected void populateGenesWithRealSolution(Solution solution) throws JMException, EvoCheckerException {
 		ArrayReal realPart = (ArrayReal) solution.getDecisionVariables()[0];
 		int currentIndex = 0;
 
@@ -267,8 +275,9 @@ public abstract class GeneticModelProblem extends Problem {
 	 * @param out
 	 * @param in
 	 * @throws JMException
+	 * @throws EvoCheckerException 
 	 */
-	public abstract void parallelEvaluate(BufferedReader in, PrintWriter out, Solution solution) throws JMException;
+	public abstract void parallelEvaluate(BufferedReader in, PrintWriter out, Solution solution) throws JMException, EvoCheckerException;
 
 	 
 	/**
