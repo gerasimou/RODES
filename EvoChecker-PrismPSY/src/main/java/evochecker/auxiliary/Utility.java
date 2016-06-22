@@ -241,6 +241,8 @@ public class Utility {
 						bw.write(bounds[0] +":"+ bounds[1] +",");
 					}
 				}
+//				get volume
+				bw.write(regionSolution.getVolume() +"");
 				bw.newLine();
 			}
 			bw.flush();

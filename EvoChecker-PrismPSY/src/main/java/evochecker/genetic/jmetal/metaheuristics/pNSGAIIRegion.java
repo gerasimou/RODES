@@ -64,10 +64,9 @@ public class pNSGAIIRegion extends Algorithm {
     double paramVolume = 2*Double.parseDouble(Utility.getProperty("REGION_RADIUS_C_FAIL", "1.0"))*
                          2*Double.parseDouble(Utility.getProperty("REGION_RADIUS_C_HW_REPAIR_RATE", "1.0"));
 
-    boolean sensitivity = false;
-    double epsilon		= 0; 
-
     //New commands for regions: SET THE DOMINANCE & DISTANCE COMPARATOR
+    boolean sensitivity = true;
+    double epsilon		= 0; 
     this.regionDominanceComparator	= new eToleranceWorstCaseDominanceComparator(epsilon, paramVolume, sensitivity);
     this.regionDistance				= new ExampleRegionDistance();
 
