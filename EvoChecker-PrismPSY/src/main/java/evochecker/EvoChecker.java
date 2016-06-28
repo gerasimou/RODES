@@ -175,7 +175,7 @@ public class EvoChecker {
 		population.printObjectivesToFile("data/FUN_"+algorithmStr);
 		population.printVariablesToFile("data/VAR_"+algorithmStr);
 		
-		Utility.printVariableRegionsToFile("data/VAR_REGION_"+algorithmStr, population, false, Utility.getRadiusAsArray(genes));
+		Utility.printVariableRegionsToFile("data/VAR_REGION_"+algorithmStr, population, false);// Utility.getRadiusAsArray(genes));
 		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+algorithmStr, population, false, propertyList);
 		
 		

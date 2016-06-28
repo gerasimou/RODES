@@ -45,6 +45,11 @@ public class Property {
 		this.result = result;
 	}
 	
+	public Property (Property aProperty){
+		this.maximization 	= aProperty.maximization;
+		this.result			= aProperty.result;
+	}
+	
 	
 
 }
