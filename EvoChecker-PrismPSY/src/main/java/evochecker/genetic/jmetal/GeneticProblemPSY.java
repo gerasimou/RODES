@@ -68,8 +68,9 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 	 * Populate the values for the gene as specified by the solution parameter
 	 * @param solution
 	 * @throws JMException
+	 * @throws EvoCheckerException 
 	 */
-	protected void populateGenesWithRealSolution(Solution solution) throws JMException {
+	protected void populateGenesWithRealSolution(Solution solution) throws JMException, EvoCheckerException {
 		ArrayReal realPart = (ArrayReal) solution.getDecisionVariables()[0];
 		int currentIndex = 0;
 
@@ -92,6 +93,10 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 				double value = realPart.getValue(currentIndex);
 				currentIndex++;
 				g.setAllele(value);
+				//for region radius
+				double radius = realPart.getValue(currentIndex);
+				((RegionGene)g).setRegionRadius(radius);
+				currentIndex++;
 			}
 		}
 	}
@@ -103,8 +108,9 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 	 * @param out
 	 * @param in
 	 * @throws JMException
+	 * @throws EvoCheckerException 
 	 */
-	public void parallelEvaluate(BufferedReader in, PrintWriter out, Solution solution) throws JMException {
+	public void parallelEvaluate(BufferedReader in, PrintWriter out, Solution solution) throws JMException, EvoCheckerException {
 		//Populate genes
 		this.populateGenesWithRealSolution(solution);
 		this.populateGenesWithIntSolution(solution);

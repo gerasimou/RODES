@@ -24,6 +24,7 @@ import jmetal.core.Problem;
 import jmetal.core.Solution;
 import jmetal.util.JMException;
 import evochecker.auxiliary.Utility;
+import evochecker.exception.EvoCheckerException;
 //import org.apache.commons.lang.NotImplementedException;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.AlternativeModuleGene;
@@ -63,9 +64,10 @@ public class GeneticProblem extends GeneticModelProblem {
 	 * @param out
 	 * @param in
 	 * @throws JMException
+	 * @throws EvoCheckerException 
 	 */
 	@Override
-	public void parallelEvaluate(BufferedReader in, PrintWriter out, Solution solution) throws JMException {
+	public void parallelEvaluate(BufferedReader in, PrintWriter out, Solution solution) throws JMException, EvoCheckerException {
 		//Populate genes
 		this.populateGenesWithRealSolution(solution);
 		this.populateGenesWithIntSolution(solution);

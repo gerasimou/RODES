@@ -23,11 +23,8 @@ package evochecker.genetic.jmetal.metaheuristics;
 import java.util.List;
 
 import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
-import evochecker.genetic.jmetal.util.ExampleDominanceComparator;
-import evochecker.genetic.jmetal.util.ExampleRegionDistance;
-import evochecker.genetic.jmetal.util.RegionDistance;
-import evochecker.genetic.jmetal.util.RegionDominanceComparator;
-import evochecker.genetic.jmetal.util.RegionRanking;
+import evochecker.genetic.jmetal.util.*;
+import evochecker.auxiliary.Utility;
 import jmetal.core.Algorithm;
 import jmetal.core.Operator;
 import jmetal.core.Problem;
@@ -62,11 +59,19 @@ public class pNSGAIIRegion extends Algorithm {
   public pNSGAIIRegion(Problem problem, IParallelEvaluator evaluator) {
     super (problem) ;
 
-    this.parallelEvaluator_ = evaluator ;
-    
+    this.parallelEvaluator_ = evaluator;
+
+    double paramVolume = 2*Double.parseDouble(Utility.getProperty("REGION_RADIUS_C_FAIL", "1.0"))*
+                         2*Double.parseDouble(Utility.getProperty("REGION_RADIUS_C_HW_REPAIR_RATE", "1.0"));
+
     //New commands for regions: SET THE DOMINANCE & DISTANCE COMPARATOR
-    this.regionDominanceComparator	= new ExampleDominanceComparator();
+    boolean sensitivity = Boolean.parseBoolean(Utility.getProperty("SENSITIVITY"));
+    double epsilon		= 0; 
+    this.regionDominanceComparator	= new eToleranceWorstCaseDominanceComparator(epsilon, paramVolume, sensitivity);
     this.regionDistance				= new ExampleRegionDistance();
+
+    //this.regionDominanceComparator	= new eDominanceWorstCaseDominanceComparator(0.1,paramVolume,sensitivity);
+    //this.regionDominanceComparator	= new ExampleDominanceComparator();
   } // pNSGAII
 
   
@@ -111,8 +116,6 @@ public class pNSGAIIRegion extends Algorithm {
     mutationOperator 	= operators_.get("mutation");
     crossoverOperator 	= operators_.get("crossover");
     selectionOperator 	= operators_.get("selection");
-
-    
     
     // Create the initial solutionSet
     Solution newSolution;

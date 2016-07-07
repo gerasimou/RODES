@@ -119,8 +119,8 @@ public class EvoChecker {
 		
 		//Google
 		propertyList.add(new Property(true));
-//		propertyList.add(new Property(false));
 		propertyList.add(new Property(false));
+		//propertyList.add(new Property(false));
 		int numOfConstraints  = 0;
 
 		//6) instantiate the problem
@@ -175,7 +175,7 @@ public class EvoChecker {
 		population.printObjectivesToFile("data/FUN_"+algorithmStr);
 		population.printVariablesToFile("data/VAR_"+algorithmStr);
 		
-		Utility.printVariableRegionsToFile("data/VAR_REGION_"+algorithmStr, population, false, Utility.getRadiusAsArray(genes));
+		Utility.printVariableRegionsToFile("data/VAR_REGION_"+algorithmStr, population, false);// Utility.getRadiusAsArray(genes));
 		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+algorithmStr, population, false, propertyList);
 		
 		

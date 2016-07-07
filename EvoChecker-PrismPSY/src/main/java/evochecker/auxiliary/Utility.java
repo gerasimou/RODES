@@ -179,6 +179,40 @@ public class Utility {
 	} // printVariablesToFile
 
 
+	public static void printVariableRegionsToFile(String path, SolutionSet population, boolean append) throws JMException{
+		try {
+			FileOutputStream fos = new FileOutputStream(path, append);
+			OutputStreamWriter osw = new OutputStreamWriter(fos);
+			BufferedWriter bw = new BufferedWriter(osw);
+
+			Iterator<Solution> it = population.iterator();
+			
+			while (it.hasNext()){
+				RegionSolution regionSolution = (RegionSolution) it.next();
+			
+				ArrayReal arrayRealVariable = (ArrayReal)regionSolution.getDecisionVariables()[0];
+				for (int i=0; i<arrayRealVariable.getLength(); i+=2){
+					double value 	= arrayRealVariable.getValue(i);
+					double radius	= arrayRealVariable.getValue(i+1);
+					bw.write(Math.max(value-radius/2, arrayRealVariable.getLowerBound(i)) 
+							+":"+
+							Math.min(value+radius/2, arrayRealVariable.getUpperBound(i))
+							+","
+							);				
+				}
+					
+				ArrayInt  arrayIntVariable  = (ArrayInt)regionSolution.getDecisionVariables()[1];
+				bw.write(arrayIntVariable.toString());
+				bw.newLine();
+			}
+			bw.flush();
+			bw.close();
+		} catch (IOException e) {
+			Configuration.logger_.severe("Error acceding to the file");
+			e.printStackTrace();
+		}
+	}
+	
 
 	
 	public static void printVariableRegionsToFile(String path, SolutionSet population, boolean append, Double[] radius) throws JMException{
@@ -241,6 +275,8 @@ public class Utility {
 						bw.write(bounds[0] +":"+ bounds[1] +",");
 					}
 				}
+//				get volume
+				bw.write(regionSolution.getVolume() +"");
 				bw.newLine();
 			}
 			bw.flush();

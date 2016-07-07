@@ -66,6 +66,8 @@ public class RegionRanking{
 	protected void doRanking(){
 	    // dominateMe[i] contains the number of solutions dominating i        
 	    int [] dominateMe = new int[solutionSet.size()];
+	    List<Integer> [] dominateMeList = new List[solutionSet.size()];
+	    
 
 	    // iDominate[k] contains the list of solutions dominated by k
 	    List<Integer> [] iDominate = new List[solutionSet.size()];
@@ -88,6 +90,7 @@ public class RegionRanking{
 	    // of individuals that dominate me
 	      iDominate[p] = new LinkedList<Integer>();
 	      dominateMe[p] = 0;
+	      dominateMeList[p] = new LinkedList<Integer>();
 	    }
 	    for (int p = 0; p < (solutionSet.size()-1); p++) {
 	      // For all q individuals , calculate if p dominates q or vice versa
@@ -100,11 +103,13 @@ public class RegionRanking{
 	        {
 	          iDominate[p].add(q);
 	          dominateMe[q]++;
+	          dominateMeList[q].add(p);
 	        }
 	        else if (flagDominate == 1)
 	        {
 	          iDominate[q].add(p);
 	          dominateMe[p]++;
+	          dominateMeList[p].add(q);
 	        }
 	      }
 	      // If nobody dominates p, p belongs to the first front

@@ -27,6 +27,9 @@ public class RegionSolution extends Solution{
 	
 	/** Array for keeping the objectives regions*/
 	private final RegionObjective[] regionObjectives;
+
+	/** volume parameter (in the objective space)*/
+	private double volume;
 	
 	
 	public RegionSolution(Problem problem) throws ClassNotFoundException {
@@ -69,6 +72,18 @@ public class RegionSolution extends Solution{
 		return regionObjectives[i].getObjectiveBounds();
 	}
 	
+	
+	
+	public double getVolume(){
+		double vol	= 1;
+		for (int i=0; i<regionObjectives.length; i++){
+			double min 	= regionObjectives[i].getMinObjective();
+			double max 	= regionObjectives[i].getMaxObjective();
+			vol 		*= Math.abs(min-max); 
+		}
+		this.volume = vol;
+		return this.volume;
+	}
 	
 	
 	/**
