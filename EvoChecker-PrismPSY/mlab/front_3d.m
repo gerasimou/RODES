@@ -1,28 +1,35 @@
 
-% - regionsFilePath: path to the file containing the
-% regions in the objective space. The format has to be:
-% obj1_min:obj1_max,obj2_min:obj2_max,obj3_min:obj3_max,
-% - objNames (optional). Default: ['p1';'p2';'p3']
+% - regionsObjPath: path to the file containing the
+% regions in the objective space.
+% - objNames (optional). Default: {'obj1','obj2','obj3'}
 % - transparency (optional). Transparency in plots. Default 0.5
-% - randCols (optional). If true, colours each box with a random color. If
-% false, it uses a gradient over the obj space
+% - colouring (optional).
+%   colouring=0, colours each box based on the volume of the region (obj
+%   space)
+%   colouring = 1, colours each box based on the volume of the region
+%   in the param space. Needs to specify the path of the VAR_REGION file
+%   and the number of continuous and discrete parameters
+%   colouring = 2, colours each box with a random color.
+%   colouring = 3, uses a gradient over the obj space
 
-function front_3d(regionsFilePath, randCols, objNames, transparency)
+function front_3d(regionsObjPath, colouring, nContinuousParam, nDiscreteParam, ...
+    regionsParamPath, objNames, transparency)
 
-if(nargin < 4)
+if(nargin < 7)
     transparency = 0.5;
-    if(nargin < 3)
-        objNames = {'obj1','obj2','obj3'};        
-        if(nargin < 2)
-            randCols = true;
+    if(nargin < 6)
+        objNames = {'obj1','obj2','obj3'};
+        if(nargin < 5)
+            regionsParamPath = '';
+            if(nargin < 2 || (nargin>1 && colouring==1))
+                colouring=2;
+            end
         end
     end
-    
 end
 
 
-
-regions = readRegionsFile(regionsFilePath,3);
+[regions,volumes] = readRegionsFile(regionsObjPath,3);
 
 
 figure
@@ -63,34 +70,55 @@ for i = 1:size(regions,1)
 end
 
 
-if randCols
-    
-    randcolors = rand([size(regions,1),1]);
-    colors = zeros(size(xdata));
-    
-    for i=1:size(colors,1)
-        for j=1:size(xdata,2)
-            colors(i,j)=randcolors(ceil(j./6));
+colors = zeros(size(xdata));
+switch colouring
+    case 0
+        for i=1:size(colors,1)
+            for j=1:size(xdata,2)
+                colors(i,j)=volumes(ceil(j./6));
+            end
         end
-    end
-else
-    o1m=min(regions(1,:));
-    o1M=max(regions(2,:));
-    o2m=min(regions(3,:));
-    o2M=max(regions(4,:));
-    o3m=min(regions(5,:));
-    o3M=max(regions(6,:));
-    
-    mones=ones(size(xdata));
-    colors = (xdata - o1m*mones)./(o1M-o1m) + (ydata - o2m*mones)./(o2M-o2m) + (zdata - o3m*mones)./(o3M-o3m);
-    
+        displayString = '. Colouring based on obj space volume.';
+    case 1
+        [~,paramVolumes] = readParamRegionsFile(regionsParamPath,nContinuousParam,nDiscreteParam);
+        for i=1:size(colors,1)
+            for j=1:size(xdata,2)
+                colors(i,j)=paramVolumes(ceil(j./6));
+            end
+        end
+        displayString = '. Colouring based on param space volume.';
+    case 2
+        randcolors = rand([size(regions,1),1]);
+        
+        for i=1:size(colors,1)
+            for j=1:size(xdata,2)
+                colors(i,j)=randcolors(ceil(j./6));
+            end
+        end
+        
+        displayString = '. Random colouring.';
+    otherwise
+        displayString = '. Gradient on objective space.';
+        o1m=min(regions(1,:));
+        o1M=max(regions(2,:));
+        o2m=min(regions(3,:));
+        o2M=max(regions(4,:));
+        o3m=min(regions(5,:));
+        o3M=max(regions(6,:));
+        
+        mones=ones(size(xdata));
+        colors = (xdata - o1m*mones)./(o1M-o1m) + (ydata - o2m*mones)./(o2M-o2m) + (zdata - o3m*mones)./(o3M-o3m);
+        
 end
+
 
 patch(xdata,ydata,zdata,colors,'FaceAlpha',transparency,'EdgeColor',[120 120 120]/255)
 
-title(strcat(['Pareto Front for objectives ',objNames{1}, ', ',objNames{2}, ' and ',objNames{3}]));
+title(strcat(['Pareto Front for objectives ',objNames{1}, ', ',objNames{2}, ' and ',objNames{3},displayString]));
 xlabel(objNames{1});
 ylabel(objNames{2});
 zlabel(objNames{3});
-
+if(colouring<2)
+    colorbar
+end
 end
