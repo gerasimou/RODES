@@ -5,7 +5,7 @@ experiments_l1={'10000_50/0.5-1.0, 0.6-1.0','10000_100/0.3-1.0, 0.3-1.0',...
     '10000_100/0.5-1.0, 0.6-1.0', '50000_50/0.5-1.0, 0.6-1.0',...
     '50000_100/0.3-1.0, 0.3-1.0','50000_100/0.5-1.0, 0.5-1.0','50000_100/0.5-1.0, 0.5-1.0', '50000_100/0.5-1.0, 0.6-1.0' };
 
-experiments_l1={'50000_100/0.5-1.0, 0.6-1.0'};
+% experiments_l1={'50000_100/0.5-1.0, 0.6-1.0'};
 
 experiments_l2={'NS_Fixed','S_Fixed','NS_Var', 'S_Var'};
 
@@ -14,6 +14,7 @@ experiments_l3 = {'1','2','3','4'};
 nContinuousParam=2;
 nDiscreteParam=1;
 objNames={'obj1','obj2'};
+paramNames={'param1','param2'};
 
 for i=1:length(experiments_l1)
     for j=1:length(experiments_l2)
@@ -29,9 +30,11 @@ for i=1:length(experiments_l1)
                     colors = [1,4];
                     colorNames={'by_param_space_vol','by_sensitivity'};
                 end
+                prefix=[experiments_l2{j},'_',experiments_l3{k},'_'];
                 for cl = 1:length(colors)
-                    prefix=[experiments_l2{j},'_',experiments_l3{k},'_'];
                     plotFile = [filepath,prefix,colorNames{cl}];
+                    [regions,volumes,paramRegions,paramVolumes] = front_2d(objFile, colors(cl), nContinuousParam, nDiscreteParam, ...
+                        paramFile, objNames,'');
                     [regions,volumes,paramRegions,paramVolumes] = front_2d(objFile, colors(cl), nContinuousParam, nDiscreteParam, ...
                         paramFile, objNames,plotFile);
                     if (strcmp(experiments_l2{j}(end-3:end),'_Var'))
@@ -41,6 +44,13 @@ for i=1:length(experiments_l1)
                         front_2d_add_dimension(objFile, colors(cl), nContinuousParam, nDiscreteParam, ...
                             paramFile, 1, objNames,[plotFile,'_3rd_dim_sens']);
                     end
+                end
+                if(nContinuousParam==2)
+                    param_plot_2d(regions,volumes,paramRegions,paramVolumes, 3, paramNames, [filepath,prefix,'_param_space_gradient']);
+                    param_plot_2d(regions,volumes,paramRegions,paramVolumes, 4, paramNames, [filepath,prefix,'_param_space_by_sensitivity']);
+                elseif(nContinuousParam==3)
+                    param_plot_3d(regions,volumes,paramRegions,paramVolumes, 3, paramNames, [filepath,prefix,'_param_space_gradient']);
+                    param_plot_3d(regions,volumes,paramRegions,paramVolumes, 4, paramNames, [filepath,prefix,'_param_space_by_sensitivity']);
                 end
                 
             else
