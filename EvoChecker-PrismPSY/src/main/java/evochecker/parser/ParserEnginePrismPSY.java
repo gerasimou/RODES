@@ -94,9 +94,17 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 		for (AbstractGene gene : genes){
 			if (gene instanceof RegionGene) {
 				double regionRadius = ((RegionGene)gene).getRegionRadius();
-				double min = Math.max((double)gene.getAllele()-regionRadius/2, (double)gene.getMinValue());
-				double max = Math.min((double)gene.getAllele()+regionRadius/2, (double)gene.getMaxValue()); 
 				
+				double min 	  = (double)gene.getAllele()-regionRadius/2;
+				double max 	  = (double)gene.getAllele()+regionRadius/2;	
+				if (min < (double)gene.getMinValue()){
+					min = (double)gene.getMinValue();
+					max = (double)gene.getMinValue()+regionRadius;
+				}
+				else if (max > (double)gene.getMaxValue()){
+					min = (double)gene.getMaxValue()-regionRadius;
+					max = (double)gene.getMaxValue();
+				}
 				paramsWithRanges.append(gene.getName() 		+"=");
 				paramsWithRanges.append(min +":"+ max +",");
 				
