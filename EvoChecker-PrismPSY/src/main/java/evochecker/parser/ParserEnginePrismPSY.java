@@ -18,7 +18,6 @@ import evochecker.exception.EvoCheckerException;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.AlternativeModuleGene;
 import evochecker.genetic.genes.DiscreteDistributionGene;
-import evochecker.genetic.genes.DoubleGene;
 import evochecker.genetic.genes.IntegerGene;
 import evochecker.genetic.genes.RegionGene;
 
@@ -46,8 +45,9 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 	 * Class constructor
 	 * @param fileName
 	 * @param propertiesFilename
+	 * @throws EvoCheckerException 
 	 */
-	public ParserEnginePrismPSY(String fileName, String propertiesFilename) {
+	public ParserEnginePrismPSY(String fileName, String propertiesFilename) throws EvoCheckerException {
 		super(fileName, propertiesFilename);
 		this.paramsWithRanges 	= new StringBuilder(50);
 		this.decompositionType	= null;

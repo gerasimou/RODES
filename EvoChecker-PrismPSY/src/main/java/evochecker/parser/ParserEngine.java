@@ -22,6 +22,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import evochecker.auxiliary.Utility;
+import evochecker.exception.EvoCheckerException;
 import evochecker.genetic.GenotypeFactory;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.AlternativeModuleGene;
@@ -63,14 +64,19 @@ public class ParserEngine implements InstantiatorInterface {
 	 * Class constructor: create a new parser engine
 	 * @param fileName
 	 * @param propertiesFilename
+	 * @throws EvoCheckerException 
 	 */
-	public ParserEngine(String fileName, String propertiesFilename) {
+	public ParserEngine(String fileName, String propertiesFilename) throws EvoCheckerException {
 		String modelString = Utility.readFile(fileName);
 
 		this.propertiesFilename = propertiesFilename;
 		elementsMap = new HashMap<AbstractGene, Evolvable>();
 
 		runVisitor(modelString);
+		
+		if (evolvableList.isEmpty()){
+			throw new EvoCheckerException("Now evolvable element found!");
+		}
 	}
 
 	

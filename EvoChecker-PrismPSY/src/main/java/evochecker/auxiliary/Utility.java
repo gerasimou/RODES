@@ -194,11 +194,7 @@ public class Utility {
 				for (int i=0; i<arrayRealVariable.getLength(); i+=2){
 					double value 	= arrayRealVariable.getValue(i);
 					double radius	= arrayRealVariable.getValue(i+1);
-					bw.write(Math.max(value-radius/2, arrayRealVariable.getLowerBound(i)) 
-							+":"+
-							Math.min(value+radius/2, arrayRealVariable.getUpperBound(i))
-							+","
-							);				
+					bw.write((value-radius/2) +":"+ (value+radius/2) +",");
 				}
 					
 				ArrayInt  arrayIntVariable  = (ArrayInt)regionSolution.getDecisionVariables()[1];
