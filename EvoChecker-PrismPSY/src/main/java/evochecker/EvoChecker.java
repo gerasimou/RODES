@@ -109,20 +109,20 @@ public class EvoChecker {
 		
 		//5) create properties list
 		propertyList = new ArrayList<Property>();
-
-		//FX
-//		propertyList.add(new Property(true));
-//		propertyList.add(new Property(false));
-//		propertyList.add(new Property(false));
-//		propertyList.add(new Property(true));
-//		int numOfConstraints = 1;
 		
 		//Google
-		propertyList.add(new Property(true));
-		propertyList.add(new Property(false));
+//		propertyList.add(new Property(true));
+//		propertyList.add(new Property(false));
 		//propertyList.add(new Property(false));
+//		int numOfConstraints  = 0;
+
+		//Cluster
+		propertyList.add(new Property(false));
+		propertyList.add(new Property(false));
+//		propertyList.add(new Property(false));
 		int numOfConstraints  = 0;
 
+		
 		//6) instantiate the problem
 		problem = new GeneticProblemPSY(genes, propertyList, parserEngine, numOfConstraints, "GeneticProblem");
 	}

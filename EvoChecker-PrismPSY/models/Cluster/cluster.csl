@@ -1,3 +1,5 @@
+label "premium" = (left_n+right_n)>=l & toleft_n=1 & line_n=1 & toright_n=1;
+
 R{"time_not_min"}=? [C<=100]
 
 //R{"num_repairs"}=? [C<=100]
@@ -8,5 +10,7 @@ R{"time_not_min"}=? [C<=100]
 
 //R{"cost"}=? [C<=100]
 
-R{"cost2"}=? [C<=100]
+//R{"cost2"}=? [C<=100]
+
+R{"cost3"}=? [C<=100]
 

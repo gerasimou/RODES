@@ -13,7 +13,6 @@ const int k = floor(0.75*N);
 const int l = floor(1.25*N);
 formula minimum = ( left_n>=k&toleft_n=1 ) | ( right_n>=k&toright_n=1 )| ( ( left_n+right_n )>=k&toleft_n=1&line_n=1&toright_n=1 );
 //label "minimum" = (left_n>=k & toleft_n) | (right_n>=k & toright_n) | ((left_n+right_n)>=k & toleft_n & line_n & toright_n);
-//const int premium = (left_n+right_n)>=l & toleft_n & line_n & toright_n;
 
 
 // Failure rates
@@ -30,6 +29,8 @@ const double line_check = 10;
 evolve const double ws_repair [0.01..1.0];
 
 evolve const int i [1..1];
+
+
 
 // One could even have a reward that counts the number of working hours of the repairman and try to minimise them
 // like R{"working_hours"}=?[F minimum] starting from a state where !minimum holds
@@ -163,3 +164,10 @@ rewards "cost2"
 endrewards
 
 
+rewards "cost3"
+	[repairLeft]    true : 1;
+	[repairRight]   true : 1;
+	[repairToLeft]  true : 2 + 5*left_n ;
+	[repairToRight] true : 2 + 5*right_n;
+	[repairLine]    true : 8 + 5*(left_n + right_n);
+endrewards	
