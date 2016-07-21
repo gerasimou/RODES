@@ -426,6 +426,11 @@ public class PrismVisitor extends PrismBaseVisitor<String> {
 		return (" "+ ctx.BOOLEAN().getText() +" ");
 	}
 	
+	@Override
+	public String visitRewardPrecExpressBoolean (PrismParser.RewardPrecExpressBooleanContext ctx){
+		return (ctx.variable().getText() +" "+ ctx.operator().getText() +" "+ ctx.BOOLEAN().getText());
+	}
+	
 	
 	@Override
 	public String visitIntOrVarInt (PrismParser.IntOrVarIntContext ctx){

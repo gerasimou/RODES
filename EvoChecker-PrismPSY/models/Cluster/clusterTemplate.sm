@@ -11,8 +11,7 @@ const int init_N = 10;
 // Minimum QoS requires 3/4 connected workstations operational
 const int k = floor(0.75*N);
 const int l = floor(1.25*N);
-formula minimum = (left_n>=k & toleft_n) | (right_n>=k & toright_n) | ((left_n+right_n)>=k & toleft_n & line_n & toright_n);
-
+formula minimum = ( left_n>=k&toleft_n=1 ) | ( right_n>=k&toright_n=1 )| ( ( left_n+right_n )>=k&toleft_n=1&line_n=1&toright_n=1 );
 //label "minimum" = (left_n>=k & toleft_n) | (right_n>=k & toright_n) | ((left_n+right_n)>=k & toleft_n & line_n & toright_n);
 //const int premium = (left_n+right_n)>=l & toleft_n & line_n & toright_n;
 
@@ -123,7 +122,7 @@ endmodule
 
 // Time that the system is not delivering at least minimum QoS
 rewards "time_not_min"
-	minimum=0 : 1;
+	[] minimum=false : 1;
 endrewards
 
 // Number of repairs

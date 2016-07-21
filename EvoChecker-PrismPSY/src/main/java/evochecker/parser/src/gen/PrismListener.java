@@ -114,6 +114,18 @@ public interface PrismListener extends ParseTreeListener {
 	 */
 	void exitRewardPrecBoolean(PrismParser.RewardPrecBooleanContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code rewardPrecExpressBoolean}
+	 * labeled alternative in {@link PrismParser#rewardPrecondition}.
+	 * @param ctx the parse tree
+	 */
+	void enterRewardPrecExpressBoolean(PrismParser.RewardPrecExpressBooleanContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code rewardPrecExpressBoolean}
+	 * labeled alternative in {@link PrismParser#rewardPrecondition}.
+	 * @param ctx the parse tree
+	 */
+	void exitRewardPrecExpressBoolean(PrismParser.RewardPrecExpressBooleanContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link PrismParser#function}.
 	 * @param ctx the parse tree
 	 */

@@ -128,6 +128,18 @@ public class PrismBaseListener implements PrismListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterRewardPrecExpressBoolean(PrismParser.RewardPrecExpressBooleanContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRewardPrecExpressBoolean(PrismParser.RewardPrecExpressBooleanContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFunction(PrismParser.FunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}

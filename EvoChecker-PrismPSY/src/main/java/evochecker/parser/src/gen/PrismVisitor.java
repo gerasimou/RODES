@@ -75,6 +75,13 @@ public interface PrismVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitRewardPrecBoolean(PrismParser.RewardPrecBooleanContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code rewardPrecExpressBoolean}
+	 * labeled alternative in {@link PrismParser#rewardPrecondition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRewardPrecExpressBoolean(PrismParser.RewardPrecExpressBooleanContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link PrismParser#function}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
