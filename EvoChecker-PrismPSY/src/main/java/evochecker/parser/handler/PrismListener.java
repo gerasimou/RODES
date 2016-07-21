@@ -42,7 +42,7 @@ public class PrismListener extends PrismBaseListener {
 	}
 	
 	@Override 
-	public void enterModule(PrismParser.ModuleContext ctx) {
+	public void enterModuleSimple (PrismParser.ModuleSimpleContext ctx) {
 		String str = ctx.name.getText();
 //		ctx.variables.
 		memory.put("module " + str, ctx.getText());
