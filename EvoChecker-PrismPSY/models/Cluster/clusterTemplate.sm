@@ -44,7 +44,6 @@ module Left
 	[startLeft] left=0 & (left_n<left_mx) -> 1 : (left'=1);
 	[repairLeft] left=1 & (left_n<left_mx) -> 1 : (left'=0) & (left_n'=left_n+1);
 	[] (left_n>0) -> ws_fail*left_n : (left_n'=left_n-1);
-	
 endmodule
 
 // Right cluster
@@ -53,10 +52,9 @@ module Right
     right_n : [0..right_mx] init 10; // Number of workstations operational
 	right : [0..1] init 0; // Being repaired?
 
-	[startRight] left=0 & (right_n<right_mx) -> 1 : (right'=1);
-	[repairRight] left=1 & (right_n<right_mx) -> 1 : (right'=0) & (right_n'=right_n+1);
+	[startRight] right=0 & (right_n<right_mx) -> 1 : (right'=1);
+	[repairRight] right=1 & (right_n<right_mx) -> 1 : (right'=0) & (right_n'=right_n+1);
 	[] (right_n>0) -> ws_fail*right_n : (right_n'=right_n-1);
-
 endmodule
 
 // Repair unit
@@ -96,8 +94,8 @@ module ToLeft
 	toleft : [0..1] init 0; // Being repaired?
 	toleft_n :[0..1] init 1; // Working?
 
-	[startToleft] toleft=0 & toleft_n=0 -> 1 : (toleft'=1);
-	[repairToleft] toleft=1 & toleft_n=0 -> 1 : (toleft'=0) & (toleft_n'=1);
+	[startToLeft] toleft=0 & toleft_n=0 -> 1 : (toleft'=1);
+	[repairToLeft] toleft=1 & toleft_n=0 -> 1 : (toleft'=0) & (toleft_n'=1);
 	[] toleft_n=1 -> switch_fail : (toleft_n'=0);
 
 endmodule
@@ -108,8 +106,8 @@ module ToRight
     toright : [0..1] init 0; // Being repaired?
 	toright_n :[0..1] init 1; // Working?
 
-	[startToright] toright=0 & toright_n=0 -> 1 : (toright'=1);
-	[repairToright] toright=1 & toright_n=0 -> 1 : (toright'=0) & (toright_n'=1);
+	[startToRight] toright=0 & toright_n=0 -> 1 : (toright'=1);
+	[repairToRight] toright=1 & toright_n=0 -> 1 : (toright'=0) & (toright_n'=1);
 	[] toright_n=1 -> switch_fail : (toright_n'=0);
 
 endmodule
