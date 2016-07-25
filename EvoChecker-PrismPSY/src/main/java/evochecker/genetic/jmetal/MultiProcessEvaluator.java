@@ -34,6 +34,7 @@ import java.util.Properties;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import evochecker.auxiliary.Utility;
+import evochecker.exception.EvoCheckerException;
 import evochecker.genetic.jmetal.metaheuristics.IParallelEvaluator;
 import jmetal.core.Problem;
 import jmetal.core.Solution;
@@ -50,6 +51,9 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 	
 	/** handler to the problem being solved*/
 	private Problem problem;
+	
+	
+	private Problem[] problems;
 
 	/** List of solutions*/
 	private List<Solution> solutionsList;
@@ -91,7 +95,8 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 			numberOfProcesses = processes;
 		}
 		this.startExecutors();
-		this.reset();
+		this.init();
+//		this.reset();
 	}
 
 	
@@ -166,6 +171,20 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 	public void startEvaluator(Problem problem) {
 		System.out.println("Cores: " + numberOfProcesses);
 		this.problem = problem;
+
+		try {
+		
+			problems = new Problem[numberOfProcesses];
+			if (problem instanceof GeneticProblemPSY){
+				for (int i=0; i<numberOfProcesses; i++){
+							problems[i] = new GeneticProblemPSY((GeneticProblemPSY) problem);
+				}
+			}
+		}
+		catch (EvoCheckerException e) {
+			e.printStackTrace();
+		}
+			
 	}
 
 	
@@ -210,16 +229,18 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 	}
 
 	
-	/**
-	 * When done, reset the evaluators
-	 */
-	private void reset() {
+	private void init(){
 		threads 		= new Thread[numberOfProcesses];
 		runnables 		= new RunnableExecutor[numberOfProcesses];
 		solutionsList 	= new ArrayList<Solution>();
-
+	}
+	
+	/**
+	 * When done, reset the evaluators
+	 */
+	private void reset() {	
 		for (int i = 0; i < numberOfProcesses; i++) {
-			runnables[i]	= new RunnableExecutor(out[i], in[i]);
+			runnables[i]	= new RunnableExecutor(out[i], in[i], problems[i]);
 			threads[i] 		= new Thread(runnables[i]);
 		}
 	}
@@ -231,10 +252,11 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 	public List<Solution> parallelEvaluation() {
 //		System.out.println("Parallel evaluation");
 		results = new CopyOnWriteArrayList<Solution>();
+		this.reset();
 		this.assignSolutions();
 		this.startThreads();
+		solutionsList.clear();
 //		System.out.println("End of parallel evaluation....");
-		this.reset();
 		return this.results;
 	}
 
@@ -270,16 +292,18 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 		/** Input*/
 		private BufferedReader in;
 
+		Problem runnableProblem;
 		
 		/**
 		 * Class constructor: create a new runnable executor
 		 * @param out
 		 * @param in
 		 */
-		public RunnableExecutor(PrintWriter out, BufferedReader in) {
-			this.in = in;
-			this.out = out;
-			this.solution = new ArrayList<Solution>();
+		public RunnableExecutor(PrintWriter out, BufferedReader in, Problem problem) {
+			this.in 			 = in;
+			this.out 			 = out;
+			this.runnableProblem = problem;
+			this.solution 		 = new ArrayList<Solution>();
 		}
 
 		
@@ -294,12 +318,16 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 		 */
 		@Override
 		public void run() {
+			
 			for (Solution task : this.solution) {
 				try {
 //					 System.out.println("Running thread...." + this.hashCode());
-					if (problem instanceof GeneticModelProblem){
-						((GeneticModelProblem) problem).parallelEvaluate(in, out, task);
+					if (runnableProblem instanceof GeneticModelProblem){
+						((GeneticModelProblem) runnableProblem).parallelEvaluate(in, out, task);
 					}
+//					if (problem instanceof GeneticModelProblem){
+//						((GeneticModelProblem) problem).parallelEvaluate(in, out, task);
+//					}
 					else throw new IllegalArgumentException("Problem not recognised");
 				} catch (Exception e) {
 					e.printStackTrace();

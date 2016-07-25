@@ -57,7 +57,7 @@ public class RegionGene extends AbstractGene {
 	
 	public void setRegionRadius(double radius) throws EvoCheckerException{
 		if (radius<this.regionMin || radius>this.regionMax)
-			throw new EvoCheckerException("Radius outside boundaries");
+			throw new EvoCheckerException(EvoCheckerException.class.getSimpleName() +" Radius outside boundaries: " + regionMin +" " + radius +" "+ regionMax );
 		this.regionRadius = radius;
 	}
 	

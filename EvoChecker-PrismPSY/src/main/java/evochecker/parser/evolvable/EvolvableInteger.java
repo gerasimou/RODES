@@ -48,4 +48,8 @@ public class EvolvableInteger extends Evolvable{
 		return "const int " + name +" = "+ (int)variable  +";\n";
 	}
 	
+	public EvolvableInteger (Evolvable anEvolvable){
+		this(anEvolvable.name, anEvolvable.minValue, anEvolvable.maxValue);
+	}
+	
 }

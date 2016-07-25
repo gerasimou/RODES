@@ -96,4 +96,13 @@ public abstract class Evolvable {
 	 * @return
 	 */
 	public abstract String getCommand(Object variable);
+	
+	
+	
+	public Evolvable (Evolvable anEvolvable){
+		this.name 		= anEvolvable.name;
+		this.identifier	= anEvolvable.identifier;
+		this.minValue	= anEvolvable.minValue;
+		this.maxValue	= anEvolvable.maxValue;
+	}
 }

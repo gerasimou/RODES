@@ -48,4 +48,10 @@ public class EvolvableDouble extends Evolvable {
 		//change made to accommodate PrismPSY
 		return "const double " + name +";";// = "+ (double)variable  +";\n";
 	}
+	
+	
+	public EvolvableDouble (Evolvable anEvolvable){
+		this(anEvolvable.name, anEvolvable.minValue, anEvolvable.maxValue);
+	}
 }
+

@@ -12,7 +12,10 @@
 
 package evochecker.parser;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -58,6 +61,9 @@ public class ParserEngine implements InstantiatorInterface {
 	
 	/** map that keeps pairs of genes and evolvable elements*/
 	protected Map<AbstractGene, Evolvable> elementsMap;
+	
+	
+	List<AbstractGene> genesList;
 
 	
 	/**
@@ -70,13 +76,13 @@ public class ParserEngine implements InstantiatorInterface {
 		String modelString = Utility.readFile(fileName);
 
 		this.propertiesFilename = propertiesFilename;
-		elementsMap = new HashMap<AbstractGene, Evolvable>();
+		elementsMap = new LinkedHashMap<AbstractGene, Evolvable>();
 
 		runVisitor(modelString);
 		
 		if (evolvableList.isEmpty()){
 			throw new EvoCheckerException("Now evolvable element found!");
-		}
+		}	
 	}
 
 	
@@ -256,4 +262,31 @@ public class ParserEngine implements InstantiatorInterface {
 //		// "-package", "org.spg.antlr.src.gen"};
 //		org.antlr.v4.Tool.main(arg0);
 //	}
+	
+	
+	public ParserEngine (ParserEngine aParser) throws EvoCheckerException{
+			ParserEngine parser = (ParserEngine)aParser;
+			this.internalModelRepresentation	= parser.internalModelRepresentation;
+			this.propertiesFilename				= parser.propertiesFilename;
+			this.evolvableList					= new ArrayList<Evolvable>();
+			for (Evolvable element : parser.evolvableList)
+				if (element instanceof EvolvableInteger)
+					this.evolvableList.add(new EvolvableInteger(element));
+				else if (element instanceof EvolvableDouble)
+					this.evolvableList.add(new EvolvableDouble(element));
+			
+			genesList = GenotypeFactory.createChromosome(evolvableList);
+			
+//			GenotypeFactory.createChromosome(evolvableList);
+			this.elementsMap					= new LinkedHashMap<AbstractGene, Evolvable>();
+			for (int i=0; i<genesList.size(); i++){
+				this.elementsMap.put(genesList.get(i), evolvableList.get(i));
+			}
+	}
+	
+	
+	
+	public List<AbstractGene> getGeneList(){
+		return (List<AbstractGene>)Arrays.asList(this.elementsMap.keySet().toArray(new AbstractGene[0]));				
+	}
 }

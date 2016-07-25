@@ -25,7 +25,7 @@ public class ParserGSON {
 	}
 	
 	
-	public static List<String> parseGSON(String GSONstr){
+	public static synchronized List<String> parseGSON(String GSONstr) throws NullPointerException{
 		List<String> resultList = new ArrayList<String>();
 		
 		//convert string to JSON object

@@ -28,6 +28,8 @@ import evochecker.genetic.jmetal.encoding.ArrayReal;
 import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
 import evochecker.parser.InstantiatorInterface;
 import evochecker.parser.InstantiatorInterfacePrismPSY;
+import evochecker.parser.ParserEngine;
+import evochecker.parser.ParserEnginePrismPSY;
 import evochecker.prism.Property;
 import jmetal.core.Solution;
 import jmetal.util.JMException;
@@ -117,7 +119,7 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 
 		//Get params
 		String model 				= instantiator.getValidModelInstance(this.genes);
-		String propertyFile 		= instantiator.getPrismPropertyFileName();
+		String propertyFile 		= instantiator.getPrismPropertyFileName(); 
 		String paramsWithRanges		= ((InstantiatorInterfacePrismPSY) instantiator).getParamsWithRanges();
 		String accuracy				= ((InstantiatorInterfacePrismPSY) instantiator).getAccuracy();
 		String decompositionType	=((InstantiatorInterfacePrismPSY) instantiator).getDecompositionType();
@@ -149,8 +151,9 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 				this.evaluateConstraints(solution, resultsList);
 			}
 			
-		} catch (IOException e) {
+		} catch (IOException | EvoCheckerException | NullPointerException e) {
 			e.printStackTrace();
+			System.exit(-1);
 		}
 		System.out.println();
 	}
@@ -164,15 +167,18 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 	 * @param in
 	 * @return
 	 * @throws IOException
+	 * @throws EvoCheckerException 
 	 */
 	@Override
-	protected List<String> invokePrism(BufferedReader in, PrintWriter out, String outputStr) throws IOException {
+	protected List<String> invokePrism(BufferedReader in, PrintWriter out, String outputStr) throws IOException, EvoCheckerException {
 		//send to server
 		out.println(outputStr);
 		out.flush();
 		//read from server
 		String response = in.readLine();
 		System.out.println(response);
+		if (response.isEmpty() || response==null)
+			throw new EvoCheckerException("Error: invalid response from server:\t" + response);
 		List<String> resultList = ParserGSON.parseGSON(response);
 		return resultList;
 	}
@@ -186,5 +192,16 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 	public void evaluateConstraints(Solution solution, List<String> fitnessList) throws JMException {
 		solution.setOverallConstraintViolation(0);
 		solution.setNumberOfViolatedConstraint(0);
+	}
+	
+	
+	public GeneticProblemPSY (GeneticProblemPSY aProblem) throws EvoCheckerException{
+		
+		super((GeneticModelProblem)aProblem);
+		
+		this.instantiator 			= new ParserEnginePrismPSY((ParserEnginePrismPSY)aProblem.instantiator);
+		this.genes 					= ((ParserEngine)instantiator).getGeneList(); 
+		this.numberOfConstraints_	= aProblem.numberOfObjectives_;
+		this.problemName_			= aProblem.problemName_;
 	}
 }

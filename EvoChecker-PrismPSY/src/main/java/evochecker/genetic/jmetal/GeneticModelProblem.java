@@ -15,9 +15,12 @@ package evochecker.genetic.jmetal;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import evochecker.exception.EvoCheckerException;
+import evochecker.genetic.GenotypeFactory;
 //import org.apache.commons.lang.NotImplementedException;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.AlternativeModuleGene;
@@ -29,6 +32,7 @@ import evochecker.genetic.jmetal.encoding.ArrayInt;
 import evochecker.genetic.jmetal.encoding.ArrayReal;
 import evochecker.genetic.jmetal.encoding.ArrayRealIntSolutionType;
 import evochecker.parser.InstantiatorInterface;
+import evochecker.parser.ParserEngine;
 import evochecker.prism.Property;
 import jmetal.core.Problem;
 import jmetal.core.Solution;
@@ -77,7 +81,7 @@ public abstract class GeneticModelProblem extends Problem {
 		this.problemName_			= problemName;
 		this.initializeLimits();
 	}
-	
+		
 	
 	/**
 	 * Intialise limits of variables
@@ -289,7 +293,7 @@ public abstract class GeneticModelProblem extends Problem {
 	 * @return
 	 * @throws IOException
 	 */
-	 protected abstract List<String> invokePrism(BufferedReader in, PrintWriter out, String output) throws IOException;
+	 protected abstract List<String> invokePrism(BufferedReader in, PrintWriter out, String output) throws IOException, EvoCheckerException;
 
 
 	 /** 
@@ -299,4 +303,27 @@ public abstract class GeneticModelProblem extends Problem {
 	  */  
 	public abstract void evaluateConstraints(Solution solution, List<String> fitnessList) throws JMException; 	  
 
+	
+	public GeneticModelProblem(GeneticModelProblem aProblem) throws EvoCheckerException{
+		
+		if (aProblem.instantiator instanceof ParserEngine)
+			this.instantiator 			= new ParserEngine((ParserEngine)aProblem.instantiator);
+		else
+			throw new EvoCheckerException("Invalid Instantiator inteface!");
+
+		this.genes 					= ((ParserEngine)instantiator).getGeneList(); 
+										
+		
+		this.numberOfConstraints_ 	= aProblem.numberOfConstraints_;
+		this.numberOfObjectives_ 	= aProblem.numberOfObjectives_; 
+		
+		this.properties 			= new ArrayList<Property>();
+		for (Property prop : aProblem.properties){
+			this.properties.add(new Property(prop.isMaximization()));
+		}
+		
+		this.problemName_			= aProblem.problemName_;
+		this.initializeLimits();
+
+	}
 }

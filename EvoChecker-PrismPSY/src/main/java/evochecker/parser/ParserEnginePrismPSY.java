@@ -11,8 +11,9 @@
 //==============================================================================
 package evochecker.parser;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
-import java.util.Random;
 
 import evochecker.exception.EvoCheckerException;
 import evochecker.genetic.genes.AbstractGene;
@@ -38,9 +39,7 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 	/** PrismPSY accuracy*/
 	private String accuracy;
 	
-	
-	Random rand = new Random(System.currentTimeMillis());
-	
+		
 	/**
 	 * Class constructor
 	 * @param fileName
@@ -62,18 +61,22 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 	 * @return
 	 */
 	@Override
-	public synchronized String getValidModelInstance(List<AbstractGene> genes) {
+	public String getValidModelInstance(List<AbstractGene> genes) {
 		StringBuilder prismPSYmodel = new StringBuilder(this.internalModelRepresentation);
 		try{
 			for (AbstractGene gene : genes) {
 				if (gene instanceof IntegerGene) {
-					prismPSYmodel.append(elementsMap.get(gene).getCommand(gene.getAllele()));
+					prismPSYmodel.append(elementsMap.get(gene).
+														getCommand(
+																gene.getAllele()));
 				} 
 				else if (gene instanceof AlternativeModuleGene) {
 					prismPSYmodel.append(elementsMap.get(gene).getCommand(gene.getAllele()));
 				}
 				else if (gene instanceof RegionGene) {
-					prismPSYmodel.append(elementsMap.get(gene).getCommand(gene.getAllele()));
+					prismPSYmodel.append(elementsMap.get(gene).
+														getCommand(
+																gene.getAllele()));
 				}
 			}
 			//before ending prepare String of parameters with min and max
@@ -106,7 +109,10 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 					max = (double)gene.getMaxValue();
 				}
 				paramsWithRanges.append(gene.getName() 		+"=");
-				paramsWithRanges.append(min +":"+ max +",");
+				paramsWithRanges.append(new BigDecimal(min).setScale(5, RoundingMode.HALF_DOWN).doubleValue() 
+										+":"+ 
+										new BigDecimal(max).setScale(5, RoundingMode.HALF_DOWN).doubleValue() 
+										+",");
 				
 			} 
 			else if (gene instanceof DiscreteDistributionGene) {
@@ -143,4 +149,14 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 		return this.accuracy;
 	}
 	
+	
+	
+	public ParserEnginePrismPSY(ParserEnginePrismPSY aParser) throws EvoCheckerException {
+		super(aParser);
+		if (aParser instanceof ParserEnginePrismPSY){			
+			this.accuracy 			= ((ParserEnginePrismPSY)aParser).accuracy;
+			this.decompositionType	= ((ParserEnginePrismPSY)aParser).decompositionType;
+			this.paramsWithRanges	= new StringBuilder(aParser.paramsWithRanges);//  ((ParserEnginePrismPSY)aParser). );
+		}
+	}
 }

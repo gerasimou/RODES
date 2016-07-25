@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import evochecker.exception.EvoCheckerException;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.AlternativeModuleGene;
 import evochecker.genetic.genes.DiscreteDistributionGene;
@@ -43,7 +44,7 @@ public class GenotypeFactory{
 	/**
 	 * Create a list chromosome (or individual) as a sequence of genes
 	 */
-	public static List<AbstractGene> createChromosome(List<Evolvable> evolvableList) throws Exception{
+	public static List<AbstractGene> createChromosome(List<Evolvable> evolvableList) throws EvoCheckerException{
 		List<AbstractGene> genes = new ArrayList<AbstractGene> ();		
 		for (Evolvable evolvable : evolvableList){
 			AbstractGene gene = initialiseGene(evolvable);
@@ -57,7 +58,7 @@ public class GenotypeFactory{
 	/**
 	 * Initialise this gene 
 	 */
-	private static AbstractGene initialiseGene (Evolvable evolvable) throws Exception{
+	private static AbstractGene initialiseGene (Evolvable evolvable) throws EvoCheckerException{
 		String name 	= evolvable.getName();
 		Number minValue	= evolvable.getMinValue();
 		Number maxValue = evolvable.getMaxValue();
@@ -83,7 +84,7 @@ public class GenotypeFactory{
 
 		}
 
-		throw new Exception ("Error in Genotype Factory");
+		throw new EvoCheckerException ("Error in Genotype Factory");
 	}
 
 	
