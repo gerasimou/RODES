@@ -114,9 +114,6 @@ public abstract class GeneticModelProblem extends Problem {
 				int outcomes = ((DiscreteDistributionGene) g).getNumberOfOutcomes();
 				this.numberOfVariables_ += outcomes;
 			} 
-			else if (g instanceof RegionGene){
-				this.numberOfVariables_ += 2;
-			}
 			else {
 				this.numberOfVariables_++;
 			}
@@ -145,9 +142,6 @@ public abstract class GeneticModelProblem extends Problem {
 			if (g instanceof RegionGene) {
 				lowerLimit_[realVariables] = g.getMinValue().doubleValue();
 				upperLimit_[realVariables] = g.getMaxValue().doubleValue();				
-				realVariables++;
-				lowerLimit_[realVariables] = ((RegionGene)g).getRegionMin();
-				upperLimit_[realVariables] = ((RegionGene)g).getRegionMax();								
 				realVariables++;
 			}
 		}

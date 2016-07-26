@@ -95,10 +95,6 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 				double value = realPart.getValue(currentIndex);
 				currentIndex++;
 				g.setAllele(value);
-				//for region radius
-				double radius = realPart.getValue(currentIndex);
-				((RegionGene)g).setRegionRadius(radius);
-				currentIndex++;
 			}
 		}
 	}

@@ -191,7 +191,7 @@ public class Utility {
 				RegionSolution regionSolution = (RegionSolution) it.next();
 			
 				ArrayReal arrayRealVariable = (ArrayReal)regionSolution.getDecisionVariables()[0];
-				for (int i=0; i<arrayRealVariable.getLength(); i+=2){
+				for (int i=0; i<arrayRealVariable.getLength(); i++){
 					double value 	= arrayRealVariable.getValue(i);
 					double radius	= arrayRealVariable.getValue(i+1);
 					bw.write((value-radius/2) +":"+ (value+radius/2) +",");
@@ -211,23 +211,27 @@ public class Utility {
 	
 
 	
-	public static void printVariableRegionsToFile(String path, SolutionSet population, boolean append, Double[] radius) throws JMException{
+	public static void printVariableRegionsToFile(String path, SolutionSet population, boolean append, List<Double> radiiList) throws JMException{
 		try {
 			FileOutputStream fos = new FileOutputStream(path, append);
 			OutputStreamWriter osw = new OutputStreamWriter(fos);
 			BufferedWriter bw = new BufferedWriter(osw);
-
-			Iterator<Solution> it = population.iterator();
+			
+			Iterator<Solution> it  = population.iterator();
+			
 			
 			while (it.hasNext()){
-				RegionSolution regionSolution = (RegionSolution) it.next();
-			
+				RegionSolution regionSolution 	= (RegionSolution) it.next();
+				Iterator<Double>   itR = radiiList.iterator();
+				
 				ArrayReal arrayRealVariable = (ArrayReal)regionSolution.getDecisionVariables()[0];
 				for (int i=0; i<arrayRealVariable.getLength(); i++){
-					double value = arrayRealVariable.getValue(i);
-					bw.write(Math.max(value-radius[i]/2, arrayRealVariable.getLowerBound(i)) 
+					double value 	= arrayRealVariable.getValue(i);
+					double radius 	= (double)itR.next();
+					
+					bw.write((value-value*radius/2) 
 							+":"+
-							Math.min(value+radius[i]/2, arrayRealVariable.getUpperBound(i))
+							(value+value*radius/2)
 							+","
 							);				
 				}

@@ -18,6 +18,7 @@ import java.util.List;
 import evochecker.auxiliary.Utility;
 import evochecker.genetic.GenotypeFactory;
 import evochecker.genetic.genes.AbstractGene;
+import evochecker.genetic.genes.RegionGene;
 import evochecker.genetic.jmetal.GeneticProblemPSY;
 import evochecker.genetic.jmetal.metaheuristics.NSGAIIRegion_Settings;
 import evochecker.genetic.jmetal.metaheuristics.RandomSearch_Settings;
@@ -111,14 +112,14 @@ public class EvoChecker {
 		propertyList = new ArrayList<Property>();
 		
 		//Google
-//		propertyList.add(new Property(true));
-//		propertyList.add(new Property(false));
+		propertyList.add(new Property(true));
+		propertyList.add(new Property(false));
 		//propertyList.add(new Property(false));
 //		int numOfConstraints  = 0;
 
 		//Cluster
-		propertyList.add(new Property(false));
-		propertyList.add(new Property(false));
+//		propertyList.add(new Property(false));
+//		propertyList.add(new Property(false));
 //		propertyList.add(new Property(false));
 		int numOfConstraints  = 0;
 
@@ -175,7 +176,14 @@ public class EvoChecker {
 		population.printObjectivesToFile("data/FUN_"+algorithmStr);
 		population.printVariablesToFile("data/VAR_"+algorithmStr);
 		
-		Utility.printVariableRegionsToFile("data/VAR_REGION_"+algorithmStr, population, false);// Utility.getRadiusAsArray(genes));
+		List<Double> regionsRadii = new ArrayList<Double>();
+		for (AbstractGene gene : genes){
+			if (gene instanceof RegionGene)
+				regionsRadii.add(((RegionGene)gene).getRegionRadius());
+		}
+		
+		
+		Utility.printVariableRegionsToFile("data/VAR_REGION_"+algorithmStr, population, false, regionsRadii);// Utility.getRadiusAsArray(genes));
 		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+algorithmStr, population, false, propertyList);
 		
 		
