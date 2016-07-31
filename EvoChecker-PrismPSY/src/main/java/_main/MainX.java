@@ -28,7 +28,7 @@ public class MainX {
             					.serializeNulls()
             					.create();
 	
-	private static int portNum = 8860;
+	private static int portNum = 8866;
 	
 	private static Process p;
 	
@@ -63,14 +63,15 @@ public class MainX {
 	private static void clientAPI(){
 		try{
 			String serverAddress 			= "127.0.0.1";
-			int serverPort       			= 8860;
+			int serverPort       			= portNum;
 			Socket socket;
 			socket = new Socket(serverAddress, serverPort);
 			BufferedReader inFromServer 	= new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			PrintWriter outToServer			= new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())),true);
 			//send to server
 			StringBuilder outputString 		= new StringBuilder();
-			outputString.append(Utility.readFile("models/Google/googleExecutor.sm"));
+//			outputString.append(Utility.readFile("models/Google/googleExecutor.sm"));
+			outputString.append(Utility.readFile("models/Cluster/clusterExecutor.sm"));
 //			outputString.append(Utility.readFile("models/Google/google.sm") + "\n@");	//model String
 //			outputString.append("models/Google/google.csl" +"\n@");								//properties filename
 //			outputString.append("-psecheck" +"\n@");											//decompositionType	
