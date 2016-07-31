@@ -405,9 +405,8 @@ public class PrismVisitor extends PrismBaseVisitor<String> {
 	@Override 
 	public String visitRewardItem (PrismParser.RewardItemContext ctx){
 //		('['(transitionID=variable)?']')? rewardPrecondition ':' expression  ';'	
-		StringBuilder str = new StringBuilder("[");
-		str.append(ctx.transitionID!=null ? ctx.transitionID.getText() : "");
-		str.append("]");
+		StringBuilder str = new StringBuilder();
+		str.append(ctx.transitionID!=null ? "[" + ctx.transitionID.getText() +"]" : "");
 		str.append(visit(ctx.rewardPrecondition()));
 		str.append(":");
 		str.append(visit(ctx.expression()) +";");
