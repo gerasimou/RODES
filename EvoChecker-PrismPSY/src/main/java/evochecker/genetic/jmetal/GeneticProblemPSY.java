@@ -131,12 +131,12 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 				Property p = this.properties.get(i);
 				double min, max;
 				if (p.isMaximization()) {
-					max = new BigDecimal(- Double.parseDouble(resultsList.get(i*2))).setScale(3, RoundingMode.HALF_DOWN).doubleValue();
-					min = new BigDecimal(- Double.parseDouble(resultsList.get(i*2+1))).setScale(3, RoundingMode.HALF_DOWN).doubleValue();
+					max = new BigDecimal(- Double.parseDouble(resultsList.get(i*2))).setScale(4, RoundingMode.HALF_DOWN).doubleValue();
+					min = new BigDecimal(- Double.parseDouble(resultsList.get(i*2+1))).setScale(4, RoundingMode.HALF_DOWN).doubleValue();
 				}
 				else{
-					min = new BigDecimal(  Double.parseDouble(resultsList.get(i*2))).setScale(3, RoundingMode.HALF_DOWN).doubleValue();
-					max = new BigDecimal(  Double.parseDouble(resultsList.get(i*2+1))).setScale(3, RoundingMode.HALF_DOWN).doubleValue();
+					min = new BigDecimal(  Double.parseDouble(resultsList.get(i*2))).setScale(4, RoundingMode.HALF_DOWN).doubleValue();
+					max = new BigDecimal(  Double.parseDouble(resultsList.get(i*2+1))).setScale(4, RoundingMode.HALF_DOWN).doubleValue();
 				}
 				((RegionSolution)solution).setObjectiveBounds(i, min, max);
 //				solution.setObjective(i, result);

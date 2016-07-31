@@ -183,6 +183,7 @@ public class EvoChecker {
 		population.printVariablesToFile("data/VAR_"+tolerance);
 				
 		Utility.printVariableRegionsToFile("data/VAR_REGION_"+tolerance, population, false, regionsRadii);// Utility.getRadiusAsArray(genes));
+		Utility.printVariableRegionsToFile2("data/VAR_REGION2_"+tolerance, population, false);// Utility.getRadiusAsArray(genes));
 		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+tolerance, population, false, propertyList);
 		
 	}	

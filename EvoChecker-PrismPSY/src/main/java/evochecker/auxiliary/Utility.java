@@ -261,6 +261,35 @@ public class Utility {
 	}
 	
 	
+	public static void printVariableRegionsToFile2(String path, SolutionSet population, boolean append) throws JMException{
+		try {
+			FileOutputStream fos = new FileOutputStream(path, append);
+			OutputStreamWriter osw = new OutputStreamWriter(fos);
+			BufferedWriter bw = new BufferedWriter(osw);
+			
+			Iterator<Solution> it  = population.iterator();
+			
+			
+			while (it.hasNext()){
+				RegionSolution regionSolution 	= (RegionSolution) it.next();
+				
+				for (int i=0; i<regionSolution.getSizeRegionParameters(); i++){
+					bw.write(regionSolution.getRegionParameter(i) + ",");				
+				}
+										
+				ArrayInt  arrayIntVariable  = (ArrayInt)regionSolution.getDecisionVariables()[1];
+				bw.write(arrayIntVariable.toString());
+				bw.newLine();
+			}
+			bw.flush();
+			bw.close();
+		} catch (IOException | EvoCheckerException e) {
+			Configuration.logger_.severe("Error acceding to the file");
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 	public static void printObjectiveRegionsToFile(String path, SolutionSet population, boolean append, 
 													List<Property> propertyList) throws JMException{
