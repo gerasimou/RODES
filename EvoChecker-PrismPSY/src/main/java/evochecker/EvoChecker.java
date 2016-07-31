@@ -171,21 +171,19 @@ public class EvoChecker {
 		System.out.println("-------------------------------------------------");
 		System.out.println("SOLUTIONS: \t" + population.size());
 		
-		//Store results
-		String algorithmStr = Utility.getProperty("ALGORITHM").toUpperCase();
-		population.printObjectivesToFile("data/FUN_"+algorithmStr);
-		population.printVariablesToFile("data/VAR_"+algorithmStr);
-		
 		List<Double> regionsRadii = new ArrayList<Double>();
 		for (AbstractGene gene : genes){
 			if (gene instanceof RegionGene)
 				regionsRadii.add(((RegionGene)gene).getRegionRadius());
 		}
-		
-		
-		Utility.printVariableRegionsToFile("data/VAR_REGION_"+algorithmStr, population, false, regionsRadii);// Utility.getRadiusAsArray(genes));
-		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+algorithmStr, population, false, propertyList);
-		
+		String tolerance = Utility.getProperty("TOLERANCE").replace(".", "");
+
+		//Store results
+		population.printObjectivesToFile("data/FUN_"+tolerance);
+		population.printVariablesToFile("data/VAR_"+tolerance);
+				
+		Utility.printVariableRegionsToFile("data/VAR_REGION_"+tolerance, population, false, regionsRadii);// Utility.getRadiusAsArray(genes));
+		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+tolerance, population, false, propertyList);
 		
 	}	
 }

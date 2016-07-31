@@ -27,6 +27,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
+import evochecker.exception.EvoCheckerException;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.RegionGene;
 import evochecker.genetic.jmetal.encoding.ArrayInt;
@@ -61,9 +62,10 @@ public class Utility {
 	}
 	
 	
-	public static void setProperty (String key, String value){
+	public static void setProperty (String key, String value) throws EvoCheckerException{
 		loadPropertiesInstance();
-		properties.setProperty(key, value);
+		if (properties.setProperty(key, value) ==null)
+			throw new EvoCheckerException("Key: " + key + " does not exist!");
 	}
 
 	
@@ -226,14 +228,24 @@ public class Utility {
 				
 				ArrayReal arrayRealVariable = (ArrayReal)regionSolution.getDecisionVariables()[0];
 				for (int i=0; i<arrayRealVariable.getLength(); i++){
-					double value 	= arrayRealVariable.getValue(i);
-					double radius 	= (double)itR.next();
+					double value 		= arrayRealVariable.getValue(i);
+					double lowerBound	= arrayRealVariable.getLowerBound(i);
+					double upperBound	= arrayRealVariable.getUpperBound(i);
+					double radius 		= (double)itR.next();
+				
+					double min			= value - value*radius/2;
+					double max			= value + value*radius/2;
 					
-					bw.write((value-value*radius/2) 
-							+":"+
-							(value+value*radius/2)
-							+","
-							);				
+					if (min < lowerBound){
+						min = lowerBound;
+						max = lowerBound+value*radius;
+					}
+					else if (max > upperBound){
+						min = upperBound-value*radius;
+						max = upperBound;
+					}
+					
+					bw.write(min +":"+ max +",");				
 				}
 					
 				ArrayInt  arrayIntVariable  = (ArrayInt)regionSolution.getDecisionVariables()[1];
@@ -299,4 +311,7 @@ public class Utility {
 		Double[] radius = new Double[radiusList.size()];
 		return radiusList.toArray(radius);
 	}
+
+
+	
 }

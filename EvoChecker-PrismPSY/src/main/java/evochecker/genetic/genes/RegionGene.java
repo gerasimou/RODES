@@ -25,7 +25,9 @@ public class RegionGene extends AbstractGene {
 	/** Variable representing the radius of this region
 	 * e.g., if point=+5, regionRadius=+1 ==> region = [4,6]  
 	 */
-	private double regionRadius;
+	private double tolerance;
+	
+	private double radius;
 	
 	
 	/**
@@ -36,7 +38,8 @@ public class RegionGene extends AbstractGene {
 	 */
 	public RegionGene(String name, Number minValue, Number maxValue) {
 		super(name, minValue, maxValue);
-		this.regionRadius = Double.parseDouble(Utility.getProperty("REGION_RADIUS_".concat(name).toUpperCase()));
+		this.tolerance = Double.parseDouble(Utility.getProperty("TOLERANCE"));//.concat(name).toUpperCase()));
+		this.radius	   = tolerance;//(maxValue.doubleValue()-minValue.doubleValue()) *tolerance;
 	}
 	
 	
@@ -46,6 +49,6 @@ public class RegionGene extends AbstractGene {
 	 * @return
 	 */
 	public double getRegionRadius(){
-		return this.regionRadius;
+		return this.radius;
 	}
 }
