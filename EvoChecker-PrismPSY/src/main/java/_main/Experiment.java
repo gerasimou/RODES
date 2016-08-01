@@ -27,11 +27,11 @@ public class Experiment {
 					Utility.setProperty("TOLERANCE", t);
 					System.out.println(Utility.getProperty("TOLERANCE"));
 					EvoChecker.main(null);
-					fileNames[i++] = t;
+					fileNames[i++] = "FUN_REGION_"+t.replace(".", "");
 			}
 			
 			
-			createRegionsCombinedFile(fileNames, "FUN_all");
+			createRegionsCombinedFile(fileNames, "FUN_REGION_all");
 		} catch (EvoCheckerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,9 +43,11 @@ public class Experiment {
 	public static void createRegionsCombinedFile(String[] fileNames, String endFile){
 		String dataPath = "data/";
 		StringBuilder str = new StringBuilder();
-		for (String fileName : fileNames){
-				str.append(Utility.readFile(dataPath + fileName));
-				str.append("\n\n");
+		
+		for (int i=fileNames.length-1; i>0; i--){
+			String fileName = fileNames[i];			
+			str.append(Utility.readFile(dataPath + fileName));
+			str.append("\n\n");
 		}
 		Utility.exportToFile(dataPath + endFile, str.toString(), false);
 	}
