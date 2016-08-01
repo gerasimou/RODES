@@ -122,11 +122,15 @@ public class Utility {
 	
 	@SuppressWarnings("resource")
 	public static String readFile(String fileName) {
-		StringBuilder model = new StringBuilder(100);
-		BufferedReader bfr = null;
-
 		try {
-			bfr = new BufferedReader(new FileReader(new File(fileName)));
+			File f = new File(fileName);
+			if (!f.exists() || f.isDirectory())
+				throw new IOException("File does not exist! " + f );
+		
+			StringBuilder model = new StringBuilder(100);
+			BufferedReader bfr = null;
+
+			bfr = new BufferedReader(new FileReader(f));
 			String line = null;
 			while ((line = bfr.readLine()) != null) {
 				model.append(line + "\n");
