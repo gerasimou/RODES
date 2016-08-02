@@ -197,7 +197,5 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 		
 		this.instantiator 			= new ParserEnginePrismPSY((ParserEnginePrismPSY)aProblem.instantiator);
 		this.genes 					= ((ParserEngine)instantiator).getGeneList(); 
-		this.numberOfConstraints_	= aProblem.numberOfObjectives_;
-		this.problemName_			= aProblem.problemName_;
 	}
 }

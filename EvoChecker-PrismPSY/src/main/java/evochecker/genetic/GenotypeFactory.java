@@ -66,6 +66,7 @@ public class GenotypeFactory{
 		if (evolvable instanceof EvolvableDouble){
 			//for Regions
 			return new RegionGene(name, minValue, maxValue);//DoubleGene(name, (double)minValue, (double)maxValue);
+//			return new DoubleGene(name, (double)minValue, (double)maxValue);
 		}
 		else if (evolvable instanceof EvolvableInteger){
 			return new IntegerGene(name, (int)minValue, (int)maxValue);

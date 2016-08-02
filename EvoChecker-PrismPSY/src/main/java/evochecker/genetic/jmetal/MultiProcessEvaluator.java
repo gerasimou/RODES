@@ -180,6 +180,11 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 							problems[i] = new GeneticProblemPSY((GeneticProblemPSY) problem);
 				}
 			}
+			else if (problem instanceof GeneticProblem){
+				for (int i=0; i<numberOfProcesses; i++){
+					problems[i] = new GeneticProblem((GeneticProblem) problem);
+				}
+			}
 		}
 		catch (EvoCheckerException e) {
 			e.printStackTrace();
