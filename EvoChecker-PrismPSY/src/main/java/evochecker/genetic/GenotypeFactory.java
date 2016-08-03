@@ -21,7 +21,6 @@ import evochecker.exception.EvoCheckerException;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.AlternativeModuleGene;
 import evochecker.genetic.genes.DiscreteDistributionGene;
-import evochecker.genetic.genes.DoubleGene;
 import evochecker.genetic.genes.IntegerGene;
 import evochecker.genetic.genes.RegionGene;
 import evochecker.parser.evolvable.Evolvable;

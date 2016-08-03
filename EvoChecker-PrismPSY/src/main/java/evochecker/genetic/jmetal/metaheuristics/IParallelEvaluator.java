@@ -19,10 +19,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package evochecker.genetic.jmetal.metaheuristics;
 
+import java.util.List;
+
 import jmetal.core.Problem;
 import jmetal.core.Solution;
-
-import java.util.List;
 
 /**
  * @author Antonio J. Nebro

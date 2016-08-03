@@ -1,10 +1,7 @@
 // Generated from Prism.g4 by ANTLR 4.5
 
   package evochecker.parser.src.gen;
-  import java.util.*;
-
-import org.antlr.v4.runtime.misc.NotNull;
-import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
+  import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
  * This class provides an empty implementation of {@link PrismVisitor},

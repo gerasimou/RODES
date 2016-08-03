@@ -22,9 +22,13 @@ package evochecker.genetic.jmetal.metaheuristics;
 
 import java.util.List;
 
-import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
-import evochecker.genetic.jmetal.util.*;
 import evochecker.auxiliary.Utility;
+import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
+import evochecker.genetic.jmetal.util.ExampleRegionDistance;
+import evochecker.genetic.jmetal.util.RegionDistance;
+import evochecker.genetic.jmetal.util.RegionDominanceComparator;
+import evochecker.genetic.jmetal.util.RegionRanking;
+import evochecker.genetic.jmetal.util.eToleranceWorstCaseDominanceComparator;
 import jmetal.core.Algorithm;
 import jmetal.core.Operator;
 import jmetal.core.Problem;

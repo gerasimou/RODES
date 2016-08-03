@@ -139,6 +139,7 @@ public class Utility {
 			return model.toString();
 		} catch (IOException e) {
 			e.printStackTrace();
+			System.exit(-1);
 		}
 		return null;
 	}

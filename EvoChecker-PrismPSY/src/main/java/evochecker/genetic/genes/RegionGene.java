@@ -12,7 +12,6 @@
 package evochecker.genetic.genes;
 
 import evochecker.auxiliary.Utility;
-import evochecker.exception.EvoCheckerException;
 
 
 /**

@@ -24,6 +24,11 @@ package evochecker.genetic.jmetal.metaheuristics;
 import java.util.HashMap;
 import java.util.Properties;
 
+import evochecker.auxiliary.Utility;
+import evochecker.genetic.jmetal.GeneticModelProblem;
+import evochecker.genetic.jmetal.MultiProcessEvaluator;
+import evochecker.genetic.jmetal.operators.CrossoverFactory;
+import evochecker.genetic.jmetal.operators.MutationFactory;
 import jmetal.core.Algorithm;
 import jmetal.core.Problem;
 import jmetal.experiments.Settings;
@@ -32,12 +37,6 @@ import jmetal.operators.mutation.Mutation;
 import jmetal.operators.selection.Selection;
 import jmetal.operators.selection.SelectionFactory;
 import jmetal.util.JMException;
-import evochecker.auxiliary.Utility;
-import evochecker.genetic.jmetal.GeneticModelProblem;
-import evochecker.genetic.jmetal.GeneticProblem;
-import evochecker.genetic.jmetal.MultiProcessEvaluator;
-import evochecker.genetic.jmetal.operators.CrossoverFactory;
-import evochecker.genetic.jmetal.operators.MutationFactory;
 
 /**
  * Settings class of algorithm NSGA-II (real encoding)
