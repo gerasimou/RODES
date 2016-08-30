@@ -182,8 +182,9 @@ public class EvoChecker {
 		population.printObjectivesToFile("data/FUN_"+tolerance);
 		population.printVariablesToFile("data/VAR_"+tolerance);
 				
-		Utility.printVariableRegionsToFile("data/VAR_REGION_"+tolerance, population, false, regionsRadii);// Utility.getRadiusAsArray(genes));
-		Utility.printVariableRegionsToFile2("data/VAR_REGION2_"+tolerance, population, false);// Utility.getRadiusAsArray(genes));
+		Utility.printVariableRegionsToFile("data/VAR_REGION_"+tolerance, population, false, regionsRadii);
+//		Utility.printVariableRegionsToFile("data/VAR_REGION_"+tolerance, population, false);
+		Utility.printVariableRegionsToFile2("data/VAR_REGION2_"+tolerance, population, false);
 		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+tolerance, population, false, propertyList);
 		
 	}	

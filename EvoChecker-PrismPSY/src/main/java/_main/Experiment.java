@@ -15,10 +15,11 @@ public class Experiment {
 	public static void main(String[] args) {
 		try {
 
-			String tolerance = Utility.getProperty("TOLERANCES");
+			String tolerance = Utility.getProperty("TOLERANCES").replaceAll("\\s+","");
 		
 			String tolerances[] = tolerance.split(",");
-			String fileNames[]  = new String[tolerances.length]; 
+			String fileNamesFUN[]  = new String[tolerances.length]; 
+			String fileNamesVAR[]  = new String[tolerances.length]; 
 			
 			System.out.println(Arrays.toString(tolerances));
 			
@@ -27,11 +28,13 @@ public class Experiment {
 					Utility.setProperty("TOLERANCE", t);
 					System.out.println(Utility.getProperty("TOLERANCE"));
 					EvoChecker.main(null);
-					fileNames[i++] = "FUN_REGION_"+t.replace(".", "");
+					fileNamesFUN[i] = "FUN_REGION_"+t.replace(".", "");
+					fileNamesVAR[i++] = "VAR_REGION_"+t.replace(".", "");
 			}
 			
 			
-			createRegionsCombinedFile(fileNames, "FUN_REGION_all");
+			createRegionsCombinedFile(fileNamesFUN, "FUN_REGION_all");
+			createRegionsCombinedFile(fileNamesVAR, "VAR_REGION_all");
 		} catch (EvoCheckerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,7 +47,7 @@ public class Experiment {
 		String dataPath = "data/";
 		StringBuilder str = new StringBuilder();
 		
-		for (int i=fileNames.length-1; i>0; i--){
+		for (int i=fileNames.length-1; i>=0; i--){
 			String fileName = fileNames[i];			
 			str.append(Utility.readFile(dataPath + fileName));
 			str.append("\n\n");
