@@ -71,7 +71,6 @@ public class eToleranceWorstCaseDominanceComparator extends RegionDominanceCompa
 //                vol1 = vol1 * (value1 - solution1.getObjectiveBounds(i)[0]);
 //                vol2 = vol2 * (value2 - solution2.getObjectiveBounds(i)[0]);
 //            }
-            
 			if ((1+epsilon)*value1 < value2) {
 				flag = -1;
 			} else if (value1 > (1+epsilon)*value2) {
@@ -91,8 +90,8 @@ public class eToleranceWorstCaseDominanceComparator extends RegionDominanceCompa
 
         // sensitivity - I don't use the volume of the parameter space since it is fixed
         if (sensitivity) {
-        	double vol1 = solution1.getVolume();
-        	double vol2 = solution2.getVolume();
+        	double vol1 = solution1.getSensitivity();// getVolume();
+        	double vol2 = solution2.getSensitivity();//getVolume();
         	if (vol1 < vol2)
         		flag = -1;
         	else if (vol1 > vol2)

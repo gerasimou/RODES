@@ -97,14 +97,25 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 			if (gene instanceof RegionGene) {
 				double regionRadius = ((RegionGene)gene).getRegionRadius();
 				
-				double min 	  = (double)gene.getAllele()-(double)gene.getAllele()*regionRadius/2;
-				double max 	  = (double)gene.getAllele()+(double)gene.getAllele()*regionRadius/2;	
+//				double min 	  = (double)gene.getAllele()-(double)gene.getAllele()*regionRadius/2;
+//				double max 	  = (double)gene.getAllele()+(double)gene.getAllele()*regionRadius/2;	
+//				if (min < (double)gene.getMinValue()){
+//					min = (double)gene.getMinValue();
+//					max = (double)gene.getMinValue()+(double)gene.getAllele()*regionRadius;
+//				}
+//				else if (max > (double)gene.getMaxValue()){
+//					min = (double)gene.getMaxValue()-(double)gene.getAllele()*regionRadius;
+//					max = (double)gene.getMaxValue();
+//				}
+				
+				double min 	  = (double)gene.getAllele()-regionRadius/2;
+				double max 	  = (double)gene.getAllele()+regionRadius/2;	
 				if (min < (double)gene.getMinValue()){
 					min = (double)gene.getMinValue();
-					max = (double)gene.getMinValue()+(double)gene.getAllele()*regionRadius;
+					max = (double)gene.getMinValue()+regionRadius;
 				}
 				else if (max > (double)gene.getMaxValue()){
-					min = (double)gene.getMaxValue()-(double)gene.getAllele()*regionRadius;
+					min = (double)gene.getMaxValue()-regionRadius;
 					max = (double)gene.getMaxValue();
 				}
 				

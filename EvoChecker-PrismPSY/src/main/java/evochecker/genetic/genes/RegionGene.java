@@ -38,7 +38,7 @@ public class RegionGene extends AbstractGene {
 	public RegionGene(String name, Number minValue, Number maxValue) {
 		super(name, minValue, maxValue);
 		this.tolerance = Double.parseDouble(Utility.getProperty("TOLERANCE"));//.concat(name).toUpperCase()));
-		this.radius	   = tolerance;//(maxValue.doubleValue()-minValue.doubleValue()) *tolerance;
+		this.radius	   = Math.abs(maxValue.doubleValue()-minValue.doubleValue()) *tolerance;
 	}
 	
 	

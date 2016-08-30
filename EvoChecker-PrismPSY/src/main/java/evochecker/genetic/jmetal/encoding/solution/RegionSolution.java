@@ -155,16 +155,28 @@ public class RegionSolution extends Solution{
 		private RegionParameter(double value, double lowerBound, double upperBound){
 			this.lowerBound	= lowerBound;
 			this.upperBound	= upperBound;
-			minValue 	  = value-value*tolerance/2;
-			maxValue 	  = value+value*tolerance/2;	
+//			minValue 	  = value-value*tolerance/2;
+//			maxValue 	  = value+value*tolerance/2;	
+//			if (minValue < lowerBound){
+//				minValue	 = lowerBound;
+//				maxValue = lowerBound+value*tolerance;
+//			}
+//			else if (maxValue > upperBound){
+//				minValue = upperBound-upperBound*tolerance;
+//				maxValue = upperBound;
+//			}						
+			double radius	= tolerance*Math.abs(upperBound-lowerBound);
+			minValue 	  	= value-radius/2;
+			maxValue 	  	= value+radius/2;
 			if (minValue < lowerBound){
-				minValue	 = lowerBound;
-				maxValue = lowerBound+value*tolerance;
+				minValue	= lowerBound;
+				maxValue 	= lowerBound+radius;
 			}
 			else if (maxValue > upperBound){
-				minValue = upperBound-upperBound*tolerance;
+				minValue = upperBound-radius;
 				maxValue = upperBound;
 			}						
+
 		}
 		
 		

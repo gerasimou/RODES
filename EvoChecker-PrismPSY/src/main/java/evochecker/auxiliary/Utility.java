@@ -234,19 +234,34 @@ public class Utility {
 				ArrayReal arrayRealVariable = (ArrayReal)regionSolution.getDecisionVariables()[0];
 				for (int i=0; i<arrayRealVariable.getLength(); i++){
 					double value 		= arrayRealVariable.getValue(i);
+//					double lowerBound	= arrayRealVariable.getLowerBound(i);
+//					double upperBound	= arrayRealVariable.getUpperBound(i);
+//					double radius 		= (double)itR.next();
+//				
+//					double min			= value - value*radius/2;
+//					double max			= value + value*radius/2;
+//					
+//					if (min < lowerBound){
+//						min = lowerBound;
+//						max = lowerBound+value*radius;
+//					}
+//					else if (max > upperBound){
+//						min = upperBound-value*radius;
+//						max = upperBound;
+//					}
 					double lowerBound	= arrayRealVariable.getLowerBound(i);
 					double upperBound	= arrayRealVariable.getUpperBound(i);
 					double radius 		= (double)itR.next();
 				
-					double min			= value - value*radius/2;
-					double max			= value + value*radius/2;
+					double min			= value - radius/2;
+					double max			= value + radius/2;
 					
 					if (min < lowerBound){
 						min = lowerBound;
-						max = lowerBound+value*radius;
+						max = lowerBound+radius;
 					}
 					else if (max > upperBound){
-						min = upperBound-value*radius;
+						min = upperBound-radius;
 						max = upperBound;
 					}
 					
@@ -322,7 +337,7 @@ public class Utility {
 					}
 				}
 //				get volume
-				bw.write(regionSolution.getVolume() +"");
+				bw.write(regionSolution.getSensitivity()+"");
 				bw.newLine();
 			}
 			bw.flush();
