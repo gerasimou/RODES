@@ -116,7 +116,11 @@ public class RegionSolution extends Solution{
 			double max 	= regionParams[i].maxValue;
 			volParam   *= Math.abs(min-max);
 		}
-		return volObj/volParam;
+		double sensitivity = volObj/volParam; 
+		if (sensitivity <= 0)
+			return 0.001;
+		else
+			return sensitivity;
 	}
 	
 	public String getRegionParameter(int index) throws EvoCheckerException{

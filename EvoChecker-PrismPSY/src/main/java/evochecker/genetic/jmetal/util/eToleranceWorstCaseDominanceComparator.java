@@ -51,7 +51,7 @@ public class eToleranceWorstCaseDominanceComparator extends RegionDominanceCompa
 		dominate1 = 0 ;
 		dominate2 = 0 ;
 
-		int flag; //stores the result of the comparison
+		int flag=-2; //stores the result of the comparison
 
 		// Test to determine whether at least a solution violates some constraint
 		// No constraints YET
@@ -92,10 +92,49 @@ public class eToleranceWorstCaseDominanceComparator extends RegionDominanceCompa
         if (sensitivity) {
         	double vol1 = solution1.getSensitivity();// getVolume();
         	double vol2 = solution2.getSensitivity();//getVolume();
-        	if (vol1 < vol2)
-        		flag = -1;
-        	else if (vol1 > vol2)
-        		flag = 1;
+        	flag = 0;
+        	double leniency = 1.1;
+        	if (vol1 < vol2){
+        		if (dominate2 > dominate1){//if sol2 dominates sol1, but sol1 has better sensitivity 
+        			double v1, v2;//, vol1 = 0, vol2 = 0;
+        			boolean lenientDomination = true;
+        			for (int i = 0; i < solution1.getNumberOfObjectives(); i++) {
+        				v1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
+        				v2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
+        			
+        				if (i==0 && v1 * leniency > v2){
+        					lenientDomination = false;
+        					break;
+        				}
+        				else if (i==1 && v1 > v2 * leniency ){
+        					lenientDomination = false;
+        					break;
+        				}
+        			}
+        			if (lenientDomination)
+        				flag=-1;
+        		}
+        	}
+        	else if (vol1 > vol2){
+        		if (dominate1 > dominate2){//if sol1 dominates sol2, but sol2 has better sensitivity
+        			double v1, v2;
+        			boolean lenientDomination = true;
+        			for (int i = 0; i < solution1.getNumberOfObjectives(); i++) {
+        				v1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
+        				v2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
+        				if (i==0 && v1 < v2 * leniency){
+        					lenientDomination = false;
+        					break;
+        				}
+        				else if (i==1 && v1 * leniency < v2){
+        					lenientDomination = false;
+        					break;
+        				}
+        			}
+        			if (lenientDomination)
+        				flag=1;
+        		}
+        	}
         	else
         		flag = 0;
         	
