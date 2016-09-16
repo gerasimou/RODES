@@ -416,7 +416,8 @@ public class PrismVisitor extends PrismBaseVisitor<String> {
 	
 	@Override
 	public String visitRewardPrecExpression (PrismParser.RewardPrecExpressionContext ctx){
-		return (ctx.variable().getText() +" "+ ctx.operator().getText() +" "+ visit(ctx.expression()));
+//		return (ctx.variable().getText() +" "+ ctx.operator().getText() +" "+ visit(ctx.expression()));
+		return visit(ctx.expression());
 	}
 
 	
