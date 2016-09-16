@@ -2,26 +2,19 @@ ctmc
 
 // repair rate from hw failure of chunk server
 // default 1; we could try interval [0.5, 2]
-//const double c_hw_repair_rate=1;
-//evolve const double c_hw_repair_rate [0.5..0.6];
-evolve const double c_hw_repair_rate [0.5..1.0];
+evolve const double c_hw_repair_rate [0.5..4.0];
 
 // rate at which any chunk server failure happens
-//const double c_fail = 0.05;
-//evolve const double c_fail [0.01..0.1];
-evolve const double c_fail [0.5..1.0];
+const double c_fail=0.5;// [0.5..1.0];
+
+evolve const int S_ [5000..20000];
 
 const int M=20;
-
-evolve const int S_ [10000..20000];
 const int N=100000;
-
 
 // repair rate from sw failure of chunk server
 // the actual rate is c_sw_repair_rate multiplied by C_soft_down
 const double c_sw_repair_rate=12;
-//const double c_sw_repair_rate;
-
 
 //  "probability" that a chunk server failure is due to software
 // default 0.95; we could try interval [0.0001, 1-0.0001]
@@ -30,7 +23,7 @@ const double c_sw_fail_rate=0.95;
 // if it's not sw failure then it is due to hardware 
 // In "Model checking for performability" paper, they use CTMDP with non-determinism between HW and SW failures. What we do here is similar.
 //const double c_hw_fail_rate = 0.05;
-const double c_hw_fail_rate=0.05;
+evolve const double c_hw_fail_rate [0.5..4.0];//=0.05;
 
 // rate at which master server failure happens
 const double m_fail = 0.0005;
@@ -156,4 +149,8 @@ rewards "repaircosts"
   [m_soft_repair] true : 1;
   [c_soft_repair] true : 1;
   [c_hard_repair] true : 2;
+endrewards
+
+rewards "new"
+  C_up >=10 & C_up <=15 : 1;
 endrewards

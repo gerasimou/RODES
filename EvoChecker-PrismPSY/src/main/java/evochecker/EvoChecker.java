@@ -112,14 +112,14 @@ public class EvoChecker {
 		propertyList = new ArrayList<Property>();
 		
 		//Google
-		propertyList.add(new Property(true));
-		propertyList.add(new Property(false));
+//		propertyList.add(new Property(true));
+//		propertyList.add(new Property(true));
 //		propertyList.add(new Property(false));
 //		int numOfConstraints  = 0;
 
 		//Cluster
-//		propertyList.add(new Property(false));
-//		propertyList.add(new Property(false));
+		propertyList.add(new Property(true));
+		propertyList.add(new Property(true));
 //		propertyList.add(new Property(false));
 		int numOfConstraints  = 0;
 

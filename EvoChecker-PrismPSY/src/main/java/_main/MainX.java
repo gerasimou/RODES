@@ -71,7 +71,7 @@ public class MainX {
 			//send to server
 			StringBuilder outputString 		= new StringBuilder();
 //			outputString.append(Utility.readFile("models/Google/googleExecutor.sm"));
-			outputString.append(Utility.readFile("models/Cluster/clusterExecutor.sm"));
+			outputString.append(Utility.readFile("models/Cluster/clusterExecutor2.sm"));
 //			outputString.append(Utility.readFile("models/Google/google.sm") + "\n@");	//model String
 //			outputString.append("models/Google/google.csl" +"\n@");								//properties filename
 //			outputString.append("-psecheck" +"\n@");											//decompositionType	
