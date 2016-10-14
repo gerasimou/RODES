@@ -176,16 +176,16 @@ public class EvoChecker {
 			if (gene instanceof RegionGene)
 				regionsRadii.add(((RegionGene)gene).getRegionRadius());
 		}
-		String tolerance = Utility.getProperty("TOLERANCE").replace(".", "");
+		String tolerance 	= Utility.getProperty("TOLERANCE").replace(".", "");
+		String leniency		= Utility.getProperty("LENIENCY").replace(".", "");
 
 		//Store results
-		population.printObjectivesToFile("data/FUN_"+tolerance);
-		population.printVariablesToFile("data/VAR_"+tolerance);
+		population.printObjectivesToFile("data/FUN_"+ tolerance +"_"+ leniency);
+		population.printVariablesToFile("data/VAR_"+  tolerance +"_"+ leniency);
 				
-		Utility.printVariableRegionsToFile("data/VAR_REGION_"+tolerance, population, false, regionsRadii);
+		Utility.printVariableRegionsToFile("data/VAR_REGION_"+tolerance+"_"+leniency, population, false, regionsRadii);
 //		Utility.printVariableRegionsToFile("data/VAR_REGION_"+tolerance, population, false);
-		Utility.printVariableRegionsToFile2("data/VAR_REGION2_"+tolerance, population, false);
-		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+tolerance, population, false, propertyList);
-		
+//		Utility.printVariableRegionsToFile2("data/VAR_REGION2_"+tolerance, population, false);
+		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+tolerance+"_"+leniency, population, false, propertyList);
 	}	
 }

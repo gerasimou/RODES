@@ -15,26 +15,35 @@ public class Experiment {
 	public static void main(String[] args) {		
 		try {
 
-			String tolerance = Utility.getProperty("TOLERANCES").replaceAll("\\s+","");
+			String tolerance	= Utility.getProperty("TOLERANCES").replaceAll("\\s+","");
+			String leniency		= Utility.getProperty("LENIENCIES").replaceAll("\\s+","");
 		
-			String tolerances[] = tolerance.split(",");
-			String fileNamesFUN[]  = new String[tolerances.length]; 
-			String fileNamesVAR[]  = new String[tolerances.length]; 
+			String tolerances[] 	= tolerance.split(",");
+			String leniencies[]		= leniency.split(",");
+			String fileNamesFUN[]  	= new String[leniencies.length]; 
+			String fileNamesVAR[]  	= new String[leniencies.length]; 
 			
-			System.out.println(Arrays.toString(tolerances));
+			System.out.println("Tolerances:" + Arrays.toString(tolerances));
+			System.out.println("Leniencies:" + Arrays.toString(leniencies));
 			
-			int i=0;
 			for (String t : tolerances){
+				int i=0;
+				for (String l : leniencies){
 					Utility.setProperty("TOLERANCE", t);
-					System.out.println(Utility.getProperty("TOLERANCE"));
+					Utility.setProperty("LENIENCY",  l);
+					System.out.println("Tolerance: " +Utility.getProperty("TOLERANCE") + "\tLeniency: " +Utility.getProperty("LENIENCY"));
 					EvoChecker.main(null);
-					fileNamesFUN[i] = "FUN_REGION_"+t.replace(".", "");
-					fileNamesVAR[i++] = "VAR_REGION_"+t.replace(".", "");
+					fileNamesFUN[i] = "FUN_REGION_"+t.replace(".", "")+"_"+l.replace(".", "");
+					fileNamesVAR[i++] = "VAR_REGION_"+t.replace(".", "")+"_"+l.replace(".", "");;
+				}
+				createRegionsCombinedFile(fileNamesFUN, "FUN_REGION_"+ t.replace(".", "") +"_all");
+				createRegionsCombinedFile(fileNamesVAR, "VAR_REGION_"+ t.replace(".", "") +"_all");
 			}
 			
-			
-			createRegionsCombinedFile(fileNamesFUN, "FUN_REGION_all");
-			createRegionsCombinedFile(fileNamesVAR, "VAR_REGION_all");
+			for (int i=0; i<fileNamesFUN.length; i++){
+				System.out.println(fileNamesFUN[i] +"\t"+ fileNamesVAR[i]);
+			}
+			System.exit(0);			
 		} catch (EvoCheckerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
