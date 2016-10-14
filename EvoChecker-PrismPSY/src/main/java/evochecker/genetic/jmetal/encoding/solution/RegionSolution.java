@@ -96,7 +96,13 @@ public class RegionSolution extends Solution{
 		for (int i=0; i<regionObjectives.length; i++){
 			double min 	= regionObjectives[i].getMinObjective();
 			double max 	= regionObjectives[i].getMaxObjective();
-			vol 		*= Math.abs(min-max); 
+//			vol 		*= Math.abs(min-max); 
+			if (i==0){
+				vol 		*= Math.abs(min-max);
+			} else {
+				vol 		*= Math.abs(min-max)/100;
+			}
+			
 		}
 		this.volume = vol;
 		return this.volume;

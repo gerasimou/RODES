@@ -338,6 +338,7 @@ public class Utility {
 				}
 //				get volume
 				bw.write(regionSolution.getSensitivity()+"");
+//				bw.write(regionSolution.getVolume()+"");
 				bw.newLine();
 			}
 			bw.flush();
