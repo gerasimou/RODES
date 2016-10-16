@@ -13,13 +13,15 @@ package evochecker.genetic.jmetal.util;
 
 import evochecker.auxiliary.Utility;
 import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
+import jmetal.util.comparators.IConstraintViolationComparator;
+import jmetal.util.comparators.OverallConstraintViolationComparator;
 
 public class eToleranceWorstCaseDominanceComparator extends RegionDominanceComparator {
 
 	double epsilon; 		//relative epsilon-dominance
     boolean sensitivity; 	//use sensitivity in the comparator
     double paramVolume; 	// volume of the parameter space
-    
+    IConstraintViolationComparator violationConstraintComparator_;
     
     private final double LENIENCY = Double.parseDouble(Utility.getProperty("LENIENCY"));
 
@@ -27,6 +29,7 @@ public class eToleranceWorstCaseDominanceComparator extends RegionDominanceCompa
 		this.epsilon 		= epsilon;
         this.paramVolume 	= paramVolume;
         this. sensitivity 	= sensitivity;
+        this.violationConstraintComparator_ = new OverallConstraintViolationComparator(); 
 	}
 
 
@@ -58,7 +61,9 @@ public class eToleranceWorstCaseDominanceComparator extends RegionDominanceCompa
 		int flag=-2; //stores the result of the comparison
 
 		// Test to determine whether at least a solution violates some constraint
-		// No constraints YET
+	    if (violationConstraintComparator_.needToCompare(solution1, solution2))
+	      return violationConstraintComparator_.compare(solution1, solution2) ;
+
 
 		// Equal number of violated constraints. Applying a dominance Test then
 		double value1, value2;//, vol1 = 0, vol2 = 0;
