@@ -38,7 +38,7 @@ public class ParserGSON {
 			//find min and max
 			double min 				 = JSONsubregion.get("min").getAsDouble();
 			double max 				 = JSONsubregion.get("max").getAsDouble();
-			System.out.println(entry.getKey() +"\t["+ min +", "+ max +"]");	
+//			System.out.println(entry.getKey() +"\t["+ min +", "+ max +"]");	
 			//append to results list
 			resultList.add(min +"");
 			resultList.add(max +"");

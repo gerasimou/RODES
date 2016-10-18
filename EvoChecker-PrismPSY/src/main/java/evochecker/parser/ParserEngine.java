@@ -273,6 +273,8 @@ public class ParserEngine implements InstantiatorInterface {
 					this.evolvableList.add(new EvolvableInteger(element));
 				else if (element instanceof EvolvableDouble)
 					this.evolvableList.add(new EvolvableDouble(element));
+				else if (element instanceof EvolvableModuleAlternative)
+					this.evolvableList.add(new EvolvableModuleAlternative((EvolvableModuleAlternative)element));
 			
 			genesList = GenotypeFactory.createChromosome(evolvableList);
 			

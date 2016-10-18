@@ -81,4 +81,18 @@ public class EvolvableModuleAlternative extends Evolvable {
 		return "\nconst int "+ this.name.toUpperCase() +"="+ (index) + ";";
 	}
 	
+	
+	/**
+	 * Class constructor
+	 * @param name
+	 */
+	public EvolvableModuleAlternative (EvolvableModuleAlternative anEvolvable){
+		super(anEvolvable.name, anEvolvable.minValue, anEvolvable.maxValue, EvolvableID.MODULE);
+		this.evolvableModuleList = new ArrayList<EvolvableModule>();
+		for (EvolvableModule evolvableModule : anEvolvable.evolvableModuleList){
+			this.evolvableModuleList.add(new EvolvableModule(evolvableModule));
+		}
+	}
+	
+	
 }

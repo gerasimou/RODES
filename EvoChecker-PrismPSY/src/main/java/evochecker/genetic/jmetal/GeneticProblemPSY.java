@@ -140,7 +140,7 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 				}
 				((RegionSolution)solution).setObjectiveBounds(i, min, max);
 //				solution.setObjective(i, result);
-				System.out.print("FITNESS: ["+ min +","+ max +"]");
+//				System.out.print("FITNESS: ["+ min +","+ max +"]");
 			}
 			
 			if (numberOfConstraints_>0){
@@ -151,7 +151,7 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 			e.printStackTrace();
 			System.exit(-1);
 		}
-		System.out.println();
+//		System.out.println();
 	}
 
 
@@ -172,7 +172,7 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 		out.flush();
 		//read from server
 		String response = in.readLine();
-		System.out.println(response);
+//		System.out.println(response);
 		if (response.isEmpty() || response==null)
 			throw new EvoCheckerException("Error: invalid response from server:\t" + response);
 		List<String> resultList = ParserGSON.parseGSON(response);
