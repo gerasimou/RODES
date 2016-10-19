@@ -18,17 +18,17 @@ import jmetal.util.comparators.OverallConstraintViolationComparator;
 
 public class eToleranceWorstCaseDominanceComparator extends RegionDominanceComparator {
 
-	double epsilon; 		//relative epsilon-dominance
-    boolean sensitivity; 	//use sensitivity in the comparator
-    double paramVolume; 	// volume of the parameter space
+//	double epsilon; 		//relative epsilon-dominance
+//    double paramVolume; 	// volume of the parameter space
     IConstraintViolationComparator violationConstraintComparator_;
     
-    private final double LENIENCY = Double.parseDouble(Utility.getProperty("LENIENCY"));
+    private final boolean SENSITIVITY 	= Boolean.parseBoolean(Utility.getProperty("SENSITIVITY"));	//use sensitivity in the comparator
+    private final double LENIENCY 		= Double.parseDouble(Utility.getProperty("LENIENCY"));
 
-	public eToleranceWorstCaseDominanceComparator(double epsilon, double paramVolume, boolean sensitivity) {
-		this.epsilon 		= epsilon;
-        this.paramVolume 	= paramVolume;
-        this. sensitivity 	= sensitivity;
+	public eToleranceWorstCaseDominanceComparator() {
+//		this.epsilon 		= epsilon;
+//        this.paramVolume 	= paramVolume;
+//        this. SENSITIVITY 	= sensitivity;
         this.violationConstraintComparator_ = new OverallConstraintViolationComparator(); 
 	}
 
@@ -80,9 +80,9 @@ public class eToleranceWorstCaseDominanceComparator extends RegionDominanceCompa
 //                vol1 = vol1 * (value1 - solution1.getObjectiveBounds(i)[0]);
 //                vol2 = vol2 * (value2 - solution2.getObjectiveBounds(i)[0]);
 //            }
-			if ((1+epsilon)*value1 < value2) {
+			if (value1 < value2) {
 				flag = -1;
-			} else if (value1 > (1+epsilon)*value2) {
+			} else if (value1 > value2) {
 				flag = 1;
 			} else {
 				flag = 0;
@@ -98,7 +98,7 @@ public class eToleranceWorstCaseDominanceComparator extends RegionDominanceCompa
 		}
 
         // sensitivity - I don't use the volume of the parameter space since it is fixed
-        if (sensitivity) {
+        if (SENSITIVITY) {
         	double vol1 = solution1.getSensitivity();// getVolume();
         	double vol2 = solution2.getSensitivity();//getVolume();
         	flag = 0;

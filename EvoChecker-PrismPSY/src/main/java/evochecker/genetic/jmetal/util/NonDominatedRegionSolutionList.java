@@ -32,7 +32,7 @@ import java.util.Iterator;
 /** 
  * This class implements an unbound list of non-dominated solutions
  */
-public class NonDominatedSolutionList extends SolutionSet{
+public class NonDominatedRegionSolutionList extends SolutionSet{
 
 	/**
 	 * Stores a <code>Comparator</code> for dominance checking
@@ -49,7 +49,7 @@ public class NonDominatedSolutionList extends SolutionSet{
 	 * The objects of this class are lists of non-dominated solutions according to
 	 * a Pareto dominance comparator. 
 	 */
-	public NonDominatedSolutionList() {
+	public NonDominatedRegionSolutionList() {
 		super();
 	} // NonDominatedList
 
@@ -59,7 +59,7 @@ public class NonDominatedSolutionList extends SolutionSet{
 	 * comparator object.
 	 * @param dominance The comparator for dominance checking.
 	 */
-	public NonDominatedSolutionList(Comparator dominance) {
+	public NonDominatedRegionSolutionList(Comparator dominance) {
 		super();
 		dominance_ = dominance;
 	} // NonDominatedList

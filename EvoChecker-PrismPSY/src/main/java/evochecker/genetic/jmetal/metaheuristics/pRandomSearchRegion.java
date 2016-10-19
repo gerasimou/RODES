@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
-import evochecker.genetic.jmetal.util.NonDominatedSolutionList;
+import evochecker.genetic.jmetal.util.NonDominatedRegionSolutionList;
 import jmetal.core.Algorithm;
 import jmetal.core.Problem;
 import jmetal.core.Solution;
@@ -40,7 +40,7 @@ public class pRandomSearchRegion extends Algorithm{
 		int evaluations;
 		
 //		SolutionSet population;
-	    NonDominatedSolutionList ndList = new NonDominatedSolutionList();
+	    NonDominatedRegionSolutionList ndList = new NonDominatedRegionSolutionList();
 
 	    QualityIndicator indicators; // QualityIndicator object
 

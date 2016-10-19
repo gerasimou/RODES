@@ -15,12 +15,14 @@ package evochecker;
 import java.util.ArrayList;
 import java.util.List;
 
+import _main.Experiment;
 import evochecker.auxiliary.Utility;
 import evochecker.genetic.GenotypeFactory;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.RegionGene;
 import evochecker.genetic.jmetal.GeneticProblemPSY;
 import evochecker.genetic.jmetal.metaheuristics.NSGAIIRegion_Settings;
+import evochecker.genetic.jmetal.metaheuristics.RandomSearchRegion_Settings;
 import evochecker.genetic.jmetal.metaheuristics.RandomSearch_Settings;
 import evochecker.parser.ParserEngine;
 import evochecker.parser.ParserEnginePrismPSY;
@@ -141,7 +143,7 @@ public class EvoChecker {
 				algorithm = nsgaiiSettings.configure();
 			}
 			else if (algorithmStr.equals("RANDOM")){
-				RandomSearch_Settings rsSettings = new RandomSearch_Settings(problem.getName(), problem);
+				RandomSearchRegion_Settings rsSettings = new RandomSearchRegion_Settings(problem.getName(), problem);
 				algorithm = rsSettings.configure();
 			}
 			else 
@@ -178,14 +180,16 @@ public class EvoChecker {
 		}
 		String tolerance 	= Utility.getProperty("TOLERANCE").replace(".", "");
 		String leniency		= Utility.getProperty("LENIENCY").replace(".", "");
+		int run				= Experiment.getRun();
 
+		String outputFileEnd = tolerance +"_"+ leniency +"_"+ run;
 		//Store results
-		population.printObjectivesToFile("data/FUN_"+ tolerance +"_"+ leniency);
-		population.printVariablesToFile("data/VAR_"+  tolerance +"_"+ leniency);
+		population.printObjectivesToFile("data/FUN_"+ outputFileEnd);
+		population.printVariablesToFile("data/VAR_"+  outputFileEnd);
 				
-		Utility.printVariableRegionsToFile("data/VAR_REGION_"+tolerance+"_"+leniency, population, false, regionsRadii);
+		Utility.printVariableRegionsToFile("data/VAR_REGION_"+  outputFileEnd, population, false, regionsRadii);
+		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+ outputFileEnd, population, false, propertyList);
 //		Utility.printVariableRegionsToFile("data/VAR_REGION_"+tolerance, population, false);
 //		Utility.printVariableRegionsToFile2("data/VAR_REGION2_"+tolerance, population, false);
-		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+tolerance+"_"+leniency, population, false, propertyList);
 	}	
 }
