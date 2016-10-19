@@ -3,15 +3,16 @@ package evochecker.genetic.jmetal.metaheuristics;
 import java.util.List;
 import java.util.Random;
 
+import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
+import evochecker.genetic.jmetal.util.NonDominatedSolutionList;
 import jmetal.core.Algorithm;
 import jmetal.core.Problem;
 import jmetal.core.Solution;
 import jmetal.core.SolutionSet;
 import jmetal.qualityIndicator.QualityIndicator;
 import jmetal.util.JMException;
-import jmetal.util.NonDominatedSolutionList;
 
-public class pRandomSearch extends Algorithm{
+public class pRandomSearchRegion extends Algorithm{
 
 	  /** Parallel evaluator handler*/
 	IParallelEvaluator parallelEvaluator_ ; 
@@ -25,7 +26,7 @@ public class pRandomSearch extends Algorithm{
    * @param problem Problem to solve
    * @param evaluator Parallel evaluator
    */
-	public pRandomSearch(Problem problem, IParallelEvaluator evaluator) {
+	public pRandomSearchRegion(Problem problem, IParallelEvaluator evaluator) {
 		super(problem);
 		parallelEvaluator_ = evaluator;
 		rand = new Random (System.currentTimeMillis());
@@ -56,10 +57,10 @@ public class pRandomSearch extends Algorithm{
 	    evaluations	= 0;
 	    
 	    //Create the initial solution set
-	    Solution initSolution;
+	    Solution newSolution;
 	    for (int i=0; i<populationSize; i++){
-	    	initSolution = new Solution(problem_);
-	    	parallelEvaluator_.addSolutionForEvaluation(initSolution);
+	    	newSolution = new RegionSolution(problem_); //Solution(problem_);
+	    	parallelEvaluator_.addSolutionForEvaluation(newSolution);
 	    }
 	    
 	    //Run parallel evaluation
@@ -78,8 +79,8 @@ public class pRandomSearch extends Algorithm{
 	    	System.out.println("Evaluations:\t" + evaluations);
 	    	
 	    	 for (int i=0; i<populationSize; i++){
-	  	    	initSolution = new Solution(problem_);
-	  	    	parallelEvaluator_.addSolutionForEvaluation(initSolution);
+	  	    	newSolution = new RegionSolution(problem_); //Solution(problem_);
+	  	    	parallelEvaluator_.addSolutionForEvaluation(newSolution);
 	  	    }
 	    	
 		    //Run parallel evaluation
