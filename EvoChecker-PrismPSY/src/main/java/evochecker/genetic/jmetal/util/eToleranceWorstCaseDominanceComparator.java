@@ -22,17 +22,26 @@ public class eToleranceWorstCaseDominanceComparator extends RegionDominanceCompa
 //    double paramVolume; 	// volume of the parameter space
     IConstraintViolationComparator violationConstraintComparator_;
     
-    private final boolean SENSITIVITY 	= Boolean.parseBoolean(Utility.getProperty("SENSITIVITY"));	//use sensitivity in the comparator
-    private final double LENIENCY 		= Double.parseDouble(Utility.getProperty("LENIENCY"));
+    private final boolean SENSITIVITY; //use sensitivity in the comparator
+    private final double LENIENCY; 		
 
 	public eToleranceWorstCaseDominanceComparator() {
 //		this.epsilon 		= epsilon;
 //        this.paramVolume 	= paramVolume;
 //        this. SENSITIVITY 	= sensitivity;
-        this.violationConstraintComparator_ = new OverallConstraintViolationComparator(); 
+		SENSITIVITY = Boolean.parseBoolean(Utility.getProperty("SENSITIVITY"));	//use sensitivity in the comparator
+		LENIENCY	= Double.parseDouble(Utility.getProperty("LENIENCY"));
+        violationConstraintComparator_ = new OverallConstraintViolationComparator(); 
 	}
 
 
+	public eToleranceWorstCaseDominanceComparator(boolean sensitivity, double leniency) {
+		SENSITIVITY 	= sensitivity;
+		LENIENCY		= leniency;
+        this.violationConstraintComparator_ = new OverallConstraintViolationComparator(); 
+	}
+
+	
 	/**
 	 * Compares two solutions.
 	 * @param object1 Object representing the first <code>Solution</code>.

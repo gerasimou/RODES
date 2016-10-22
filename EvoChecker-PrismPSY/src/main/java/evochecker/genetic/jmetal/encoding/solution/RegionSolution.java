@@ -50,6 +50,27 @@ public class RegionSolution extends Solution{
 	}
 	
 	
+	public RegionSolution(int numOfObjs, double regionObjs[][], int params, double paramRanges[][]){
+		super(numOfObjs);
+		//initialise region objectives array
+		this.regionObjectives = new RegionObjective[numOfObjs];
+		for (int index=0; index < regionObjectives.length; index++){
+			this.regionObjectives[index] = new RegionObjective();
+			setObjectiveBounds(index, regionObjs[index][0], regionObjs[index][1]);
+//			regionObjectives[index].minObjective = regionObjs[index][0];
+//			regionObjectives[index].maxObjective = regionObjs[index][1];
+		}
+		
+		
+		this.regionParams = new RegionParameter[params];
+		for (int index=0; index<params; index++){
+				this.regionParams[index] = new RegionParameter();
+				regionParams[index].minValue = paramRanges[index][0];
+				regionParams[index].maxValue = paramRanges[index][1];
+		}
+	}
+	
+	
 	private void init(){
 		//initialise region objectives array
 		this.regionObjectives = new RegionObjective[getNumberOfObjectives()];
@@ -77,6 +98,15 @@ public class RegionSolution extends Solution{
 	 * @param max The upper bound
 	 */ 
 	public void setObjectiveBounds(int i, double min, double max) {
+		  //set region objective bounds
+		  regionObjectives[i].setObjectiveBounds(min, max);
+		  
+		  //set objective midpoint
+		  super.setObjective(i, (min+max)/2);
+	  }
+	
+	
+	public void setParemterBounds(int i, double min, double max) {
 		  //set region objective bounds
 		  regionObjectives[i].setObjectiveBounds(min, max);
 		  
@@ -187,6 +217,11 @@ public class RegionSolution extends Solution{
 				maxValue = upperBound;
 			}						
 
+		}
+		
+		
+		private RegionParameter(){
+			
 		}
 		
 		
