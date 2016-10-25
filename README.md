@@ -15,7 +15,7 @@ Designing Robust Systems through Synthesis of Parametric Markov Chains
 
 2. Import EvoChecker-PrismPSY into your favourite Java IDE (e.g., Eclipse)
 
-3. The main class is evochecker.EvoChecker
+<!--3. The main class is evochecker.EvoChecker-->
    
    
    
