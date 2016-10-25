@@ -23,7 +23,6 @@ import evochecker.genetic.genes.RegionGene;
 import evochecker.genetic.jmetal.GeneticProblemPSY;
 import evochecker.genetic.jmetal.metaheuristics.NSGAIIRegion_Settings;
 import evochecker.genetic.jmetal.metaheuristics.RandomSearchRegion_Settings;
-import evochecker.genetic.jmetal.metaheuristics.RandomSearch_Settings;
 import evochecker.parser.ParserEngine;
 import evochecker.parser.ParserEnginePrismPSY;
 import evochecker.prism.Property;
@@ -117,13 +116,13 @@ public class EvoChecker {
 //		propertyList.add(new Property(true));
 //		propertyList.add(new Property(true));
 //		propertyList.add(new Property(false));
-//		int numOfConstraints  = 0;
+//		int numOfConstraints  = 1;
 
-		//Cluster
+//		Cluster
 		propertyList.add(new Property(true));
 		propertyList.add(new Property(true));
-//		propertyList.add(new Property(false));
-		int numOfConstraints  = 0;
+		propertyList.add(new Property(false));
+		int numOfConstraints  = 1;
 
 		
 		//6) instantiate the problem

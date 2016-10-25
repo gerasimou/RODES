@@ -185,9 +185,30 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 	  * @param solution The solution
 	 * @throws JMException 
 	  */  
-	public void evaluateConstraints(Solution solution, List<String> fitnessList) throws JMException {
-		solution.setOverallConstraintViolation(0);
-		solution.setNumberOfViolatedConstraint(0);
+	public void evaluateConstraints(Solution solution, List<String> resultsList) throws JMException {
+		//Google
+//		double value = new BigDecimal(Double.parseDouble(resultsList.get(numberOfObjectives_*2+1)))
+//										.setScale(4, RoundingMode.HALF_DOWN).doubleValue();
+//		if (value > 5){
+//			solution.setOverallConstraintViolation((5-value )*100);
+//			solution.setNumberOfViolatedConstraint(1);			
+//		}
+//		else{			
+//			solution.setOverallConstraintViolation(0);
+//			solution.setNumberOfViolatedConstraint(0);
+//		}
+		
+		//Cluster
+		double value = new BigDecimal(Double.parseDouble(resultsList.get(numberOfObjectives_*2+1)))
+										.setScale(4, RoundingMode.HALF_DOWN).doubleValue();
+		if (value > 50){
+			solution.setOverallConstraintViolation((50-value )*100);
+			solution.setNumberOfViolatedConstraint(1);			
+		}
+		else{			
+			solution.setOverallConstraintViolation(0);
+			solution.setNumberOfViolatedConstraint(0);
+		}
 	}
 	
 	
