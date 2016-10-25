@@ -1,12 +1,14 @@
-// max  
+// max: the probability that a 
 P=? [ !((M_up=1)&(R_present>=1)) U[10,60] ((M_up=1)&(R_present>=1)) ]
 
-// min
-//R{"replicates"}=? [ C<=60 ]
 
 // min
 //R{"C_down"}=? [ C<=60 ]
 
 
-//max
+//max: a certain number of servers is always on
 R{"new"}=?[C<=60]
+
+// constraint/min
+R{"replicates"}=? [ C<=60 ]
+
