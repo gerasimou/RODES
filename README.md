@@ -1,8 +1,10 @@
-Search-Based Model Synthesis
+Designing Robust Systems through Synthesis of Parametric Markov Chains
 =======
 
+<!--
 ###Repository Structure
-* __EvoChecker-PrismPSY__: An Eclipse project that integrates [EvoChecker](https://raw.githubusercontent.com/gerasimou/EvoChecker) and [Prism-PSY](http://www.prismmodelchecker.org/psy).
+
+ __EvoChecker-PrismPSY__: An Eclipse project that integrates [EvoChecker](https://raw.githubusercontent.com/gerasimou/EvoChecker) and [Prism-PSY](http://www.prismmodelchecker.org/psy).-->
 
 --
 
@@ -13,7 +15,7 @@ Search-Based Model Synthesis
 
 2. Import EvoChecker-PrismPSY into your favourite Java IDE (e.g., Eclipse)
 
-3. The main class is evochecker.EvoChecker
+<!--3. The main class is evochecker.EvoChecker-->
    
    
    
