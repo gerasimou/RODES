@@ -8,16 +8,17 @@
 % - alpha (optional). Opacity in plots. Default 0.5. Octave does not support transparency and thus has alpha=1
 % - experimentName: experiment name, optional (default: 'rob_synth')
 
-function plot_regions(regionsObjPath,n_objs,nContinuousParam,nDiscreteParam,regionsParamPath,experimentName, objNames, paramNames,alpha)
+function plot_regions(regionsObjPath, n_objs, nContinuousParam, nDiscreteParam, regionsParamPath, ...
+                      experimentName, experimentInstance, objNames, paramNames,alpha)
     addpath('utils');
-    if(nargin < 9)
+    if(nargin < 10)
         alpha = 0.5;
-        if(nargin < 8)
+        if(nargin < 9)
             paramNames = {'param1','param2','param3'};
-            if(nargin < 7)
+            if(nargin < 8)
                 objNames = {'obj1','obj2','obj3'};
-                if(nargin < 6)
-                    experimentName='rob_synth';
+                if(nargin < 7)
+                    experimentInstance='rob_synth';
                 end
             end
         end
@@ -31,11 +32,18 @@ function plot_regions(regionsObjPath,n_objs,nContinuousParam,nDiscreteParam,regi
     
     
     %check if graphs dir exists
-    graphDir = exist('graphs', 'dir');
-    fprintf('%d', graphDir);
-    if (graphDir ~= 7)
-        mkdir('graphs');
-    end 
+    graphsDir = 'graphs';
+    graphDirFlag =  exist(graphsDir, 'dir');
+    if (graphDirFlag ~= 7)
+        mkdir(graphsDir);
+    end
+    
+    %check if experimentName dir exists in graph dir
+    experimentsDir = strcat('./graphs/',experimentName,'/');
+    experimentsDirFlag = exist(experimentsDir, 'dir');
+    if (experimentsDirFlag ~= 7)
+        mkdir(experimentsDir);
+    end
    
 
     fprintf('Plotting for %d objectives\n', n_objs);
@@ -43,13 +51,13 @@ function plot_regions(regionsObjPath,n_objs,nContinuousParam,nDiscreteParam,regi
         % plot 2d objective space
         [~,volumes,paramRegions,paramVolumes,meanVol,meanSens,maxSens] = ...
             front_2d(regionsObjPath, nContinuousParam, nDiscreteParam,regionsParamPath,...
-            objNames(1:2), ['./graphs/', experimentName,'_objs'],alpha);
+            objNames(1:2), [experimentsDir, experimentInstance,'_objs'],alpha);
 
     elseif n_objs==3
         % plot 3d objective space
         [~,volumes,paramRegions,paramVolumes,meanVol,meanSens,maxSens] = ...
             front_3d(regionsObjPath, nContinuousParam, nDiscreteParam,regionsParamPath,...
-            objNames, ['./graphs/', experimentName,'_objs'],alpha);
+            objNames, [experimentsDir, experimentInstance,'_objs'],alpha);
     else
         error('Plotting is only supported for 2 and 3 objectives');
     end
@@ -72,9 +80,9 @@ function plot_regions(regionsObjPath,n_objs,nContinuousParam,nDiscreteParam,regi
 
 
     if nParams == 2
-        param_plot_2d(volumes,paramRegions_1,paramVolumes,paramNames(1:2),['./graphs/', experimentName,'_params'],alpha);
+        param_plot_2d(volumes,paramRegions_1,paramVolumes,paramNames(1:2),[experimentsDir, experimentInstance,'_params'],alpha);
     elseif nParams == 3
-        param_plot_3d(volumes,paramRegions_1,paramVolumes,paramNames,['./graphs/', experimentName,'_params'],alpha);
+        param_plot_3d(volumes,paramRegions_1,paramVolumes,paramNames,[experimentsDir, experimentInstance,'_params'],alpha);
     else
         disp('Plotting of parameter regions is supported only for 2 or 3 parameters');
     end

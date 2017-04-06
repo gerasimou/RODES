@@ -1,0 +1,1122 @@
+Wed 5 Apr 11:53:03 BST 2017: executing EvoChecker on 10 slots
+/shared/scratch/hpc/users/sg778/RODES/log
+Tolerances:[0.01, 0.02, 0.05]
+Leniencies:[0.00, 0.05, 0.10]
+Algorithm:NSGAII
+Run: 1
+Tolerance: 0.01	Leniency: 0.00
+Initialization
+Starting server at port 8870
+Connecting
+Starting server at port 8871
+Connecting
+Starting server at port 8872
+Connecting
+Starting server at port 8873
+Connecting
+Starting server at port 8874
+Connecting
+Starting server at port 8875
+Connecting
+Starting server at port 8876
+Connecting
+Starting server at port 8877
+Connecting
+Starting server at port 8878
+Connecting
+Starting server at port 8879
+Connecting
+Cores: 10
+Evaluations:	50
+Evaluations:	100
+Evaluations:	150
+Evaluations:	200
+Evaluations:	250
+Evaluations:	300
+Evaluations:	350
+Evaluations:	400
+Evaluations:	450
+Evaluations:	500
+Evaluations:	550
+Evaluations:	600
+Evaluations:	650
+Evaluations:	700
+Evaluations:	750
+Evaluations:	800
+Evaluations:	850
+Evaluations:	900
+Evaluations:	950
+Evaluations:	1000
+Evaluations:	1050
+Evaluations:	1100
+Evaluations:	1150
+Evaluations:	1200
+Evaluations:	1250
+Evaluations:	1300
+Evaluations:	1350
+Evaluations:	1400
+Evaluations:	1450
+Evaluations:	1500
+Evaluations:	1550
+Evaluations:	1600
+Evaluations:	1650
+Evaluations:	1700
+Evaluations:	1750
+Evaluations:	1800
+Evaluations:	1850
+Evaluations:	1900
+Evaluations:	1950
+Evaluations:	2000
+Evaluations:	2050
+Evaluations:	2100
+Evaluations:	2150
+Evaluations:	2200
+Evaluations:	2250
+Evaluations:	2300
+Evaluations:	2350
+Evaluations:	2400
+Evaluations:	2450
+Evaluations:	2500
+Evaluations:	2550
+Evaluations:	2600
+Evaluations:	2650
+Evaluations:	2700
+Evaluations:	2750
+Evaluations:	2800
+Evaluations:	2850
+Evaluations:	2900
+Evaluations:	2950
+Evaluations:	3000
+Evaluations:	3050
+Evaluations:	3100
+Evaluations:	3150
+Evaluations:	3200
+Evaluations:	3250
+Evaluations:	3300
+Evaluations:	3350
+Evaluations:	3400
+Evaluations:	3450
+Evaluations:	3500
+Evaluations:	3550
+Evaluations:	3600
+Evaluations:	3650
+Evaluations:	3700
+Evaluations:	3750
+Evaluations:	3800
+Evaluations:	3850
+Evaluations:	3900
+Evaluations:	3950
+Evaluations:	4000
+Evaluations:	4050
+Evaluations:	4100
+Evaluations:	4150
+Evaluations:	4200
+Evaluations:	4250
+Evaluations:	4300
+Evaluations:	4350
+Evaluations:	4400
+Evaluations:	4450
+Evaluations:	4500
+Evaluations:	4550
+Evaluations:	4600
+Evaluations:	4650
+Evaluations:	4700
+Evaluations:	4750
+Evaluations:	4800
+Evaluations:	4850
+Evaluations:	4900
+Evaluations:	4950
+-------------------------------------------------
+SOLUTIONS: 	50
+Tolerance: 0.01	Leniency: 0.05
+Initialization
+Starting server at port 8870
+Connecting
+Starting server at port 8871
+Connecting
+Starting server at port 8872
+Connecting
+Starting server at port 8873
+Connecting
+Starting server at port 8874
+Connecting
+Starting server at port 8875
+Connecting
+Starting server at port 8876
+Connecting
+Starting server at port 8877
+Connecting
+Starting server at port 8878
+Connecting
+Starting server at port 8879
+Connecting
+Cores: 10
+Evaluations:	50
+Evaluations:	100
+Evaluations:	150
+Evaluations:	200
+Evaluations:	250
+Evaluations:	300
+Evaluations:	350
+Evaluations:	400
+Evaluations:	450
+Evaluations:	500
+Evaluations:	550
+Evaluations:	600
+Evaluations:	650
+Evaluations:	700
+Evaluations:	750
+Evaluations:	800
+Evaluations:	850
+Evaluations:	900
+Evaluations:	950
+Evaluations:	1000
+Evaluations:	1050
+Evaluations:	1100
+Evaluations:	1150
+Evaluations:	1200
+Evaluations:	1250
+Evaluations:	1300
+Evaluations:	1350
+Evaluations:	1400
+Evaluations:	1450
+Evaluations:	1500
+Evaluations:	1550
+Evaluations:	1600
+Evaluations:	1650
+Evaluations:	1700
+Evaluations:	1750
+Evaluations:	1800
+Evaluations:	1850
+Evaluations:	1900
+Evaluations:	1950
+Evaluations:	2000
+Evaluations:	2050
+Evaluations:	2100
+Evaluations:	2150
+Evaluations:	2200
+Evaluations:	2250
+Evaluations:	2300
+Evaluations:	2350
+Evaluations:	2400
+Evaluations:	2450
+Evaluations:	2500
+Evaluations:	2550
+Evaluations:	2600
+Evaluations:	2650
+Evaluations:	2700
+Evaluations:	2750
+Evaluations:	2800
+Evaluations:	2850
+Evaluations:	2900
+Evaluations:	2950
+Evaluations:	3000
+Evaluations:	3050
+Evaluations:	3100
+Evaluations:	3150
+Evaluations:	3200
+Evaluations:	3250
+Evaluations:	3300
+Evaluations:	3350
+Evaluations:	3400
+Evaluations:	3450
+Evaluations:	3500
+Evaluations:	3550
+Evaluations:	3600
+Evaluations:	3650
+Evaluations:	3700
+Evaluations:	3750
+Evaluations:	3800
+Evaluations:	3850
+Evaluations:	3900
+Evaluations:	3950
+Evaluations:	4000
+Evaluations:	4050
+Evaluations:	4100
+Evaluations:	4150
+Evaluations:	4200
+Evaluations:	4250
+Evaluations:	4300
+Evaluations:	4350
+Evaluations:	4400
+Evaluations:	4450
+Evaluations:	4500
+Evaluations:	4550
+Evaluations:	4600
+Evaluations:	4650
+Evaluations:	4700
+Evaluations:	4750
+Evaluations:	4800
+Evaluations:	4850
+Evaluations:	4900
+Evaluations:	4950
+-------------------------------------------------
+SOLUTIONS: 	50
+Tolerance: 0.01	Leniency: 0.10
+Initialization
+Starting server at port 8870
+Connecting
+Starting server at port 8871
+Connecting
+Starting server at port 8872
+Connecting
+Starting server at port 8873
+Connecting
+Starting server at port 8874
+Connecting
+Starting server at port 8875
+Connecting
+Starting server at port 8876
+Connecting
+Starting server at port 8877
+Connecting
+Starting server at port 8878
+Connecting
+Starting server at port 8879
+Connecting
+Cores: 10
+Evaluations:	50
+Evaluations:	100
+Evaluations:	150
+Evaluations:	200
+Evaluations:	250
+Evaluations:	300
+Evaluations:	350
+Evaluations:	400
+Evaluations:	450
+Evaluations:	500
+Evaluations:	550
+Evaluations:	600
+Evaluations:	650
+Evaluations:	700
+Evaluations:	750
+Evaluations:	800
+Evaluations:	850
+Evaluations:	900
+Evaluations:	950
+Evaluations:	1000
+Evaluations:	1050
+Evaluations:	1100
+Evaluations:	1150
+Evaluations:	1200
+Evaluations:	1250
+Evaluations:	1300
+Evaluations:	1350
+Evaluations:	1400
+Evaluations:	1450
+Evaluations:	1500
+Evaluations:	1550
+Evaluations:	1600
+Evaluations:	1650
+Evaluations:	1700
+Evaluations:	1750
+Evaluations:	1800
+Evaluations:	1850
+Evaluations:	1900
+Evaluations:	1950
+Evaluations:	2000
+Evaluations:	2050
+Evaluations:	2100
+Evaluations:	2150
+Evaluations:	2200
+Evaluations:	2250
+Evaluations:	2300
+Evaluations:	2350
+Evaluations:	2400
+Evaluations:	2450
+Evaluations:	2500
+Evaluations:	2550
+Evaluations:	2600
+Evaluations:	2650
+Evaluations:	2700
+Evaluations:	2750
+Evaluations:	2800
+Evaluations:	2850
+Evaluations:	2900
+Evaluations:	2950
+Evaluations:	3000
+Evaluations:	3050
+Evaluations:	3100
+Evaluations:	3150
+Evaluations:	3200
+Evaluations:	3250
+Evaluations:	3300
+Evaluations:	3350
+Evaluations:	3400
+Evaluations:	3450
+Evaluations:	3500
+Evaluations:	3550
+Evaluations:	3600
+Evaluations:	3650
+Evaluations:	3700
+Evaluations:	3750
+Evaluations:	3800
+Evaluations:	3850
+Evaluations:	3900
+Evaluations:	3950
+Evaluations:	4000
+Evaluations:	4050
+Evaluations:	4100
+Evaluations:	4150
+Evaluations:	4200
+Evaluations:	4250
+Evaluations:	4300
+Evaluations:	4350
+Evaluations:	4400
+Evaluations:	4450
+Evaluations:	4500
+Evaluations:	4550
+Evaluations:	4600
+Evaluations:	4650
+Evaluations:	4700
+Evaluations:	4750
+Evaluations:	4800
+Evaluations:	4850
+Evaluations:	4900
+Evaluations:	4950
+-------------------------------------------------
+SOLUTIONS: 	50
+Tolerance: 0.02	Leniency: 0.00
+Initialization
+Starting server at port 8870
+Connecting
+Starting server at port 8871
+Connecting
+Starting server at port 8872
+Connecting
+Starting server at port 8873
+Connecting
+Starting server at port 8874
+Connecting
+Starting server at port 8875
+Connecting
+Starting server at port 8876
+Connecting
+Starting server at port 8877
+Connecting
+Starting server at port 8878
+Connecting
+Starting server at port 8879
+Connecting
+Cores: 10
+Evaluations:	50
+Evaluations:	100
+Evaluations:	150
+Evaluations:	200
+Evaluations:	250
+Evaluations:	300
+Evaluations:	350
+Evaluations:	400
+Evaluations:	450
+Evaluations:	500
+Evaluations:	550
+Evaluations:	600
+Evaluations:	650
+Evaluations:	700
+Evaluations:	750
+Evaluations:	800
+Evaluations:	850
+Evaluations:	900
+Evaluations:	950
+Evaluations:	1000
+Evaluations:	1050
+Evaluations:	1100
+Evaluations:	1150
+Evaluations:	1200
+Evaluations:	1250
+Evaluations:	1300
+Evaluations:	1350
+Evaluations:	1400
+Evaluations:	1450
+Evaluations:	1500
+Evaluations:	1550
+Evaluations:	1600
+Evaluations:	1650
+Evaluations:	1700
+Evaluations:	1750
+Evaluations:	1800
+Evaluations:	1850
+Evaluations:	1900
+Evaluations:	1950
+Evaluations:	2000
+Evaluations:	2050
+Evaluations:	2100
+Evaluations:	2150
+Evaluations:	2200
+Evaluations:	2250
+Evaluations:	2300
+Evaluations:	2350
+Evaluations:	2400
+Evaluations:	2450
+Evaluations:	2500
+Evaluations:	2550
+Evaluations:	2600
+Evaluations:	2650
+Evaluations:	2700
+Evaluations:	2750
+Evaluations:	2800
+Evaluations:	2850
+Evaluations:	2900
+Evaluations:	2950
+Evaluations:	3000
+Evaluations:	3050
+Evaluations:	3100
+Evaluations:	3150
+Evaluations:	3200
+Evaluations:	3250
+Evaluations:	3300
+Evaluations:	3350
+Evaluations:	3400
+Evaluations:	3450
+Evaluations:	3500
+Evaluations:	3550
+Evaluations:	3600
+Evaluations:	3650
+Evaluations:	3700
+Evaluations:	3750
+Evaluations:	3800
+Evaluations:	3850
+Evaluations:	3900
+Evaluations:	3950
+Evaluations:	4000
+Evaluations:	4050
+Evaluations:	4100
+Evaluations:	4150
+Evaluations:	4200
+Evaluations:	4250
+Evaluations:	4300
+Evaluations:	4350
+Evaluations:	4400
+Evaluations:	4450
+Evaluations:	4500
+Evaluations:	4550
+Evaluations:	4600
+Evaluations:	4650
+Evaluations:	4700
+Evaluations:	4750
+Evaluations:	4800
+Evaluations:	4850
+Evaluations:	4900
+Evaluations:	4950
+-------------------------------------------------
+SOLUTIONS: 	50
+Tolerance: 0.02	Leniency: 0.05
+Initialization
+Starting server at port 8870
+Connecting
+Starting server at port 8871
+Connecting
+Starting server at port 8872
+Connecting
+Starting server at port 8873
+Connecting
+Starting server at port 8874
+Connecting
+Starting server at port 8875
+Connecting
+Starting server at port 8876
+Connecting
+Starting server at port 8877
+Connecting
+Starting server at port 8878
+Connecting
+Starting server at port 8879
+Connecting
+Cores: 10
+Evaluations:	50
+Evaluations:	100
+Evaluations:	150
+Evaluations:	200
+Evaluations:	250
+Evaluations:	300
+Evaluations:	350
+Evaluations:	400
+Evaluations:	450
+Evaluations:	500
+Evaluations:	550
+Evaluations:	600
+Evaluations:	650
+Evaluations:	700
+Evaluations:	750
+Evaluations:	800
+Evaluations:	850
+Evaluations:	900
+Evaluations:	950
+Evaluations:	1000
+Evaluations:	1050
+Evaluations:	1100
+Evaluations:	1150
+Evaluations:	1200
+Evaluations:	1250
+Evaluations:	1300
+Evaluations:	1350
+Evaluations:	1400
+Evaluations:	1450
+Evaluations:	1500
+Evaluations:	1550
+Evaluations:	1600
+Evaluations:	1650
+Evaluations:	1700
+Evaluations:	1750
+Evaluations:	1800
+Evaluations:	1850
+Evaluations:	1900
+Evaluations:	1950
+Evaluations:	2000
+Evaluations:	2050
+Evaluations:	2100
+Evaluations:	2150
+Evaluations:	2200
+Evaluations:	2250
+Evaluations:	2300
+Evaluations:	2350
+Evaluations:	2400
+Evaluations:	2450
+Evaluations:	2500
+Evaluations:	2550
+Evaluations:	2600
+Evaluations:	2650
+Evaluations:	2700
+Evaluations:	2750
+Evaluations:	2800
+Evaluations:	2850
+Evaluations:	2900
+Evaluations:	2950
+Evaluations:	3000
+Evaluations:	3050
+Evaluations:	3100
+Evaluations:	3150
+Evaluations:	3200
+Evaluations:	3250
+Evaluations:	3300
+Evaluations:	3350
+Evaluations:	3400
+Evaluations:	3450
+Evaluations:	3500
+Evaluations:	3550
+Evaluations:	3600
+Evaluations:	3650
+Evaluations:	3700
+Evaluations:	3750
+Evaluations:	3800
+Evaluations:	3850
+Evaluations:	3900
+Evaluations:	3950
+Evaluations:	4000
+Evaluations:	4050
+Evaluations:	4100
+Evaluations:	4150
+Evaluations:	4200
+Evaluations:	4250
+Evaluations:	4300
+Evaluations:	4350
+Evaluations:	4400
+Evaluations:	4450
+Evaluations:	4500
+Evaluations:	4550
+Evaluations:	4600
+Evaluations:	4650
+Evaluations:	4700
+Evaluations:	4750
+Evaluations:	4800
+Evaluations:	4850
+Evaluations:	4900
+Evaluations:	4950
+-------------------------------------------------
+SOLUTIONS: 	50
+Tolerance: 0.02	Leniency: 0.10
+Initialization
+Starting server at port 8870
+Connecting
+Starting server at port 8871
+Connecting
+Starting server at port 8872
+Connecting
+Starting server at port 8873
+Connecting
+Starting server at port 8874
+Connecting
+Starting server at port 8875
+Connecting
+Starting server at port 8876
+Connecting
+Starting server at port 8877
+Connecting
+Starting server at port 8878
+Connecting
+Starting server at port 8879
+Connecting
+Cores: 10
+Evaluations:	50
+Evaluations:	100
+Evaluations:	150
+Evaluations:	200
+Evaluations:	250
+Evaluations:	300
+Evaluations:	350
+Evaluations:	400
+Evaluations:	450
+Evaluations:	500
+Evaluations:	550
+Evaluations:	600
+Evaluations:	650
+Evaluations:	700
+Evaluations:	750
+Evaluations:	800
+Evaluations:	850
+Evaluations:	900
+Evaluations:	950
+Evaluations:	1000
+Evaluations:	1050
+Evaluations:	1100
+Evaluations:	1150
+Evaluations:	1200
+Evaluations:	1250
+Evaluations:	1300
+Evaluations:	1350
+Evaluations:	1400
+Evaluations:	1450
+Evaluations:	1500
+Evaluations:	1550
+Evaluations:	1600
+Evaluations:	1650
+Evaluations:	1700
+Evaluations:	1750
+Evaluations:	1800
+Evaluations:	1850
+Evaluations:	1900
+Evaluations:	1950
+Evaluations:	2000
+Evaluations:	2050
+Evaluations:	2100
+Evaluations:	2150
+Evaluations:	2200
+Evaluations:	2250
+Evaluations:	2300
+Evaluations:	2350
+Evaluations:	2400
+Evaluations:	2450
+Evaluations:	2500
+Evaluations:	2550
+Evaluations:	2600
+Evaluations:	2650
+Evaluations:	2700
+Evaluations:	2750
+Evaluations:	2800
+Evaluations:	2850
+Evaluations:	2900
+Evaluations:	2950
+Evaluations:	3000
+Evaluations:	3050
+Evaluations:	3100
+Evaluations:	3150
+Evaluations:	3200
+Evaluations:	3250
+Evaluations:	3300
+Evaluations:	3350
+Evaluations:	3400
+Evaluations:	3450
+Evaluations:	3500
+Evaluations:	3550
+Evaluations:	3600
+Evaluations:	3650
+Evaluations:	3700
+Evaluations:	3750
+Evaluations:	3800
+Evaluations:	3850
+Evaluations:	3900
+Evaluations:	3950
+Evaluations:	4000
+Evaluations:	4050
+Evaluations:	4100
+Evaluations:	4150
+Evaluations:	4200
+Evaluations:	4250
+Evaluations:	4300
+Evaluations:	4350
+Evaluations:	4400
+Evaluations:	4450
+Evaluations:	4500
+Evaluations:	4550
+Evaluations:	4600
+Evaluations:	4650
+Evaluations:	4700
+Evaluations:	4750
+Evaluations:	4800
+Evaluations:	4850
+Evaluations:	4900
+Evaluations:	4950
+-------------------------------------------------
+SOLUTIONS: 	50
+Tolerance: 0.05	Leniency: 0.00
+Initialization
+Starting server at port 8870
+Connecting
+Starting server at port 8871
+Connecting
+Starting server at port 8872
+Connecting
+Starting server at port 8873
+Connecting
+Starting server at port 8874
+Connecting
+Starting server at port 8875
+Connecting
+Starting server at port 8876
+Connecting
+Starting server at port 8877
+Connecting
+Starting server at port 8878
+Connecting
+Starting server at port 8879
+Connecting
+Cores: 10
+Evaluations:	50
+Evaluations:	100
+Evaluations:	150
+Evaluations:	200
+Evaluations:	250
+Evaluations:	300
+Evaluations:	350
+Evaluations:	400
+Evaluations:	450
+Evaluations:	500
+Evaluations:	550
+Evaluations:	600
+Evaluations:	650
+Evaluations:	700
+Evaluations:	750
+Evaluations:	800
+Evaluations:	850
+Evaluations:	900
+Evaluations:	950
+Evaluations:	1000
+Evaluations:	1050
+Evaluations:	1100
+Evaluations:	1150
+Evaluations:	1200
+Evaluations:	1250
+Evaluations:	1300
+Evaluations:	1350
+Evaluations:	1400
+Evaluations:	1450
+Evaluations:	1500
+Evaluations:	1550
+Evaluations:	1600
+Evaluations:	1650
+Evaluations:	1700
+Evaluations:	1750
+Evaluations:	1800
+Evaluations:	1850
+Evaluations:	1900
+Evaluations:	1950
+Evaluations:	2000
+Evaluations:	2050
+Evaluations:	2100
+Evaluations:	2150
+Evaluations:	2200
+Evaluations:	2250
+Evaluations:	2300
+Evaluations:	2350
+Evaluations:	2400
+Evaluations:	2450
+Evaluations:	2500
+Evaluations:	2550
+Evaluations:	2600
+Evaluations:	2650
+Evaluations:	2700
+Evaluations:	2750
+Evaluations:	2800
+Evaluations:	2850
+Evaluations:	2900
+Evaluations:	2950
+Evaluations:	3000
+Evaluations:	3050
+Evaluations:	3100
+Evaluations:	3150
+Evaluations:	3200
+Evaluations:	3250
+Evaluations:	3300
+Evaluations:	3350
+Evaluations:	3400
+Evaluations:	3450
+Evaluations:	3500
+Evaluations:	3550
+Evaluations:	3600
+Evaluations:	3650
+Evaluations:	3700
+Evaluations:	3750
+Evaluations:	3800
+Evaluations:	3850
+Evaluations:	3900
+Evaluations:	3950
+Evaluations:	4000
+Evaluations:	4050
+Evaluations:	4100
+Evaluations:	4150
+Evaluations:	4200
+Evaluations:	4250
+Evaluations:	4300
+Evaluations:	4350
+Evaluations:	4400
+Evaluations:	4450
+Evaluations:	4500
+Evaluations:	4550
+Evaluations:	4600
+Evaluations:	4650
+Evaluations:	4700
+Evaluations:	4750
+Evaluations:	4800
+Evaluations:	4850
+Evaluations:	4900
+Evaluations:	4950
+-------------------------------------------------
+SOLUTIONS: 	50
+Tolerance: 0.05	Leniency: 0.05
+Initialization
+Starting server at port 8870
+Connecting
+Starting server at port 8871
+Connecting
+Starting server at port 8872
+Connecting
+Starting server at port 8873
+Connecting
+Starting server at port 8874
+Connecting
+Starting server at port 8875
+Connecting
+Starting server at port 8876
+Connecting
+Starting server at port 8877
+Connecting
+Starting server at port 8878
+Connecting
+Starting server at port 8879
+Connecting
+Cores: 10
+Evaluations:	50
+Evaluations:	100
+Evaluations:	150
+Evaluations:	200
+Evaluations:	250
+Evaluations:	300
+Evaluations:	350
+Evaluations:	400
+Evaluations:	450
+Evaluations:	500
+Evaluations:	550
+Evaluations:	600
+Evaluations:	650
+Evaluations:	700
+Evaluations:	750
+Evaluations:	800
+Evaluations:	850
+Evaluations:	900
+Evaluations:	950
+Evaluations:	1000
+Evaluations:	1050
+Evaluations:	1100
+Evaluations:	1150
+Evaluations:	1200
+Evaluations:	1250
+Evaluations:	1300
+Evaluations:	1350
+Evaluations:	1400
+Evaluations:	1450
+Evaluations:	1500
+Evaluations:	1550
+Evaluations:	1600
+Evaluations:	1650
+Evaluations:	1700
+Evaluations:	1750
+Evaluations:	1800
+Evaluations:	1850
+Evaluations:	1900
+Evaluations:	1950
+Evaluations:	2000
+Evaluations:	2050
+Evaluations:	2100
+Evaluations:	2150
+Evaluations:	2200
+Evaluations:	2250
+Evaluations:	2300
+Evaluations:	2350
+Evaluations:	2400
+Evaluations:	2450
+Evaluations:	2500
+Evaluations:	2550
+Evaluations:	2600
+Evaluations:	2650
+Evaluations:	2700
+Evaluations:	2750
+Evaluations:	2800
+Evaluations:	2850
+Evaluations:	2900
+Evaluations:	2950
+Evaluations:	3000
+Evaluations:	3050
+Evaluations:	3100
+Evaluations:	3150
+Evaluations:	3200
+Evaluations:	3250
+Evaluations:	3300
+Evaluations:	3350
+Evaluations:	3400
+Evaluations:	3450
+Evaluations:	3500
+Evaluations:	3550
+Evaluations:	3600
+Evaluations:	3650
+Evaluations:	3700
+Evaluations:	3750
+Evaluations:	3800
+Evaluations:	3850
+Evaluations:	3900
+Evaluations:	3950
+Evaluations:	4000
+Evaluations:	4050
+Evaluations:	4100
+Evaluations:	4150
+Evaluations:	4200
+Evaluations:	4250
+Evaluations:	4300
+Evaluations:	4350
+Evaluations:	4400
+Evaluations:	4450
+Evaluations:	4500
+Evaluations:	4550
+Evaluations:	4600
+Evaluations:	4650
+Evaluations:	4700
+Evaluations:	4750
+Evaluations:	4800
+Evaluations:	4850
+Evaluations:	4900
+Evaluations:	4950
+-------------------------------------------------
+SOLUTIONS: 	50
+Tolerance: 0.05	Leniency: 0.10
+Initialization
+Starting server at port 8870
+Connecting
+Starting server at port 8871
+Connecting
+Starting server at port 8872
+Connecting
+Starting server at port 8873
+Connecting
+Starting server at port 8874
+Connecting
+Starting server at port 8875
+Connecting
+Starting server at port 8876
+Connecting
+Starting server at port 8877
+Connecting
+Starting server at port 8878
+Connecting
+Starting server at port 8879
+Connecting
+Cores: 10
+Evaluations:	50
+Evaluations:	100
+Evaluations:	150
+Evaluations:	200
+Evaluations:	250
+Evaluations:	300
+Evaluations:	350
+Evaluations:	400
+Evaluations:	450
+Evaluations:	500
+Evaluations:	550
+Evaluations:	600
+Evaluations:	650
+Evaluations:	700
+Evaluations:	750
+Evaluations:	800
+Evaluations:	850
+Evaluations:	900
+Evaluations:	950
+Evaluations:	1000
+Evaluations:	1050
+Evaluations:	1100
+Evaluations:	1150
+Evaluations:	1200
+Evaluations:	1250
+Evaluations:	1300
+Evaluations:	1350
+Evaluations:	1400
+Evaluations:	1450
+Evaluations:	1500
+Evaluations:	1550
+Evaluations:	1600
+Evaluations:	1650
+Evaluations:	1700
+Evaluations:	1750
+Evaluations:	1800
+Evaluations:	1850
+Evaluations:	1900
+Evaluations:	1950
+Evaluations:	2000
+Evaluations:	2050
+Evaluations:	2100
+Evaluations:	2150
+Evaluations:	2200
+Evaluations:	2250
+Evaluations:	2300
+Evaluations:	2350
+Evaluations:	2400
+Evaluations:	2450
+Evaluations:	2500
+Evaluations:	2550
+Evaluations:	2600
+Evaluations:	2650
+Evaluations:	2700
+Evaluations:	2750
+Evaluations:	2800
+Evaluations:	2850
+Evaluations:	2900
+Evaluations:	2950
+Evaluations:	3000
+Evaluations:	3050
+Evaluations:	3100
+Evaluations:	3150
+Evaluations:	3200
+Evaluations:	3250
+Evaluations:	3300
+Evaluations:	3350
+Evaluations:	3400
+Evaluations:	3450
+Evaluations:	3500
+Evaluations:	3550
+Evaluations:	3600
+Evaluations:	3650
+Evaluations:	3700
+Evaluations:	3750
+Evaluations:	3800
+Evaluations:	3850
+Evaluations:	3900
+Evaluations:	3950
+Evaluations:	4000
+Evaluations:	4050
+Evaluations:	4100
+Evaluations:	4150
+Evaluations:	4200
+Evaluations:	4250
+Evaluations:	4300
+Evaluations:	4350
+Evaluations:	4400
+Evaluations:	4450
+Evaluations:	4500
+Evaluations:	4550
+Evaluations:	4600
+Evaluations:	4650
+Evaluations:	4700
+Evaluations:	4750
+Evaluations:	4800
+Evaluations:	4850
+Evaluations:	4900
+Evaluations:	4950
+-------------------------------------------------
+SOLUTIONS: 	50

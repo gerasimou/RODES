@@ -8,13 +8,19 @@
 % - alpha (optional). Opacity in plots. Default 0.5
 
 %function [dataPath, experiment, continusParams, discreteParms, objetives] = 
-function createPlots(dataPath, experimentName, nContinuousParam, nDiscreteParam, nObjectives)
+function createPlots(dataPath, experimentName,  nContinuousParam, nDiscreteParam, nObjectives)
 
-FUN = strcat(dataPath, 'FUN_REGION_', experimentName);
-VAR = strcat(dataPath, 'VAR_REGION_', experimentName);
-
-fprintf('%s\n', FUN);
-fprintf('%s\n', VAR);
-plot_regions (FUN, nObjectives, nContinuousParam, nDiscreteParam, VAR, experimentName);
-
+    run = 1;
+    for tolerance = [001, 002, 005] 
+        for leniency = [010, 020, 030]
+            experimentInstance = strcat(sprintf('%03d',tolerance),'_',sprintf('%03d',leniency),'_',sprintf('%d',run));
+            FUN = strcat(dataPath, experimentName, '/FUN_REGION_', experimentInstance);
+            VAR = strcat(dataPath, experimentName, '/VAR_REGION_', experimentInstance);
+            %fprintf('%s\n', FUN);
+            %fprintf('%s\n', VAR);
+            
+            plot_regions (FUN, nObjectives, nContinuousParam, nDiscreteParam, VAR, experimentName, experimentInstance);
+        end
+    end
+    
 end
