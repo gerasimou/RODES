@@ -119,10 +119,15 @@ public class EvoChecker {
 //		int numOfConstraints  = 1;
 
 //		Cluster
-		propertyList.add(new Property(true));
+//		propertyList.add(new Property(true));
+//		propertyList.add(new Property(true));
+//		propertyList.add(new Property(false));
+//		int numOfConstraints  = 1;
+
+//		Buffer
 		propertyList.add(new Property(true));
 		propertyList.add(new Property(false));
-		int numOfConstraints  = 1;
+		int numOfConstraints  = 0;
 
 		
 		//6) instantiate the problem
@@ -140,7 +145,7 @@ public class EvoChecker {
 			if (algorithmStr.equals("NSGAII")){
 				NSGAIIRegion_Settings nsgaiiSettings = new NSGAIIRegion_Settings(problem.getName(), problem);
 				algorithm = nsgaiiSettings.configure();
-			}
+ 			}
 			else if (algorithmStr.equals("RANDOM")){
 				RandomSearchRegion_Settings rsSettings = new RandomSearchRegion_Settings(problem.getName(), problem);
 				algorithm = rsSettings.configure();
