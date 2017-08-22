@@ -3,7 +3,8 @@ ctmc
 const int max_slow_buffer = 31;
 const int max_fast_buffer = 21;
 
-const double s_rate = 30;
+//const double s_rate = 30;
+evolve const double s_rate [10..50];
 const double r_fast_rate = 15;
 const double r_slow_rate = 10;
 const double c_rate = 40;

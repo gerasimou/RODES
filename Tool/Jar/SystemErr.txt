@@ -1045,3 +1045,1459 @@ PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn 
 State cnt: 5632
 Trans cnt: 21884
 class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+PSEMultOptions = { ocl = false; fmt = CSR, para = 0; many = 0; adaptiveFoxGlynn = false }
+State cnt: 5632
+Trans cnt: 21884
+class pse.PSEFoxGlynnSimple<class pse.PSEMVMult_CPU>
+Prism Executor exception

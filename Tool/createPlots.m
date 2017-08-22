@@ -11,13 +11,13 @@
 function createPlots(dataPath, experimentName,  nContinuousParam, nDiscreteParam, nObjectives)
 
     run = 1;
-    for tolerance = [001, 002, 005] 
-        for leniency = [010, 020, 030]
+    for tolerance = [002]%, 002, 005] 
+        for leniency = [030]%, 020, 030]
             experimentInstance = strcat(sprintf('%03d',tolerance),'_',sprintf('%03d',leniency),'_',sprintf('%d',run));
             FUN = strcat(dataPath, experimentName, '/FUN_REGION_', experimentInstance);
             VAR = strcat(dataPath, experimentName, '/VAR_REGION_', experimentInstance);
-            %fprintf('%s\n', FUN);
-            %fprintf('%s\n', VAR);
+            fprintf('%s\n', FUN);
+            fprintf('%s\n', VAR);
             
             plot_regions (FUN, nObjectives, nContinuousParam, nDiscreteParam, VAR, experimentName, experimentInstance);
         end
