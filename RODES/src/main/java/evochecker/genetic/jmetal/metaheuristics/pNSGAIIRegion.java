@@ -28,6 +28,7 @@ import evochecker.genetic.jmetal.util.ExampleRegionDistance;
 import evochecker.genetic.jmetal.util.RegionDistance;
 import evochecker.genetic.jmetal.util.RegionDominanceComparator;
 import evochecker.genetic.jmetal.util.RegionRanking;
+import evochecker.genetic.jmetal.util.eDominanceWorstCaseDominanceComparator;
 import evochecker.genetic.jmetal.util.eToleranceWorstCaseDominanceComparator;
 import jmetal.core.Algorithm;
 import jmetal.core.Operator;
@@ -65,13 +66,14 @@ public class pNSGAIIRegion extends Algorithm {
 
     this.parallelEvaluator_ = evaluator;
 
-    double paramVolume = 2*Double.parseDouble(Utility.getProperty("REGION_RADIUS_C_FAIL", "1.0"))*
-                         2*Double.parseDouble(Utility.getProperty("REGION_RADIUS_C_HW_REPAIR_RATE", "1.0"));
+//    double paramVolume = 2*Double.parseDouble(Utility.getProperty("REGION_RADIUS_C_FAIL", "1.0"))*
+//                         2*Double.parseDouble(Utility.getProperty("REGION_RADIUS_C_HW_REPAIR_RATE", "1.0"));
 
     //New commands for regions: SET THE DOMINANCE & DISTANCE COMPARATOR
 //    boolean sensitivity = Boolean.parseBoolean(Utility.getProperty("SENSITIVITY"));
 //    double epsilon		= 0; 
-    this.regionDominanceComparator	= new eToleranceWorstCaseDominanceComparator();
+//    this.regionDominanceComparator	= new eToleranceWorstCaseDominanceComparator();
+    this.regionDominanceComparator	= new eDominanceWorstCaseDominanceComparator();
     this.regionDistance				= new ExampleRegionDistance();
 
     //this.regionDominanceComparator	= new eDominanceWorstCaseDominanceComparator(0.1,paramVolume,sensitivity);
