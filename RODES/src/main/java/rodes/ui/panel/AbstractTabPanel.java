@@ -3,11 +3,15 @@ package rodes.ui.panel;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import evochecker.auxiliary.StringProperties;
 
@@ -65,6 +69,23 @@ public abstract class AbstractTabPanel extends JPanel {
 		}
 	}
 	
+	
+	protected JFileChooser createFileChooser(Component parent, JTextField host, String description, String[] extension, String currentDir){	
+		JFileChooser chooser = new JFileChooser();
+	    FileNameExtensionFilter filter = new FileNameExtensionFilter(description, extension);// "JPG & GIF Images", new String[]{"jpg", "gif"});
+	    chooser.setFileFilter(filter);
+	    if (currentDir == null)
+    			chooser.setCurrentDirectory(new File(System.getProperty("user.dir")));//System.getProperty("user.home")));
+	    else
+	    		chooser.setCurrentDirectory(new File(currentDir));
+	    int returnVal = chooser.showOpenDialog(parent);
+	    if(returnVal == JFileChooser.APPROVE_OPTION) {
+	    		host.setText(chooser.getSelectedFile().getAbsolutePath());
+//	       System.out.println("You chose to open this file: " +
+//	            
+	    }
+	    return chooser;		
+	}
 	
 	protected abstract void checkInputs();
 }

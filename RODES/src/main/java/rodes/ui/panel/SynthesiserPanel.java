@@ -139,7 +139,8 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		JVMButton.setHorizontalAlignment (SwingConstants.LEFT);
 		JVMButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				createFileChooser(JVMButton, "JVM", new String[]{"exe,jpg"});
+				String javaDir = File.separator + "usr" + File.separator + "bin";
+				createFileChooser(JVMButton, JVMTextField, "JVM", new String[]{"exe,jpg"}, javaDir);
 			}
 		});				
 		
@@ -159,40 +160,9 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		add(processorsTextField);
 
 		
-//		JButton nextButton = new JButton("Next");
-//		nextButton.setBounds(410, 340, 170, 40);
-//		nextButton.addActionListener(new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				checkInputs();
-//				String errors = properties.get("ERRORS").toString(); 
-//				if (!errors.isEmpty())
-//					JOptionPane.showMessageDialog(parent, errors, "Configuration errors", JOptionPane.ERROR_MESSAGE);
-//				else
-//					((JTabbedPane)parent).setSelectedIndex(1);
-//				System.out.println(properties.toString());
-//			}
-//		});
-//		add(nextButton);
-
-		
 		setVisible(true);
 	}	
 	
-	
-	private JFileChooser createFileChooser(Component parent, String description, String[] extension){	
-		JFileChooser chooser = new JFileChooser();
-	    FileNameExtensionFilter filter = new FileNameExtensionFilter(description, extension);// "JPG & GIF Images", new String[]{"jpg", "gif"});
-	    chooser.setFileFilter(filter);
-	    chooser.setCurrentDirectory(new File(File.separator + "usr" + File.separator + "bin"));//System.getProperty("user.home")));
-	    int returnVal = chooser.showOpenDialog(parent);
-	    if(returnVal == JFileChooser.APPROVE_OPTION) {
-	    		JVMTextField.setText(chooser.getSelectedFile().getAbsolutePath());
-//	       System.out.println("You chose to open this file: " +
-//	            
-	    }
-	    return chooser;		
-	}
 	
 	
 	@Override

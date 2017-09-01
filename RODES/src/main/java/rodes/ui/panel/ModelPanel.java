@@ -51,7 +51,7 @@ public class ModelPanel extends AbstractTabPanel{
 		modelButton.setBounds(410, 10, 170, 40);
 		modelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				createFileChooser(modelButton, "CTMC model", new String[]{"sm"});
+				createFileChooser(modelButton, modelTextfield, "CTMC model", new String[]{"sm"}, null);
 			}
 		});
 		
@@ -72,51 +72,20 @@ public class ModelPanel extends AbstractTabPanel{
 		propertiesButton.setBounds(410, 50, 170, 40);
 		propertiesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				createFileChooser(propertiesButton, "CSL properties", new String[]{"csl"});
+				createFileChooser(propertiesButton, propertiesTextfield, "CSL properties", new String[]{"csl"}, null);
 			}
 		});
 		
-//		JButton nextButton = new JButton("Next");
-//		nextButton.setBounds(410, 340, 170, 40);
-//		nextButton.addActionListener(new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				checkInputs();
-//				String errors = properties.get("ERRORS").toString(); 
-//				if (!errors.isEmpty())
-//					JOptionPane.showMessageDialog(parent, errors, "Configuration errors", JOptionPane.ERROR_MESSAGE);
-//				else {
-//					((JTabbedPane)parent).setEnabledAt(0, false);
-//					((JTabbedPane)parent).setSelectedIndex(2);
-//				}
-//				System.out.println(properties.toString());
-//			}
-//		});
 		
 		add(propertiesLabel);
 		add(propertiesTextfield);
 		add(propertiesButton);
-		add(nextButton);
 		
 		
 
 		setVisible(true);
 	}	
 	
-	
-	private JFileChooser createFileChooser(Component parent, String description, String[] extension){	
-		JFileChooser chooser = new JFileChooser();
-	    FileNameExtensionFilter filter = new FileNameExtensionFilter(description, extension);// "JPG & GIF Images", new String[]{"jpg", "gif"});
-	    chooser.setFileFilter(filter);
-	    int returnVal = chooser.showOpenDialog(parent);
-	    if(returnVal == JFileChooser.APPROVE_OPTION) {
-	       System.out.println("You chose to open this file: " +
-	            chooser.getSelectedFile().getName());
-	    
-	    }
-	    
-	    return chooser;		
-	}
 
 
 	@Override
