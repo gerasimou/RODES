@@ -15,6 +15,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import evochecker.auxiliary.StringProperties;
 
+@SuppressWarnings("serial")
 public abstract class AbstractTabPanel extends JPanel {
 	/** Parent tab pane*/
 	Component parent;
@@ -70,7 +71,7 @@ public abstract class AbstractTabPanel extends JPanel {
 	}
 	
 	
-	protected JFileChooser createFileChooser(Component parent, JTextField host, String description, String[] extension, String currentDir){	
+	protected void showFileChooser(Component parent, JTextField host, String description, String[] extension, String currentDir){	
 		JFileChooser chooser = new JFileChooser();
 	    FileNameExtensionFilter filter = new FileNameExtensionFilter(description, extension);// "JPG & GIF Images", new String[]{"jpg", "gif"});
 	    chooser.setFileFilter(filter);
@@ -81,10 +82,7 @@ public abstract class AbstractTabPanel extends JPanel {
 	    int returnVal = chooser.showOpenDialog(parent);
 	    if(returnVal == JFileChooser.APPROVE_OPTION) {
 	    		host.setText(chooser.getSelectedFile().getAbsolutePath());
-//	       System.out.println("You chose to open this file: " +
-//	            
 	    }
-	    return chooser;		
 	}
 	
 	protected abstract void checkInputs();

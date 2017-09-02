@@ -1,22 +1,20 @@
 package rodes.ui.panel;
 
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 import evochecker.auxiliary.StringProperties;
 
@@ -44,6 +42,9 @@ public class SynthesiserPanel extends AbstractTabPanel{
 	/** Processors text field*/
 	JTextField  processorsTextField;
 	
+	/** Port text field*/
+	JTextField portTextField;
+	
 	/** Various REGEX*/
 	private final String INTEGER_REGEX = "^\\d+$";
 	private final String DOUBLE_REGEX  = "[0-9]+(.[0-9]+)?";
@@ -55,6 +56,14 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		if (frame == null)
 			throw new NullPointerException();
 		
+		ImageIcon qmIcon = null;
+		try {
+			qmIcon = new ImageIcon(ImageIO.read(getClass().getResource("/img/qm24.png")));
+		} 
+		catch (IOException e2) {
+			e2.printStackTrace();
+		}
+		
 		this.parent		= tab;
 		this.properties	= props;
 
@@ -64,7 +73,10 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		
 		//algorithm
 		JLabel algorithmLabel 	= new JLabel("Algorithm:");
-		algorithmLabel.setBounds(10, 10, 150, 40);
+		algorithmLabel.setBounds(10, 10, 100, 40);
+		algorithmLabel.setToolTipText("Select the evolutionary algorithm for synthesis");
+		algorithmLabel.setIcon(qmIcon);
+		algorithmLabel.setHorizontalTextPosition(SwingConstants.LEFT);
 
 		list = new JComboBox<>();// (new String[]{"NSGAII", "SPEA2", "MOCell"});
 		list.addItem("NSGAII");
@@ -79,10 +91,13 @@ public class SynthesiserPanel extends AbstractTabPanel{
 
 		
 		//population
-		JLabel populationLabel 			= new JLabel("Population:");
+		JLabel populationLabel 			= new JLabel ("Population:");
 		populationLabel.setBounds(10, 50, 150, 40);
+		populationLabel.setIcon(qmIcon);
+		populationLabel.setHorizontalTextPosition(SwingConstants.LEFT);
+		populationLabel.setToolTipText("Specify the desired population size");
 
-		populationTextfield	= new JTextField("50");
+		populationTextfield	= new JTextField("");
 		populationTextfield.setBounds(170, 50, 220, 40);
 		populationTextfield.setEditable(true);
 		
@@ -93,8 +108,11 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		//evaluations
 		JLabel evlauationsLabel 			= new JLabel("Evaluations:");
 		evlauationsLabel.setBounds(10, 90, 150, 40);
+		evlauationsLabel.setIcon(qmIcon);
+		evlauationsLabel.setHorizontalTextPosition(SwingConstants.LEFT);
+		evlauationsLabel.setToolTipText("Specify the desired number of total evaluations");
 		
-		evaluationsTextfield	= new JTextField("1000");
+		evaluationsTextfield	= new JTextField("");
 		evaluationsTextfield.setBounds(170, 90, 220, 40);
 		evaluationsTextfield.setEditable(true);
 		
@@ -105,6 +123,9 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		//tolerance
 		JLabel toleranceLabel 			= new JLabel("Tolerance:");
 		toleranceLabel.setBounds(10, 130, 150, 40);
+		toleranceLabel.setIcon(qmIcon);
+		toleranceLabel.setHorizontalTextPosition(SwingConstants.LEFT);
+		toleranceLabel.setToolTipText("Specify the desired tolerance level");
 		
 		toleranceTextfield	= new JTextField("");
 		toleranceTextfield.setBounds(170, 130, 220, 40);
@@ -117,6 +138,9 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		//epsilon
 		JLabel epsilonLabel 			= new JLabel("Epsilon:");
 		epsilonLabel.setBounds(10, 170, 150, 40);
+		epsilonLabel.setIcon(qmIcon);
+		epsilonLabel.setHorizontalTextPosition(SwingConstants.LEFT);
+		epsilonLabel.setToolTipText("Specify the desired epsilon (leniency) value");
 		
 		epsilonTextfield	= new JTextField("");
 		epsilonTextfield.setBounds(170, 170, 220, 40);
@@ -129,6 +153,9 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		//JVM
 		JLabel JVMLabel 			= new JLabel("JVM:");
 		JVMLabel.setBounds(10, 210, 150, 40);
+		JVMLabel.setIcon(qmIcon);
+		JVMLabel.setHorizontalTextPosition(SwingConstants.LEFT);
+		JVMLabel.setToolTipText("Select the java executable on this machine");
 		
 		JVMTextField	= new JTextField("");
 		JVMTextField.setBounds(170, 210, 220, 40);
@@ -140,7 +167,7 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		JVMButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String javaDir = File.separator + "usr" + File.separator + "bin";
-				createFileChooser(JVMButton, JVMTextField, "JVM", new String[]{"exe,jpg"}, javaDir);
+				showFileChooser(JVMButton, JVMTextField, "JVM", new String[]{"exe,jpg"}, javaDir);
 			}
 		});				
 		
@@ -151,16 +178,62 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		//processors
 		JLabel processorsLabel 			= new JLabel("Processors:");
 		processorsLabel.setBounds(10, 250, 150, 40);
+		processorsLabel.setIcon(qmIcon);
+		processorsLabel.setHorizontalTextPosition(SwingConstants.LEFT);
+		processorsLabel.setToolTipText("Specify the number of parallel executions");
 		
-		processorsTextField	= new JTextField("1");
+		processorsTextField	= new JTextField("");
 		processorsTextField.setBounds(170, 250, 220, 40);
 		processorsTextField.setEditable(true);
 		
 		add(processorsLabel);
 		add(processorsTextField);
+		
+		
+		//Port
+		JLabel portLabel = new JLabel("Starting port:");
+		portLabel.setBounds(10, 290, 150, 40);
+		portLabel.setIcon(qmIcon);
+		portLabel.setHorizontalTextPosition(SwingConstants.LEFT);
+		portLabel.setToolTipText("Specify the starting port number");
+
+		portTextField = new JTextField();
+		portTextField.setBounds(170, 290, 220, 40);
+		portTextField.setEditable(true);
+		
+		add(portLabel);
+		add(portTextField);
 
 		
 		setVisible(true);
+		
+		list.setSelectedIndex(1);
+		populationTextfield.setText("50");
+		evaluationsTextfield.setText("1000");
+		toleranceTextfield.setText("0.1");
+		epsilonTextfield.setText("0.2");
+		JVMTextField.setText("usr/bin/java");
+		processorsTextField.setText("10");
+		portTextField.setText("8810");
+		
+//		JButton button = new JButton();
+//		button.setHorizontalAlignment(SwingConstants.CENTER);
+//		button.setBounds(80, 21, 50, 22);
+//		try {
+//			Image img = ImageIO.read(getClass().getResource("/img/qm24.png"));
+//		    button.setIcon(new ImageIcon(img));
+//		    button.setBorder(new CompoundBorder());
+//		} catch (IOException e1) {
+//			e1.printStackTrace();
+//		}
+//		button.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				String javaDir = File.separator + "usr" + File.separator + "bin";
+//				showFileChooser(JVMButton, JVMTextField, "JVM", new String[]{"exe,jpg"}, javaDir);
+//			}
+//		});	
+//		add(button);
+		
 	}	
 	
 	
@@ -217,7 +290,6 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		else
 			properties.put("JVM", 		jvm);
 		
-
 		//check evaluations
 		String processors = processorsTextField.getText();
 		if (processors.isEmpty() || !processors.matches(INTEGER_REGEX)) {
@@ -226,7 +298,16 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		}
 		else
 			properties.put("PROCESSORS", 	processors);
-		
+
+		//check port
+		String port = portTextField.getText();
+		if (port.isEmpty() || !port.matches(INTEGER_REGEX)) {
+			errors.append("Incorrect port number: " + port +"\n");
+			properties.put("PORT",		null);
+		}
+		else
+			properties.put("PORT", 	port);
+
 		properties.put("ERRORS", errors);
 	}
 }

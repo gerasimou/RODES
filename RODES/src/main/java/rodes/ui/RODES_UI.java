@@ -36,6 +36,8 @@ public class RODES_UI {
 		});
 	}
 
+	
+	
 	/**
 	 * Create the application.
 	 */
@@ -43,6 +45,7 @@ public class RODES_UI {
 		initialize();
 	}
 
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -50,6 +53,7 @@ public class RODES_UI {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
 		
 //		OptionDialog.createTabbedPane(frame);
 		frame.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -57,6 +61,11 @@ public class RODES_UI {
 		//init properties
 		properties = new StringProperties();
 		
+		//Create the menu bar.
+		MenuBar menuBar = new MenuBar(frame);
+		frame.setJMenuBar(menuBar);
+
+		//Create Tab
 		JTabbedPane tab 							= new JTabbedPane();
 		SynthesiserPanel	synthesiserPanel			= new SynthesiserPanel(frame, tab, properties);
 		ModelPanel 			modelPanel 			= new ModelPanel(frame, tab, properties);
@@ -71,6 +80,8 @@ public class RODES_UI {
 		tab.setEnabledAt(2, false);
 		
 		frame.getContentPane().add(tab);
+		
+		
 		
 //		JPanel panel = new JPanel();
 //		panel.setBackground(Color.ORANGE);
