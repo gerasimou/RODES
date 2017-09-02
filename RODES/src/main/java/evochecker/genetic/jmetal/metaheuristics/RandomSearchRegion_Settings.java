@@ -20,6 +20,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package evochecker.genetic.jmetal.metaheuristics;
 
+import evochecker.auxiliary.Constants;
 import evochecker.auxiliary.Utility;
 import evochecker.genetic.jmetal.MultiProcessEvaluator;
 import jmetal.core.Algorithm;
@@ -42,8 +43,8 @@ public class RandomSearchRegion_Settings extends Settings{
 	public RandomSearchRegion_Settings(String problemName, Problem problem){
 		super(problemName);
 		problem_ 			= problem;
-		maxEvaluations_ 	= Integer.parseInt(Utility.getProperty("MAX_EVALUATIONS", "100"));
-		populationSize_ 	= Integer.parseInt(Utility.getProperty("POPULATION_SIZE", "100"));
+		populationSize_ 			= Integer.parseInt(Utility.getProperty(Constants.POPULATION_SIZE_KEYWORD, "100"));
+		maxEvaluations_ 			= Integer.parseInt(Utility.getProperty(Constants.MAX_EVALUATIONS_KEYWORD, "100"));
 
 	}//RandomSearch_Settings
 

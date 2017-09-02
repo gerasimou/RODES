@@ -11,6 +11,7 @@
 //==============================================================================
 package evochecker.genetic.jmetal.util;
 
+import evochecker.auxiliary.Constants;
 import evochecker.auxiliary.Utility;
 import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
 import jmetal.util.comparators.IConstraintViolationComparator;
@@ -23,21 +24,21 @@ public class eToleranceWorstCaseDominanceComparator extends RegionDominanceCompa
     IConstraintViolationComparator violationConstraintComparator_;
     
     private final boolean SENSITIVITY; //use sensitivity in the comparator
-    private final double LENIENCY; 		
+    private final double EPSILON; 		
 
 	public eToleranceWorstCaseDominanceComparator() {
 //		this.epsilon 		= epsilon;
 //        this.paramVolume 	= paramVolume;
 //        this. SENSITIVITY 	= sensitivity;
-		SENSITIVITY = Boolean.parseBoolean(Utility.getProperty("SENSITIVITY"));	//use sensitivity in the comparator
-		LENIENCY	= Double.parseDouble(Utility.getProperty("LENIENCY"));
+		SENSITIVITY = Boolean.parseBoolean(Utility.getProperty(Constants.SENSITIVITY_KEYWORD));	//use sensitivity in the comparator
+		EPSILON	= Double.parseDouble(Utility.getProperty(Constants.EPSILON_KEYWORD));
         violationConstraintComparator_ = new OverallConstraintViolationComparator(); 
 	}
 
 
 	public eToleranceWorstCaseDominanceComparator(boolean sensitivity, double leniency) {
 		SENSITIVITY 	= sensitivity;
-		LENIENCY		= leniency;
+		EPSILON		= leniency;
         this.violationConstraintComparator_ = new OverallConstraintViolationComparator(); 
 	}
 
@@ -120,11 +121,11 @@ public class eToleranceWorstCaseDominanceComparator extends RegionDominanceCompa
         				v1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
         				v2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
         			
-        				if (v1<0 && v1 * (1+LENIENCY) > v2){
+        				if (v1<0 && v1 * (1+EPSILON) > v2){
         					lenientDomination = false;
         					break;
         				}
-        				else if (v1>=0 && v1 > v2 * (1-LENIENCY) ){
+        				else if (v1>=0 && v1 > v2 * (1-EPSILON) ){
         					lenientDomination = false;
         					break;
         				}
@@ -140,11 +141,11 @@ public class eToleranceWorstCaseDominanceComparator extends RegionDominanceCompa
         			for (int i = 0; i < solution1.getNumberOfObjectives(); i++) {
         				v1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
         				v2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
-        				if (v1<0 && v1 < v2 * (1+LENIENCY)){
+        				if (v1<0 && v1 < v2 * (1+EPSILON)){
         					lenientDomination = false;
         					break;
         				}
-        				else if (v1>=0 && v1 * (1-LENIENCY) < v2){
+        				else if (v1>=0 && v1 * (1-EPSILON) < v2){
         					lenientDomination = false;
         					break;
         				}

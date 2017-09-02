@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import evochecker.auxiliary.Constants;
 import evochecker.auxiliary.Utility;
 import evochecker.exception.EvoCheckerException;
 import evochecker.genetic.jmetal.metaheuristics.IParallelEvaluator;
@@ -84,7 +85,7 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 	 */
 	public MultiProcessEvaluator(int processes) {
 		if (processes <= 0) {
-			String processesNum = Utility.getProperty("PROCESSORS");
+			String processesNum = Utility.getProperty(Constants.PROCESSORS_KEYWORD);
 			if (processesNum!=null)
 				numberOfProcesses = Integer.parseInt(processesNum);
 			else if (processesNum == null || processesNum.equals("-1"))
@@ -108,10 +109,10 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 			in 		= new BufferedReader[numberOfProcesses];
 			out 	= new PrintWriter[numberOfProcesses];
 			
-			int initPort = Integer.parseInt(Utility.getProperty("INIT_PORT_NUM"));
+			int initPort = Integer.parseInt(Utility.getProperty(Constants.INITIAL_PORT_KEYWORD));
 						
 			String params[] = new String[4];
-			params[0] = Utility.getProperty("JVM");
+			params[0] = Utility.getProperty(Constants.JVM_KEYWORD);
 			params[1] = "-jar";
 			params[2] = Utility.getProperty("EXECUTOR_PATH", "repo/PRISM-PSY-fat.jar");
 			for (int i = 0; i < numberOfProcesses; i++) {

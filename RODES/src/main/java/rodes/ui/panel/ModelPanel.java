@@ -95,22 +95,22 @@ public class ModelPanel extends AbstractTabPanel{
 		StringBuilder errors = new StringBuilder();
 
 		//check model
-		String model = modelTextfield.getText();
+		String model = modelTextArea.getText();
 		if (model.isEmpty()) {
 			errors.append("Incorrect model: " + model +"\n");
-			properties.put("MODEL",		null);
+			properties.put(Constants.MODEL_FILE_KEYWORD,		null);
 		}
 		else
-			properties.put("MODEL",		model);
+			properties.put(Constants.MODEL_FILE_KEYWORD,		model);
 		
 		//check properties
-		String props = propertiesTextfield.getText();
+		String props = propertiesTextArea.getText();
 		if (props.isEmpty()) {
 			errors.append("Incorrect properties: " + props +"\n");
-			properties.put("PROPERTIES",		null);
+			properties.put(Constants.PROPERTIES_FILE_KEYWORD,		null);
 		}
 		else
-			properties.put("PROPERTIES",		props);
+			properties.put(Constants.PROPERTIES_FILE_KEYWORD,		props);
 
 		properties.put("ERRORS", errors);
 	}

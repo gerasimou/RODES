@@ -16,6 +16,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import evochecker.auxiliary.Constants;
 import evochecker.auxiliary.StringProperties;
 
 @SuppressWarnings("serial")
@@ -243,70 +244,70 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		StringBuilder errors = new StringBuilder();
 		
 		//check algorithm
-		properties.put("ALGORITHM", 		list.getSelectedItem().toString());
+		properties.put(Constants.ALGORITHM_KEYWORD, list.getSelectedItem().toString());
 		
 		//check population
 		String population = populationTextfield.getText();
 		if (population.isEmpty() || !population.matches(INTEGER_REGEX)) {
 			errors.append("Incorrect population: " + population +"\n");
-			properties.put("POPULATION",		null);
+			properties.put(Constants.POPULATION_SIZE_KEYWORD, null);
 		}
 		else
-			properties.put("POPULATION",		population);
+			properties.put(Constants.POPULATION_SIZE_KEYWORD,		population);
 
 		//check evaluations
 		String evaluations = evaluationsTextfield.getText();
 		if (evaluations.isEmpty() || !evaluations.matches(INTEGER_REGEX)) {
 			errors.append("Incorrect evaluations: " + evaluations +"\n");
-			properties.put("EVALUATIONS",		null);
+			properties.put(Constants.MAX_EVALUATIONS_KEYWORD,		null);
 		}
 		else
-			properties.put("EVALUATIONS", 	evaluations);
+			properties.put(Constants.MAX_EVALUATIONS_KEYWORD, 	evaluations);
 
 		//check tolerance
 		String tolerance = toleranceTextfield.getText();
 		if (tolerance.isEmpty() || !tolerance.matches(DOUBLE_REGEX)) {
 			errors.append("Incorrect tolerance: " + tolerance +"\n");
-			properties.put("TOLERANCE", 		null);
+			properties.put(Constants.TOLERANCE_KEYWORD, 		null);
 		}
 		else
-			properties.put("TOLERANCE", 		tolerance);
+			properties.put(Constants.TOLERANCE_KEYWORD, 		tolerance);
 
 		//check epsilon
 		String epsilon = epsilonTextfield.getText();
 		if (epsilon.isEmpty() || !epsilon.matches(DOUBLE_REGEX)) {
 			errors.append("Incorrect epsilon: " + epsilon +"\n");
-			properties.put("EPSILON", 		null);
+			properties.put(Constants.EPSILON_KEYWORD, 		null);
 		}
 		else
-			properties.put("EPSILON", 		epsilon);
+			properties.put(Constants.EPSILON_KEYWORD, 		epsilon);
 
 		//check JVM
 		String jvm = JVMTextField.getText();
 		if (jvm.isEmpty()) {
 			errors.append("Incorrect JVM location: " + jvm +"\n");
-			properties.put("JVM", 		null);
+			properties.put(Constants.JVM_KEYWORD, 		null);
 		}
 		else
-			properties.put("JVM", 		jvm);
+			properties.put(Constants.JVM_KEYWORD, 		jvm);
 		
 		//check evaluations
 		String processors = processorsTextField.getText();
 		if (processors.isEmpty() || !processors.matches(INTEGER_REGEX)) {
 			errors.append("Incorrect processors: " + processors +"\n");
-			properties.put("PROCESSORS",		null);
+			properties.put(Constants.PROCESSORS_KEYWORD,		null);
 		}
 		else
-			properties.put("PROCESSORS", 	processors);
+			properties.put(Constants.PROCESSORS_KEYWORD, 	processors);
 
 		//check port
 		String port = portTextField.getText();
 		if (port.isEmpty() || !port.matches(INTEGER_REGEX)) {
 			errors.append("Incorrect port number: " + port +"\n");
-			properties.put("PORT",		null);
+			properties.put(Constants.INITIAL_PORT_KEYWORD,		null);
 		}
 		else
-			properties.put("PORT", 	port);
+			properties.put(Constants.INITIAL_PORT_KEYWORD, 	port);
 
 		properties.put("ERRORS", errors);
 	}

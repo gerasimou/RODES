@@ -11,6 +11,7 @@
 //==============================================================================
 package evochecker.genetic.jmetal.encoding.solution;
 
+import evochecker.auxiliary.Constants;
 import evochecker.auxiliary.Utility;
 import evochecker.exception.EvoCheckerException;
 import evochecker.genetic.jmetal.encoding.ArrayReal;
@@ -189,7 +190,7 @@ public class RegionSolution extends Solution{
 		private double upperBound;
 		
 		/** tolerance*/
-		private double tolerance = Double.parseDouble(Utility.getProperty("TOLERANCE"));
+		private double tolerance = Double.parseDouble(Utility.getProperty(Constants.TOLERANCE_KEYWORD));
 
 		
 		private RegionParameter(double value, double lowerBound, double upperBound){

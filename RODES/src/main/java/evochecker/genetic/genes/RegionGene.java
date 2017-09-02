@@ -11,6 +11,7 @@
 //==============================================================================
 package evochecker.genetic.genes;
 
+import evochecker.auxiliary.Constants;
 import evochecker.auxiliary.Utility;
 
 
@@ -37,7 +38,7 @@ public class RegionGene extends AbstractGene {
 	 */
 	public RegionGene(String name, Number minValue, Number maxValue) {
 		super(name, minValue, maxValue);
-		this.tolerance = Double.parseDouble(Utility.getProperty("TOLERANCE"));//.concat(name).toUpperCase()));
+		this.tolerance = Double.parseDouble(Utility.getProperty(Constants.TOLERANCE_KEYWORD));//.concat(name).toUpperCase()));
 		this.radius	   = Math.abs(maxValue.doubleValue()-minValue.doubleValue()) *tolerance;
 	}
 	

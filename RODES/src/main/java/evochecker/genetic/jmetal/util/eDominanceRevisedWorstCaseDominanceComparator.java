@@ -11,6 +11,7 @@
 //==============================================================================
 package evochecker.genetic.jmetal.util;
 
+import evochecker.auxiliary.Constants;
 import evochecker.auxiliary.Utility;
 import evochecker.exception.EvoCheckerException;
 import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
@@ -22,12 +23,12 @@ public class eDominanceRevisedWorstCaseDominanceComparator extends RegionDominan
     IConstraintViolationComparator violationConstraintComparator_;
     
     private final boolean SENSITIVITY; //use sensitivity in the comparator
-    private final double LENIENCY; 		
+    private final double EPSILON; 		
 
 
     public eDominanceRevisedWorstCaseDominanceComparator() {
-		SENSITIVITY = Boolean.parseBoolean(Utility.getProperty("SENSITIVITY"));
-		LENIENCY	= Double.parseDouble(Utility.getProperty("LENIENCY"));
+		SENSITIVITY = Boolean.parseBoolean(Utility.getProperty(Constants.SENSITIVITY_KEYWORD));
+		EPSILON	= Double.parseDouble(Utility.getProperty(Constants.EPSILON_KEYWORD));
         violationConstraintComparator_ = new OverallConstraintViolationComparator(); 
 	}
 
@@ -84,15 +85,15 @@ public class eDominanceRevisedWorstCaseDominanceComparator extends RegionDominan
 		
 		//check epsilon dominance, i.e., first part of the new dominance relation
 		boolean epsilonBetter = false;
-		if (LENIENCY > 0){
+		if (EPSILON > 0){
 			if (dominate1 > dominate2){
 				for (int i = 0; i < solution1.getNumberOfObjectives(); i++) {
 					value1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
 					value2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
 					
-					if (value1<0 && ((1+LENIENCY)*value1 > value2) )		//maximisation objective
+					if (value1<0 && ((1+EPSILON)*value1 > value2) )		//maximisation objective
 						epsilonBetter = true;
-					else if (value1>=0 && ((1+LENIENCY)*value1 < value2 ) ) //minimisation objective
+					else if (value1>=0 && ((1+EPSILON)*value1 < value2 ) ) //minimisation objective
 						epsilonBetter = true;
 				}
 			}
@@ -101,9 +102,9 @@ public class eDominanceRevisedWorstCaseDominanceComparator extends RegionDominan
 					value1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
 					value2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
 					
-					if (value2<0 && (value1 < (1+LENIENCY)*value2) )		//maximisation objective
+					if (value2<0 && (value1 < (1+EPSILON)*value2) )		//maximisation objective
 						epsilonBetter = true;
-					else if (value2>=0 && (value1 > (1+LENIENCY)*value2 ) )	//minimisation objective
+					else if (value2>=0 && (value1 > (1+EPSILON)*value2 ) )	//minimisation objective
 						epsilonBetter = true;
 				}
 			}
