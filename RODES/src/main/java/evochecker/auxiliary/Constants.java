@@ -39,7 +39,7 @@ public class Constants {
   public static final String MAX_EVALUATIONS_KEYWORD = "MMAX_EVALUATIONS";
 
   /** Keyword for population size*/
-  public static final String POPULATION_SIZE_KEYWORD = "PPOPULATION";
+  public static final String POPULATION_SIZE_KEYWORD = "PPOPULATION_SIZE";
 
   /** Keyword for processors*/
   public static final String PROCESSORS_KEYWORD = "PPROCESSORS";
@@ -49,6 +49,12 @@ public class Constants {
 
   /** Keyword for initial JVM*/
   public static final String JVM_KEYWORD = "JJVM";
+  
+  /** Integer REGEX*/
+  public static  final String INTEGER_REGEX = "^\\d+$";
+
+  /** Double REGEX*/
+  public static final String DOUBLE_REGEX  = "[0-9]+(.[0-9]+)?";
 
   
   

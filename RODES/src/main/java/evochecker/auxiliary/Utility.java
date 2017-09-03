@@ -62,6 +62,12 @@ public class Utility {
 	}
 	
 	
+	public static void loadPropertiesInstance(Properties props){
+		if ( (properties == null) && (props != null) )
+			properties = props;
+	}
+	
+	
 	public static void setProperty (String key, String value) throws EvoCheckerException{
 		loadPropertiesInstance();
 		if (properties.setProperty(key, value) ==null)
@@ -80,7 +86,7 @@ public class Utility {
 	public static String getProperty (String key, String defaultValue){
 		loadPropertiesInstance();
 		String output = properties.getProperty(key);
-		return (output != null ? output : defaultValue);
+		return ((output != null && !output.isEmpty()) ? output : defaultValue);
 	}
 	
 	

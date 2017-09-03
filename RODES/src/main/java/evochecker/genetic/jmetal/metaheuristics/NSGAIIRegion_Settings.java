@@ -58,8 +58,8 @@ public class NSGAIIRegion_Settings extends Settings {
 		super(problemName);
 		problem_ 					= problem;
 		// Default experiments.settings
-		populationSize_ 			= Integer.parseInt(Utility.getProperty(Constants.POPULATION_SIZE_KEYWORD, "100"));
-		maxEvaluations_ 			= Integer.parseInt(Utility.getProperty(Constants.MAX_EVALUATIONS_KEYWORD, "100"));
+		populationSize_ 			= Integer.parseInt(Utility.getProperty(Constants.POPULATION_SIZE_KEYWORD));
+		maxEvaluations_ 			= Integer.parseInt(Utility.getProperty(Constants.MAX_EVALUATIONS_KEYWORD));
 
 		realCrossoverProbability_ 	= 0.9;
 		intCrossoverProbability_ 	= 0.9;

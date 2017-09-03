@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import _main.Experiment;
+import evochecker.auxiliary.Constants;
 import evochecker.auxiliary.Utility;
 import evochecker.genetic.GenotypeFactory;
 import evochecker.genetic.genes.AbstractGene;
@@ -97,8 +98,8 @@ public class EvoChecker {
 	 */
 	private void initializeProblem() throws Exception {
 		//1 Get model and properties filenames
-		modelFilename 		= Utility.getProperty("MODEL_TEMPLATE_FILE");
-		propertiesFilename	= Utility.getProperty("PROPERTIES_FILE");
+		modelFilename 		= Utility.getProperty(Constants.MODEL_FILE_KEYWORD);
+		propertiesFilename	= Utility.getProperty(Constants.PROPERTIES_FILE_KEYWORD);
 		
 		//2) parse model template
 		parserEngine 		= new ParserEnginePrismPSY(modelFilename, propertiesFilename);
@@ -140,13 +141,13 @@ public class EvoChecker {
 	 * @throws Exception
 	 */
 	private void initialiseAlgorithm() throws Exception{
-		String algorithmStr = Utility.getProperty("ALGORITHM").toUpperCase();
+		String algorithmStr = Utility.getProperty(Constants.ALGORITHM_KEYWORD).toUpperCase();
 		if (algorithmStr != null){
-			if (algorithmStr.equals("NSGAII")){
+			if (algorithmStr.equals(Constants.ALGORITHM.NSGAII.toString())){
 				NSGAIIRegion_Settings nsgaiiSettings = new NSGAIIRegion_Settings(problem.getName(), problem);
 				algorithm = nsgaiiSettings.configure();
  			}
-			else if (algorithmStr.equals("RANDOM")){
+			else if (algorithmStr.equals(Constants.ALGORITHM.RANDOM.toString())){
 				RandomSearchRegion_Settings rsSettings = new RandomSearchRegion_Settings(problem.getName(), problem);
 				algorithm = rsSettings.configure();
 			}
@@ -182,8 +183,8 @@ public class EvoChecker {
 			if (gene instanceof RegionGene)
 				regionsRadii.add(((RegionGene)gene).getRegionRadius());
 		}
-		String tolerance 	= Utility.getProperty("TOLERANCE").replace(".", "");
-		String leniency		= Utility.getProperty("LENIENCY").replace(".", "");
+		String tolerance 	= Utility.getProperty(Constants.TOLERANCE_KEYWORD).replace(".", "");
+		String leniency		= Utility.getProperty(Constants.EPSILON_KEYWORD).replace(".", "");
 		int run				= Experiment.getRun();
 
 		String outputFileEnd = tolerance +"_"+ leniency +"_"+ run;
