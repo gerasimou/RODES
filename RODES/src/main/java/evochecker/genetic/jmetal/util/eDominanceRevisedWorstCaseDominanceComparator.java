@@ -120,17 +120,21 @@ public class eDominanceRevisedWorstCaseDominanceComparator extends RegionDominan
 		//check sensitivity, i.e., second part of the new dominance relation
 		if (SENSITIVITY){
 			double maxDelta = Double.NEGATIVE_INFINITY;
-        	double sensitivity1 = solution1.getSensitivity();
-        	double sensitivity2 = solution2.getSensitivity();
+			double sensitivity1 = solution1.getSensitivity();
+        		double sensitivity2 = solution2.getSensitivity();
         	
 			if (dominate1 > dominate2){
 				for (int i = 0; i < solution1.getNumberOfObjectives(); i++) {
 					value1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
 					value2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
 					
-					double onePlusDelta = value2/value1;
+					double onePlusDelta = Double.NEGATIVE_INFINITY;
+					if (value1<=0 && value2<=0)
+						onePlusDelta = value1/value2;
+					else if (value1>0 && value2>0)
+						onePlusDelta = value2/value1;
 					double delta		= onePlusDelta - 1;
-					if (maxDelta > delta)
+					if (maxDelta < delta)
 						maxDelta = delta;
 				}
 			}
@@ -139,9 +143,13 @@ public class eDominanceRevisedWorstCaseDominanceComparator extends RegionDominan
 					value1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
 					value2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
 					
-					double onePlusDelta = value1/value2;
+					double onePlusDelta = Double.NEGATIVE_INFINITY;
+					if (value1<=0 && value2<=0)
+						onePlusDelta = value2/value1;
+					else if (value1>0 && value2>0)
+						onePlusDelta = value1/value2;
 					double delta		= onePlusDelta - 1;
-					if (maxDelta > delta)
+					if (maxDelta < delta)
 						maxDelta = delta;
 				}
 			}
@@ -154,24 +162,34 @@ public class eDominanceRevisedWorstCaseDominanceComparator extends RegionDominan
 			}
 			
 			if (dominate1 > dominate2){
-				if (sensitivity1 > (1+maxDelta)*sensitivity2)
-					return 0;
+				if (sensitivity1 < sensitivity2)
+					return -1;
+				else if (sensitivity1 < (1+maxDelta)*sensitivity2) {
+					System.out.println("Added due to new dominance relation -1");
+					return -1;
+				}
 			}
 			else if (dominate1 < dominate2){
-				if ((1+maxDelta)*sensitivity1 < sensitivity2)
-					return 0;
+				if (sensitivity1 > sensitivity2)
+					return 1;					
+				else if ((1+maxDelta)*sensitivity1 > sensitivity2) {
+					System.out.println("Added due to new dominance relation -1");
+					return 1;
+				}
 			}
 		}
 
+		//if all domination criteria fail
+		return 0; //No one dominates the other
         
-        //domination criteria
-		if (dominate1 == dominate2) {
-			return 0; //No one dominates the other
-		}
-		if (dominate1 == 1) {
-			return -1; // solution1 dominates
-		}
-		return 1;    // solution2 dominates
+//        //domination criteria
+//		if (dominate1 == dominate2) {
+//			return 0; //No one dominates the other
+//		}
+//		if (dominate1 == 1) {
+//			return -1; // solution1 dominates
+//		}
+//		return 1;    // solution2 dominates
 	} // compare
 
 }
