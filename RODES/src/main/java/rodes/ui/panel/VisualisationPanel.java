@@ -48,7 +48,6 @@ public class VisualisationPanel extends AbstractTabPanel{
 
 	@Override
 	protected void checkInputs() {
-		// TODO Auto-generated method stub
 		
 	}
 }

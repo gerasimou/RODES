@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.JTextComponent;
 
 import evochecker.auxiliary.StringProperties;
 
@@ -71,7 +72,7 @@ public abstract class AbstractTabPanel extends JPanel {
 	}
 	
 	
-	protected void showFileChooser(Component parent, JTextField host, String description, String[] extension, String currentDir){	
+	protected void showFileChooser(Component parent, JTextComponent host, String description, String[] extension, String currentDir){	
 		JFileChooser chooser = new JFileChooser();
 	    FileNameExtensionFilter filter = new FileNameExtensionFilter(description, extension);// "JPG & GIF Images", new String[]{"jpg", "gif"});
 	    chooser.setFileFilter(filter);

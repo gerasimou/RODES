@@ -32,10 +32,10 @@ public class SynthesiserPanel extends AbstractTabPanel{
 	JTextField  evaluationsTextfield;
 	
 	/** Tolerance text field*/
-	JTextField  toleranceTextfield;
+//	JTextField  toleranceTextfield;
 
 	/** Epsilon text field*/
-	JTextField  epsilonTextfield;
+//	JTextField  epsilonTextfield;
 
 	/** JVM text field*/
 	JTextField  JVMTextField;
@@ -44,12 +44,7 @@ public class SynthesiserPanel extends AbstractTabPanel{
 	JTextField  processorsTextField;
 	
 	/** Port text field*/
-	JTextField portTextField;
-	
-	/** Various REGEX*/
-	private final String INTEGER_REGEX = "^\\d+$";
-	private final String DOUBLE_REGEX  = "[0-9]+(.[0-9]+)?";
-			
+	JTextField portTextField;			
 
 	
 	public SynthesiserPanel (JFrame frame, JTabbedPane tab, StringProperties props) {
@@ -121,34 +116,34 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		add(evaluationsTextfield);
 
 		
-		//tolerance
-		JLabel toleranceLabel 			= new JLabel("Tolerance:");
-		toleranceLabel.setBounds(10, 130, 150, 40);
-		toleranceLabel.setIcon(qmIcon);
-		toleranceLabel.setHorizontalTextPosition(SwingConstants.LEFT);
-		toleranceLabel.setToolTipText("Specify the desired tolerance level");
-		
-		toleranceTextfield	= new JTextField("");
-		toleranceTextfield.setBounds(170, 130, 220, 40);
-		evaluationsTextfield.setEditable(true);
-		
-		add(toleranceLabel);
-		add(toleranceTextfield);
-
-		
-		//epsilon
-		JLabel epsilonLabel 			= new JLabel("Epsilon:");
-		epsilonLabel.setBounds(10, 170, 150, 40);
-		epsilonLabel.setIcon(qmIcon);
-		epsilonLabel.setHorizontalTextPosition(SwingConstants.LEFT);
-		epsilonLabel.setToolTipText("Specify the desired epsilon (leniency) value");
-		
-		epsilonTextfield	= new JTextField("");
-		epsilonTextfield.setBounds(170, 170, 220, 40);
-		epsilonTextfield.setEditable(true);
-		
-		add(epsilonLabel);
-		add(epsilonTextfield);
+//		//tolerance
+//		JLabel toleranceLabel 			= new JLabel("Tolerance:");
+//		toleranceLabel.setBounds(10, 130, 150, 40);
+//		toleranceLabel.setIcon(qmIcon);
+//		toleranceLabel.setHorizontalTextPosition(SwingConstants.LEFT);
+//		toleranceLabel.setToolTipText("Specify the desired tolerance level");
+//		
+//		toleranceTextfield	= new JTextField("");
+//		toleranceTextfield.setBounds(170, 130, 220, 40);
+//		toleranceTextfield.setEditable(true);
+//		
+//		add(toleranceLabel);
+//		add(toleranceTextfield);
+//
+//		
+//		//epsilon
+//		JLabel epsilonLabel 			= new JLabel("Epsilon:");
+//		epsilonLabel.setBounds(10, 170, 150, 40);
+//		epsilonLabel.setIcon(qmIcon);
+//		epsilonLabel.setHorizontalTextPosition(SwingConstants.LEFT);
+//		epsilonLabel.setToolTipText("Specify the desired epsilon (leniency) value");
+//		
+//		epsilonTextfield	= new JTextField("");
+//		epsilonTextfield.setBounds(170, 170, 220, 40);
+//		epsilonTextfield.setEditable(true);
+//		
+//		add(epsilonLabel);
+//		add(epsilonTextfield);
 
 		
 		//JVM
@@ -208,14 +203,14 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		
 		setVisible(true);
 		
-		list.setSelectedIndex(1);
+		list.setSelectedIndex(0);
 		populationTextfield.setText("50");
 		evaluationsTextfield.setText("1000");
-		toleranceTextfield.setText("0.1");
-		epsilonTextfield.setText("0.2");
-		JVMTextField.setText("usr/bin/java");
-		processorsTextField.setText("10");
-		portTextField.setText("8810");
+//		toleranceTextfield.setText("0.1");
+//		epsilonTextfield.setText("0.2");
+		JVMTextField.setText("/usr/bin/java");
+		processorsTextField.setText("1");
+		portTextField.setText("8880");
 		
 //		JButton button = new JButton();
 //		button.setHorizontalAlignment(SwingConstants.CENTER);
@@ -248,7 +243,7 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		
 		//check population
 		String population = populationTextfield.getText();
-		if (population.isEmpty() || !population.matches(INTEGER_REGEX)) {
+		if (population.isEmpty() || !population.matches(Constants.INTEGER_REGEX)) {
 			errors.append("Incorrect population: " + population +"\n");
 			properties.put(Constants.POPULATION_SIZE_KEYWORD, null);
 		}
@@ -257,30 +252,30 @@ public class SynthesiserPanel extends AbstractTabPanel{
 
 		//check evaluations
 		String evaluations = evaluationsTextfield.getText();
-		if (evaluations.isEmpty() || !evaluations.matches(INTEGER_REGEX)) {
+		if (evaluations.isEmpty() || !evaluations.matches(Constants.INTEGER_REGEX)) {
 			errors.append("Incorrect evaluations: " + evaluations +"\n");
 			properties.put(Constants.MAX_EVALUATIONS_KEYWORD,		null);
 		}
 		else
 			properties.put(Constants.MAX_EVALUATIONS_KEYWORD, 	evaluations);
 
-		//check tolerance
-		String tolerance = toleranceTextfield.getText();
-		if (tolerance.isEmpty() || !tolerance.matches(DOUBLE_REGEX)) {
-			errors.append("Incorrect tolerance: " + tolerance +"\n");
-			properties.put(Constants.TOLERANCE_KEYWORD, 		null);
-		}
-		else
-			properties.put(Constants.TOLERANCE_KEYWORD, 		tolerance);
-
-		//check epsilon
-		String epsilon = epsilonTextfield.getText();
-		if (epsilon.isEmpty() || !epsilon.matches(DOUBLE_REGEX)) {
-			errors.append("Incorrect epsilon: " + epsilon +"\n");
-			properties.put(Constants.EPSILON_KEYWORD, 		null);
-		}
-		else
-			properties.put(Constants.EPSILON_KEYWORD, 		epsilon);
+//		//check tolerance
+//		String tolerance = toleranceTextfield.getText();
+//		if (tolerance.isEmpty() || !tolerance.matches(DOUBLE_REGEX)) {
+//			errors.append("Incorrect tolerance: " + tolerance +"\n");
+//			properties.put(Constants.TOLERANCE_KEYWORD, 		null);
+//		}
+//		else
+//			properties.put(Constants.TOLERANCE_KEYWORD, 		tolerance);
+//
+//		//check epsilon
+//		String epsilon = epsilonTextfield.getText();
+//		if (epsilon.isEmpty() || !epsilon.matches(DOUBLE_REGEX)) {
+//			errors.append("Incorrect epsilon: " + epsilon +"\n");
+//			properties.put(Constants.EPSILON_KEYWORD, 		null);
+//		}
+//		else
+//			properties.put(Constants.EPSILON_KEYWORD, 		epsilon);
 
 		//check JVM
 		String jvm = JVMTextField.getText();
@@ -293,7 +288,7 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		
 		//check evaluations
 		String processors = processorsTextField.getText();
-		if (processors.isEmpty() || !processors.matches(INTEGER_REGEX)) {
+		if (processors.isEmpty() || !processors.matches(Constants.INTEGER_REGEX)) {
 			errors.append("Incorrect processors: " + processors +"\n");
 			properties.put(Constants.PROCESSORS_KEYWORD,		null);
 		}
@@ -302,7 +297,7 @@ public class SynthesiserPanel extends AbstractTabPanel{
 
 		//check port
 		String port = portTextField.getText();
-		if (port.isEmpty() || !port.matches(INTEGER_REGEX)) {
+		if (port.isEmpty() || !port.matches(Constants.INTEGER_REGEX)) {
 			errors.append("Incorrect port number: " + port +"\n");
 			properties.put(Constants.INITIAL_PORT_KEYWORD,		null);
 		}
