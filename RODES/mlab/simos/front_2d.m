@@ -12,35 +12,34 @@
 %   and the number of continuous and discrete parameters
 %   colouring = 2, colours each box with a random color.
 %   colouring = 3, uses a gradient over the obj space
+%   colouring = 4, colours each box based on the sensitivity. Needs to specify the path of the VAR_REGION file
+% - plotPath: path where to write the plot (default: '', i.e. just display,
+% don't write)
 
-function front_2d(experiment, variant, colouring, nContinuousParam, nDiscreteParam, ...
-objNames, transparency)
 
-% e.g., front_2d('50000_50/0.5-1.0, 0.6-1.0', 'S_Var/2',1,2,1)
+function [regions,volumes,paramRegions,paramVolumes] = front_2d(regionsObjPath, colouring, nContinuousParam, nDiscreteParam, ...
+regionsParamPath, objNames, plotPath, transparency)
 
-base = '/Users/sgerasimou/Documents/Git/search-based-model-synthesis/Experiments/';
-
-regionsObjPath      = strcat(base, experiment, '/', variant,'/FUN_REGION_NSGAII');
-regionsParamPath    = strcat(base, experiment, '/', variant,'/VAR_REGION_NSGAII');
-
-disp(regionsObjPath);
-%disp(regionsParamPath);
-
-if(nargin < 7)
+if(nargin < 8)
     transparency = 0.5;
-    if(nargin < 6)
-        objNames = {'obj1','obj2'};
-        if(nargin < 5)
-            regionsParamPath = '';
-            if(nargin < 3 || (nargin>1 && colouring==1))
-                colouring=2;
-            end          
+    if(nargin < 7)
+        plotPath='';
+        if(nargin < 6)
+            objNames = {'obj1','obj2'};
+            if(nargin < 5)
+                regionsParamPath = '';
+                if(nargin < 2 || (nargin>1 && (colouring==1||colouring==4)))
+                    colouring=2;
+                end
+            end
         end
     end
 end
 
 
 [regions,volumes] = readRegionsFile(regionsObjPath,2);
+[paramRegions,paramVolumes] = readParamRegionsFile(regionsParamPath,nContinuousParam,nDiscreteParam);
+sensitivities=volumes./paramVolumes;
 
 figure
 xdata=zeros(4,size(regions,1));
@@ -67,7 +66,6 @@ switch colouring
         end
         displayString = '. Colouring based on obj space volume.';
     case 1
-        [~,paramVolumes] = readParamRegionsFile(regionsParamPath,nContinuousParam,nDiscreteParam);
         for i=1:4
             colors(i,:)=paramVolumes';
         end
@@ -78,7 +76,7 @@ switch colouring
             colors(i,:)=tmpcolors;
         end
         displayString = '. Random colouring.';
-    otherwise
+    case 3
         displayString = '. Gradient on objective space.';
         o1m=min(regions(1,:));
         o1M=max(regions(2,:));
@@ -87,25 +85,25 @@ switch colouring
         
         mones=ones(size(xdata));
         colors = (xdata - o1m*mones)./(o1M-o1m) + (ydata - o2m*mones)./(o2M-o2m);
+        
+    otherwise
+        for i=1:4
+            colors(i,:)=sensitivities';
+        end
+        displayString = '. Colouring based on sensitivity.';     
+        
 end
 
-patch(xdata,ydata,zdata,colors,'FaceAlpha',transparency,'EdgeColor',[120 120 120]/255)
+patch(xdata,ydata,zdata,colors,'FaceAlpha',transparency,'EdgeColor',[120 120 120]/255);
 
-title(strcat([objNames{1}, ' and ',objNames{2},displayString, ' ', variant]), 'Interpreter','none');
-
-text(min(regions(:,2)),max(regions(:,4)),strcat('Experiment: ', experiment, ' _  ', variant), 'Interpreter','none');
-
+title(strcat(['Pareto Front for objectives ',objNames{1}, ' and ',objNames{2},displayString]));
 xlabel(objNames{1});
 ylabel(objNames{2});
-if(colouring<2)
+if(colouring<2 || colouring>3)
     colorbar
 end
-
-index = strfind(variant,'/');
-fileName = strcat(variant(1:index-1),'(',variant(index+1:end),')');
-disp(fileName)
-saveas(gcf,strcat(base, experiment, '/', variant,'/', fileName),'epsc')
-
-
+if(~strcmp(plotPath,''))
+    saveas(gcf,plotPath,'png');
+    saveas(gcf,plotPath,'fig');
 end
-
+end
