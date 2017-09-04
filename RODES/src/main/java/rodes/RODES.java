@@ -15,7 +15,6 @@ package rodes;
 import java.util.ArrayList;
 import java.util.List;
 
-import _main.Experiment;
 import evochecker.auxiliary.Constants;
 import evochecker.auxiliary.Utility;
 import evochecker.genetic.GenotypeFactory;
@@ -185,7 +184,7 @@ public class RODES {
 		}
 		String tolerance 	= Utility.getProperty(Constants.TOLERANCE_KEYWORD).replace(".", "");
 		String leniency		= Utility.getProperty(Constants.EPSILON_KEYWORD).replace(".", "");
-		int run				= Experiment.getRun();
+		int run				= RODESExperiment.getRun();
 
 		String outputFileEnd = tolerance +"_"+ leniency +"_"+ run;
 		//Store results
