@@ -4,7 +4,9 @@
 #
 #  Created by Simos Gerasimou on 04/09/2017.
 
-if [ ! -d data ]; then
+if [ -d data ]; then
+  rm -rf data/*
+else
   mkdir data
 fi
 

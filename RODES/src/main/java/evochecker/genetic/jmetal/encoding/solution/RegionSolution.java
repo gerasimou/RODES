@@ -155,7 +155,7 @@ public class RegionSolution extends Solution{
 		}
 		double sensitivity = volObj/volParam; 
 		if (sensitivity <= 0)
-			return 0.001;
+			return Double.POSITIVE_INFINITY;
 		else
 			return sensitivity;
 	}
