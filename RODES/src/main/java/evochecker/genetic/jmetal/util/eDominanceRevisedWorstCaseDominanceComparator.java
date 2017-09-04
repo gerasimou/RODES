@@ -85,7 +85,7 @@ public class eDominanceRevisedWorstCaseDominanceComparator extends RegionDominan
 		
 		//check epsilon dominance, i.e., first part of the new dominance relation
 		boolean epsilonBetter = false;
-		if (EPSILON > 0){
+		if (EPSILON >= 0){
 			if (dominate1 > dominate2){
 				for (int i = 0; i < solution1.getNumberOfObjectives(); i++) {
 					value1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
