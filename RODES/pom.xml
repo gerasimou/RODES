@@ -117,10 +117,12 @@
 			</plugin>
 
 
+			<!--  Copy resources to target directory -->
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>3.0.2</version>
 				<executions>
+					<!--  Copy models directory -->
 					<execution>
 						<id>copy-models</id>
 						<phase>package</phase>
@@ -136,6 +138,7 @@
 							</resources>
 						</configuration>
 					</execution>
+					<!--  Copy repo directory -->
 					<execution>
 						<id>copy-repo</id>
 						<phase>package</phase>
@@ -151,7 +154,58 @@
 							</resources>
 						</configuration>
 					</execution>
-				</executions>
+					<!--  Copy launch script -->
+					<execution>
+						<id>copy-launch</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory> ${basedir}/target</outputDirectory>
+							<resources>
+								<resource>
+									<directory>scripts</directory>
+									<includes>
+										<include>launch.sh</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<!--  Copy resources directory -->
+					<execution>
+						<id>copy-resources-dir</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory> ${basedir}/target/resources</outputDirectory>
+							<resources>
+								<resource>
+									<directory>resources</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<!--  Copy resources directory -->
+					<execution>
+						<id>create-data-dir</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory> ${basedir}/target/data</outputDirectory>
+							<resources>
+								<resource>
+									<directory>null</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					</executions>
 			</plugin>
 						
 			
@@ -179,13 +233,41 @@
 				  <execution>
 					<id>make-assembly</id>
                     <!-- bind to the packaging phase -->
-					<phase>package</phase> 
+					<phase>install</phase> 
 					<goals>
 						<goal>single</goal>
 					</goals>
 				  </execution>
 				</executions>
 			</plugin>
+			
+			
+			<!--  Maven shade plugin -->
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-shade-plugin</artifactId>
+		        <version>3.1.0</version>
+		        <executions>
+		        		<execution>
+		        			<phase>package</phase>
+		        			<goals>
+		        				<goal>shade</goal>
+		        			</goals>
+		        			<configuration>
+		        				<!-- All dependencies to be packaged in the jar -->
+		        				<!-- <shadedArtifactAttached>true</shadedArtifactAttached>-->
+		        				<!-- <shadedClassifierName>jar-with-dependencies</shadedClassifierName>-->
+		        				<transformers>
+		        					<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+			        						<mainClass>rodes.RODES</mainClass>
+			        						<!--<Build-Number>1.0.1</Build-Number>-->
+		        					</transformer>
+		        				</transformers>
+		        			</configuration>
+		        		</execution>
+		        </executions>				 
+			</plugin>
+			
   			
 			<!-- Clean plugin  -->
 			<plugin>
