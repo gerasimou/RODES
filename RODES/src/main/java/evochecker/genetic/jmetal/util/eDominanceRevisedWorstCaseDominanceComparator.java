@@ -91,7 +91,7 @@ public class eDominanceRevisedWorstCaseDominanceComparator extends RegionDominan
 					value1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
 					value2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
 					
-					if (value1<0 && ((1+EPSILON)*value1 > value2) )		//maximisation objective
+					if (value1<0 && (value1 < (1+EPSILON)*value2) )		//maximisation objective
 						epsilonBetter = true;
 					else if (value1>=0 && ((1+EPSILON)*value1 < value2 ) ) //minimisation objective
 						epsilonBetter = true;
@@ -102,7 +102,7 @@ public class eDominanceRevisedWorstCaseDominanceComparator extends RegionDominan
 					value1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
 					value2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
 					
-					if (value2<0 && (value1 < (1+EPSILON)*value2) )		//maximisation objective
+					if (value2<0 && ((1+EPSILON)*value1 > value2) )		//maximisation objective
 						epsilonBetter = true;
 					else if (value2>=0 && (value1 > (1+EPSILON)*value2 ) )	//minimisation objective
 						epsilonBetter = true;
@@ -129,12 +129,26 @@ public class eDominanceRevisedWorstCaseDominanceComparator extends RegionDominan
 					value2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
 					
 					double onePlusDelta = Double.NEGATIVE_INFINITY;
-					if (value1<=0 && value2<=0)
+					if (value1<=0 && value2<=0) {
+						//FIXME: fixing bug with division by 0, if it exists
+						if (value1==0)
+							value1=-0.0001;
+						if (value2==0)
+							value2=-0.001;
+
 						onePlusDelta = value1/value2;
-					else if (value1>0 && value2>0)
+					}
+					else if (value1>=0 && value2>=0) {
+						//FIXME: fixing bug with division by 0, if it exists
+						if (value1==0)
+							value1=0.0001;
+						if (value2==0)
+							value2=0.001;
+
 						onePlusDelta = value2/value1;
+					}
 					double delta		= onePlusDelta - 1;
-					if (maxDelta < delta)
+					if ( (maxDelta < delta) && (delta < EPSILON))
 						maxDelta = delta;
 				}
 			}
@@ -144,19 +158,35 @@ public class eDominanceRevisedWorstCaseDominanceComparator extends RegionDominan
 					value2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
 					
 					double onePlusDelta = Double.NEGATIVE_INFINITY;
-					if (value1<=0 && value2<=0)
+					if (value1<=0 && value2<=0) {
+						//FIXME: fixing bug with division by 0, if it exists
+						if (value1==0)
+							value1=-0.0001;
+						if (value2==0)
+							value2=-0.001;
+
 						onePlusDelta = value2/value1;
-					else if (value1>0 && value2>0)
+					}
+					else if (value1>0 && value2>0) {
+						//FIXME: fixing bug with division by 0, if it exists
+						if (value1==0)
+							value1=0.0001;
+						if (value2==0)
+							value2=0.001;
+
 						onePlusDelta = value1/value2;
+					}
 					double delta		= onePlusDelta - 1;
-					if (maxDelta < delta)
+					if ((maxDelta < delta) && (delta < EPSILON))
 						maxDelta = delta;
 				}
 			}
 			
 			try {
 				if (maxDelta < 0)
-				throw new EvoCheckerException("MaxDelta <0\t" + maxDelta);
+					throw new EvoCheckerException("MaxDelta <0\t" + maxDelta);
+				else if (maxDelta > EPSILON)
+					return 0;
 			} catch (EvoCheckerException e) {
 				e.printStackTrace();
 			}
