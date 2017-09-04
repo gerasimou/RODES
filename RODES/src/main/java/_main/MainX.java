@@ -51,7 +51,9 @@ public class MainX {
 			params[3] =  String.valueOf(portNum);
 			System.out.println("Starting PRISM-PSY server @ " + params[3]);
 			p = Runtime.getRuntime().exec(params);
-			Thread.sleep(3000);
+			while (!p.isAlive())
+				p = Runtime.getRuntime().exec(params);
+			Thread.sleep(2000);
 		} 
 		catch (InterruptedException | IOException e) {
 			e.printStackTrace();
@@ -70,8 +72,8 @@ public class MainX {
 			PrintWriter outToServer			= new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())),true);
 			//send to server
 			StringBuilder outputString 		= new StringBuilder();
-//			outputString.append(Utility.readFile("models/Google/googleExecutor.sm"));
-			outputString.append(Utility.readFile("models/Cluster/clusterExecutor2.sm"));
+			outputString.append(Utility.readFile("models/Google/googleExecutor.sm"));
+//			outputString.append(Utility.readFile("models/Cluster/clusterExecutor2.sm"));
 //			outputString.append(Utility.readFile("models/Google/google.sm") + "\n@");	//model String
 //			outputString.append("models/Google/google.csl" +"\n@");								//properties filename
 //			outputString.append("-psecheck" +"\n@");											//decompositionType	
@@ -85,7 +87,7 @@ public class MainX {
 			String response = inFromServer.readLine();
 			System.out.println("Result:\t" + response);
 			printJSON(gson.fromJson(response, JsonObject.class));
-			
+			socket.close();
 		} 
 		catch (IOException e) {
 			e.printStackTrace();

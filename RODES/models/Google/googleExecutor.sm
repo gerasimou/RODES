@@ -101,6 +101,10 @@ rewards "repaircosts"
   [c_hard_repair] true : 2;
 endrewards
 
+rewards "new"
+  C_up >=10 & C_up <=15 : 1;
+endrewards
+
 
 const double c_hw_repair_rate;const double c_hw_fail_rate;
 
