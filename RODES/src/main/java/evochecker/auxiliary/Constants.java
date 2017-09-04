@@ -29,8 +29,14 @@ public class Constants {
   /** Keyword for tolerance*/
   public static final String TOLERANCE_KEYWORD = "TTOLERANCE";
 
+  /** Keyword for multiple tolerance values*/
+  public static final String TOLERANCES_KEYWORD = "TTOLERANCES";
+  
   /** Keyword for epsilon*/
   public static final String EPSILON_KEYWORD = "EEPSILON";
+
+  /** Keyword for multiple epsilon values*/
+  public static final String EPSILONS_KEYWORD = "EEPSILONS";
 
   /** Keyword for sensitivity*/
   public static final String SENSITIVITY_KEYWORD = "SSENSITIVITY";
@@ -50,6 +56,9 @@ public class Constants {
   /** Keyword for initial JVM*/
   public static final String JVM_KEYWORD = "JJVM";
   
+  /** Keyword for interval */
+  public static final String INTERVAL_KEYWORD = "INTERVAL";
+
   /** Integer REGEX*/
   public static  final String INTEGER_REGEX = "^\\d+$";
 
