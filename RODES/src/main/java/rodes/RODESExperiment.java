@@ -35,7 +35,8 @@ public class RODESExperiment {
 					for (String l : epsilons){
 						Utility.setProperty(Constants.TOLERANCE_KEYWORD, t);
 						Utility.setProperty(Constants.EPSILON_KEYWORD,  l);
-						System.out.println("Tolerance: " +Utility.getProperty("TOLERANCE") + "\tLeniency: " +Utility.getProperty("LENIENCY"));
+						System.out.println("Tolerance: "  + Utility.getProperty(Constants.TOLERANCE_KEYWORD) + 
+										   "\tEpsilon: " + Utility.getProperty(Constants.EPSILON_KEYWORD));
 						Thread.sleep(1000);
 						RODES.main(null);
 						fileNamesFUN[i] = "FUN_REGION_"+t.replace(".", "")+"_"+l.replace(".", "")+"_"+run;
