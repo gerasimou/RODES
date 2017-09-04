@@ -10,7 +10,7 @@
 //	
 //==============================================================================
 
-package evochecker;
+package rodes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +22,8 @@ import evochecker.genetic.GenotypeFactory;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.RegionGene;
 import evochecker.genetic.jmetal.GeneticProblemPSY;
-import evochecker.genetic.jmetal.metaheuristics.MOCell_Settings;
-import evochecker.genetic.jmetal.metaheuristics.NSGAII_Settings;
-import evochecker.genetic.jmetal.metaheuristics.RandomSearch_Settings;
-import evochecker.genetic.jmetal.metaheuristics.SPEA2_Settings;
+import evochecker.genetic.jmetal.metaheuristics.NSGAIIRegion_Settings;
+import evochecker.genetic.jmetal.metaheuristics.RandomSearchRegion_Settings;
 import evochecker.parser.ParserEngine;
 import evochecker.parser.ParserEnginePrismPSY;
 import evochecker.prism.Property;
@@ -35,11 +33,11 @@ import jmetal.core.SolutionSet;
 
 
 /**
- * Main EvoChecker class
+ * Main RODES class
  * @author sgerasimou
  *
  */
-public class EvoChecker {
+public class RODES {
 
 	/** properties list*/
 	private List<Property> propertyList;
@@ -73,7 +71,7 @@ public class EvoChecker {
 		
 		try {			
 			//instantiate evochecker
-			EvoChecker evoChecker = new EvoChecker();
+			RODES evoChecker = new RODES();
 			//initialise problem
 			evoChecker.initializeProblem();
 			//initialise algorithm
@@ -143,23 +141,15 @@ public class EvoChecker {
 	 * @throws Exception
 	 */
 	private void initialiseAlgorithm() throws Exception{
-		String algorithmStr = Utility.getProperty("ALGORITHM").toUpperCase();
+		String algorithmStr = Utility.getProperty(Constants.ALGORITHM_KEYWORD).toUpperCase();
 		if (algorithmStr != null){
-			if (algorithmStr.equals("NSGAII")){
-				NSGAII_Settings nsgaiiSettings = new NSGAII_Settings("GeneticProblem", problem);
+			if (algorithmStr.equals(Constants.ALGORITHM.NSGAII.toString())){
+				NSGAIIRegion_Settings nsgaiiSettings = new NSGAIIRegion_Settings(problem.getName(), problem);
 				algorithm = nsgaiiSettings.configure();
-			}
-			else if (algorithmStr.equals("RANDOM")){
-				RandomSearch_Settings rsSettings = new RandomSearch_Settings("GeneticProblem", problem);
+ 			}
+			else if (algorithmStr.equals(Constants.ALGORITHM.RANDOM.toString())){
+				RandomSearchRegion_Settings rsSettings = new RandomSearchRegion_Settings(problem.getName(), problem);
 				algorithm = rsSettings.configure();
-			}
-			else if (algorithmStr.equals("SPEA2")){
-				SPEA2_Settings spea2Settings = new SPEA2_Settings("GeneticProblem", problem);
-				algorithm = spea2Settings.configure();
-			}
-			else if (algorithmStr.equals("MOCELL")){
-				MOCell_Settings mocellSettings = new MOCell_Settings("GeneticProblem", problem);
-				algorithm = mocellSettings.configure();
 			}
 			else 
 				throw new Exception("Algorithm not recognised");
