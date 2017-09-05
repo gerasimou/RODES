@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
@@ -35,6 +36,8 @@ public class ModelPanel extends AbstractTabPanel{
 	/** Epsilon text field*/
 	JTextField  epsilonTextfield;
 
+	/** Sensitivity checkbox*/
+	JCheckBox sensitivityCheckBox;
 	
 	private final String MODEL_MESSAGE 		= "CTMC model:";
 	private final String PROPERTIES_MESSAGE 	= "CSL properties:";
@@ -43,17 +46,10 @@ public class ModelPanel extends AbstractTabPanel{
 	
 	
 	public ModelPanel (JFrame frame, JTabbedPane tab, StringProperties props) {
-		super(0, 1, 2);
+		super(frame, 0, 1, 2);
 		if (frame == null)
 			throw new NullPointerException();
 		
-		ImageIcon qmIcon = null;
-		try {
-			qmIcon = new ImageIcon(ImageIO.read(getClass().getResource("/img/qm24.png")));
-		} 
-		catch (IOException e2) {
-			e2.printStackTrace();
-		}
 		this.parent		= tab;
 		this.properties = props;
 		
@@ -135,10 +131,16 @@ public class ModelPanel extends AbstractTabPanel{
 		add(epsilonLabel);
 		add(epsilonTextfield);
 		
+		sensitivityCheckBox = new JCheckBox("Use sensitivity?  ", true);
+		sensitivityCheckBox.setBounds(10, 210, 220, 40);
+		sensitivityCheckBox.setHorizontalTextPosition(SwingConstants.LEFT);
+		add(sensitivityCheckBox);
+		
 		modelTextArea.setText("/Users/sgerasimou/Documents/Git/RODES/RODES/models/Google/googleTemplate.sm");
 		propertiesTextArea.setText("/Users/sgerasimou/Documents/Git/RODES/RODES/models/Google/google.csl");
 		toleranceTextfield.setText("0.1");
 		epsilonTextfield.setText("0.2");
+		
 		setVisible(true);
 	}	
 	
@@ -183,7 +185,17 @@ public class ModelPanel extends AbstractTabPanel{
 		}
 		else
 			properties.put(Constants.EPSILON_KEYWORD, 		epsilon);
+
+		//check sensitivity
+		properties.put(Constants.SENSITIVITY_KEYWORD, sensitivityCheckBox.isSelected());
+
 		
 		properties.put("ERRORS", errors);
+	}
+
+
+
+	@Override
+	public void reDraw() {
 	}
 }

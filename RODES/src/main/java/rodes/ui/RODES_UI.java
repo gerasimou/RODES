@@ -1,15 +1,20 @@
 package rodes.ui;
 
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import evochecker.auxiliary.StringProperties;
+import rodes.ui.panel.AbstractTabPanel;
+import rodes.ui.panel.ConfigurationPanel;
 import rodes.ui.panel.ModelPanel;
 import rodes.ui.panel.SynthesiserPanel;
-import rodes.ui.panel.VisualisationPanel;
+import rodes.ui.panel.VisualisationPanel2;
 
 public class RODES_UI {
 
@@ -69,25 +74,38 @@ public class RODES_UI {
 		JTabbedPane tab 							= new JTabbedPane();
 		SynthesiserPanel	synthesiserPanel			= new SynthesiserPanel(frame, tab, properties);
 		ModelPanel 			modelPanel 			= new ModelPanel(frame, tab, properties);
-		VisualisationPanel  visualisationPanel  	= new VisualisationPanel(frame, tab, properties); 
+		ConfigurationPanel  configurationPanel  	= new ConfigurationPanel(frame, tab, properties);
+		VisualisationPanel2  visualisationPanel  	= new VisualisationPanel2(frame, tab, properties);
 		
-		tab.addTab("Synthesiser"	     ,  synthesiserPanel);
+		tab.addTab("Algorithm"			, synthesiserPanel);
 		tab.addTab("Model and Properties", modelPanel);
-		tab.addTab("Visualisation"		 , visualisationPanel);
+		tab.addTab("Configuration"		, configurationPanel);
+		tab.addTab("Visualisation"		, visualisationPanel);
 
 		tab.setEnabledAt(0, true);
 		tab.setEnabledAt(1, false);
 		tab.setEnabledAt(2, false);
+		tab.setEnabledAt(3, false);
+//		tab.setSelectedIndex(3);
+		
+		tab.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+	            System.err.println("Tab: " + tab. getSelectedIndex());
+	            
+	            Component selectedComponent = ((JTabbedPane)e.getSource()).getSelectedComponent(); 
+	            if (selectedComponent instanceof AbstractTabPanel)
+	            		((AbstractTabPanel)selectedComponent).reDraw();
+	            frame.repaint();
+	            frame.revalidate();
+			}
+		});
 		
 		frame.getContentPane().add(tab);
-		
-		
-		
-//		JPanel panel = new JPanel();
-//		panel.setBackground(Color.ORANGE);
-//		panel.setPreferredSize(new Dimension (5,100));
-//		tab.addTab("New tab", panel);
-//		panel.setLayout(null);		
+
+		//Display the window.
+        frame.pack();
+        frame.setVisible(true);		
 	}
 }
 

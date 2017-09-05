@@ -23,43 +23,32 @@ import evochecker.auxiliary.StringProperties;
 public class SynthesiserPanel extends AbstractTabPanel{
 		
 	/** Algorithms list*/
-	JComboBox<String> list; 
+	private JComboBox<String> list; 
 	
 	/** Population text field*/
-	JTextField  populationTextfield;
+	private JTextField  populationTextfield;
 	
 	/** Evaluations text field*/
-	JTextField  evaluationsTextfield;
+	private JTextField  evaluationsTextfield;
 	
-	/** Tolerance text field*/
-//	JTextField  toleranceTextfield;
-
-	/** Epsilon text field*/
-//	JTextField  epsilonTextfield;
-
 	/** JVM text field*/
-	JTextField  JVMTextField;
+	private JTextField  JVMTextField;
 	
 	/** Processors text field*/
-	JTextField  processorsTextField;
+	private JTextField  processorsTextField;
 	
 	/** Port text field*/
-	JTextField portTextField;			
+	private JTextField portTextField;			
+	
+	/** Interval text field*/
+	private JTextField intervalTextField;
 
 	
 	public SynthesiserPanel (JFrame frame, JTabbedPane tab, StringProperties props) {
-		super(-1,0, 1);
+		super(frame, -1, 0, 1);
 		if (frame == null)
 			throw new NullPointerException();
-		
-		ImageIcon qmIcon = null;
-		try {
-			qmIcon = new ImageIcon(ImageIO.read(getClass().getResource("/img/qm24.png")));
-		} 
-		catch (IOException e2) {
-			e2.printStackTrace();
-		}
-		
+				
 		this.parent		= tab;
 		this.properties	= props;
 
@@ -114,36 +103,20 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		
 		add(evlauationsLabel);
 		add(evaluationsTextfield);
-
 		
-//		//tolerance
-//		JLabel toleranceLabel 			= new JLabel("Tolerance:");
-//		toleranceLabel.setBounds(10, 130, 150, 40);
-//		toleranceLabel.setIcon(qmIcon);
-//		toleranceLabel.setHorizontalTextPosition(SwingConstants.LEFT);
-//		toleranceLabel.setToolTipText("Specify the desired tolerance level");
-//		
-//		toleranceTextfield	= new JTextField("");
-//		toleranceTextfield.setBounds(170, 130, 220, 40);
-//		toleranceTextfield.setEditable(true);
-//		
-//		add(toleranceLabel);
-//		add(toleranceTextfield);
-//
-//		
-//		//epsilon
-//		JLabel epsilonLabel 			= new JLabel("Epsilon:");
-//		epsilonLabel.setBounds(10, 170, 150, 40);
-//		epsilonLabel.setIcon(qmIcon);
-//		epsilonLabel.setHorizontalTextPosition(SwingConstants.LEFT);
-//		epsilonLabel.setToolTipText("Specify the desired epsilon (leniency) value");
-//		
-//		epsilonTextfield	= new JTextField("");
-//		epsilonTextfield.setBounds(170, 170, 220, 40);
-//		epsilonTextfield.setEditable(true);
-//		
-//		add(epsilonLabel);
-//		add(epsilonTextfield);
+		
+		//Intervals		
+		JLabel intervalLabel = new JLabel("Intervals:");
+		intervalLabel.setToolTipText("Specify the desired interval for displaying/storing intermediate solutions");
+		intervalLabel.setIcon(qmIcon);
+		intervalLabel.setHorizontalTextPosition(SwingConstants.LEFT);
+		intervalLabel.setBounds(10, 130, 150, 40);
+		add(intervalLabel);
+		
+		intervalTextField = new JTextField("");
+		intervalTextField.setEditable(true);
+		intervalTextField.setBounds(170, 130, 220, 40);
+		add(intervalTextField);
 
 		
 		//JVM
@@ -206,29 +179,10 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		list.setSelectedIndex(0);
 		populationTextfield.setText("50");
 		evaluationsTextfield.setText("1000");
-//		toleranceTextfield.setText("0.1");
-//		epsilonTextfield.setText("0.2");
 		JVMTextField.setText("/usr/bin/java");
 		processorsTextField.setText("1");
 		portTextField.setText("8880");
-		
-//		JButton button = new JButton();
-//		button.setHorizontalAlignment(SwingConstants.CENTER);
-//		button.setBounds(80, 21, 50, 22);
-//		try {
-//			Image img = ImageIO.read(getClass().getResource("/img/qm24.png"));
-//		    button.setIcon(new ImageIcon(img));
-//		    button.setBorder(new CompoundBorder());
-//		} catch (IOException e1) {
-//			e1.printStackTrace();
-//		}
-//		button.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				String javaDir = File.separator + "usr" + File.separator + "bin";
-//				showFileChooser(JVMButton, JVMTextField, "JVM", new String[]{"exe,jpg"}, javaDir);
-//			}
-//		});	
-//		add(button);
+		intervalTextField.setText("100");
 		
 	}	
 	
@@ -259,24 +213,6 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		else
 			properties.put(Constants.MAX_EVALUATIONS_KEYWORD, 	evaluations);
 
-//		//check tolerance
-//		String tolerance = toleranceTextfield.getText();
-//		if (tolerance.isEmpty() || !tolerance.matches(DOUBLE_REGEX)) {
-//			errors.append("Incorrect tolerance: " + tolerance +"\n");
-//			properties.put(Constants.TOLERANCE_KEYWORD, 		null);
-//		}
-//		else
-//			properties.put(Constants.TOLERANCE_KEYWORD, 		tolerance);
-//
-//		//check epsilon
-//		String epsilon = epsilonTextfield.getText();
-//		if (epsilon.isEmpty() || !epsilon.matches(DOUBLE_REGEX)) {
-//			errors.append("Incorrect epsilon: " + epsilon +"\n");
-//			properties.put(Constants.EPSILON_KEYWORD, 		null);
-//		}
-//		else
-//			properties.put(Constants.EPSILON_KEYWORD, 		epsilon);
-
 		//check JVM
 		String jvm = JVMTextField.getText();
 		if (jvm.isEmpty()) {
@@ -303,7 +239,24 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		}
 		else
 			properties.put(Constants.INITIAL_PORT_KEYWORD, 	port);
+		
+		//check interval
+		String interval = intervalTextField.getText();
+		if (interval.isEmpty() || !interval.matches(Constants.INTEGER_REGEX)) {
+			errors.append("Incorrect interval number: " + interval +"\n");
+			properties.put(Constants.INTERVAL_KEYWORD,		null);
+		}
+		else
+			properties.put(Constants.INTERVAL_KEYWORD,		interval);
 
 		properties.put("ERRORS", errors);
+	}
+
+
+
+	
+	
+	@Override
+	public void reDraw() {		
 	}
 }

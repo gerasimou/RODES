@@ -36,7 +36,7 @@ import jmetal.core.SolutionSet;
  * @author sgerasimou
  *
  */
-public class RODES {
+public class RODES implements Runnable{
 
 	/** properties list*/
 	private List<Property> propertyList;
@@ -195,5 +195,11 @@ public class RODES {
 		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+ outputFileEnd, population, false, propertyList);
 //		Utility.printVariableRegionsToFile("data/VAR_REGION_"+tolerance, population, false);
 //		Utility.printVariableRegionsToFile2("data/VAR_REGION2_"+tolerance, population, false);
+	}
+
+
+	@Override
+	public void run() {
+		main(null);
 	}	
 }
