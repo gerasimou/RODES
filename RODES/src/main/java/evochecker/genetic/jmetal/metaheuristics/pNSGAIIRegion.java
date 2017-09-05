@@ -22,12 +22,15 @@ package evochecker.genetic.jmetal.metaheuristics;
 
 import java.util.List;
 
+import evochecker.auxiliary.Constants;
+import evochecker.auxiliary.KnowledgeSingleton;
 import evochecker.auxiliary.Utility;
 import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
 import evochecker.genetic.jmetal.util.ExampleRegionDistance;
 import evochecker.genetic.jmetal.util.RegionDistance;
 import evochecker.genetic.jmetal.util.RegionDominanceComparator;
 import evochecker.genetic.jmetal.util.RegionRanking;
+import evochecker.genetic.jmetal.util.eDominanceRevisedWorstCaseDominanceComparator;
 import evochecker.genetic.jmetal.util.eDominanceWorstCaseDominanceComparator;
 import evochecker.genetic.jmetal.util.eToleranceWorstCaseDominanceComparator;
 import jmetal.core.Algorithm;
@@ -54,6 +57,9 @@ public class pNSGAIIRegion extends Algorithm {
   
   /** Region distance handler*/
   RegionDistance regionDistance;
+  
+  /** Knowledge singleton map*/
+  KnowledgeSingleton knowledge = KnowledgeSingleton.getInstance();
   
   
   /**
@@ -138,96 +144,97 @@ public class pNSGAIIRegion extends Algorithm {
         
     // Generations 
     while (evaluations < maxEvaluations) {
-    	System.out.println("Evaluations:\t" + evaluations);
-    	    	
-      // Create the offSpring solutionSet      
-      offspringPopulation = new SolutionSet(populationSize);
-      Solution[] parents = new Solution[2];
-      for (int i = 0; i < (populationSize / 2); i++) {
-        if (evaluations < maxEvaluations) {
-          //obtain parents
-          parents[0] = (Solution) selectionOperator.execute(population);
-          parents[1] = (Solution) selectionOperator.execute(population);
-          Solution[] offSpring = (Solution[]) crossoverOperator.execute(parents);
-          mutationOperator.execute(offSpring[0]);
-          mutationOperator.execute(offSpring[1]);
-          parallelEvaluator_.addSolutionForEvaluation(new RegionSolution(offSpring[0])) ;
-          parallelEvaluator_.addSolutionForEvaluation(new RegionSolution(offSpring[1])) ;
-        } // if                            
-      } // for
-
-      List<Solution> solutions = parallelEvaluator_.parallelEvaluation() ;
-
-      for(Solution solution : solutions) {
-        offspringPopulation.add(solution);
-        evaluations++;	    
-      }
-
-      // Create the solutionSet union of solutionSet and offSpring
-      union = ((SolutionSet) population).union(offspringPopulation);
-
-      // Ranking the union
-      //Ranking ranking = new Ranking(union);
-      RegionRanking ecRanking = new RegionRanking(union, regionDominanceComparator);
-
-      int remain = populationSize;
-      int index = 0;
-      SolutionSet front = null;
-      population.clear();
-
-      // Obtain the next front
-      front = ecRanking.getSubfront(index);
-
-      while ((remain > 0) && (remain >= front.size())) {
-        //Assign crowding distance to individuals
-        regionDistance.crowdingDistanceAssignment(front, problem_.getNumberOfObjectives());
-        //Add the individuals of this front
-        for (int k = 0; k < front.size(); k++) {
-          population.add(front.get(k));
-        } // for
-
-        //Decrement remain
-        remain = remain - front.size();
-
-        //Obtain the next front
-        index++;
-        if (remain > 0) {
-          front = ecRanking.getSubfront(index);
-        } // if        
-      } // while
-
-      // Remain is less than front(index).size, insert only the best one
-      if (remain > 0) {  // front contains individuals to insert                        
-        regionDistance.crowdingDistanceAssignment(front, problem_.getNumberOfObjectives());
-        front.sort(new CrowdingComparator());
-        for (int k = 0; k < remain; k++) {
-          population.add(front.get(k));
-        } // for
-
-        remain = 0;
-      } // if                               
-
-      // This piece of code shows how to use the indicator object into the code
-      // of NSGA-II. In particular, it finds the number of evaluations required
-      // by the algorithm to obtain a Pareto front with a hypervolume higher
-      // than the hypervolume of the true Pareto front.
-//      if ((indicators != null) &&
-//          (requiredEvaluations == 0)) {
-//        double HV = indicators.getHypervolume(population);
-//        if (HV >= (0.98 * indicators.getTrueParetoFrontHypervolume())) {
-//          requiredEvaluations = evaluations;
-//        } // if
-//      }// if
-      
-    } // while
-
-    parallelEvaluator_.stopEvaluators();
-
-    // Return as output parameter the required evaluations
-    setOutputParameter("evaluations", requiredEvaluations);
-
-    // Return the first non-dominated front
-    RegionRanking ecRanking = new RegionRanking(population, regionDominanceComparator);
-    return ecRanking.getSubfront(0);
+    		System.out.println("Evaluations:\t" + evaluations);
+    	    	knowledge.set(Constants.EVALUATIONS_KEYWORD, evaluations+"");
+    		
+	      // Create the offSpring solutionSet      
+	      offspringPopulation = new SolutionSet(populationSize);
+	      Solution[] parents = new Solution[2];
+	      for (int i = 0; i < (populationSize / 2); i++) {
+	        if (evaluations < maxEvaluations) {
+	          //obtain parents
+	          parents[0] = (Solution) selectionOperator.execute(population);
+	          parents[1] = (Solution) selectionOperator.execute(population);
+	          Solution[] offSpring = (Solution[]) crossoverOperator.execute(parents);
+	          mutationOperator.execute(offSpring[0]);
+	          mutationOperator.execute(offSpring[1]);
+	          parallelEvaluator_.addSolutionForEvaluation(new RegionSolution(offSpring[0])) ;
+	          parallelEvaluator_.addSolutionForEvaluation(new RegionSolution(offSpring[1])) ;
+	        } // if                            
+	      } // for
+	
+	      List<Solution> solutions = parallelEvaluator_.parallelEvaluation() ;
+	
+	      for(Solution solution : solutions) {
+	        offspringPopulation.add(solution);
+	        evaluations++;	    
+	      }
+	
+	      // Create the solutionSet union of solutionSet and offSpring
+	      union = ((SolutionSet) population).union(offspringPopulation);
+	
+	      // Ranking the union
+	      //Ranking ranking = new Ranking(union);
+	      RegionRanking ecRanking = new RegionRanking(union, regionDominanceComparator);
+	
+	      int remain = populationSize;
+	      int index = 0;
+	      SolutionSet front = null;
+	      population.clear();
+	
+	      // Obtain the next front
+	      front = ecRanking.getSubfront(index);
+	
+	      while ((remain > 0) && (remain >= front.size())) {
+	        //Assign crowding distance to individuals
+	        regionDistance.crowdingDistanceAssignment(front, problem_.getNumberOfObjectives());
+	        //Add the individuals of this front
+	        for (int k = 0; k < front.size(); k++) {
+	          population.add(front.get(k));
+	        } // for
+	
+	        //Decrement remain
+	        remain = remain - front.size();
+	
+	        //Obtain the next front
+	        index++;
+	        if (remain > 0) {
+	          front = ecRanking.getSubfront(index);
+	        } // if        
+	      } // while
+	
+	      // Remain is less than front(index).size, insert only the best one
+	      if (remain > 0) {  // front contains individuals to insert                        
+	        regionDistance.crowdingDistanceAssignment(front, problem_.getNumberOfObjectives());
+	        front.sort(new CrowdingComparator());
+	        for (int k = 0; k < remain; k++) {
+	          population.add(front.get(k));
+	        } // for
+	
+	        remain = 0;
+	      } // if                               
+	
+	      // This piece of code shows how to use the indicator object into the code
+	      // of NSGA-II. In particular, it finds the number of evaluations required
+	      // by the algorithm to obtain a Pareto front with a hypervolume higher
+	      // than the hypervolume of the true Pareto front.
+	//      if ((indicators != null) &&
+	//          (requiredEvaluations == 0)) {
+	//        double HV = indicators.getHypervolume(population);
+	//        if (HV >= (0.98 * indicators.getTrueParetoFrontHypervolume())) {
+	//          requiredEvaluations = evaluations;
+	//        } // if
+	//      }// if
+	      
+	    } // while
+	
+	    parallelEvaluator_.stopEvaluators();
+	
+	    // Return as output parameter the required evaluations
+	    setOutputParameter("evaluations", requiredEvaluations);
+	
+	    // Return the first non-dominated front
+	    RegionRanking ecRanking = new RegionRanking(population, regionDominanceComparator);
+	    return ecRanking.getSubfront(0);
   } // execute
 } // pNSGAII

@@ -59,6 +59,12 @@ public class Constants {
   /** Keyword for interval */
   public static final String INTERVAL_KEYWORD = "INTERVAL";
 
+  /** Keyword for errors */
+  public static final String ERRORS_KEYWORD = "ERRORS";
+
+  /** Keyword for current evaluation number */
+  public static final String EVALUATIONS_KEYWORD = "EVALUATIONS";
+  
   /** Integer REGEX*/
   public static  final String INTEGER_REGEX = "^\\d+$";
 
