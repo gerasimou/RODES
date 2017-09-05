@@ -14,7 +14,7 @@ import rodes.ui.panel.AbstractTabPanel;
 import rodes.ui.panel.ConfigurationPanel;
 import rodes.ui.panel.ModelPanel;
 import rodes.ui.panel.SynthesiserPanel;
-import rodes.ui.panel.VisualisationPanel2;
+import rodes.ui.panel.VisualisationPanel;
 
 public class RODES_UI {
 
@@ -75,7 +75,7 @@ public class RODES_UI {
 		SynthesiserPanel	synthesiserPanel			= new SynthesiserPanel(frame, tab, properties);
 		ModelPanel 			modelPanel 			= new ModelPanel(frame, tab, properties);
 		ConfigurationPanel  configurationPanel  	= new ConfigurationPanel(frame, tab, properties);
-		VisualisationPanel2  visualisationPanel  	= new VisualisationPanel2(frame, tab, properties);
+		VisualisationPanel  visualisationPanel  	= new VisualisationPanel(frame, tab, properties);
 		
 		tab.addTab("Algorithm"			, synthesiserPanel);
 		tab.addTab("Model and Properties", modelPanel);
@@ -86,7 +86,6 @@ public class RODES_UI {
 		tab.setEnabledAt(1, false);
 		tab.setEnabledAt(2, false);
 		tab.setEnabledAt(3, false);
-//		tab.setSelectedIndex(3);
 		
 		tab.addChangeListener(new ChangeListener() {
 			@Override

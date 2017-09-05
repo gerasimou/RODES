@@ -3,22 +3,25 @@ package rodes.ui.panel;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
+import evochecker.auxiliary.Constants;
+import evochecker.auxiliary.KnowledgeSingleton;
 import evochecker.auxiliary.StringProperties;
 import evochecker.auxiliary.Utility;
-import javafx.animation.AnimationTimer;
-import rodes.testing.TestRODES;
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleLongProperty;
+import rodes.RODES;
 
 @SuppressWarnings("serial")
 public class VisualisationPanel extends AbstractTabPanel{
@@ -29,16 +32,20 @@ public class VisualisationPanel extends AbstractTabPanel{
 	/** Textout textarea*/
 	private JTextArea feedbackTextArea;
 	
-	TestRODES testRodes;
-	JPanel thisPanel;
+	/** Graph button*/
+	private JButton graphButton;
+	
+//	TestRODES testRodes;
+//    final BlockingQueue<Integer> messageQueue = new ArrayBlockingQueue<>(1);
+    
+    KnowledgeSingleton knowledge = KnowledgeSingleton.getInstance();
+
 	
 	public VisualisationPanel (JFrame frame, JTabbedPane tab, StringProperties props) {
 		super(frame, 2, 3, -1);
 		if (frame == null)
 			throw new NullPointerException();
-		
-		thisPanel = this;
-		
+			
 		this.parent		= tab;
 		this.properties = props;
 
@@ -56,31 +63,31 @@ public class VisualisationPanel extends AbstractTabPanel{
 				//start Execution
 				Utility.loadPropertiesInstance(props);
 				System.err.println("Starting synthesis");
-//				RODES.main(null);
+
+//				TestRODES producer = new TestRODES(messageQueue);
+//				Thread thread = new Thread(producer, "TestRODES");
+				RODES rodes = new RODES();
+				Thread thread = new Thread(rodes, "RODES");
+				thread.setDaemon(true);
+				thread.start();
+
 				
-				testRodes = new TestRODES();
-//				reDraw();
-				AnimationTimer timer = new AnimationTimer() {
-					@Override
-					public void handle(long now) {
-						List<Integer> list = new ArrayList<Integer>();
-						testRodes.getQueue().drainTo(list);
-						System.err.println(list);
-						StringBuilder sb = new StringBuilder();
-						list.forEach(sb::append);
-						feedbackTextArea.append(sb.toString());
-						feedbackTextArea.update(feedbackTextArea.getGraphics());
-						thisPanel.revalidate();
-						thisPanel.repaint();
-						frame.repaint();
-						frame.revalidate();	
-					}
-				};
+				MyTimer timer = new MyTimer(500);
 				timer.start();
 				
-				Thread t = new Thread(testRodes, "TestRODES");
-				t.start();
-
+				Timer doneTimer = new Timer(2000, new ActionListener() {					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+	                		Boolean done = (Boolean) knowledge.get(Constants.DONE_KEYWORD);
+	                		if (done!= null && done) {
+	                			graphButton.setEnabled(true);
+	                		}
+					}
+				});
+				doneTimer.start();
+									
+				startButton.setEnabled(false);
+				previousButton.setEnabled(false);
 			}
 		});		
 		add(startButton);
@@ -98,6 +105,37 @@ public class VisualisationPanel extends AbstractTabPanel{
 		
 		add(scrollPane);
 		
+		graphButton = new JButton("Generate graph");
+		graphButton.setHorizontalAlignment(SwingConstants.LEFT);
+		graphButton.setBounds(210, 340, 170, 40);
+		graphButton.setEnabled(false);
+		graphButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String params		= "'../data/',"												//data directory  
+							  + "'" + Utility.getProperty(Constants.PROBLEM_KEYWORD) 	+"', "	//Problem name (subdirectory)
+							  + "2, 1, 2, " 												//continuous params, discrete params, objectives
+							  + "'" + Utility.getProperty(Constants.TOLERANCE_KEYWORD).replace(".", "") +"', "	//tolerance
+							  + "'" + Utility.getProperty(Constants.EPSILON_KEYWORD).replace(".", "") +"'";  			//epsilon
+					String[] command   	= { "/bin/bash", "-c", "cd mlab;"
+							+ " /Applications/MATLAB_R2016a.app/bin/matlab -nodisplay -nosplash -nodesktop -r \"try " 
+							+ "createPlotsCMD(" + params + "); catch; end; quit\""};
+            			ProcessBuilder pb = new ProcessBuilder(command);
+            			pb.redirectOutput(Redirect.INHERIT);
+            			pb.redirectError(Redirect.INHERIT);
+            			Process p;
+					p = pb.start();
+            			p.waitFor();
+            			knowledge.put(Constants.DONE_KEYWORD, false);
+				} 
+				catch (IOException | InterruptedException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		add(graphButton);
+		
 		setVisible(true);
 	}	
 	
@@ -109,53 +147,55 @@ public class VisualisationPanel extends AbstractTabPanel{
 
 
 
-
 	@Override
-	public void reDraw() {
-//		String str = testRodes.getList();
-//		feedbackTextArea.setText(str);
-//		
-//		while (true) {
-//			String str2=null;
-//			do {
-//				str2=testRodes.getList();
-////				System.err.println(str.equals(str2));
-//				try {
-//					Thread.sleep(100);
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//			while (str.equals(str2));
-//			str = str2;
-//			feedbackTextArea.append(str);
-//			feedbackTextArea.update(feedbackTextArea.getGraphics());
-//			this.revalidate();
-//			this.repaint();
-////			frame.repaint();
-////			frame.revalidate();	
-//		}
-		
-		AnimationTimer timer = new AnimationTimer() {
-			@Override
-			public void handle(long now) {
-				List<Integer> list = new ArrayList<Integer>();
-				testRodes.getQueue().drainTo(list);
-				if (!list.isEmpty()) {
-					System.err.println(list);
-					StringBuilder sb = new StringBuilder();
-					list.forEach(sb::append);
-					feedbackTextArea.append(sb.toString());
-					feedbackTextArea.update(feedbackTextArea.getGraphics());
-					thisPanel.revalidate();
-					thisPanel.repaint();
-					frame.repaint();
-					frame.revalidate();	
-				}
-			}
-		};
-		timer.start();
-	}
+	public void reDraw() {}
+
 	
+	class MyTimer extends Timer{
+		final LongProperty lastUpdate = new SimpleLongProperty();
+		final long minUpdateInterval = 100; // nanoseconds. Set to higher number to slow output.
+		
+		
+		ActionListener timerListener;
+		
+		protected MyTimer (int initialDelay) {
+			super (initialDelay, null);
+			initTimerListener();
+			addActionListener(timerListener);
+		}
+		
+		private void initTimerListener() {
+			timerListener = new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					long now = System.currentTimeMillis();
+	                if (now - lastUpdate.get() > minUpdateInterval) {
+//	                    final Integer message = messageQueue.poll();
+//	                		String message = knowledge.get(Constants.EVALUATIONS_KEYWORD);
+//	                		knowledge.set(Constants.EVALUATIONS_KEYWORD, "");
+	                		String message = knowledge.getMessage();
+//	                    if (message != null && !message.isEmpty()) {
+						feedbackTextArea.append(message);
+	//                        console.appendText("\n" + message);
+//	                    }
+	//	    				List<Integer> list = new ArrayList<Integer>();
+	//	    				messageQueue.drainTo(list);
+	//	    				if (!list.isEmpty()) {
+	//		                        console.appendText("\n" + list.toString());
+	//							feedbackTextArea.append(list.toString());
+	//							feedbackTextArea.update(feedbackTextArea.getGraphics());
+	//							StringBuilder sb = new StringBuilder();
+	//							list.forEach(sb::append);
+	//							feedbackTextArea.append(sb.toString());
+	//							feedbackTextArea.update(feedbackTextArea.getGraphics());
+	//							frame.repaint();
+	//							frame.revalidate();	
+	//	                      }
+	                    lastUpdate.set(now);		                
+	                }
+				}
+			};
+		}		
+	}
 }
 

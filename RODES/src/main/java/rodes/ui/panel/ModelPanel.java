@@ -24,20 +24,23 @@ import evochecker.auxiliary.StringProperties;
 
 public class ModelPanel extends AbstractTabPanel{
 
+	/** Problem textfield */
+	private JTextField problemTextField;
+	
 	/** Model textarea */
-	JTextArea  modelTextArea;
+	private JTextArea  modelTextArea;
 	
 	/** Properties textarea*/
-	JTextArea  propertiesTextArea;
+	private JTextArea  propertiesTextArea;
 
 	/** Tolerance text field*/
-	JTextField  toleranceTextfield;
+	private JTextField  toleranceTextfield;
 
 	/** Epsilon text field*/
-	JTextField  epsilonTextfield;
+	private JTextField  epsilonTextfield;
 
 	/** Sensitivity checkbox*/
-	JCheckBox sensitivityCheckBox;
+	private JCheckBox sensitivityCheckBox;
 	
 	private final String MODEL_MESSAGE 		= "CTMC model:";
 	private final String PROPERTIES_MESSAGE 	= "CSL properties:";
@@ -58,17 +61,28 @@ public class ModelPanel extends AbstractTabPanel{
 		setBorder(null);
 		
 		
+		//problem
+		JLabel label = new JLabel("Problem:");
+		label.setBounds(10, 12, 150, 40);
+		add(label);
+		
+		problemTextField = new JTextField();
+		problemTextField.setBounds(116, 12, 270, 40);
+		problemTextField.setEditable(true);
+		add(problemTextField);
+		
+		
 		//model
 		JLabel 		modelLabel 	  	= new JLabel(MODEL_MESSAGE);
-		modelLabel.setBounds(10, 10, 150, 40);
+		modelLabel.setBounds(10, 64, 150, 40);
 
 		modelTextArea	= new JTextArea(2, 20);
 		modelTextArea.setLineWrap(true);
-		modelTextArea.setBounds(120, 10, 270, 40);
+		modelTextArea.setBounds(116, 64, 270, 40);
 		modelTextArea.setEditable(false);
 		
 		JButton modelButton	= new JButton("Select model");
-		modelButton.setBounds(410, 10, 170, 40);
+		modelButton.setBounds(406, 64, 170, 40);
 		modelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				showFileChooser(modelButton, modelTextArea, "CTMC model", new String[]{"sm"}, null);
@@ -82,15 +96,15 @@ public class ModelPanel extends AbstractTabPanel{
 		
 		//properties
 		JLabel 		propertiesLabel 	= new JLabel(PROPERTIES_MESSAGE);
-		propertiesLabel.setBounds(10, 62, 150, 40);
+		propertiesLabel.setBounds(10, 116, 150, 40);
 		
 		propertiesTextArea	= new JTextArea(2,50);
 		propertiesTextArea.setLineWrap(true);
-		propertiesTextArea.setBounds(119, 62, 270, 40);
+		propertiesTextArea.setBounds(115, 116, 270, 40);
 		propertiesTextArea.setEditable(false);
 		
 		JButton propertiesButton	= new JButton("Select CSL properties");
-		propertiesButton.setBounds(410, 62, 170, 40);
+		propertiesButton.setBounds(406, 116, 170, 40);
 		propertiesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				showFileChooser(propertiesButton, propertiesTextArea, "CSL properties", new String[]{"csl"}, null);
@@ -104,13 +118,13 @@ public class ModelPanel extends AbstractTabPanel{
 		
 		//tolerance
 		JLabel toleranceLabel 			= new JLabel("Tolerance:");
-		toleranceLabel.setBounds(10, 130, 150, 40);
+		toleranceLabel.setBounds(10, 184, 150, 40);
 		toleranceLabel.setIcon(qmIcon);
 		toleranceLabel.setHorizontalTextPosition(SwingConstants.LEFT);
 		toleranceLabel.setToolTipText("Specify the desired tolerance level");
 		
 		toleranceTextfield	= new JTextField("");
-		toleranceTextfield.setBounds(120, 130, 220, 40);
+		toleranceTextfield.setBounds(116, 184, 220, 40);
 		toleranceTextfield.setEditable(true);
 		
 		add(toleranceLabel);
@@ -119,28 +133,29 @@ public class ModelPanel extends AbstractTabPanel{
 		
 		//epsilon
 		JLabel epsilonLabel 			= new JLabel("Epsilon:");
-		epsilonLabel.setBounds(10, 170, 150, 40);
+		epsilonLabel.setBounds(10, 224, 150, 40);
 		epsilonLabel.setIcon(qmIcon);
 		epsilonLabel.setHorizontalTextPosition(SwingConstants.LEFT);
 		epsilonLabel.setToolTipText("Specify the desired epsilon (leniency) value");
 		
 		epsilonTextfield	= new JTextField("");
-		epsilonTextfield.setBounds(120, 170, 220, 40);
+		epsilonTextfield.setBounds(116, 224, 220, 40);
 		epsilonTextfield.setEditable(true);
 		
 		add(epsilonLabel);
 		add(epsilonTextfield);
 		
 		sensitivityCheckBox = new JCheckBox("Use sensitivity?  ", true);
-		sensitivityCheckBox.setBounds(10, 210, 220, 40);
+		sensitivityCheckBox.setBounds(10, 264, 220, 40);
 		sensitivityCheckBox.setHorizontalTextPosition(SwingConstants.LEFT);
 		add(sensitivityCheckBox);
 		
+		problemTextField.setText("Google");
 		modelTextArea.setText("/Users/sgerasimou/Documents/Git/RODES/RODES/models/Google/googleTemplate.sm");
 		propertiesTextArea.setText("/Users/sgerasimou/Documents/Git/RODES/RODES/models/Google/google.csl");
 		toleranceTextfield.setText("0.1");
 		epsilonTextfield.setText("0.2");
-		
+				
 		setVisible(true);
 	}	
 	
@@ -150,6 +165,16 @@ public class ModelPanel extends AbstractTabPanel{
 	protected void checkInputs() {
 		StringBuilder errors = new StringBuilder();
 
+		//check problem
+		String problem = problemTextField.getText();
+		if (problem.isEmpty()) {
+			errors.append("Incorrect problem name: " + problem +"\n");
+			properties.put(Constants.PROBLEM_KEYWORD, 		null);
+		}
+		else
+			properties.put(Constants.PROBLEM_KEYWORD, 		problem);
+
+		
 		//check model
 		String model = modelTextArea.getText();
 		if (model.isEmpty()) {

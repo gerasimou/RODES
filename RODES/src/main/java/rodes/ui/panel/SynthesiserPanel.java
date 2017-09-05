@@ -177,7 +177,7 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		setVisible(true);
 		
 		list.setSelectedIndex(0);
-		populationTextfield.setText("50");
+		populationTextfield.setText("5");
 		evaluationsTextfield.setText("1000");
 		JVMTextField.setText("/usr/bin/java");
 		processorsTextField.setText("1");
