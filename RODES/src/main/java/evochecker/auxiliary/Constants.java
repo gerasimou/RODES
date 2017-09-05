@@ -38,6 +38,10 @@ public class Constants {
   /** Keyword for multiple epsilon values*/
   public static final String EPSILONS_KEYWORD = "EEPSILONS";
 
+  /** Keyword for problem name*/
+  public static final String PROBLEM_KEYWORD = "PPROBLEM";
+
+  
   /** Keyword for sensitivity*/
   public static final String SENSITIVITY_KEYWORD = "SSENSITIVITY";
   
@@ -62,8 +66,12 @@ public class Constants {
   /** Keyword for errors */
   public static final String ERRORS_KEYWORD = "ERRORS";
 
-  /** Keyword for current evaluation number */
-  public static final String EVALUATIONS_KEYWORD = "EVALUATIONS";
+  /** Keyword for messages to be shown on the UI */
+  public static final String MESSAGE_KEYWORD = "MESSAGE";
+  
+  /** Keyword for finishing execution  */
+  public static final String DONE_KEYWORD = "DONE";
+  
   
   /** Integer REGEX*/
   public static  final String INTEGER_REGEX = "^\\d+$";

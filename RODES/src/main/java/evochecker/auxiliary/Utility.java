@@ -368,6 +368,10 @@ public class Utility {
 		return radiusList.toArray(radius);
 	}
 
-
+	public static void createDir(String filePath) {
+		File file = new File(filePath);
+		if (!file.exists())
+			file.mkdirs();
+	}
 	
 }
