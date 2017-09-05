@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import evochecker.auxiliary.Constants;
+import evochecker.auxiliary.KnowledgeSingleton;
 import evochecker.auxiliary.Utility;
 import evochecker.exception.EvoCheckerException;
 import evochecker.genetic.jmetal.metaheuristics.IParallelEvaluator;
@@ -78,6 +79,9 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 	/** Input array*/
 	private BufferedReader[] in;
 	
+	/** Knowledge singleton*/
+	private KnowledgeSingleton knowledge = KnowledgeSingleton.getInstance();
+	  
 	
 	/**
 	 * Constructor
@@ -104,7 +108,6 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 	 */
 	private void startExecutors() {
 		try {
-			System.out.println("Initialization");
 			socket 	= new Socket[numberOfProcesses];
 			in 		= new BufferedReader[numberOfProcesses];
 			out 	= new PrintWriter[numberOfProcesses];
@@ -120,6 +123,8 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 				boolean isAlive = false;
 				int portNum = initPort+i;// portId++;
 				System.out.println("Starting server at port " + portNum);
+				knowledge.addMessage("Starting server at port " + portNum +"\n");
+
 				params[3] = String.valueOf(portNum);
 				do {
 					Process p = Runtime.getRuntime().exec(params);
@@ -129,6 +134,7 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 				while (!isAlive);
 
 				System.out.println("Connecting");
+				knowledge.addMessage("Connecting");
 //				socket[i] = new Socket("127.0.0.1", portNum);
 //				in[i] = new BufferedReader(new InputStreamReader(socket[i].getInputStream()));
 //				out[i] = new PrintWriter(socket[i].getOutputStream());

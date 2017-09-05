@@ -58,7 +58,7 @@ public class pNSGAIIRegion extends Algorithm {
   /** Region distance handler*/
   RegionDistance regionDistance;
   
-  /** Knowledge singleton map*/
+  /** Knowledge singleton*/
   KnowledgeSingleton knowledge = KnowledgeSingleton.getInstance();
   
   
@@ -145,7 +145,7 @@ public class pNSGAIIRegion extends Algorithm {
     // Generations 
     while (evaluations < maxEvaluations) {
     		System.out.println("Evaluations:\t" + evaluations);
-    	    	knowledge.set(Constants.EVALUATIONS_KEYWORD, evaluations+"");
+    	    	knowledge.addMessage("Evaluations:\t" + evaluations);
     		
 	      // Create the offSpring solutionSet      
 	      offspringPopulation = new SolutionSet(populationSize);

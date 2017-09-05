@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import evochecker.auxiliary.Constants;
+import evochecker.auxiliary.KnowledgeSingleton;
 import evochecker.auxiliary.Utility;
 import evochecker.genetic.GenotypeFactory;
 import evochecker.genetic.genes.AbstractGene;
@@ -59,7 +60,9 @@ public class RODES implements Runnable{
 	/** algorithm to be executed*/
 	private Algorithm algorithm;
 	
-	
+	/** Knowledge singleton*/
+	private KnowledgeSingleton knowledge = KnowledgeSingleton.getInstance();
+
 	
 	/**
 	 * Main 
@@ -70,15 +73,15 @@ public class RODES implements Runnable{
 		
 		try {			
 			//instantiate evochecker
-			RODES evoChecker = new RODES();
+			RODES rodes = new RODES();
 			//initialise problem
-			evoChecker.initializeProblem();
+			rodes.initializeProblem();
 			//initialise algorithm
-			evoChecker.initialiseAlgorithm();
+			rodes.initialiseAlgorithm();
 			//execute 
-			evoChecker.execute();
+			rodes.execute();
 			//close down
-			evoChecker.closeDown();
+			rodes.closeDown();
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
@@ -96,6 +99,8 @@ public class RODES implements Runnable{
 	 * @throws Exception
 	 */
 	private void initializeProblem() throws Exception {
+		knowledge.addMessage("Initializing problem");
+		
 		//1 Get model and properties filenames
 		modelFilename 		= Utility.getProperty(Constants.MODEL_FILE_KEYWORD);
 		propertiesFilename	= Utility.getProperty(Constants.PROPERTIES_FILE_KEYWORD);
@@ -140,6 +145,8 @@ public class RODES implements Runnable{
 	 * @throws Exception
 	 */
 	private void initialiseAlgorithm() throws Exception{
+		knowledge.addMessage("Initializing algorithm");
+
 		String algorithmStr = Utility.getProperty(Constants.ALGORITHM_KEYWORD).toUpperCase();
 		if (algorithmStr != null){
 			if (algorithmStr.equals(Constants.ALGORITHM.NSGAII.toString())){
@@ -160,7 +167,8 @@ public class RODES implements Runnable{
 	 * Make finalisations of algorithm
 	 */
 	private void closeDown(){
-
+		knowledge.addMessage("Closing down");
+		knowledge.put(Constants.DONE_KEYWORD, true);
 	}
 	
 	
@@ -169,13 +177,17 @@ public class RODES implements Runnable{
 	 * @throws Exception
 	 */
 	private void execute() throws Exception{
-		
+		knowledge.addMessage("Starting execution");
+
 		// Execute the Algorithm
 		SolutionSet population = algorithm.execute();
+
+		knowledge.addMessage("Finished execution");
 		
 		//Print results to console
 		System.out.println("-------------------------------------------------");
 		System.out.println("SOLUTIONS: \t" + population.size());
+		knowledge.addMessage("Saving solutions");
 		
 		List<Double> regionsRadii = new ArrayList<Double>();
 		for (AbstractGene gene : genes){
@@ -183,18 +195,18 @@ public class RODES implements Runnable{
 				regionsRadii.add(((RegionGene)gene).getRegionRadius());
 		}
 		String tolerance 	= Utility.getProperty(Constants.TOLERANCE_KEYWORD).replace(".", "");
-		String leniency		= Utility.getProperty(Constants.EPSILON_KEYWORD).replace(".", "");
+		String epsilon		= Utility.getProperty(Constants.EPSILON_KEYWORD).replace(".", "");
 		int run				= RODESExperiment.getRun();
-
-		String outputFileEnd = tolerance +"_"+ leniency +"_"+ run;
+		
+		String directory = "data/" + Utility.getProperty(Constants.PROBLEM_KEYWORD); 
+		Utility.createDir(directory);
+		String outputFileEnd = tolerance +"_"+ epsilon +"_"+ run;
 		//Store results
-		population.printObjectivesToFile("data/FUN_"+ outputFileEnd);
-		population.printVariablesToFile("data/VAR_"+  outputFileEnd);
+		population.printObjectivesToFile(directory + "/FUN_" + outputFileEnd);
+		population.printVariablesToFile( directory + "/VAR_" +  outputFileEnd);
 				
-		Utility.printVariableRegionsToFile("data/VAR_REGION_"+  outputFileEnd, population, false, regionsRadii);
-		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+ outputFileEnd, population, false, propertyList);
-//		Utility.printVariableRegionsToFile("data/VAR_REGION_"+tolerance, population, false);
-//		Utility.printVariableRegionsToFile2("data/VAR_REGION2_"+tolerance, population, false);
+		Utility.printVariableRegionsToFile( directory + "/VAR_REGION_" +  outputFileEnd, population, false, regionsRadii);
+		Utility.printObjectiveRegionsToFile(directory + "/FUN_REGION_" + outputFileEnd, population, false, propertyList);
 	}
 
 
