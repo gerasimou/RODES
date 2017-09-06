@@ -94,6 +94,7 @@
   
   
   		<plugins>
+  		
 			<!-- download source code in Eclipse, best practice -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -104,6 +105,7 @@
 					<downloadJavadocs>false</downloadJavadocs>
 				</configuration>
 			</plugin>
+			
 			
 			<!-- Set a compiler level -->
 			<plugin>
@@ -122,10 +124,11 @@
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>3.0.2</version>
 				<executions>
+				
 					<!--  Copy models directory -->
 					<execution>
 						<id>copy-models</id>
-						<phase>package</phase>
+						<phase>prepare-package</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -138,10 +141,11 @@
 							</resources>
 						</configuration>
 					</execution>
+					
 					<!--  Copy repo directory -->
 					<execution>
 						<id>copy-repo</id>
-						<phase>package</phase>
+						<phase>prepare-package</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -154,10 +158,11 @@
 							</resources>
 						</configuration>
 					</execution>
+					
 					<!--  Copy launch script -->
 					<execution>
 						<id>copy-launch</id>
-						<phase>package</phase>
+						<phase>prepare-package</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -173,10 +178,11 @@
 							</resources>
 						</configuration>
 					</execution>
+					
 					<!--  Copy resources directory -->
 					<execution>
 						<id>copy-resources-dir</id>
-						<phase>package</phase>
+						<phase>prepare-package</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -189,26 +195,11 @@
 							</resources>
 						</configuration>
 					</execution>
-					<!--  Copy resources directory -->
-					<execution>
-						<id>create-data-dir</id>
-						<phase>package</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory> ${basedir}/target/data</outputDirectory>
-							<resources>
-								<resource>
-									<directory>null</directory>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
+
 					<!--  Copy mlab directory -->
 					<execution>
 						<id>create-mlab-dir</id>
-						<phase>package</phase>
+						<phase>prepare-package</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -230,30 +221,43 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.4.1</version>
-				<configuration>
-					<!-- get all project dependencies -->
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-					<!-- MainClass in mainfest make a executable jar -->
-					<archive>
-					  <manifest>
-<!-- 						<mainClass>evochecker.EvoChecker</mainClass>-->
-<!--							<mainClass>_main.Experiment</mainClass> -->
-							<mainClass>rodes.RODES</mainClass>
-					  </manifest>
-					</archive>
- 
-				</configuration>
 				<executions>
-				  <execution>
-					<id>make-assembly</id>
-                    <!-- bind to the packaging phase -->
-					<phase>install</phase> 
-					<goals>
-						<goal>single</goal>
-					</goals>
-				  </execution>
+					<!--  prepare uber jar -->
+					<execution>
+						<id>jar-with-dependencies</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<!-- get all project dependencies -->
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>							
+							<!-- MainClass in mainfest make a executable jar -->
+							<archive>
+							  <manifest>
+		<!-- 						<mainClass>evochecker.EvoChecker</mainClass>-->
+		<!--							<mainClass>_main.Experiment</mainClass> -->
+		        						<mainClass>rodes.ui.RODES_UI</mainClass>
+							  </manifest>
+							</archive>
+						</configuration>
+					</execution>
+					
+					<!--  prepare zip -->
+					<execution>
+						<id>zip</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+					        		<descriptor>src/main/assembly/zip.xml</descriptor>
+							</descriptors>	
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 			
@@ -265,6 +269,7 @@
 		        <version>3.1.0</version>
 		        <executions>
 		        		<execution>
+		        			<id>rename-uber-jar</id>
 		        			<phase>package</phase>
 		        			<goals>
 		        				<goal>shade</goal>
