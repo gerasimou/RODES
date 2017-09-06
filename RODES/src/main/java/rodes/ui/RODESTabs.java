@@ -52,7 +52,7 @@ public class RODESTabs extends JTabbedPane{
 	}
 	
 	
-	protected void initTabs() {
+	public void initTabs() {
 		int totalTabs = this.getTabCount();
 		
 		for (int i=0; i<totalTabs; i++) {

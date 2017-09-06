@@ -93,6 +93,6 @@ public class RODES_UI {
 		properties.setProperty(Constants.TOLERANCE_KEYWORD, "0.1");
 		properties.setProperty(Constants.EPSILON_KEYWORD, "0.05");
 		properties.setProperty(Constants.SENSITIVITY_KEYWORD, "true");
-}
+	}
 }
 

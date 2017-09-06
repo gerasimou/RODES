@@ -121,7 +121,8 @@ public class MenuBar extends JMenuBar {
 		menuItem.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(frame, "About text", "Configuration errors", JOptionPane.INFORMATION_MESSAGE);
+				String rodesTxt = "RODES is a tool for designing robust systems through synthesis of parametric Markov chains";
+				JOptionPane.showMessageDialog(frame, rodesTxt, "About RODES", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		menu.add(menuItem);

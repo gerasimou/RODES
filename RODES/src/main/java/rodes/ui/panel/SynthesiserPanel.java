@@ -128,8 +128,8 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		JVMTextField.setEditable(false);
 		
 		JButton JVMButton	= new JButton("Select JVM");
-		JVMButton.setBounds(410, 210, 170, 40);
-		JVMButton.setHorizontalAlignment (SwingConstants.LEFT);
+		JVMButton.setBounds(410, 210, 150, 40);
+		JVMButton.setHorizontalAlignment (SwingConstants.CENTER);
 		JVMButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String javaDir = File.separator + "usr" + File.separator + "bin";

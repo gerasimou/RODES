@@ -55,7 +55,7 @@ public abstract class AbstractTabPanel extends JPanel {
 	private void initButtons(int previous, int current, int next) {
 		if (previous != -1) {
 			previousButton = new JButton("Previous");
-			previousButton.setBounds(10, 340, 170, 40);
+			previousButton.setBounds(10, 340, 130, 40);
 			previousButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -72,7 +72,7 @@ public abstract class AbstractTabPanel extends JPanel {
 		
 		if (next != -1) {
 			nextButton = new JButton("Next");
-			nextButton.setBounds(410, 340, 170, 40);
+			nextButton.setBounds(450, 340, 130, 40);
 			nextButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {

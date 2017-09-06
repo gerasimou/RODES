@@ -25,6 +25,7 @@ import evochecker.auxiliary.Utility;
 import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleLongProperty;
 import rodes.RODES;
+import rodes.ui.RODESTabs;
 
 @SuppressWarnings("serial")
 public class ExecutionPanel extends AbstractTabPanel{
@@ -40,6 +41,10 @@ public class ExecutionPanel extends AbstractTabPanel{
 	
 	/** Graph button*/
 	private JButton graphButton;
+
+	/** Experiment button*/
+	private JButton newExperimentButton;
+
 	
 //	TestRODES testRodes;
 //    final BlockingQueue<Integer> messageQueue = new ArrayBlockingQueue<>(1);
@@ -62,8 +67,8 @@ public class ExecutionPanel extends AbstractTabPanel{
 		
 		//Start button
 		synthesisButton	= new JButton("Start synthesis");
-		synthesisButton.setBounds(410, 340, 170, 40);
-		synthesisButton.setHorizontalAlignment (SwingConstants.LEFT);
+		synthesisButton.setBounds(450, 340, 130, 40);
+		synthesisButton.setHorizontalAlignment (SwingConstants.CENTER);
 		synthesisButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//start Execution
@@ -86,8 +91,9 @@ public class ExecutionPanel extends AbstractTabPanel{
 					public void actionPerformed(ActionEvent e) {
 	                		Boolean done = (Boolean) knowledge.get(Constants.DONE_KEYWORD);
 	                		if (done!= null && done) {
-	                			graphButton.setEnabled(true);
 	                			knowledge.put(Constants.DONE_KEYWORD, false);
+	                			graphButton.setEnabled(true);
+	                			newExperimentButton.setEnabled(true);
 	                		}
 					}
 				});
@@ -109,12 +115,12 @@ public class ExecutionPanel extends AbstractTabPanel{
 		scrollPane = new JScrollPane (feedbackTextArea);
         scrollPane.setBounds(50, 50, 500, 250);
 		scrollPane.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
-		
 		add(scrollPane);
 		
+		//graph button
 		graphButton = new JButton("Generate graph");
-		graphButton.setHorizontalAlignment(SwingConstants.LEFT);
-		graphButton.setBounds(210, 340, 170, 40);
+		graphButton.setHorizontalTextPosition((SwingConstants.CENTER));
+		graphButton.setBounds(170, 340, 130, 40);
 		graphButton.setEnabled(false);
 		graphButton.addActionListener(new ActionListener() {
 			@Override
@@ -123,7 +129,6 @@ public class ExecutionPanel extends AbstractTabPanel{
 					
 					JTextField mlabTextField = new JTextField();
 					String dirPath = knowledge.get("MATLAB") != null ? knowledge.get("MATLAB").toString() : System.getProperty("user.home"); 
-					System.out.println(dirPath);
 					int returnVal = showFileChooser(scrollPane, mlabTextField, "Matlab", new String[]{"exe"}, dirPath);
 					
 					if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -171,6 +176,21 @@ public class ExecutionPanel extends AbstractTabPanel{
 		});
 		add(graphButton);
 		
+		//new experiment button
+		newExperimentButton = new JButton("New experiment");
+		newExperimentButton.setHorizontalAlignment(SwingConstants.CENTER);
+		newExperimentButton.setBounds(310, 340, 130, 40);
+		newExperimentButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (tab instanceof RODESTabs) {
+					((RODESTabs)tab). initTabs();
+					tab.setSelectedIndex(0);
+				}
+			} 
+		});
+		add(newExperimentButton);
+		
 		setVisible(true);
 	}	
 	
@@ -189,6 +209,9 @@ public class ExecutionPanel extends AbstractTabPanel{
 	public void init() {	
 		synthesisButton.setEnabled(true);
 		graphButton.setEnabled(false);
+		newExperimentButton.setEnabled(false);
+		previousButton.setEnabled(true);
+		feedbackTextArea.setText("");
 	}
 
 	
