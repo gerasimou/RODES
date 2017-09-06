@@ -40,7 +40,6 @@ public class Constants {
 
   /** Keyword for problem name*/
   public static final String PROBLEM_KEYWORD = "PPROBLEM";
-
   
   /** Keyword for sensitivity*/
   public static final String SENSITIVITY_KEYWORD = "SSENSITIVITY";
@@ -72,6 +71,8 @@ public class Constants {
   /** Keyword for finishing execution  */
   public static final String DONE_KEYWORD = "DONE";
   
+  /** Keyword for graph path*/
+  public static final String GRAPH_KEYWORD = "GRAPH";
   
   /** Integer REGEX*/
   public static  final String INTEGER_REGEX = "^\\d+$";

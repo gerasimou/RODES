@@ -12,6 +12,7 @@ import javax.swing.event.ChangeListener;
 import evochecker.auxiliary.StringProperties;
 import rodes.ui.panel.AbstractTabPanel;
 import rodes.ui.panel.ConfigurationPanel;
+import rodes.ui.panel.ExecutionPanel;
 import rodes.ui.panel.ModelPanel;
 import rodes.ui.panel.SynthesiserPanel;
 import rodes.ui.panel.VisualisationPanel;
@@ -20,9 +21,12 @@ public class RODES_UI {
 
 	/** The frame*/
 	private JFrame frame;
-
+	
+	/** Tabbed pand*/
+	private JTabbedPane tab;
+	
 	/** String properties*/
-	StringProperties properties;
+	private StringProperties properties;
 
 
 	/**
@@ -66,26 +70,21 @@ public class RODES_UI {
 		//init properties
 		properties = new StringProperties();
 		
-		//Create the menu bar.
-		MenuBar menuBar = new MenuBar(frame);
-		frame.setJMenuBar(menuBar);
-
 		//Create Tab
-		JTabbedPane tab 							= new JTabbedPane();
-		SynthesiserPanel	synthesiserPanel			= new SynthesiserPanel(frame, tab, properties);
+		tab 										= new JTabbedPane();
+		SynthesiserPanel		synthesiserPanel		= new SynthesiserPanel(frame, tab, properties);
 		ModelPanel 			modelPanel 			= new ModelPanel(frame, tab, properties);
 		ConfigurationPanel  configurationPanel  	= new ConfigurationPanel(frame, tab, properties);
-		VisualisationPanel  visualisationPanel  	= new VisualisationPanel(frame, tab, properties);
+		ExecutionPanel  		executionPanel  		= new ExecutionPanel(frame, tab, properties);
+		VisualisationPanel  	visualisationPanel  	= new VisualisationPanel(frame, tab, properties);
 		
 		tab.addTab("Algorithm"			, synthesiserPanel);
 		tab.addTab("Model and Properties", modelPanel);
 		tab.addTab("Configuration"		, configurationPanel);
+		tab.addTab("Execution"			, executionPanel);
 		tab.addTab("Visualisation"		, visualisationPanel);
-
-		tab.setEnabledAt(0, true);
-		tab.setEnabledAt(1, false);
-		tab.setEnabledAt(2, false);
-		tab.setEnabledAt(3, false);
+		
+		init();
 		
 		tab.addChangeListener(new ChangeListener() {
 			@Override
@@ -102,9 +101,22 @@ public class RODES_UI {
 		
 		frame.getContentPane().add(tab);
 
+		//Create the menu bar.
+		MenuBar menuBar = new MenuBar(frame, tab);
+		frame.setJMenuBar(menuBar);
+
+		
 		//Display the window.
         frame.pack();
         frame.setVisible(true);		
+	}
+	
+	protected void init() {
+		tab.setEnabledAt(0, true);
+		tab.setEnabledAt(1, false);
+		tab.setEnabledAt(2, false);
+		tab.setEnabledAt(3, false);
+		tab.setEnabledAt(4, false);
 	}
 }
 
