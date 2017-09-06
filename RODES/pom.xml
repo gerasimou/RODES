@@ -205,6 +205,22 @@
 							</resources>
 						</configuration>
 					</execution>
+					<!--  Copy mlab directory -->
+					<execution>
+						<id>create-mlab-dir</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory> ${basedir}/target/mlab</outputDirectory>
+							<resources>
+								<resource>
+									<directory>mlab</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
 					</executions>
 			</plugin>
 						

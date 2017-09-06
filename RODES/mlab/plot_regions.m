@@ -78,7 +78,7 @@ function plot_regions(regionsObjPath, n_objs, nContinuousParam, nDiscreteParam, 
 
     paramRegions_1=[paramRegions(:,1:end-nDiscreteParam),discreteP_columns];
 
-
+    %{
     if nParams == 2
         param_plot_2d(volumes,paramRegions_1,paramVolumes,paramNames(1:2),[experimentsDir, experimentInstance,'_params'],alpha);
     elseif nParams == 3
@@ -86,5 +86,5 @@ function plot_regions(regionsObjPath, n_objs, nContinuousParam, nDiscreteParam, 
     else
         disp('Plotting of parameter regions is supported only for 2 or 3 parameters');
     end
-
+    %}
 end
