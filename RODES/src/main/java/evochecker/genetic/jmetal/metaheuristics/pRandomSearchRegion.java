@@ -3,6 +3,7 @@ package evochecker.genetic.jmetal.metaheuristics;
 import java.util.List;
 import java.util.Random;
 
+import evochecker.auxiliary.KnowledgeSingleton;
 import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
 import evochecker.genetic.jmetal.util.NonDominatedRegionSolutionList;
 import jmetal.core.Algorithm;
@@ -19,17 +20,20 @@ public class pRandomSearchRegion extends Algorithm{
 
 	/** Random handler */
 	Random rand;
-
 	
-  /**
-   * Constructor
-   * @param problem Problem to solve
-   * @param evaluator Parallel evaluator
-   */
+	/** Knowledge singleton*/
+	KnowledgeSingleton knowledge = KnowledgeSingleton.getInstance();
+	
+	
+	/**
+	 * Constructor
+	 * @param problem Problem to solve
+	 * @param evaluator Parallel evaluator
+	 */
 	public pRandomSearchRegion(Problem problem, IParallelEvaluator evaluator) {
 		super(problem);
 		parallelEvaluator_ = evaluator;
-		rand = new Random (System.currentTimeMillis());
+		rand = new Random (System.currentTimeMillis());	
 	}//constructor
 
 	
@@ -59,8 +63,8 @@ public class pRandomSearchRegion extends Algorithm{
 	    //Create the initial solution set
 	    Solution newSolution;
 	    for (int i=0; i<populationSize; i++){
-	    	newSolution = new RegionSolution(problem_); //Solution(problem_);
-	    	parallelEvaluator_.addSolutionForEvaluation(newSolution);
+		    	newSolution = new RegionSolution(problem_); //Solution(problem_);
+		    	parallelEvaluator_.addSolutionForEvaluation(newSolution);
 	    }
 	    
 	    //Run parallel evaluation
@@ -68,10 +72,14 @@ public class pRandomSearchRegion extends Algorithm{
 	    
 	    //Add the solutions to the population
 	    for (Solution solution : solutionList){
-//	    	population.add(solution);
-	    	ndList.add(solution);
-	    	evaluations++;
+	//	    	population.add(solution);
+		    	ndList.add(solution);
+		    	evaluations++;
 	    }
+
+	    
+	    //process generation
+	    knowledge.processGeneration(ndList);
 	    
 	    
 	    //Iterate until the max generations
@@ -80,25 +88,28 @@ public class pRandomSearchRegion extends Algorithm{
 	    	
 	    	 for (int i=0; i<populationSize; i++){
 	  	    	newSolution = new RegionSolution(problem_); //Solution(problem_);
-	  	    	parallelEvaluator_.addSolutionForEvaluation(newSolution);
-	  	    }
+	  	    	parallelEvaluator_.addSolutionForEvaluation(newSolution);   
+	    	 }
 	    	
 		    //Run parallel evaluation
 		   solutionList = parallelEvaluator_.parallelEvaluation();
 	    
 		   //Add the solutions to the population
 		    for (Solution solution : solutionList){
-		    	ndList.add(solution);
-		    	evaluations++;
+			    	ndList.add(solution);
+			    	evaluations++;
 		    }
 		    
 		    
 		  //keep pareto size to a maximum population size
 		    while (ndList.size()>populationSize){
-		    	int size 	= ndList.size();
-		    	int index	= rand.nextInt(size);
-		    	ndList.remove(index);
+			    	int size 	= ndList.size();
+			    	int index	= rand.nextInt(size);
+			    	ndList.remove(index);
 		    }
+		    
+		    //process generation
+		    knowledge.processGeneration(ndList);
 	    }
 	    
 	    parallelEvaluator_.stopEvaluators();

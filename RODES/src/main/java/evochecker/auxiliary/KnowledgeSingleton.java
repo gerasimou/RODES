@@ -4,10 +4,13 @@ import java.util.AbstractQueue;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.stream.Collectors;
+
+import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
+import jmetal.core.Solution;
+import jmetal.core.SolutionSet;
 
 /**
  * Singleton class that keeps information to be shown on the UI
@@ -25,6 +28,13 @@ public class KnowledgeSingleton{
 	/** Message queue*/
 //    private final BlockingQueue<String> messageQueue = new ArrayBlockingQueue<String>(20);
 	private final AbstractQueue<String> messageQueue = new ConcurrentLinkedQueue <String>();
+	
+	
+	private int populationSize = Integer.parseInt(Utility.getProperty(Constants.POPULATION_SIZE_KEYWORD));
+
+	/** Keeps solutions per generation*/
+	private List<SolutionSet> generationsRepository = new ArrayList<SolutionSet>();
+	
 	
 	/** Disable instantiation */
 	private KnowledgeSingleton() {}
@@ -63,6 +73,7 @@ public class KnowledgeSingleton{
 		
 	}
 	
+	
 	public String getMessage(){
 		String str = "";
 
@@ -83,5 +94,28 @@ public class KnowledgeSingleton{
 //			str = list.stream().collect(Collectors.joining("\n"));
 ////					map(Object::toString).collect(Collectors.joining("\n,"));// forEach(sb::append);
 		return str;
+	}
+	
+	
+	public void processGeneration (SolutionSet solutionSet) {
+		SolutionSet generation = new SolutionSet(populationSize);
+		
+
+		//create copy solution list
+		for (int i=0; i<populationSize; i++) {
+			Solution solution = solutionSet.get(i);
+			if (solution instanceof RegionSolution) {
+				Solution copySolution = new RegionSolution(((RegionSolution)solution));
+				generation.add(copySolution);
+			}
+		}
+		
+		//add solution list to generation repository 
+		generationsRepository.add(generation);
+	}
+	
+	
+	public List<SolutionSet> getGenerationsRepository() {
+		return generationsRepository;
 	}
 }
