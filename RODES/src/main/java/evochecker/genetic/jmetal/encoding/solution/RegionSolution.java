@@ -51,6 +51,32 @@ public class RegionSolution extends Solution{
 	}
 	
 	
+	/**
+	 * Copy constructor
+	 * @param solution
+	 */
+	public RegionSolution (RegionSolution original){
+		super(original);
+		//copy
+		this.regionObjectives = new RegionObjective[original.getNumberOfObjectives()];
+		for (int i=0; i < regionObjectives.length; i++){
+			regionObjectives[i] = new RegionObjective(original.regionObjectives[i]);
+		}
+		
+		try {
+			ArrayReal arrayRealVariable = ((ArrayReal) original.getDecisionVariables()[0]);
+			int params		 = 	arrayRealVariable.getLength();
+			this.regionParams = new RegionParameter[params];
+			for (int i=0; i<params; i++){
+					this.regionParams[i] = new RegionParameter(original.regionParams[i]);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
+	}
+	
+	
 	public RegionSolution(int numOfObjs, double regionObjs[][], int params, double paramRanges[][]){
 		super(numOfObjs);
 		//initialise region objectives array
@@ -173,6 +199,9 @@ public class RegionSolution extends Solution{
 		return this.regionParams.length;
 	}
 	
+	
+	
+	
 	/**
 	 * Class representing the region of a parameter
 	 * @author sgerasimou
@@ -226,11 +255,28 @@ public class RegionSolution extends Solution{
 		}
 		
 		
+		/**
+		 * Copy constructor
+		 * @param original
+		 */
+		private RegionParameter(RegionParameter original) {
+			this.lowerBound 	= original.lowerBound;
+			this.upperBound	= original.upperBound;
+			this.minValue	= original.minValue;
+			this.maxValue	= original.maxValue;
+			this.tolerance	= original.tolerance;
+		}
+		
+		
 		public String toString(){
 			return minValue +":"+ maxValue;
 		}
 		
 	}
+	
+	
+	
+	
 	
 	
 	/**
@@ -252,6 +298,16 @@ public class RegionSolution extends Solution{
 		public RegionObjective() {
 			this.minObjective = Double.NEGATIVE_INFINITY;
 			this.maxObjective = Double.POSITIVE_INFINITY;
+		}
+		
+		
+		/**
+		 * Copy constructor
+		 * @param original
+		 */
+		public RegionObjective(RegionObjective original) {
+			this.minObjective = original.minObjective;
+			this.maxObjective = original.maxObjective;
 		}
 		
 		
