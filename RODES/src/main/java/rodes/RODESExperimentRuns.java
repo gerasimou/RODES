@@ -6,7 +6,7 @@ import evochecker.auxiliary.Constants;
 import evochecker.auxiliary.Utility;
 import evochecker.exception.EvoCheckerException;
 
-public class RODESExperiment {
+public class RODESExperimentRuns {
 
 	private final static int RUNS=1;
 	private static int run=1;

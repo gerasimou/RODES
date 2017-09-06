@@ -196,7 +196,7 @@ public class RODES implements Runnable{
 		}
 		String tolerance 	= Utility.getProperty(Constants.TOLERANCE_KEYWORD).replace(".", "");
 		String epsilon		= Utility.getProperty(Constants.EPSILON_KEYWORD).replace(".", "");
-		int run				= RODESExperiment.getRun();
+		int run				= RODESExperimentRuns.getRun();
 		
 		String directory = "data/" + Utility.getProperty(Constants.PROBLEM_KEYWORD); 
 		Utility.createDir(directory);
@@ -207,6 +207,7 @@ public class RODES implements Runnable{
 				
 		Utility.printVariableRegionsToFile( directory + "/VAR_REGION_" +  outputFileEnd, population, false, regionsRadii);
 		Utility.printObjectiveRegionsToFile(directory + "/FUN_REGION_" + outputFileEnd, population, false, propertyList);
+		
 	}
 
 
