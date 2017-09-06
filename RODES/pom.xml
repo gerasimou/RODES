@@ -5,7 +5,7 @@
   	<groupId>org</groupId>
   	<artifactId>RODES</artifactId>
   	<packaging>jar</packaging>
-  	<version>1.0.1</version>
+  	<version>1.0.3</version>
   	<name>RODES</name>
   	<url>http://maven.apache.org</url>
 
@@ -128,7 +128,7 @@
 					<!--  Copy models directory -->
 					<execution>
 						<id>copy-models</id>
-						<phase>prepare-package</phase>
+						<phase>install</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -145,7 +145,7 @@
 					<!--  Copy repo directory -->
 					<execution>
 						<id>copy-repo</id>
-						<phase>prepare-package</phase>
+						<phase>install</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -162,7 +162,7 @@
 					<!--  Copy launch script -->
 					<execution>
 						<id>copy-launch</id>
-						<phase>prepare-package</phase>
+						<phase>install</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -182,7 +182,7 @@
 					<!--  Copy resources directory -->
 					<execution>
 						<id>copy-resources-dir</id>
-						<phase>prepare-package</phase>
+						<phase>install</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -199,7 +199,7 @@
 					<!--  Copy mlab directory -->
 					<execution>
 						<id>create-mlab-dir</id>
-						<phase>prepare-package</phase>
+						<phase>install</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -247,7 +247,7 @@
 					
 					<!--  prepare zip -->
 					<execution>
-						<id>zip</id>
+						<id>create-zip</id>
 						<phase>verify</phase>
 						<goals>
 							<goal>single</goal>
@@ -275,6 +275,7 @@
 		        				<goal>shade</goal>
 		        			</goals>
 		        			<configuration>
+		        				<finalName>${pom.name}-${pom.version}</finalName>
 		        				<!-- All dependencies to be packaged in the jar -->
 		        				<!-- <shadedArtifactAttached>true</shadedArtifactAttached>-->
 		        				<!-- <shadedClassifierName>jar-with-dependencies</shadedClassifierName>-->
@@ -308,8 +309,36 @@
 				      </filesets>
 			    </configuration>
 		  </plugin>
+		  
+		  
+		   <plugin>
+		      <groupId>org.codehaus.mojo</groupId>
+		      <artifactId>wagon-maven-plugin</artifactId>
+		      <version>1.0</version>
+	          <configuration>
+	            <fromFile>${project.build.directory}/${pom.name}-${pom.version}.zip</fromFile>
+	            <url>scp://sg778@csresearch0.york.ac.uk:22/shared/storage/cs/webstaff/sg778/RODES_Demo/</url>
+	          </configuration>
+		      <executions>
+		        <execution>
+		          <id>upload-to-server</id>
+		          <phase>verify</phase>
+		          <goals>
+		            <goal>upload-single</goal>
+		          </goals>
+		        </execution>
+		      </executions>
+	    </plugin>
   			
   		</plugins>
+  		
+  		<extensions>
+		    <extension>
+		      <groupId>org.apache.maven.wagon</groupId>
+		      <artifactId>wagon-ssh</artifactId>
+		      <version>2.8</version>
+		    </extension>
+  		</extensions>
   </build>
 
 

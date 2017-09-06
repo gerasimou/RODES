@@ -4,6 +4,10 @@
 #
 #  Created by Simos Gerasimou on 04/09/2017.
 
+WD=`pwd`
+
+
+#create data dir if does not exist
 if [ -d data ]; then
   rm -rf data/*
 else
@@ -16,8 +20,7 @@ PRISM_DIR=repo/prism
 
 export DYLD_LIBRARY_PATH="$PRISM_DIR":$DYLD_LIBRARY_PATH
 
-vmArgs="-Xmx3g -XX:ParallelGCThreads=1"
-
+#Get machine type
 unameOut="$(uname -s)"
 case "${unameOut}" in
     Linux*)     machine=Linux
@@ -32,5 +35,16 @@ case "${unameOut}" in
 esac
 
 
-java $vmArgs -jar RODES.jar
+JAR=""
+
+for file in $WD/*; do
+     case $(file --mime-encoding -b "$file") in
+        binary)
+            JAR=$file
+            break;;           
+     esac
+done
+
+vmArgs="-Xmx3g -XX:ParallelGCThreads=1"
+java $vmArgs -jar $JAR
 
