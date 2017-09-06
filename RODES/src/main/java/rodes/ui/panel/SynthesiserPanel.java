@@ -4,10 +4,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -175,15 +172,6 @@ public class SynthesiserPanel extends AbstractTabPanel{
 
 		
 		setVisible(true);
-		
-		list.setSelectedIndex(0);
-		populationTextfield.setText("5");
-		evaluationsTextfield.setText("1000");
-		JVMTextField.setText("/usr/bin/java");
-		processorsTextField.setText("1");
-		portTextField.setText("8880");
-		intervalTextField.setText("100");
-		
 	}	
 	
 	
@@ -252,11 +240,20 @@ public class SynthesiserPanel extends AbstractTabPanel{
 		properties.put("ERRORS", errors);
 	}
 
-
-
+	
+	@Override
+	public void reDraw() {}
 	
 	
 	@Override
-	public void reDraw() {		
+	public void init() {
+		list.setSelectedIndex(0);
+		populationTextfield.setText(properties.getProperty(Constants.POPULATION_SIZE_KEYWORD));
+		evaluationsTextfield.setText(properties.getProperty(Constants.MAX_EVALUATIONS_KEYWORD));
+		JVMTextField.setText(properties.getProperty(Constants.JVM_KEYWORD));
+		processorsTextField.setText(properties.getProperty(Constants.PROCESSORS_KEYWORD));
+		portTextField.setText(properties.getProperty(Constants.INITIAL_PORT_KEYWORD));
+		intervalTextField.setText(properties.getProperty(Constants.INTERVAL_KEYWORD));
 	}
+
 }

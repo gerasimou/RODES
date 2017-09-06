@@ -13,7 +13,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JTabbedPane;
 import javax.swing.KeyStroke;
 
 @SuppressWarnings("serial")
@@ -23,10 +22,10 @@ public class MenuBar extends JMenuBar {
 	private JFrame frame;
 	
 	/** Tabbed pane */
-	private JTabbedPane tab;
+	private RODESTabs tab;
 	
 	
-	protected MenuBar(JFrame frame, JTabbedPane tab){
+	protected MenuBar(JFrame frame, RODESTabs tab){
 		this.frame = frame;
 		this.tab    = tab;
 		init();
@@ -46,11 +45,7 @@ public class MenuBar extends JMenuBar {
 		menuItem.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				tab.setEnabledAt(0, true);
-				tab.setEnabledAt(1, false);
-				tab.setEnabledAt(2, false);
-				tab.setEnabledAt(3, false);
-				tab.setEnabledAt(4, false);
+				tab.initTabs();
 				tab.setSelectedIndex(0);
 			}
 		});

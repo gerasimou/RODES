@@ -1,29 +1,20 @@
 package rodes.ui;
 
-import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
+import evochecker.auxiliary.Constants;
 import evochecker.auxiliary.StringProperties;
-import rodes.ui.panel.AbstractTabPanel;
-import rodes.ui.panel.ConfigurationPanel;
-import rodes.ui.panel.ExecutionPanel;
-import rodes.ui.panel.ModelPanel;
-import rodes.ui.panel.SynthesiserPanel;
-import rodes.ui.panel.VisualisationPanel;
 
 public class RODES_UI {
 
 	/** The frame*/
 	private JFrame frame;
 	
-	/** Tabbed pand*/
-	private JTabbedPane tab;
+	/** Tabbed pane*/
+	private RODESTabs tab;
 	
 	/** String properties*/
 	private StringProperties properties;
@@ -69,35 +60,11 @@ public class RODES_UI {
 		
 		//init properties
 		properties = new StringProperties();
+		setDefautlProperties();
 		
 		//Create Tab
-		tab 										= new JTabbedPane();
-		SynthesiserPanel		synthesiserPanel		= new SynthesiserPanel(frame, tab, properties);
-		ModelPanel 			modelPanel 			= new ModelPanel(frame, tab, properties);
-		ConfigurationPanel  configurationPanel  	= new ConfigurationPanel(frame, tab, properties);
-		ExecutionPanel  		executionPanel  		= new ExecutionPanel(frame, tab, properties);
-		VisualisationPanel  	visualisationPanel  	= new VisualisationPanel(frame, tab, properties);
-		
-		tab.addTab("Algorithm"			, synthesiserPanel);
-		tab.addTab("Model and Properties", modelPanel);
-		tab.addTab("Configuration"		, configurationPanel);
-		tab.addTab("Execution"			, executionPanel);
-		tab.addTab("Visualisation"		, visualisationPanel);
-		
-		init();
-		
-		tab.addChangeListener(new ChangeListener() {
-			@Override
-			public void stateChanged(ChangeEvent e) {
-	            System.err.println("Tab: " + tab. getSelectedIndex());
-	            
-	            Component selectedComponent = ((JTabbedPane)e.getSource()).getSelectedComponent(); 
-	            if (selectedComponent instanceof AbstractTabPanel)
-	            		((AbstractTabPanel)selectedComponent).reDraw();
-	            frame.repaint();
-	            frame.revalidate();
-			}
-		});
+		tab = new RODESTabs(frame, properties);
+		tab.initTabs();
 		
 		frame.getContentPane().add(tab);
 
@@ -111,12 +78,21 @@ public class RODES_UI {
         frame.setVisible(true);		
 	}
 	
-	protected void init() {
-		tab.setEnabledAt(0, true);
-		tab.setEnabledAt(1, false);
-		tab.setEnabledAt(2, false);
-		tab.setEnabledAt(3, false);
-		tab.setEnabledAt(4, false);
-	}
+	
+	protected void setDefautlProperties() {
+		properties.setProperty(Constants.POPULATION_SIZE_KEYWORD, "4");
+		properties.setProperty(Constants.MAX_EVALUATIONS_KEYWORD, "12");
+		properties.setProperty(Constants.INTERVAL_KEYWORD, "4");
+		properties.setProperty(Constants.JVM_KEYWORD, "/usr/bin/java");
+		properties.setProperty(Constants.PROCESSORS_KEYWORD, "1");
+		properties.setProperty(Constants.INITIAL_PORT_KEYWORD, "8880");
+		properties.setProperty(Constants.POPULATION_SIZE_KEYWORD, "5");
+		properties.setProperty(Constants.PROBLEM_KEYWORD, "Google");
+		properties.setProperty(Constants.MODEL_FILE_KEYWORD, "models/Google/googleTemplate.sm");
+		properties.setProperty(Constants.PROPERTIES_FILE_KEYWORD, "models/Google/google.csl");
+		properties.setProperty(Constants.TOLERANCE_KEYWORD, "0.1");
+		properties.setProperty(Constants.EPSILON_KEYWORD, "0.05");
+		properties.setProperty(Constants.SENSITIVITY_KEYWORD, "true");
+}
 }
 

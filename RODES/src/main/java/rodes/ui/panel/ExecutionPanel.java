@@ -4,15 +4,16 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
@@ -33,6 +34,9 @@ public class ExecutionPanel extends AbstractTabPanel{
 
 	/** Textout textarea*/
 	private JTextArea feedbackTextArea;
+	
+	/** Synthesis buttong*/
+	private JButton synthesisButton;
 	
 	/** Graph button*/
 	private JButton graphButton;
@@ -57,17 +61,17 @@ public class ExecutionPanel extends AbstractTabPanel{
 
 		
 		//Start button
-		JButton startButton	= new JButton("Start synthesis");
-		startButton.setBounds(410, 340, 170, 40);
-		startButton.setHorizontalAlignment (SwingConstants.LEFT);
-		startButton.addActionListener(new ActionListener() {
+		synthesisButton	= new JButton("Start synthesis");
+		synthesisButton.setBounds(410, 340, 170, 40);
+		synthesisButton.setHorizontalAlignment (SwingConstants.LEFT);
+		synthesisButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//start Execution
 				Utility.loadPropertiesInstance(props);
 				System.err.println("Starting synthesis");
 
-////				TestRODES producer = new TestRODES(messageQueue);
-////				Thread thread = new Thread(producer, "TestRODES");
+				//TestRODES producer = new TestRODES(messageQueue);
+				//Thread thread = new Thread(producer, "TestRODES");
 				RODES rodes = new RODES();
 				Thread thread = new Thread(rodes, "RODES");
 				thread.setDaemon(true);
@@ -89,11 +93,11 @@ public class ExecutionPanel extends AbstractTabPanel{
 				});
 				doneTimer.start();
 									
-				startButton.setEnabled(false);
+				synthesisButton.setEnabled(false);
 				previousButton.setEnabled(false);
 			}
 		});		
-		add(startButton);
+		add(synthesisButton);
 		
 		//feedback textarea
 		feedbackTextArea = new JTextArea();
@@ -117,36 +121,48 @@ public class ExecutionPanel extends AbstractTabPanel{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					
-					String tolerance = Utility.getProperty(Constants.TOLERANCE_KEYWORD).replace(".", "");
-					String epsilon  	=  Utility.getProperty(Constants.EPSILON_KEYWORD).replace(".", "");
-					String run		=  "1";
-							
-					//run matlab to generate graph
-					String params		= "'../data/',"												//data directory  
-							  + "'" + Utility.getProperty(Constants.PROBLEM_KEYWORD) 	+"', "	//Problem name (subdirectory)
-							  + "2, 1, 2, " 													//continuous params, discrete params, objectives
-							  + "'" + tolerance +"', "										//tolerance
-							  + "'" + epsilon +"'";  										//epsilon
-					String[] command   	= { "/bin/bash", "-c", "cd mlab;"
-							+ " /Applications/MATLAB_R2016a.app/bin/matlab -nodisplay -nosplash -nodesktop -r \"try " 
-							+ "createPlotsCMD(" + params + "); catch; end; quit\""};
-            			ProcessBuilder pb = new ProcessBuilder(command);
-            			pb.redirectOutput(Redirect.INHERIT);
-            			pb.redirectError(Redirect.INHERIT);
-            			Process p;
-					p = pb.start();
-            			p.waitFor();
-            			            			
-            			//show graph
-    					String graph 	 = tolerance +"_"+ epsilon +"_"+ run +"_objs.png";
-    					String graphPath = "mlab" + File.separator + "graphs" + File.separator + Utility.getProperty(Constants.PROBLEM_KEYWORD) + File.separator + graph;
-    					knowledge.put(Constants.GRAPH_KEYWORD, graphPath);
-    					
-    					JOptionPane.showMessageDialog(parent, "Graph saved at " + graphPath, "Graph output", JOptionPane.INFORMATION_MESSAGE);
+					JTextField mlabTextField = new JTextField();
+					String dirPath = knowledge.get("MATLAB") != null ? knowledge.get("MATLAB").toString() : System.getProperty("user.home"); 
+					System.out.println(dirPath);
+					int returnVal = showFileChooser(scrollPane, mlabTextField, "Matlab", new String[]{"exe"}, dirPath);
+					
+					if (returnVal == JFileChooser.APPROVE_OPTION) {
+						String matlab = mlabTextField.getText() + File.separator + "bin" + File.separator + "matlab"; 						
+    						knowledge.put("MATLAB", mlabTextField.getText());
 
-    					
-    					((JTabbedPane)parent).setEnabledAt(3, false);
-    					((JTabbedPane)parent).setSelectedIndex(4);
+						
+						String tolerance = Utility.getProperty(Constants.TOLERANCE_KEYWORD).replace(".", "");
+						String epsilon  	=  Utility.getProperty(Constants.EPSILON_KEYWORD).replace(".", "");
+						String run		=  "1";
+								
+						//run matlab to generate graph
+						String params		= "'../data/',"												//data directory  
+								  + "'" + Utility.getProperty(Constants.PROBLEM_KEYWORD) 	+"', "	//Problem name (subdirectory)
+								  + "2, 1, 2, " 													//continuous params, discrete params, objectives
+								  + "'" + tolerance +"', "										//tolerance
+								  + "'" + epsilon +"'";  										//epsilon
+						String[] command   	= { "/bin/bash", "-c", "cd mlab;"
+								+ matlab +  " -nodisplay -nosplash -nodesktop -r \"try "
+	//							+ " /Applications/MATLAB_R2016a.app/bin/matlab -nodisplay -nosplash -nodesktop -r \"try " 
+								+ "createPlotsCMD(" + params + "); catch; end; quit\""};
+	            			ProcessBuilder pb = new ProcessBuilder(command);
+	            			pb.redirectOutput(Redirect.INHERIT);
+	            			pb.redirectError(Redirect.INHERIT);
+	            			Process p;
+						p = pb.start();
+	            			p.waitFor();
+	            			            			
+	            			//show graph
+	    					String graph 	 = tolerance +"_"+ epsilon +"_"+ run +"_objs.png";
+	    					String graphPath = "mlab" + File.separator + "graphs" + File.separator + Utility.getProperty(Constants.PROBLEM_KEYWORD) + File.separator + graph;
+	    					knowledge.put(Constants.GRAPH_KEYWORD, graphPath);
+	    					
+	    					JOptionPane.showMessageDialog(parent, "Graph saved at " + graphPath, "Graph output", JOptionPane.INFORMATION_MESSAGE);
+	
+	    					
+	    					((JTabbedPane)parent).setEnabledAt(3, false);
+	    					((JTabbedPane)parent).setSelectedIndex(4);
+					}
 				} 
 				catch (Exception e1) {
 					e1.printStackTrace();
@@ -165,10 +181,17 @@ public class ExecutionPanel extends AbstractTabPanel{
 	protected void checkInputs() {}
 
 
-
 	@Override
 	public void reDraw() {}
+	
+	
+	@Override
+	public void init() {	
+		synthesisButton.setEnabled(true);
+		graphButton.setEnabled(false);
+	}
 
+	
 	
 	class MyTimer extends Timer{
 		final LongProperty lastUpdate = new SimpleLongProperty();

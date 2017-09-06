@@ -149,13 +149,7 @@ public class ModelPanel extends AbstractTabPanel{
 		sensitivityCheckBox.setBounds(10, 264, 220, 40);
 		sensitivityCheckBox.setHorizontalTextPosition(SwingConstants.LEFT);
 		add(sensitivityCheckBox);
-		
-		problemTextField.setText("Google");
-		modelTextArea.setText("/Users/sgerasimou/Documents/Git/RODES/RODES/models/Google/googleTemplate.sm");
-		propertiesTextArea.setText("/Users/sgerasimou/Documents/Git/RODES/RODES/models/Google/google.csl");
-		toleranceTextfield.setText("0.1");
-		epsilonTextfield.setText("0.2");
-				
+						
 		setVisible(true);
 	}	
 	
@@ -219,8 +213,17 @@ public class ModelPanel extends AbstractTabPanel{
 	}
 
 
-
 	@Override
-	public void reDraw() {
+	public void reDraw() {}
+	
+	
+	@Override
+	public void init() {
+		problemTextField.setText(properties.getProperty(Constants.PROBLEM_KEYWORD));
+		modelTextArea.setText(properties.getProperty(Constants.MODEL_FILE_KEYWORD));//"models/Google/googleTemplate.sm");
+		propertiesTextArea.setText(properties.getProperty(Constants.PROPERTIES_FILE_KEYWORD));//"models/Google/google.csl");
+		toleranceTextfield.setText(properties.getProperty(Constants.TOLERANCE_KEYWORD));
+		epsilonTextfield.setText(properties.getProperty(Constants.EPSILON_KEYWORD));
+		sensitivityCheckBox.setSelected(properties.getProperty(Constants.SENSITIVITY_KEYWORD).equals("true") ? true : false);
 	}
 }

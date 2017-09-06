@@ -1,10 +1,7 @@
 package rodes.ui.panel;
 
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -15,7 +12,6 @@ import javax.swing.table.AbstractTableModel;
 
 import evochecker.auxiliary.Constants;
 import evochecker.auxiliary.StringProperties;
-import evochecker.auxiliary.Utility;
 
 @SuppressWarnings("serial")
 public class ConfigurationPanel extends AbstractTabPanel{
@@ -56,8 +52,6 @@ public class ConfigurationPanel extends AbstractTabPanel{
 	protected void checkInputs() {}
 
 
-
-
 	@Override
 	public void reDraw() {		
 		if (scrollPane != null)
@@ -76,6 +70,16 @@ public class ConfigurationPanel extends AbstractTabPanel{
         add(scrollPane);
 	}
 	
+	
+	@Override
+	public void init() {	}
+	
+	
+	/**
+	 * Class that populates data in a table
+	 * @author sgerasimou
+	 *
+	 */
 	class TableModel extends AbstractTableModel{
 		String[] columnNames = {"Parameter", "Value"};
 

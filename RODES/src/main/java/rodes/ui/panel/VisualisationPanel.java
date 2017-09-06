@@ -1,6 +1,5 @@
 package rodes.ui.panel;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -10,8 +9,6 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import evochecker.auxiliary.Constants;
@@ -22,7 +19,7 @@ import evochecker.auxiliary.StringProperties;
 public class VisualisationPanel extends AbstractTabPanel{
 
 	/** Graph panel */
-	private JPanel graphPanel;
+//	private JPanel graphPanel;
     
     KnowledgeSingleton knowledge = KnowledgeSingleton.getInstance();
 
@@ -58,7 +55,6 @@ public class VisualisationPanel extends AbstractTabPanel{
 	protected void checkInputs() {}
 
 
-
 	@Override
 	public void reDraw() {
 		try {
@@ -75,6 +71,11 @@ public class VisualisationPanel extends AbstractTabPanel{
 			e.printStackTrace();
 		}
 	}
+	
+	
+	@Override
+	public void init() {}
+	
 	
 	@Override
     protected void paintComponent(Graphics g) {

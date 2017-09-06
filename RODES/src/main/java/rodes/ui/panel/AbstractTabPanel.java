@@ -89,7 +89,7 @@ public abstract class AbstractTabPanel extends JPanel {
 						frame.validate();
 						frame.repaint();
 					}
-					System.out.println(properties.toString());
+					//System.out.println(properties.toString());
 				}
 			});
 			add(nextButton);
@@ -97,7 +97,7 @@ public abstract class AbstractTabPanel extends JPanel {
 	}
 	
 	
-	protected void showFileChooser(Component parent, JTextComponent host, String description, String[] extension, String currentDir){	
+	protected int showFileChooser(Component parent, JTextComponent host, String description, String[] extension, String currentDir){	
 		JFileChooser chooser = new JFileChooser();
 	    FileNameExtensionFilter filter = new FileNameExtensionFilter(description, extension);// "JPG & GIF Images", new String[]{"jpg", "gif"});
 	    chooser.setFileFilter(filter);
@@ -109,9 +109,12 @@ public abstract class AbstractTabPanel extends JPanel {
 	    if(returnVal == JFileChooser.APPROVE_OPTION) {
 	    		host.setText(chooser.getSelectedFile().getAbsolutePath());
 	    }
+	    return returnVal;
 	}
 	
 	protected abstract void checkInputs();
 	
 	public abstract void reDraw();
+	
+	public abstract void init();
 }
