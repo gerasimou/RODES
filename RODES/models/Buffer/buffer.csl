@@ -1,0 +1,12 @@
+// max
+P=? [ G[20,25] ((buffer_s>=10)&(buffer_f>=15)) ]
+
+// MIN
+P=? [ F[0,25] ((buffer_s=max_slow_buffer)&(buffer_f=max_fast_buffer)) ]
+
+// max
+//R{"consume"}=? [ C<=25 ]
+
+// min
+R{"lost"}=? [ C<=25 ]
+
