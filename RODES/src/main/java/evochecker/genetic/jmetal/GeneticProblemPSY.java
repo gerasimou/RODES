@@ -201,8 +201,8 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 		//Cluster
 		double value = new BigDecimal(Double.parseDouble(resultsList.get(numberOfObjectives_*2+1)))
 										.setScale(4, RoundingMode.HALF_DOWN).doubleValue();
-		if (value > 50){
-			solution.setOverallConstraintViolation((50-value )*100);
+		if (value > 10){
+			solution.setOverallConstraintViolation((10-value )*100);
 			solution.setNumberOfViolatedConstraint(1);			
 		}
 		else{			
