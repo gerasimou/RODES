@@ -12,6 +12,7 @@
 
 package rodes;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,7 @@ import evochecker.prism.Property;
 import jmetal.core.Algorithm;
 import jmetal.core.Problem;
 import jmetal.core.SolutionSet;
+import jmetal.util.JMException;
 
 
 /**
@@ -74,12 +76,19 @@ public class RODES implements Runnable{
 		try {			
 			//instantiate evochecker
 			RODES rodes = new RODES();
+			
 			//initialise problem
 			rodes.initializeProblem();
+			
 			//initialise algorithm
 			rodes.initialiseAlgorithm();
-			//execute 
+			
+			//initialise data structures and variables for saving data
+			rodes.initialiseOutputData();
+			
+			//execute and save results
 			rodes.execute();
+			
 			//close down
 			rodes.closeDown();
 		} 
@@ -164,6 +173,28 @@ public class RODES implements Runnable{
 	
 	
 	/**
+	 * Initialise data structure and variables for saving execution results
+	 */
+	private void initialiseOutputData() {
+		//create output dir
+		String outputDir = "data" + File.separator 
+							+ Utility.getProperty(Constants.PROBLEM_KEYWORD)   + File.separator 
+							+ Utility.getProperty(Constants.ALGORITHM_KEYWORD) + File.separator;
+		Utility.createDir(outputDir);
+		knowledge.put(Constants.OUTPUT_DIR_KEYWORD, outputDir);
+		
+		//Generate output files suffix
+		String tolerance 	= Utility.getProperty(Constants.TOLERANCE_KEYWORD).replace(".", "");
+		String epsilon		= Utility.getProperty(Constants.EPSILON_KEYWORD).replace(".", "");
+		int run				= RODESExperimentRuns.getRun();
+		String outputFileSuffix = tolerance +"_"+ epsilon +"_"+ run;
+		knowledge.put(Constants.OUTPUT_FILE_SUFFIX, outputFileSuffix);
+		
+		knowledge.put(Constants.PROPERTIES_KEYWORD, propertyList);
+	}
+	
+	
+	/**
 	 * Make finalisations of algorithm
 	 */
 	private void closeDown(){
@@ -179,11 +210,19 @@ public class RODES implements Runnable{
 	private void execute() throws Exception{
 		knowledge.addMessage("Starting execution");
 
-		// Execute the Algorithm
+		//Execute the Algorithm
 		SolutionSet population = algorithm.execute();
 
-		knowledge.addMessage("Finished execution");
+		//Save results
+		exportResults(population);
 		
+		knowledge.addMessage("Finished execution");
+	}
+	
+	
+	
+	private void exportResults(SolutionSet population) throws JMException {
+		//export final population
 		//Print results to console
 		System.out.println("-------------------------------------------------");
 		System.out.println("SOLUTIONS: \t" + population.size());
@@ -194,20 +233,30 @@ public class RODES implements Runnable{
 			if (gene instanceof RegionGene)
 				regionsRadii.add(((RegionGene)gene).getRegionRadius());
 		}
-		String tolerance 	= Utility.getProperty(Constants.TOLERANCE_KEYWORD).replace(".", "");
-		String epsilon		= Utility.getProperty(Constants.EPSILON_KEYWORD).replace(".", "");
-		int run				= RODESExperimentRuns.getRun();
 		
-		String directory = "data/" + Utility.getProperty(Constants.PROBLEM_KEYWORD); 
-		Utility.createDir(directory);
-		String outputFileEnd = tolerance +"_"+ epsilon +"_"+ run;
-		//Store results
-		population.printObjectivesToFile(directory + "/FUN_" + outputFileEnd);
-		population.printVariablesToFile( directory + "/VAR_" +  outputFileEnd);
-				
-		Utility.printVariableRegionsToFile( directory + "/VAR_REGION_" +  outputFileEnd, population, false, regionsRadii);
-		Utility.printObjectiveRegionsToFile(directory + "/FUN_REGION_" + outputFileEnd, population, false, propertyList);
+		//create output dir
+		String outputDir 		= knowledge.get(Constants.OUTPUT_DIR_KEYWORD).toString();
+		String outputFileSuffix = knowledge.get(Constants.OUTPUT_FILE_SUFFIX).toString();
 		
+		//Store midpoint results
+		population.printObjectivesToFile(outputDir + "FUN_" + outputFileSuffix);
+		population.printVariablesToFile( outputDir + "VAR_" +  outputFileSuffix);
+		
+		//Store region results
+		Utility.printObjectiveRegionsToFile(outputDir + "FUN_REGION_" +  outputFileSuffix, population, false, propertyList);
+		Utility.printVariableRegionsToFile( outputDir + "VAR_REGION_" +  outputFileSuffix, population, false, regionsRadii);
+		Utility.printVariableRegionsToFile2(outputDir + "VAR_REGION2_" + outputFileSuffix, population, true);
+		
+//		//store generation results
+//		List<SolutionSet> generationsRepo = knowledge.getGenerationsRepository();
+//		int gen = 1;
+//		for (SolutionSet generation : generationsRepo) {
+//			String outputFile = outputFileSuffix +"_"+ gen++;
+//			Utility.printVariableRegionsToFile( outputDir + File.separatorChar + "VAR_REGION_" +  outputFile, generation, false, regionsRadii);
+//			Utility.printObjectiveRegionsToFile(outputDir + File.separatorChar + "FUN_REGION_" +  outputFile, generation, false, propertyList);
+//			Utility.printVariableRegionsToFile2(outputDir + File.separatorChar + "VAR_REGION2_" + outputFile, generation, true);
+//		}
+//		
 	}
 
 

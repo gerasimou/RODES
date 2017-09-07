@@ -22,17 +22,13 @@ package evochecker.genetic.jmetal.metaheuristics;
 
 import java.util.List;
 
-import evochecker.auxiliary.Constants;
 import evochecker.auxiliary.KnowledgeSingleton;
-import evochecker.auxiliary.Utility;
 import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
 import evochecker.genetic.jmetal.util.ExampleRegionDistance;
 import evochecker.genetic.jmetal.util.RegionDistance;
 import evochecker.genetic.jmetal.util.RegionDominanceComparator;
 import evochecker.genetic.jmetal.util.RegionRanking;
 import evochecker.genetic.jmetal.util.eDominanceRevisedWorstCaseDominanceComparator;
-import evochecker.genetic.jmetal.util.eDominanceWorstCaseDominanceComparator;
-import evochecker.genetic.jmetal.util.eToleranceWorstCaseDominanceComparator;
 import jmetal.core.Algorithm;
 import jmetal.core.Operator;
 import jmetal.core.Problem;
@@ -61,6 +57,7 @@ public class pNSGAIIRegion extends Algorithm {
   /** Knowledge singleton*/
   KnowledgeSingleton knowledge = KnowledgeSingleton.getInstance();
   
+  int currentGeneration = 0;
   
   /**
    * Constructor
@@ -72,18 +69,11 @@ public class pNSGAIIRegion extends Algorithm {
 
     this.parallelEvaluator_ = evaluator;
 
-//    double paramVolume = 2*Double.parseDouble(Utility.getProperty("REGION_RADIUS_C_FAIL", "1.0"))*
-//                         2*Double.parseDouble(Utility.getProperty("REGION_RADIUS_C_HW_REPAIR_RATE", "1.0"));
-
     //New commands for regions: SET THE DOMINANCE & DISTANCE COMPARATOR
-//    boolean sensitivity = Boolean.parseBoolean(Utility.getProperty("SENSITIVITY"));
-//    double epsilon		= 0; 
-//    this.regionDominanceComparator	= new eToleranceWorstCaseDominanceComparator();
-    this.regionDominanceComparator	= new eDominanceWorstCaseDominanceComparator();
+    this.regionDominanceComparator	= new eDominanceRevisedWorstCaseDominanceComparator(); 
+    		//new eDominanceWorstCaseDominanceComparator();
     this.regionDistance				= new ExampleRegionDistance();
 
-    //this.regionDominanceComparator	= new eDominanceWorstCaseDominanceComparator(0.1,paramVolume,sensitivity);
-    //this.regionDominanceComparator	= new ExampleDominanceComparator();
   } // pNSGAII
 
   
@@ -141,6 +131,9 @@ public class pNSGAIIRegion extends Algorithm {
       population.add(solution) ;
       evaluations ++ ;
     }
+    
+    //process generation
+    knowledge.processGeneration(population, currentGeneration++);
         
     // Generations 
     while (evaluations < maxEvaluations) {
@@ -214,6 +207,9 @@ public class pNSGAIIRegion extends Algorithm {
 	        remain = 0;
 	      } // if                               
 	
+	      //process generation
+	      knowledge.processGeneration(ecRanking.getSubfront(0), currentGeneration++);
+
 	      // This piece of code shows how to use the indicator object into the code
 	      // of NSGA-II. In particular, it finds the number of evaluations required
 	      // by the algorithm to obtain a Pareto front with a hypervolume higher

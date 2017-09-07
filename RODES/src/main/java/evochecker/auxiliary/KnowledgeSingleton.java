@@ -1,5 +1,6 @@
 package evochecker.auxiliary;
 
+import java.io.File;
 import java.util.AbstractQueue;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +9,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.stream.Collectors;
 
+import evochecker.exception.EvoCheckerException;
 import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
+import evochecker.prism.Property;
 import jmetal.core.Solution;
 import jmetal.core.SolutionSet;
+import jmetal.util.JMException;
 
 /**
  * Singleton class that keeps information to be shown on the UI
@@ -29,9 +33,6 @@ public class KnowledgeSingleton{
 //    private final BlockingQueue<String> messageQueue = new ArrayBlockingQueue<String>(20);
 	private final AbstractQueue<String> messageQueue = new ConcurrentLinkedQueue <String>();
 	
-	
-	private int populationSize = Integer.parseInt(Utility.getProperty(Constants.POPULATION_SIZE_KEYWORD));
-
 	/** Keeps solutions per generation*/
 	private List<SolutionSet> generationsRepository = new ArrayList<SolutionSet>();
 	
@@ -98,9 +99,10 @@ public class KnowledgeSingleton{
 	
 	
 	public void processGeneration (SolutionSet solutionSet) {
-		SolutionSet generation = new SolutionSet(populationSize);
-		
+		int populationSize = solutionSet.size();
 
+		SolutionSet generation = new SolutionSet(populationSize);
+	
 		//create copy solution list
 		for (int i=0; i<populationSize; i++) {
 			Solution solution = solutionSet.get(i);
@@ -112,6 +114,30 @@ public class KnowledgeSingleton{
 		
 		//add solution list to generation repository 
 		generationsRepository.add(generation);
+	}
+	
+	
+	public void processGeneration (SolutionSet population, int generation) {
+		String outputDir 		= knowledge.get(Constants.OUTPUT_DIR_KEYWORD).toString();
+		String outputFileSuffix = knowledge.get(Constants.OUTPUT_FILE_SUFFIX).toString();
+		String outputFile 		= outputFileSuffix +"_"+ generation;
+		
+		try {
+			//get properties
+			Object obj = knowledge.get(Constants.PROPERTIES_KEYWORD);
+			List<Property>  propertyList = null;
+			if (! (obj instanceof List<?>))
+				throw new EvoCheckerException(obj + " is not a List<Property>");
+			propertyList = (List<Property>)obj;
+
+			//		Utility.printVariableRegionsToFile( outputDir + File.separatorChar + "VAR_REGION_" +  outputFile, generation, false, regionsRadii);
+			Utility.printObjectiveRegionsToFile(outputDir + File.separatorChar + "FUN_REGION_" +  outputFile, population, false, propertyList);
+			Utility.printVariableRegionsToFile2(outputDir + File.separatorChar + "VAR_REGION_" + outputFile, population, true);	
+		} 
+		catch (JMException | EvoCheckerException e) {
+			e.printStackTrace();
+			System.exit(-1);
+		}
 	}
 	
 	

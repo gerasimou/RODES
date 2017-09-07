@@ -23,6 +23,9 @@ public class Constants {
   /** Keyword for probabilistic properties file*/
   public static final String PROPERTIES_FILE_KEYWORD = "PPROPERTIES_FILE";
 
+  /** Keyword for properties */
+  public static final String PROPERTIES_KEYWORD = "PPROPERTIES";
+
   /** Keyword for algorithm*/
   public static final String ALGORITHM_KEYWORD = "AALGORITHM";
 
@@ -73,6 +76,12 @@ public class Constants {
   
   /** Keyword for graph path*/
   public static final String GRAPH_KEYWORD = "GRAPH";
+
+  /** Keyword for output directory*/
+  public static final String OUTPUT_DIR_KEYWORD = "OUTPUT_DIR";
+
+  /** Keyword for output file suffix*/
+  public static final String OUTPUT_FILE_SUFFIX = "OUTPUT_FILE_SUFFIX";
   
   /** Integer REGEX*/
   public static  final String INTEGER_REGEX = "^\\d+$";

@@ -6,6 +6,8 @@ import java.util.Random;
 import evochecker.auxiliary.KnowledgeSingleton;
 import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
 import evochecker.genetic.jmetal.util.NonDominatedRegionSolutionList;
+import evochecker.genetic.jmetal.util.RegionDominanceComparator;
+import evochecker.genetic.jmetal.util.eDominanceRevisedWorstCaseDominanceComparator;
 import jmetal.core.Algorithm;
 import jmetal.core.Problem;
 import jmetal.core.Solution;
@@ -21,9 +23,14 @@ public class pRandomSearchRegion extends Algorithm{
 	/** Random handler */
 	Random rand;
 	
+	  /** Region comparator handler*/
+	  RegionDominanceComparator regionDominanceComparator;
+	
 	/** Knowledge singleton*/
 	KnowledgeSingleton knowledge = KnowledgeSingleton.getInstance();
 	
+	
+	int currentGeneration = 1;
 	
 	/**
 	 * Constructor
@@ -34,6 +41,7 @@ public class pRandomSearchRegion extends Algorithm{
 		super(problem);
 		parallelEvaluator_ = evaluator;
 		rand = new Random (System.currentTimeMillis());	
+	    this.regionDominanceComparator	= new eDominanceRevisedWorstCaseDominanceComparator(); 
 	}//constructor
 
 	
@@ -44,7 +52,7 @@ public class pRandomSearchRegion extends Algorithm{
 		int evaluations;
 		
 //		SolutionSet population;
-	    NonDominatedRegionSolutionList ndList = new NonDominatedRegionSolutionList();
+	    NonDominatedRegionSolutionList ndList = new NonDominatedRegionSolutionList(regionDominanceComparator);
 
 	    QualityIndicator indicators; // QualityIndicator object
 
@@ -79,7 +87,7 @@ public class pRandomSearchRegion extends Algorithm{
 
 	    
 	    //process generation
-	    knowledge.processGeneration(ndList);
+	    knowledge.processGeneration(ndList, currentGeneration++);
 	    
 	    
 	    //Iterate until the max generations
@@ -109,7 +117,7 @@ public class pRandomSearchRegion extends Algorithm{
 		    }
 		    
 		    //process generation
-		    knowledge.processGeneration(ndList);
+		    knowledge.processGeneration(ndList, currentGeneration++);
 	    }
 	    
 	    parallelEvaluator_.stopEvaluators();
