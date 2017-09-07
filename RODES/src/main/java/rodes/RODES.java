@@ -133,15 +133,15 @@ public class RODES implements Runnable{
 //		int numOfConstraints  = 1;
 
 //		Cluster
-//		propertyList.add(new Property(true));
-//		propertyList.add(new Property(true));
-//		propertyList.add(new Property(false));
-//		int numOfConstraints  = 1;
-
-//		Buffer
 		propertyList.add(new Property(true));
 		propertyList.add(new Property(false));
-		int numOfConstraints  = 0;
+		propertyList.add(new Property(false));
+		int numOfConstraints  = 1;
+
+//		Buffer
+//		propertyList.add(new Property(true));
+//		propertyList.add(new Property(false));
+//		int numOfConstraints  = 0;
 
 		
 		//6) instantiate the problem

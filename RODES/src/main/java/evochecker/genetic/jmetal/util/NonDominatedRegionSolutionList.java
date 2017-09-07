@@ -3,6 +3,7 @@
 //  Author:
 //       Antonio J. Nebro <antonio@lcc.uma.es>
 //       Juan J. Durillo <durillo@lcc.uma.es>
+//		 Simos Gerasimou
 //
 //  Copyright (c) 2011 Antonio J. Nebro, Juan J. Durillo
 //
@@ -21,38 +22,25 @@
 
 package evochecker.genetic.jmetal.util;
 
-import jmetal.core.Solution;
-import jmetal.core.SolutionSet;
-import jmetal.util.comparators.DominanceComparator;
-import jmetal.util.comparators.SolutionComparator;
-
 import java.util.Comparator;
 import java.util.Iterator;
+
+import jmetal.core.Solution;
+import jmetal.core.SolutionSet;
+import jmetal.util.comparators.SolutionComparator;
 
 /** 
  * This class implements an unbound list of non-dominated solutions
  */
 public class NonDominatedRegionSolutionList extends SolutionSet{
 
-	/**
-	 * Stores a <code>Comparator</code> for dominance checking
-	 */
-	private Comparator dominance_ = new eToleranceWorstCaseDominanceComparator(); 
+	/** Stores a <code>Comparator</code> for dominance checking*/
+	private Comparator dominance_;// = new eDominanceWorstCaseDominanceComparator(); 
 
-	/**
-	 * Stores a <code>Comparator</code> for checking if two solutions are equal
-	 */
+	/** Stores a <code>Comparator</code> for checking if two solutions are equal*/
 	private static final Comparator equal_ = new SolutionComparator();     
 
-	/** 
-	 * Constructor.
-	 * The objects of this class are lists of non-dominated solutions according to
-	 * a Pareto dominance comparator. 
-	 */
-	public NonDominatedRegionSolutionList() {
-		super();
-	} // NonDominatedList
-
+	
 	/**
 	 * Constructor.
 	 * This constructor creates a list of non-dominated individuals using a
@@ -64,6 +52,7 @@ public class NonDominatedRegionSolutionList extends SolutionSet{
 		dominance_ = dominance;
 	} // NonDominatedList
 
+	
 	/** Inserts a solution in the list
 	 * @param solution The solution to be inserted.
 	 * @return true if the operation success, and false if the solution is 
