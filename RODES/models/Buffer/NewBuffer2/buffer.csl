@@ -1,0 +1,11 @@
+// max
+R{"consume"}=? [ C<=25 ]
+
+// max
+P=? [ G[20,25] ((buffer_f>=10)&(buffer_s>=15)) ]
+
+// MIN
+//P=? [ F[0,25] ((buffer_s=31)&(buffer_f=21)) ]
+
+// CONSTRAINT (<=10)
+R{"lost"}=? [ C<=25 ]

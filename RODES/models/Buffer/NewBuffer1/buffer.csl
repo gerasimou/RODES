@@ -1,0 +1,12 @@
+// max
+R{"consume"}=? [ C<=25 ]
+
+// max (unused)
+// P=? [ G[20,25] ((buffer_s>=6)&(buffer_s<=24))&((buffer_f>=4)&(buffer_f<=16)) ]
+
+// max
+P=? [ G[20,25] ((buffer_s>=15)&(buffer_f>=10)) ]
+
+
+// min
+R{"lost"}=? [ C<=25 ]
