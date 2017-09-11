@@ -128,7 +128,7 @@
 					<!--  Copy models directory -->
 					<execution>
 						<id>copy-models</id>
-						<phase>install</phase>
+						<phase>verify</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -145,7 +145,7 @@
 					<!--  Copy repo directory -->
 					<execution>
 						<id>copy-repo</id>
-						<phase>install</phase>
+						<phase>verify</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -162,7 +162,7 @@
 					<!--  Copy launch script -->
 					<execution>
 						<id>copy-launch</id>
-						<phase>install</phase>
+						<phase>verify</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -182,7 +182,7 @@
 					<!--  Copy resources directory -->
 					<execution>
 						<id>copy-resources-dir</id>
-						<phase>install</phase>
+						<phase>verify</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -199,7 +199,7 @@
 					<!--  Copy mlab directory -->
 					<execution>
 						<id>create-mlab-dir</id>
-						<phase>install</phase>
+						<phase>verify</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -311,13 +311,43 @@
 		  </plugin>
 		  
 		  
+		  <!--  Attach sources -->
+		  <plugin>
+		  	<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-source-plugin</artifactId>
+			<executions>
+		    		<execution>
+		      		<id>attach-sources</id>
+		      		<goals>
+		        			<goal>jar</goal>
+		      		</goals>
+		    		</execution>
+	  		</executions>
+  		</plugin>
+  		
+		<!--  Attach javadoc -->
+		<!-- 
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+		  	<artifactId>maven-javadoc-plugin</artifactId>
+		  	<executions>
+		    		<execution>
+		      		<id>attach-javadocs</id>
+		      		<goals>
+		        			<goal>jar</goal>
+		      		</goals>
+		    		</execution>
+		  	</executions>
+		</plugin>
+	    -->
+		  
 		   <plugin>
 		      <groupId>org.codehaus.mojo</groupId>
 		      <artifactId>wagon-maven-plugin</artifactId>
 		      <version>1.0</version>
 	          <configuration>
 	            <fromFile>${project.build.directory}/${pom.name}-${pom.version}.zip</fromFile>
-	            <url>scp://sg778@csresearch0.york.ac.uk:22/shared/storage/cs/webstaff/sg778/RODES_Demo/</url>
+	            <url>scp://sg778@csresearch1.york.ac.uk:22/shared/storage/cs/webstaff/sg778/RODES_Demo/</url>
 	          </configuration>
 		      <executions>
 		        <execution>
