@@ -58,8 +58,6 @@ public class eDominanceWorstCaseDominanceComparator extends RegionDominanceCompa
 		dominate1 = 0 ;
 		dominate2 = 0 ;
 
-//		int flag=-2; //stores the result of the comparison
-
 		// Test to determine whether at least a solution violates some constraint
 	    if (violationConstraintComparator_.needToCompare(solution1, solution2))
 	      return violationConstraintComparator_.compare(solution1, solution2) ;
@@ -72,25 +70,11 @@ public class eDominanceWorstCaseDominanceComparator extends RegionDominanceCompa
 			value1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
 			value2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
 			
-			if (value1 < value2) {
-				//flag = -1;
+			if (value1 < value2) 
 				dominate1 = 1;
-			} 
-			else if (value1 > value2) {
-				//flag = 1;
+			else if (value1 > value2) 
 				dominate2 = 1;
-			} 
-//			else {
-//				flag = 0;
-//			}
-//
-//			if (flag == -1) {
-//				dominate1 = 1;
-//			}
-//
-//			if (flag == 1) {
-//				dominate2 = 1;
-//			}
+
 		}
 		
         //domination criteria
@@ -101,15 +85,15 @@ public class eDominanceWorstCaseDominanceComparator extends RegionDominanceCompa
 		
 		//check epsilon dominance
 		boolean epsilonBetter = false;
-		if (EPSILON > 0){
+		if (EPSILON >= 0){
 			if (dominate1 > dominate2){
 				for (int i = 0; i < solution1.getNumberOfObjectives(); i++) {
 					value1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
 					value2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
 					
-					if (value1<0 && ((1+EPSILON)*value1 > value2) )
+					if (value1<0 && (value1 < (1+EPSILON)*value2) )		//maximisation objective
 						epsilonBetter = true;
-					else if (value1>=0 && ((1+EPSILON)*value1 < value2 ) )
+					else if (value1>=0 && ((1+EPSILON)*value1 < value2 ) ) //minimisation objective
 						epsilonBetter = true;
 				}
 			}
@@ -118,9 +102,9 @@ public class eDominanceWorstCaseDominanceComparator extends RegionDominanceCompa
 					value1 = solution1.getObjectiveBounds(i)[1]; // maxBound = worst case
 					value2 = solution2.getObjectiveBounds(i)[1]; // maxBound = worst case
 					
-					if (value2<0 && (value1 < (1+EPSILON)*value2) )
+					if (value2<0 && ((1+EPSILON)*value1 > value2) )		//maximisation objective
 						epsilonBetter = true;
-					else if (value2>=0 && (value1 > (1+EPSILON)*value2 ) )
+					else if (value2>=0 && (value1 > (1+EPSILON)*value2 ) )	//minimisation objective
 						epsilonBetter = true;
 				}
 			}
