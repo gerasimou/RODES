@@ -128,7 +128,7 @@
 					<!--  Copy models directory -->
 					<execution>
 						<id>copy-models</id>
-						<phase>verify</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -145,7 +145,7 @@
 					<!--  Copy repo directory -->
 					<execution>
 						<id>copy-repo</id>
-						<phase>verify</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -162,7 +162,7 @@
 					<!--  Copy launch script -->
 					<execution>
 						<id>copy-launch</id>
-						<phase>verify</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -182,7 +182,7 @@
 					<!--  Copy resources directory -->
 					<execution>
 						<id>copy-resources-dir</id>
-						<phase>verify</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -199,7 +199,7 @@
 					<!--  Copy mlab directory -->
 					<execution>
 						<id>create-mlab-dir</id>
-						<phase>verify</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -239,7 +239,7 @@
 							  <manifest>
 		<!-- 						<mainClass>evochecker.EvoChecker</mainClass>-->
 		<!--							<mainClass>_main.Experiment</mainClass> -->
-		        						<mainClass>rodes.ui.RODES_UI</mainClass>
+		        						<mainClass>rodes.RODESExperimentRuns</mainClass>
 							  </manifest>
 							</archive>
 						</configuration>
@@ -281,7 +281,7 @@
 		        				<!-- <shadedClassifierName>jar-with-dependencies</shadedClassifierName>-->
 		        				<transformers>
 		        					<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-			        						<mainClass>rodes.ui.RODES_UI</mainClass>
+			        						<mainClass>rodes.RODESExperimentRuns</mainClass>
 			        						<!--<Build-Number>1.0.1</Build-Number>-->
 		        					</transformer>
 		        				</transformers>
