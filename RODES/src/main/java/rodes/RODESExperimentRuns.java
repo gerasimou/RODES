@@ -3,6 +3,7 @@ package rodes;
 import java.util.Arrays;
 
 import evochecker.auxiliary.Constants;
+import evochecker.auxiliary.KnowledgeSingleton;
 import evochecker.auxiliary.Utility;
 import evochecker.exception.EvoCheckerException;
 
@@ -71,16 +72,17 @@ public class RODESExperimentRuns {
 	
 	
 	
-	public static void createOutputFile(String[] fileNames, String endFile){
-		String dataPath = "data/";
+	public static void createOutputFile(String[] fileNames, String endFile){		
+		String outputDir 		= KnowledgeSingleton.getInstance().get(Constants.OUTPUT_DIR_KEYWORD).toString();
+
 		StringBuilder str = new StringBuilder();
 		
 		for (int i=0; i<fileNames.length; i++){
 			String fileName = fileNames[i];			
-			str.append(Utility.readFile(dataPath + fileName));
+			str.append(Utility.readFile(outputDir + fileName));
 			str.append("\n\n");
 		}
-		Utility.exportToFile(dataPath + endFile, str.toString(), false);
+		Utility.exportToFile(outputDir + endFile, str.toString(), false);
 	}
 	
 	

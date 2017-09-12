@@ -15,10 +15,13 @@ package rodes;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 import evochecker.auxiliary.Constants;
 import evochecker.auxiliary.KnowledgeSingleton;
 import evochecker.auxiliary.Utility;
+import evochecker.exception.EvoCheckerException;
 import evochecker.genetic.GenotypeFactory;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.RegionGene;
@@ -73,7 +76,10 @@ public class RODES implements Runnable{
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();
 		
-		try {			
+		try {
+			//check configuration script
+			checkConfiguration();
+
 			//instantiate evochecker
 			RODES rodes = new RODES();
 			
@@ -134,7 +140,7 @@ public class RODES implements Runnable{
 
 //		Cluster
 		propertyList.add(new Property(true));
-		propertyList.add(new Property(false));
+		propertyList.add(new Property(true));
 		propertyList.add(new Property(false));
 		int numOfConstraints  = 1;
 
@@ -238,25 +244,110 @@ public class RODES implements Runnable{
 		String outputDir 		= knowledge.get(Constants.OUTPUT_DIR_KEYWORD).toString();
 		String outputFileSuffix = knowledge.get(Constants.OUTPUT_FILE_SUFFIX).toString();
 		
+		//Strore configuration
+		Utility.exportToFile(outputDir +"config_"+ outputFileSuffix, getConfiguration(), false);
+		
 		//Store midpoint results
 		population.printObjectivesToFile(outputDir + "FUN_" + outputFileSuffix);
 		population.printVariablesToFile( outputDir + "VAR_" +  outputFileSuffix);
 		
 		//Store region results
 		Utility.printObjectiveRegionsToFile(outputDir + "FUN_REGION_" +  outputFileSuffix, population, false, propertyList);
-		Utility.printVariableRegionsToFile( outputDir + "VAR_REGION_" +  outputFileSuffix, population, false, regionsRadii);
-		Utility.printVariableRegionsToFile2(outputDir + "VAR_REGION2_" + outputFileSuffix, population, true);
+		Utility.printVariableRegionsToFile(outputDir + "VAR_REGION2_" + outputFileSuffix, population, true);
+		Utility.printVariableRegionsToFileOld( outputDir + "VAR_REGION_" +  outputFileSuffix, population, false, regionsRadii);		
+	}
+	
+	
+	/**
+	 * Check whether the experiment has been configured correctly 
+	 * @throws EvoCheckerException 
+	 */
+	private static void checkConfiguration() throws EvoCheckerException {
+		StringBuilder errors = new StringBuilder();
+		final String NAN = "NAN";
 		
-//		//store generation results
-//		List<SolutionSet> generationsRepo = knowledge.getGenerationsRepository();
-//		int gen = 1;
-//		for (SolutionSet generation : generationsRepo) {
-//			String outputFile = outputFileSuffix +"_"+ gen++;
-//			Utility.printVariableRegionsToFile( outputDir + File.separatorChar + "VAR_REGION_" +  outputFile, generation, false, regionsRadii);
-//			Utility.printObjectiveRegionsToFile(outputDir + File.separatorChar + "FUN_REGION_" +  outputFile, generation, false, propertyList);
-//			Utility.printVariableRegionsToFile2(outputDir + File.separatorChar + "VAR_REGION2_" + outputFile, generation, true);
-//		}
-//		
+		//check algorithm
+		if (Utility.getProperty(Constants.ALGORITHM_KEYWORD, NAN).equals(NAN)) 
+			errors.append(Constants.ALGORITHM_KEYWORD + "not found in configuration script!\n");
+		else {
+			try {
+				Constants.ALGORITHM.valueOf(Utility.getProperty(Constants.ALGORITHM_KEYWORD, NAN));
+			} catch (IllegalArgumentException e) {
+				errors.append(e.getMessage());
+			}
+		}
+		
+		//check population size
+		if (Utility.getProperty(Constants.POPULATION_SIZE_KEYWORD, NAN).equals(NAN))
+			errors.append(Constants.POPULATION_SIZE_KEYWORD + " not found in configuration script!\n");
+
+		//check evaluations
+		if (Utility.getProperty(Constants.MAX_EVALUATIONS_KEYWORD, NAN).equals(NAN))
+			errors.append(Constants.MAX_EVALUATIONS_KEYWORD + " not found in configuration script!\n");
+
+		//check processors
+		if (Utility.getProperty(Constants.PROCESSORS_KEYWORD, NAN).equals(NAN))
+			errors.append(Constants.PROCESSORS_KEYWORD + " not found in configuration script!\n");
+
+		//check model file
+		if (Utility.getProperty(Constants.MODEL_FILE_KEYWORD, NAN).equals(NAN))
+			errors.append(Constants.MODEL_FILE_KEYWORD + " not found in configuration script!\n");
+
+		//check properties file
+		if (Utility.getProperty(Constants.PROPERTIES_FILE_KEYWORD, NAN).equals(NAN))
+			errors.append(Constants.PROPERTIES_FILE_KEYWORD + " not found in configuration script!\n");
+
+		//check tolerance
+		if (Utility.getProperty(Constants.TOLERANCE_KEYWORD, NAN).equals(NAN))
+			errors.append(Constants.TOLERANCE_KEYWORD + " not found in configuration script!\n");
+
+		//check epsilon
+		if (Utility.getProperty(Constants.EPSILON_KEYWORD, NAN).equals(NAN))
+			errors.append(Constants.EPSILON_KEYWORD + " not found in configuration script!\n");
+
+		//check problem name
+		if (Utility.getProperty(Constants.PROBLEM_KEYWORD, NAN).equals(NAN))
+			errors.append(Constants.PROBLEM_KEYWORD + " not found in configuration script!\n");
+
+		//check port
+		if (Utility.getProperty(Constants.INITIAL_PORT_KEYWORD, NAN).equals(NAN))
+			errors.append(Constants.INITIAL_PORT_KEYWORD + " not found in configuration script!\n");
+
+		//check jvm
+		if (Utility.getProperty(Constants.JVM_KEYWORD, NAN).equals(NAN))
+			errors.append(Constants.JVM_KEYWORD + " not found in configuration script!\n");
+
+		//check dominance relation
+		if (Utility.getProperty(Constants.DOMINANCE_KEYWORD, NAN).equals(NAN))
+			errors.append(Constants.DOMINANCE_KEYWORD + " not found in configuration script!\n");
+		else {
+			try {
+				Constants.DOMINANCE.valueOf(Utility.getProperty(Constants.DOMINANCE_KEYWORD).trim());
+			} catch (IllegalArgumentException e) {
+				errors.append(e.getMessage());
+			}
+		}
+
+		if (errors.length()!=0)
+			throw new EvoCheckerException(errors.toString());
+//		else
+//			System.out.println(getConfiguration());
+	}
+	
+	
+	private static String getConfiguration() {
+		StringBuilder str = new StringBuilder();
+		
+		str.append("Configuration script\n");
+		str.append("==========================================\n");
+		
+		Properties props = Utility.getAllProperties();
+		for (Map.Entry<Object, Object> entry : props.entrySet()) {
+			str.append(entry.getKey() +" = "+ entry.getValue() +"\n");
+		}
+		str.append("==========================================\n\n");
+		
+		return str.toString();
 	}
 
 

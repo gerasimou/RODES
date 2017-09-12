@@ -17,10 +17,17 @@ package evochecker.auxiliary;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Properties;
 
 @SuppressWarnings("serial")
 public class StringProperties extends Properties{
+	
+	public StringProperties(Properties parent) {
+		for (Map.Entry<Object,Object> entry : parent.entrySet()) {
+			this.put(entry.getKey(), entry.getValue());
+		}
+	}
 	
 	public StringProperties() {
 		

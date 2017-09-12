@@ -52,7 +52,7 @@ public class Utility {
 	private static void loadPropertiesInstance(){
 		try {
 			if (properties == null){
-				properties = new Properties();
+				properties = new StringProperties();
 				properties.load(new FileInputStream(fileName));
 			}
 		} 
@@ -83,10 +83,16 @@ public class Utility {
 		return result;		
 	}
 	
+	
 	public static String getProperty (String key, String defaultValue){
 		loadPropertiesInstance();
 		String output = properties.getProperty(key);
 		return ((output != null && !output.isEmpty()) ? output : defaultValue);
+	}
+
+	
+	public static StringProperties getAllProperties() {
+		return new StringProperties(properties);
 	}
 	
 	
@@ -357,17 +363,6 @@ public class Utility {
 	
 	
 	
-	public static Double[] getRadiusAsArray(List<AbstractGene> genes ){
-		List<Double> radiusList = new ArrayList<Double>();
-		for (AbstractGene gene : genes){
-			if (gene instanceof RegionGene){
-				radiusList.add(((RegionGene) gene).getRegionRadius());
-			}
-		}
-		Double[] radius = new Double[radiusList.size()];
-		return radiusList.toArray(radius);
-	}
-
 	public static void createDir(String filePath) {
 		File file = new File(filePath);
 		if (!file.exists())

@@ -1,5 +1,7 @@
 package evochecker.auxiliary;
 
+import evochecker.genetic.jmetal.util.RegionDominanceComparator;
+
 /**
 Collected constants of general utility.
 <P>All members of this class are immutable. 
@@ -65,6 +67,9 @@ public class Constants {
   /** Keyword for interval */
   public static final String INTERVAL_KEYWORD = "INTERVAL";
 
+  /** Keyword for dominance relation */
+  public static final String DOMINANCE_KEYWORD = "DOMINANCE";
+  
   /** Keyword for errors */
   public static final String ERRORS_KEYWORD = "ERRORS";
 
@@ -99,5 +104,37 @@ public class Constants {
 	    RANDOM
 	    ;
 	}
+  
+  /** Dominance relations currently supported by our implementation*/
+  public static enum DOMINANCE{
+	  eDominanceWorstCaseDominance 			("evochecker.genetic.jmetal.util.eDominanceWorstCaseDominanceComparator"),
+	  eDominanceRevisedWorstCaseDominance	("evochecker.genetic.jmetal.util.eDominanceRevisedWorstCaseDominanceComparator")
+	  ;
+	  
+	  
+	  private String comparatorPath;
+	  
+	  DOMINANCE(String path){
+//		  try {
+//			  Class clazz = Class.forName(path);
+//			  comparator = (RegionDominanceComparator)clazz.newInstance();
+//		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+//			e.printStackTrace();
+//		}
+		  this.comparatorPath = path;
+//		  System.out.println(comparatorPath +"\t"+ path);
+	  }
+	  
+	  public static RegionDominanceComparator getDominance(DOMINANCE dom){
+		  try {
+			  Class<?> clazz = Class.forName(dom.comparatorPath);
+			  return (RegionDominanceComparator)clazz.newInstance();
+		  } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			e.printStackTrace();
+		  }
+		  return null;
+	  }	  
+	}
+
 
 }

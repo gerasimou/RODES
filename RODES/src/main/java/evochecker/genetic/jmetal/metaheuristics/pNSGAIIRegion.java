@@ -22,13 +22,15 @@ package evochecker.genetic.jmetal.metaheuristics;
 
 import java.util.List;
 
+import evochecker.auxiliary.Constants;
 import evochecker.auxiliary.KnowledgeSingleton;
+import evochecker.auxiliary.Utility;
 import evochecker.genetic.jmetal.encoding.solution.RegionSolution;
 import evochecker.genetic.jmetal.util.ExampleRegionDistance;
 import evochecker.genetic.jmetal.util.RegionDistance;
 import evochecker.genetic.jmetal.util.RegionDominanceComparator;
 import evochecker.genetic.jmetal.util.RegionRanking;
-import evochecker.genetic.jmetal.util.eDominanceRevisedWorstCaseDominanceComparator;
+import evochecker.genetic.jmetal.util.eDominanceWorstCaseDominanceComparator;
 import jmetal.core.Algorithm;
 import jmetal.core.Operator;
 import jmetal.core.Problem;
@@ -70,8 +72,14 @@ public class pNSGAIIRegion extends Algorithm {
     this.parallelEvaluator_ = evaluator;
 
     //New commands for regions: SET THE DOMINANCE & DISTANCE COMPARATOR
-    this.regionDominanceComparator	= new eDominanceRevisedWorstCaseDominanceComparator(); 
-    		//new eDominanceWorstCaseDominanceComparator();
+	for (Constants.DOMINANCE d : Constants.DOMINANCE.values()) {
+		if (Utility.getProperty(Constants.DOMINANCE_KEYWORD).trim().equals(d.name().trim())) {
+			this.regionDominanceComparator = d.getDominance(d);
+			break;
+		}
+	}
+//    this.regionDominanceComparator	= new eDominanceWorstCaseDominanceComparator(); 
+
     this.regionDistance				= new ExampleRegionDistance();
 
   } // pNSGAII
