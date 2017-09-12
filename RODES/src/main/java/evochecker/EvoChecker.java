@@ -201,7 +201,7 @@ public class EvoChecker {
 		population.printObjectivesToFile("data/FUN_"+ outputFileEnd);
 		population.printVariablesToFile("data/VAR_"+  outputFileEnd);
 				
-		Utility.printVariableRegionsToFile("data/VAR_REGION_"+  outputFileEnd, population, false, regionsRadii);
+		Utility.printVariableRegionsToFileOld("data/VAR_REGION_"+  outputFileEnd, population, false, regionsRadii);
 		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+ outputFileEnd, population, false, propertyList);
 //		Utility.printVariableRegionsToFile("data/VAR_REGION_"+tolerance, population, false);
 //		Utility.printVariableRegionsToFile2("data/VAR_REGION2_"+tolerance, population, false);

@@ -198,7 +198,7 @@ public class Utility {
 	} // printVariablesToFile
 
 
-	public static void printVariableRegionsToFile(String path, SolutionSet population, boolean append) throws JMException{
+	public static void printVariableRegionsToFileOld(String path, SolutionSet population, boolean append) throws JMException{
 		try {
 			FileOutputStream fos = new FileOutputStream(path, append);
 			OutputStreamWriter osw = new OutputStreamWriter(fos);
@@ -228,9 +228,8 @@ public class Utility {
 		}
 	}
 	
-
 	
-	public static void printVariableRegionsToFile(String path, SolutionSet population, boolean append, List<Double> radiiList) throws JMException{
+	public static void printVariableRegionsToFileOld(String path, SolutionSet population, boolean append, List<Double> radiiList) throws JMException{
 		try {
 			FileOutputStream fos = new FileOutputStream(path, append);
 			OutputStreamWriter osw = new OutputStreamWriter(fos);
@@ -293,7 +292,7 @@ public class Utility {
 	}
 	
 	
-	public static void printVariableRegionsToFile2(String path, SolutionSet population, boolean append) throws JMException{
+	public static void printVariableRegionsToFile(String path, SolutionSet population, boolean append) throws JMException{
 		try {
 			FileOutputStream fos = new FileOutputStream(path, append);
 			OutputStreamWriter osw = new OutputStreamWriter(fos);
@@ -320,8 +319,7 @@ public class Utility {
 			e.printStackTrace();
 		}
 	}
-	
-	
+		
 	
 	public static void printObjectiveRegionsToFile(String path, SolutionSet population, boolean append, 
 													List<Property> propertyList) throws JMException{

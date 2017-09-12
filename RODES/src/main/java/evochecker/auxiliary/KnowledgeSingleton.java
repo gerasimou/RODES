@@ -132,7 +132,7 @@ public class KnowledgeSingleton{
 
 			//		Utility.printVariableRegionsToFile( outputDir + File.separatorChar + "VAR_REGION_" +  outputFile, generation, false, regionsRadii);
 			Utility.printObjectiveRegionsToFile(outputDir + File.separatorChar + "FUN_REGION_" +  outputFile, population, false, propertyList);
-			Utility.printVariableRegionsToFile2(outputDir + File.separatorChar + "VAR_REGION_" + outputFile, population, true);	
+			Utility.printVariableRegionsToFile(outputDir + File.separatorChar + "VAR_REGION_" + outputFile, population, true);	
 		} 
 		catch (JMException | EvoCheckerException e) {
 			e.printStackTrace();
