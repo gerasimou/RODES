@@ -173,7 +173,7 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 		//read from server
 		String response = in.readLine();
 //		System.out.println(response);
-		if (response.isEmpty() || response==null)
+		if (response==null || response.isEmpty())
 			throw new EvoCheckerException("Error: invalid response from server:\t" + response);
 		List<String> resultList = ParserGSON.parseGSON(response);
 		return resultList;

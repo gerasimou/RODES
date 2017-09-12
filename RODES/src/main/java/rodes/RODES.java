@@ -330,8 +330,8 @@ public class RODES implements Runnable{
 
 		if (errors.length()!=0)
 			throw new EvoCheckerException(errors.toString());
-//		else
-//			System.out.println(getConfiguration());
+		else
+			System.out.println(getConfiguration());
 	}
 	
 	

@@ -37,13 +37,14 @@ esac
 
 JAR=""
 
-for file in $WD/*; do
-     case $(file --mime-encoding -b "$file") in
-        binary)
-            JAR=$file
-            break;;           
-     esac
-done
+#for file in $WD/*; do
+#     case $(file --mime-encoding -b "$file") in
+#        binary)
+#            JAR=$file
+#            break;;           
+#     esac
+#done
+JAR=RODES-1.0.3.jar
 
 vmArgs="-Xmx3g -XX:ParallelGCThreads=1"
 java $vmArgs -jar $JAR
