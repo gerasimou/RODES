@@ -92,9 +92,9 @@ rewards "full"
  (buffer_s = max_slow_buffer) | (buffer_f = max_fast_buffer): 1;
 endrewards
 
-rewards "redirect"
-[redirect] true: 1;
-endrewards
+//rewards "redirect"
+//[redirect] true: 1;
+//endrewards
 
 rewards "lost"
 [lost] true: 1;

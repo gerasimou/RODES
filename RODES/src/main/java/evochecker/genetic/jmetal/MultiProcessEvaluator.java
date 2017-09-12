@@ -117,7 +117,7 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 			String params[] = new String[4];
 			params[0] = Utility.getProperty(Constants.JVM_KEYWORD);
 			params[1] = "-jar";
-			params[2] = Utility.getProperty("EXECUTOR_PATH", "repo/PRISM-PSY-fat.jar");
+			params[2] = Utility.getProperty("EXECUTOR_PATH", "repo/PRISM-PSY-fat-1.0.2.jar");
 			for (int i = 0; i < numberOfProcesses; i++) {
 				
 				boolean isAlive = false;
