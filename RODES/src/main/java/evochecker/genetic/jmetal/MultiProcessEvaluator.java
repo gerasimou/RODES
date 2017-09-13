@@ -114,7 +114,7 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 			
 			int initPort = Integer.parseInt(Utility.getProperty(Constants.INITIAL_PORT_KEYWORD));
 						
-			String params[] = new String[4];
+			String params[] = new String[5];
 			params[0] = Utility.getProperty(Constants.JVM_KEYWORD);
 			params[1] = "-jar";
 			params[2] = Utility.getProperty("EXECUTOR_PATH", "repo/PRISM-PSY-fat-1.0.2.jar");
@@ -126,6 +126,7 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 				knowledge.addMessage("Starting server at port " + portNum +"\n");
 
 				params[3] = String.valueOf(portNum);
+				params[4] = String.valueOf(i+1);
 				do {
 					Process p = Runtime.getRuntime().exec(params);
 					Thread.sleep(1000);
