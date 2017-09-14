@@ -97,13 +97,16 @@ public class RODES implements Runnable{
 			
 			//close down
 			rodes.closeDown();
+			
+			long end = System.currentTimeMillis();
+
+			rodes.exportTime( (end - start)/1000.0);
+			System.err.println("Time:\t" + (end - start)/1000.0);
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		long end = System.currentTimeMillis();
 		
-		System.err.println("Time:\t" + (end - start)/1000);
 	}
 
 	
@@ -240,7 +243,7 @@ public class RODES implements Runnable{
 				regionsRadii.add(((RegionGene)gene).getRegionRadius());
 		}
 		
-		//create output dir
+		//get output dir
 		String outputDir 		= knowledge.get(Constants.OUTPUT_DIR_KEYWORD).toString();
 		String outputFileSuffix = knowledge.get(Constants.OUTPUT_FILE_SUFFIX).toString();
 		
@@ -255,6 +258,18 @@ public class RODES implements Runnable{
 		Utility.printObjectiveRegionsToFile(outputDir + "FUN_REGION_" +  outputFileSuffix, population, false, propertyList);
 		Utility.printVariableRegionsToFile(outputDir + "VAR_REGION2_" + outputFileSuffix, population, true);
 		Utility.printVariableRegionsToFileOld( outputDir + "VAR_REGION_" +  outputFileSuffix, population, false, regionsRadii);		
+	}
+	
+	
+	private void exportTime(double time) {
+		//get output dir
+		String outputDir	= knowledge.get(Constants.OUTPUT_DIR_KEYWORD).toString();
+		
+		String outputStr	= knowledge.get(Constants.OUTPUT_FILE_SUFFIX).toString() +":\t"+ time; 
+		
+		//Strore configuration
+		Utility.exportToFile(outputDir +"times", outputStr, true);
+
 	}
 	
 	
