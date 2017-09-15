@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import org.apache.commons.io.FileUtils;
@@ -12,8 +13,8 @@ import _main.EvoCheckerStudy;
 import evochecker.genetic.jmetal.util.MetricsRegionUtil;
 import evochecker.genetic.jmetal.util.NonDominatedRegionSolutionList;
 import evochecker.genetic.jmetal.util.eToleranceWorstCaseDominanceComparator;
+import evochecker.prism.Objective;
 import evochecker.prism.Property;
-import jmetal.util.JMException;
 
 public class StatisticsGeneration {
 //												  "/Users/sgerasimou/Documents/Git/search-based-model-synthesis/Experiments/FinalExperiments/Google/Constrained/Algorithms/RS/AllData/;
@@ -52,9 +53,9 @@ public class StatisticsGeneration {
 
 		MetricsRegionUtil metricsUtils = new MetricsRegionUtil();
 	    
-	    ArrayList<Property> propertyList = new ArrayList<Property>();
-		propertyList.add(new Property(true));
-		propertyList.add(new Property(true));
+	    List<Property> objectiveList = new ArrayList<Property>();
+	    objectiveList.add(new Objective(true));
+	    objectiveList.add(new Objective(true));
 
 
 		final String problemDir	=	baseDir +"Google/Constrained/Algorithms/";
@@ -76,7 +77,7 @@ public class StatisticsGeneration {
 				experimentDir.mkdirs();
 		
 				String regionReferenceFront = experimentDir +"/GeneticProblemRegion.rf";
-				Utility.printObjectiveRegionsToFile(regionReferenceFront, solutionSet, false, propertyList);
+				Utility.printObjectiveRegionsToFile(regionReferenceFront, solutionSet, false, objectiveList);
 			
 				//output normal front using worst case
 				StringBuilder outputString = new StringBuilder();

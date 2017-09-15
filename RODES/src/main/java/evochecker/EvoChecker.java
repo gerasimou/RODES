@@ -20,13 +20,14 @@ import evochecker.auxiliary.Utility;
 import evochecker.genetic.GenotypeFactory;
 import evochecker.genetic.genes.AbstractGene;
 import evochecker.genetic.genes.RegionGene;
-import evochecker.genetic.jmetal.GeneticProblemPSY;
+import evochecker.genetic.jmetal.GeneticProblem;
 import evochecker.genetic.jmetal.metaheuristics.MOCell_Settings;
 import evochecker.genetic.jmetal.metaheuristics.NSGAII_Settings;
 import evochecker.genetic.jmetal.metaheuristics.RandomSearch_Settings;
 import evochecker.genetic.jmetal.metaheuristics.SPEA2_Settings;
 import evochecker.parser.ParserEngine;
 import evochecker.parser.ParserEnginePrismPSY;
+import evochecker.prism.Objective;
 import evochecker.prism.Property;
 import jmetal.core.Algorithm;
 import jmetal.core.Problem;
@@ -41,8 +42,10 @@ import jmetal.core.SolutionSet;
 public class EvoChecker {
 
 	/** properties list*/
-	private List<Property> propertyList;
-	
+//	private List<Property> propertyList;
+	private List<Property> objectivesList;
+	private List<Property> constraintsList;
+
 	/** problem trying to solve*/
 	private Problem problem;
 	
@@ -112,8 +115,10 @@ public class EvoChecker {
 		parserEngine.createMapping();
 		
 		//5) create properties list
-		propertyList = new ArrayList<Property>();
-		
+//		propertyList = new ArrayList<Property>();
+		objectivesList 	= new ArrayList<Property>();
+		constraintsList	= new ArrayList<Property>();
+
 		//Google
 //		propertyList.add(new Property(true));
 //		propertyList.add(new Property(true));
@@ -127,13 +132,15 @@ public class EvoChecker {
 //		int numOfConstraints  = 1;
 
 //		Buffer
-		propertyList.add(new Property(true));
-		propertyList.add(new Property(false));
-		int numOfConstraints  = 0;
+//		propertyList.add(new Property(true));
+//		propertyList.add(new Property(false));
+//		int numOfConstraints  = 0;
+		objectivesList.add(new Objective(true));
+		objectivesList.add(new Objective(false));
 
 		
 		//6) instantiate the problem
-		problem = new GeneticProblemPSY(genes, propertyList, parserEngine, numOfConstraints, "GeneticProblem");
+		problem = new GeneticProblem(genes, parserEngine, objectivesList, constraintsList, "GeneticProblem");
 	}
 	
 
@@ -202,7 +209,7 @@ public class EvoChecker {
 		population.printVariablesToFile("data/VAR_"+  outputFileEnd);
 				
 		Utility.printVariableRegionsToFileOld("data/VAR_REGION_"+  outputFileEnd, population, false, regionsRadii);
-		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+ outputFileEnd, population, false, propertyList);
+		Utility.printObjectiveRegionsToFile("data/FUN_REGION_"+ outputFileEnd, population, false, objectivesList);
 //		Utility.printVariableRegionsToFile("data/VAR_REGION_"+tolerance, population, false);
 //		Utility.printVariableRegionsToFile2("data/VAR_REGION2_"+tolerance, population, false);
 	}	

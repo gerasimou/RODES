@@ -11,11 +11,13 @@ import java.util.logging.Logger;
 import evochecker.auxiliary.Utility;
 import evochecker.genetic.GenotypeFactory;
 import evochecker.genetic.genes.AbstractGene;
-import evochecker.genetic.jmetal.GeneticProblemPSY;
+import evochecker.genetic.jmetal.GeneticProblem;
 import evochecker.genetic.jmetal.experiments.Experiment;
 import evochecker.genetic.jmetal.metaheuristics.NSGAII_Settings;
 import evochecker.genetic.jmetal.metaheuristics.RandomSearch_Settings;
 import evochecker.parser.ParserEngine;
+import evochecker.prism.Constraint;
+import evochecker.prism.Objective;
 import evochecker.prism.Property;
 import jmetal.core.Algorithm;
 import jmetal.core.Problem;
@@ -24,7 +26,10 @@ import jmetal.util.JMException;
 
 public class EvoCheckerStudy extends Experiment{
 	
-	private List<Property> propertyList;
+//	private List<Property> propertyList;
+	private List<Property> objectivesList;
+	private List<Property> constraintsList;
+
 	private Problem problem;
 	private List<AbstractGene> genes = new ArrayList<AbstractGene>();	
 	private ParserEngine parserEngine;
@@ -158,7 +163,10 @@ public class EvoCheckerStudy extends Experiment{
 		genes				= GenotypeFactory.createChromosome(parserEngine.getEvolvableList());
 		parserEngine.createMapping();
 		
-		propertyList = new ArrayList<Property>();
+//		propertyList = new ArrayList<Property>();
+		objectivesList 	= new ArrayList<Property>();
+		constraintsList	= new ArrayList<Property>();
+
 		//FX
 //		propertyList.add(new Property(true));
 //		propertyList.add(new Property(false));
@@ -168,12 +176,16 @@ public class EvoCheckerStudy extends Experiment{
 		
 		//DPM properties (true for maximisation)
 		// Also change to  evaluateConstraintsDPM function in parallelleEvaluate
-		propertyList.add(new Property(false));
-		propertyList.add(new Property(false));
-		propertyList.add(new Property(false));
-		propertyList.add(new Property(false));
-		propertyList.add(new Property(false));
-		int numOfConstraints = 2;
+//		propertyList.add(new Property(false));
+//		propertyList.add(new Property(false));
+//		propertyList.add(new Property(false));
+//		propertyList.add(new Property(false));
+//		propertyList.add(new Property(false));
+		objectivesList.add(new Objective(false));
+		objectivesList.add(new Objective(false));
+		constraintsList.add(new Constraint(false, 10));
+//		int numOfConstraints = 2;
+		
 
 		
 		//Zeroconf
@@ -181,7 +193,7 @@ public class EvoCheckerStudy extends Experiment{
 //			propertyList.add(new Property(false));
 //			propertyList.add(new Property(true));
 
-		problem = new GeneticProblemPSY(genes, propertyList, parserEngine, numOfConstraints, "GeneticProblem");
+		problem = new GeneticProblem(genes, parserEngine, objectivesList, constraintsList, "GeneticProblem");
 		
 	}
 	

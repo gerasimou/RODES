@@ -49,20 +49,19 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 	 * @param instantiator
 	 * @param numOfConstraints
 	 */
-	public GeneticProblemPSY(List<AbstractGene> genes, List<Property> properties,
-						  InstantiatorInterface instantiator, int numOfConstraints, String problemName){
-		super(genes, properties, instantiator, numOfConstraints, problemName);
-		
+	public GeneticProblemPSY(List<AbstractGene> genes, InstantiatorInterface instantiator, 
+							List<Property> objectivesList, List<Property> constraintsList, String problemName){
+		super(genes, instantiator, objectivesList, constraintsList, problemName);
 		try {
 			if (!(instantiator instanceof InstantiatorInterfacePrismPSY)){
 					throw new EvoCheckerException("InstantiatorInterfacePrismPSY not provided");
-			}
+			}	
 			this.instantiator = (InstantiatorInterfacePrismPSY) instantiator;
 		} 
 		catch (EvoCheckerException e) {
 			e.printStackTrace();
 			System.exit(-1);
-		}
+		}	
 	}
 
 	
@@ -128,7 +127,7 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 			List<String> resultsList 	= invokePrism(in, out, outputStr);
 
 			for (int i = 0; i < this.numberOfObjectives_; i++) {
-				Property p = this.properties.get(i);
+				Property p = this.objectivesList.get(i);
 				double min, max;
 				if (p.isMaximization()) {
 					max = new BigDecimal(- Double.parseDouble(resultsList.get(i*2))).setScale(4, RoundingMode.HALF_DOWN).doubleValue();
@@ -142,10 +141,8 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 //				solution.setObjective(i, result);
 //				System.out.print("FITNESS: ["+ min +","+ max +"]");
 			}
-			
-			if (numberOfConstraints_>0){
-				this.evaluateConstraints(solution, resultsList);
-			}
+
+			this.evaluateConstraints(solution, resultsList);
 			
 		} catch (IOException | EvoCheckerException | NullPointerException e) {
 			e.printStackTrace();
@@ -185,31 +182,31 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 	  * @param solution The solution
 	 * @throws JMException 
 	  */  
-	public void evaluateConstraints(Solution solution, List<String> resultsList) throws JMException {
-		//Google
-//		double value = new BigDecimal(Double.parseDouble(resultsList.get(numberOfObjectives_*2+1)))
-//										.setScale(4, RoundingMode.HALF_DOWN).doubleValue();
-//		if (value > 5){
-//			solution.setOverallConstraintViolation((5-value )*100);
-//			solution.setNumberOfViolatedConstraint(1);			
-//		}
-//		else{			
-//			solution.setOverallConstraintViolation(0);
-//			solution.setNumberOfViolatedConstraint(0);
-//		}
-		
-		//Cluster
-		double value = new BigDecimal(Double.parseDouble(resultsList.get(numberOfObjectives_*2+1)))
-										.setScale(4, RoundingMode.HALF_DOWN).doubleValue();
-		if (value > 10){
-			solution.setOverallConstraintViolation((10-value )*100);
-			solution.setNumberOfViolatedConstraint(1);			
-		}
-		else{			
-			solution.setOverallConstraintViolation(0);
-			solution.setNumberOfViolatedConstraint(0);
-		}
-	}
+//	public void evaluateConstraints(Solution solution, List<String> resultsList) throws JMException {
+//		//Google
+////		double value = new BigDecimal(Double.parseDouble(resultsList.get(numberOfObjectives_*2+1)))
+////										.setScale(4, RoundingMode.HALF_DOWN).doubleValue();
+////		if (value > 5){
+////			solution.setOverallConstraintViolation((5-value )*100);
+////			solution.setNumberOfViolatedConstraint(1);			
+////		}
+////		else{			
+////			solution.setOverallConstraintViolation(0);
+////			solution.setNumberOfViolatedConstraint(0);
+////		}
+//		
+//		//Cluster
+////		double value = new BigDecimal(Double.parseDouble(resultsList.get(numberOfObjectives_*2+1)))
+////										.setScale(4, RoundingMode.HALF_DOWN).doubleValue();
+////		if (value > 10){
+////			solution.setOverallConstraintViolation((10-value )*100);
+////			solution.setNumberOfViolatedConstraint(1);			
+////		}
+////		else{			
+////			solution.setOverallConstraintViolation(0);
+////			solution.setNumberOfViolatedConstraint(0);
+////		}
+//	}
 	
 	
 	public GeneticProblemPSY (GeneticProblemPSY aProblem) throws EvoCheckerException{

@@ -19,36 +19,32 @@ package evochecker.prism;
  * @author sgerasimou
  *
  */
-public class Property {
+public abstract class Property {
 	
-	private boolean maximization;
-	
-	private double result;
-		
+	protected boolean maximization;
+			
+
 	public Property(boolean maximization){
 		this.maximization = maximization;
 	}
 
+	
 	public boolean isMaximization() {
 		return maximization;
 	}
 
+	
 	public void setMaximization(boolean maximization) {
 		this.maximization = maximization;
 	}
-
-	public double getResult() {
-		return result;
-	}
-
-	public void setResult(double result) {
-		this.result = result;
-	}
+	
 	
 	public Property (Property aProperty){
 		this.maximization 	= aProperty.maximization;
-		this.result			= aProperty.result;
 	}
+	
+	
+	public abstract double evaluate (double result);// {return 0;};
 	
 	
 

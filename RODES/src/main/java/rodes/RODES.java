@@ -30,6 +30,8 @@ import evochecker.genetic.jmetal.metaheuristics.NSGAIIRegion_Settings;
 import evochecker.genetic.jmetal.metaheuristics.RandomSearchRegion_Settings;
 import evochecker.parser.ParserEngine;
 import evochecker.parser.ParserEnginePrismPSY;
+import evochecker.prism.Constraint;
+import evochecker.prism.Objective;
 import evochecker.prism.Property;
 import jmetal.core.Algorithm;
 import jmetal.core.Problem;
@@ -45,7 +47,9 @@ import jmetal.util.JMException;
 public class RODES implements Runnable{
 
 	/** properties list*/
-	private List<Property> propertyList;
+//	private List<Property> propertyList;
+	private List<Property> objectivesList;
+	private List<Property> constraintsList;
 	
 	/** problem trying to solve*/
 	private Problem problem;
@@ -133,7 +137,9 @@ public class RODES implements Runnable{
 		parserEngine.createMapping();
 		
 		//5) create properties list
-		propertyList = new ArrayList<Property>();
+		//propertyList = new ArrayList<Property>();
+		objectivesList 	= new ArrayList<Property>();
+		constraintsList	= new ArrayList<Property>();
 		
 		//Google
 //		propertyList.add(new Property(true));
@@ -142,10 +148,13 @@ public class RODES implements Runnable{
 //		int numOfConstraints  = 1;
 
 //		Cluster
-		propertyList.add(new Property(true));
-		propertyList.add(new Property(true));
-		propertyList.add(new Property(false));
-		int numOfConstraints  = 1;
+		//propertyList.add(new Property(true));
+		//propertyList.add(new Property(true));
+		//propertyList.add(new Property(false));
+		//int numOfConstraints  = 1;
+		objectivesList.add(new Objective(true));
+		objectivesList.add(new Objective(true));
+		constraintsList.add(new Constraint(false, 10));
 
 //		Buffer
 //		propertyList.add(new Property(true));
@@ -154,7 +163,8 @@ public class RODES implements Runnable{
 
 		
 		//6) instantiate the problem
-		problem = new GeneticProblemPSY(genes, propertyList, parserEngine, numOfConstraints, "GeneticProblem");
+		//problem = new GeneticProblemPSY(genes, propertyList, parserEngine, numOfConstraints, "GeneticProblem");
+		problem = new GeneticProblemPSY(genes, parserEngine, objectivesList, constraintsList, "GeneticProblem");
 	}
 	
 
@@ -199,7 +209,7 @@ public class RODES implements Runnable{
 		String outputFileSuffix = tolerance +"_"+ epsilon +"_"+ run;
 		knowledge.put(Constants.OUTPUT_FILE_SUFFIX, outputFileSuffix);
 		
-		knowledge.put(Constants.PROPERTIES_KEYWORD, propertyList);
+		knowledge.put(Constants.OBJECTIVES_KEYWORD, objectivesList);
 	}
 	
 	
@@ -255,7 +265,7 @@ public class RODES implements Runnable{
 		population.printVariablesToFile( outputDir + "VAR_" +  outputFileSuffix);
 		
 		//Store region results
-		Utility.printObjectiveRegionsToFile(outputDir + "FUN_REGION_" +  outputFileSuffix, population, false, propertyList);
+		Utility.printObjectiveRegionsToFile(outputDir + "FUN_REGION_" +  outputFileSuffix, population, false, objectivesList);
 		Utility.printVariableRegionsToFile(outputDir + "VAR_REGION2_" + outputFileSuffix, population, true);
 		Utility.printVariableRegionsToFileOld( outputDir + "VAR_REGION_" +  outputFileSuffix, population, false, regionsRadii);		
 	}

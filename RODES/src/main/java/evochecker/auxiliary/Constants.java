@@ -26,7 +26,7 @@ public class Constants {
   public static final String PROPERTIES_FILE_KEYWORD = "PPROPERTIES_FILE";
 
   /** Keyword for properties */
-  public static final String PROPERTIES_KEYWORD = "PPROPERTIES";
+  public static final String OBJECTIVES_KEYWORD = "OOBJECTIVES";
 
   /** Keyword for algorithm*/
   public static final String ALGORITHM_KEYWORD = "AALGORITHM";

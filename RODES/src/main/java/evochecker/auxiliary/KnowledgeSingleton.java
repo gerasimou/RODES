@@ -124,7 +124,7 @@ public class KnowledgeSingleton{
 		
 		try {
 			//get properties
-			Object obj = knowledge.get(Constants.PROPERTIES_KEYWORD);
+			Object obj = knowledge.get(Constants.OBJECTIVES_KEYWORD);
 			List<Property>  propertyList = null;
 			if (! (obj instanceof List<?>))
 				throw new EvoCheckerException(obj + " is not a List<Property>");

@@ -322,7 +322,7 @@ public class Utility {
 		
 	
 	public static void printObjectiveRegionsToFile(String path, SolutionSet population, boolean append, 
-													List<Property> propertyList) throws JMException{
+													List<Property> objectivesList) throws JMException{
 		try {
 			FileOutputStream fos = new FileOutputStream(path, append);
 			OutputStreamWriter osw = new OutputStreamWriter(fos);
@@ -339,7 +339,7 @@ public class Utility {
 					Double[] bounds = regionSolution.getObjectiveBounds(i);
 					
 					//check if maximisation & negate
-					if (propertyList.get(i).isMaximization()){
+					if (objectivesList.get(i).isMaximization()){
 						bw.write(-bounds[1] +":"+ -bounds[0] +",");
 					}
 					else{

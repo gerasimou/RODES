@@ -44,9 +44,9 @@ public class GeneticProblem extends GeneticModelProblem {
 	 * @param instantiator
 	 * @param numOfConstraints
 	 */
-	public GeneticProblem(List<AbstractGene> genes, List<Property> properties,
-						  InstantiatorInterface instantiator, int numOfConstraints, String problemName) {
-		super(genes, properties, instantiator, numOfConstraints, problemName);
+	public GeneticProblem(List<AbstractGene> genes, InstantiatorInterface instantiator,
+						  List<Property> objectivesList, List<Property> constraintsList, String problemName){
+		super(genes, instantiator, objectivesList, constraintsList, problemName);
 	}
 
 
@@ -75,7 +75,7 @@ public class GeneticProblem extends GeneticModelProblem {
 			resultsList 	 = this.invokePrism(in, out, outputStr);
 
 			for (int i = 0; i < this.numberOfObjectives_; i++) {
-				Property p = this.properties.get(i);
+				Property p = objectivesList.get(i);
 				double result;
 				if (p.isMaximization()) {
 					result = new BigDecimal(- Double.parseDouble(resultsList.get(i))).setScale(3, RoundingMode.HALF_DOWN).doubleValue();
@@ -87,10 +87,7 @@ public class GeneticProblem extends GeneticModelProblem {
 				System.out.print("FITNESS: "+ result +"\t");
 			}
 			
-			if (numberOfConstraints_>0){
-				this.evaluateConstraints(solution, resultsList);
-			}
-			
+			this.evaluateConstraints(solution, resultsList);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -128,29 +125,6 @@ public class GeneticProblem extends GeneticModelProblem {
 //		System.out.println("Received from PRISM: "+ modelBuilder.toString());
 		return Arrays.asList(res);
 	}
-
-	
-	 /** 
-	  * Evaluates the constraint overhead of a solution 
-	  * @param solution The solution
-	 * @throws JMException 
-	  */  
-	public void evaluateConstraints(Solution solution, List<String> fitnessList) throws JMException {
-		  double reliabilityConstraint = Double.parseDouble(Utility.getProperty("RELIABILITY_THRESHOLD", "0.8"));
-			for (int i=0; i < this.numberOfConstraints_; i++){
-				int index		= numberOfObjectives_ + i;
-				double result 	= new BigDecimal(Double.parseDouble(fitnessList.get(index))- reliabilityConstraint).setScale(3, RoundingMode.HALF_DOWN).doubleValue() ;
-//				System.out.print("Constraint:" + (result) );
-				if (result < 0){
-					solution.setOverallConstraintViolation(result*100);
-					solution.setNumberOfViolatedConstraint(1);
-				}
-				else{
-					solution.setOverallConstraintViolation(0);
-					solution.setNumberOfViolatedConstraint(0);
-				}
-			}
-	  }
 	
 	
 	public GeneticProblem (GeneticProblem aProblem) throws EvoCheckerException{		
