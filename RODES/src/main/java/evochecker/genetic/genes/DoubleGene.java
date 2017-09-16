@@ -26,7 +26,7 @@ public class DoubleGene extends AbstractGene{
 	 * @param maxValue
 	 */
 	public DoubleGene(String name, double minValue, double maxValue){
-		super(name, minValue, maxValue);
+		super(name, minValue, maxValue, 0.0);
 	}
 	
 }

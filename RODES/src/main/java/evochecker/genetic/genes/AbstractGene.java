@@ -39,10 +39,11 @@ public abstract class AbstractGene {
 	 * @param minValue
 	 * @param maxValue
 	 */
-	public AbstractGene(String name, Number minValue, Number maxValue){
-		this.name = name;
-		this.minValue = minValue;
-		this.maxValue = maxValue;
+	public AbstractGene(String name, Number minValue, Number maxValue, Object allele){
+		this.name 		= name;
+		this.minValue 	= minValue;
+		this.maxValue 	= maxValue;
+		this.allele		= allele;
 	}
 	
 	

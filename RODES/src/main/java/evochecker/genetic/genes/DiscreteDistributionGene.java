@@ -29,7 +29,7 @@ public class DiscreteDistributionGene extends AbstractGene {
 	 * @param numberOfOutcomes
 	 */
 	public DiscreteDistributionGene(String name, int numberOfOutcomes) {
-		super(name, 0.0, 1.0);
+		super(name, 0.0, 1.0, 0);
 		this.numberOfOutcomes = numberOfOutcomes;
 	}
 
