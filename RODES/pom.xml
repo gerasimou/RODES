@@ -55,7 +55,6 @@
 			<version>3.4</version>
 		</dependency>
 		
-		<!--  Log4J -->		
 
 		<!--  GSON, i.e., Google's JSON -->
 	  	<dependency>
@@ -72,12 +71,12 @@
 		</dependency>
 	  	
 		<!--  PrismPSY -->
-<!-- 	  	<dependency>
-	  		<groupId>org.PrismPSY</groupId>
-	  		<artifactId>PrismPSY</artifactId>
-	  		<version>1.0</version>
+	  	<dependency>
+	  		<groupId>org.modelchecker.prism</groupId>
+	  		<artifactId>prism</artifactId>
+	  		<version>4.2.1</version>
 	  	</dependency>
- -->
+
     </dependencies>
 
 
@@ -352,7 +351,7 @@
 		      <executions>
 		        <execution>
 		          <id>upload-to-server</id>
-		          <phase>verify</phase>
+		          <phase>install</phase>
 		          <goals>
 		            <goal>upload-single</goal>
 		          </goals>

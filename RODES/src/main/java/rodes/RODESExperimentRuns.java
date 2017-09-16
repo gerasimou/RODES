@@ -38,7 +38,6 @@ public class RODESExperimentRuns {
 						Utility.setProperty(Constants.EPSILON_KEYWORD,  l);
 						System.out.println("Tolerance: "  + Utility.getProperty(Constants.TOLERANCE_KEYWORD) + 
 										   "\tEpsilon: " + Utility.getProperty(Constants.EPSILON_KEYWORD));
-						Thread.sleep(1000);
 						RODES.main(null);
 						fileNamesFUN[i] = "FUN_REGION_"+t.replace(".", "")+"_"+l.replace(".", "")+"_"+run;
 						fileNamesVAR[i++] = "VAR_REGION_"+t.replace(".", "")+"_"+l.replace(".", "")+"_"+run;
@@ -49,7 +48,7 @@ public class RODESExperimentRuns {
 			}
 			
 			System.exit(0);			
-		} catch (EvoCheckerException | InterruptedException e) {
+		} catch (EvoCheckerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.exit(0);

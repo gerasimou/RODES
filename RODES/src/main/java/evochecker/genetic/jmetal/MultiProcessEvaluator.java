@@ -99,7 +99,6 @@ public class MultiProcessEvaluator implements IParallelEvaluator {
 		}
 		this.startExecutors();
 		this.init();
-//		this.reset();
 	}
 
 	

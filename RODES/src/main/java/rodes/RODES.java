@@ -106,7 +106,7 @@ public class RODES implements Runnable{
 			long end = System.currentTimeMillis();
 
 			rodes.exportTime( (end - start)/1000.0);
-			System.err.println("Time:\t" + (end - start)/1000.0);
+			System.err.printf("Time:\t%s\n", (end - start)/1000.0);
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
