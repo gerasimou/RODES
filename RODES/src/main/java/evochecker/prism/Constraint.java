@@ -6,14 +6,14 @@ public class Constraint extends Property {
 	
 	private final double VIOLATION_CONSTANT=100; 
 	
-	public Constraint(boolean maximization, double constraint) {
-		super(maximization);
+	public Constraint(boolean maximization, double constraint, String expression) {
+		super(maximization, expression);
 		this.constraint = constraint;
 	}
 	
 	
 	public Constraint (Constraint clone) {
-		this(clone.maximization, clone.constraint);
+		this(clone.maximization, clone.constraint, clone.expression);
 	}
 	
 	
@@ -27,6 +27,11 @@ public class Constraint extends Property {
 				return ((constraint-result) * VIOLATION_CONSTANT);
 		else
 			return 0;
+	}
+
+	
+	public String toString() {
+		return expression +", Limit=" + constraint +", Max?"+ maximization +"\n";		
 	}
 
 }

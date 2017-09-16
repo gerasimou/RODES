@@ -19,6 +19,7 @@ import evochecker.parser.ParserEngine;
 import evochecker.prism.Constraint;
 import evochecker.prism.Objective;
 import evochecker.prism.Property;
+import evochecker.prism.PropertyFactory;
 import jmetal.core.Algorithm;
 import jmetal.core.Problem;
 import jmetal.experiments.Settings;
@@ -181,11 +182,15 @@ public class EvoCheckerStudy extends Experiment{
 //		propertyList.add(new Property(false));
 //		propertyList.add(new Property(false));
 //		propertyList.add(new Property(false));
-		objectivesList.add(new Objective(false));
-		objectivesList.add(new Objective(false));
-		constraintsList.add(new Constraint(false, 10));
+//		objectivesList.add(new Objective(false, null));
+//		objectivesList.add(new Objective(false, null));
+//		constraintsList.add(new Constraint(false, 10, null));
 //		int numOfConstraints = 2;
 		
+		String str = parserEngine.getValidModelInstance(genes);
+		List<List<Property>> list = PropertyFactory.getObjectivesConstraints(str);
+		objectivesList  = list.get(0);
+		constraintsList = list.get(1);
 
 		
 		//Zeroconf

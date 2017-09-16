@@ -301,7 +301,7 @@ public abstract class GeneticModelProblem extends Problem {
 	 * @throws JMException 
 	  */  
 	public void evaluateConstraints(Solution solution, List<String> resultsList) throws JMException{
-		double totalViolation 	   = 0;
+		double totalViolation 	  = 0;
 		int 	   violatedConstraints = 0;
 		for  (int i=0; i<numberOfConstraints_; i++) {
 			Property p 	= constraintsList.get(i);

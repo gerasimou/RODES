@@ -33,6 +33,7 @@ import evochecker.parser.ParserEnginePrismPSY;
 import evochecker.prism.Constraint;
 import evochecker.prism.Objective;
 import evochecker.prism.Property;
+import evochecker.prism.PropertyFactory;
 import jmetal.core.Algorithm;
 import jmetal.core.Problem;
 import jmetal.core.SolutionSet;
@@ -129,17 +130,24 @@ public class RODES implements Runnable{
 		
 		//2) parse model template
 		parserEngine 		= new ParserEnginePrismPSY(modelFilename, propertiesFilename);
-		
+				
 		//3) create chromosome
 		genes				= GenotypeFactory.createChromosome(parserEngine.getEvolvableList());
 		
 		//4) create (gene,evolvable element) pairs
 		parserEngine.createMapping();
 		
+		
+		//initialise objectives and constraints
+		String str = parserEngine.getValidModelInstance(genes);
+		List<List<Property>> list = PropertyFactory.getObjectivesConstraints(str);
+		objectivesList  = list.get(0);
+		constraintsList = list.get(1);
+		
 		//5) create properties list
 		//propertyList = new ArrayList<Property>();
-		objectivesList 	= new ArrayList<Property>();
-		constraintsList	= new ArrayList<Property>();
+//		objectivesList 	= new ArrayList<Property>();
+//		constraintsList	= new ArrayList<Property>();
 		
 		//Google
 //		propertyList.add(new Property(true));
@@ -152,15 +160,15 @@ public class RODES implements Runnable{
 		//propertyList.add(new Property(true));
 		//propertyList.add(new Property(false));
 		//int numOfConstraints  = 1;
-		objectivesList.add(new Objective(true));
-		objectivesList.add(new Objective(true));
-		constraintsList.add(new Constraint(false, 10));
+//		objectivesList.add(new Objective(true));
+//		objectivesList.add(new Objective(true));
+//		constraintsList.add(new Constraint(false, 10));
 
 //		Buffer
 //		propertyList.add(new Property(true));
 //		propertyList.add(new Property(false));
 //		int numOfConstraints  = 0;
-
+		
 		
 		//6) instantiate the problem
 		//problem = new GeneticProblemPSY(genes, propertyList, parserEngine, numOfConstraints, "GeneticProblem");
@@ -354,7 +362,7 @@ public class RODES implements Runnable{
 		}
 
 		if (errors.length()!=0)
-			throw new EvoCheckerException(errors.toString());
+			throw new EvoCheckerException(errors.toString().split("\r\n|\r|\n").length +"\n"+ errors.toString());
 		else
 			System.out.println(getConfiguration());
 	}

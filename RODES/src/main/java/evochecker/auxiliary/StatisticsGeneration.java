@@ -54,8 +54,8 @@ public class StatisticsGeneration {
 		MetricsRegionUtil metricsUtils = new MetricsRegionUtil();
 	    
 	    List<Property> objectiveList = new ArrayList<Property>();
-	    objectiveList.add(new Objective(true));
-	    objectiveList.add(new Objective(true));
+	    objectiveList.add(new Objective(true, null));
+	    objectiveList.add(new Objective(true, null));
 
 
 		final String problemDir	=	baseDir +"Google/Constrained/Algorithms/";

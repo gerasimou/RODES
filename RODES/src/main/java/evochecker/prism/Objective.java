@@ -5,14 +5,14 @@ public class Objective extends Property {
 	protected boolean isMaximization;
 
 	
-	public Objective(boolean maximization) {
-		super(maximization);
+	public Objective(boolean maximization, String expression) {
+		super(maximization, expression);
 		this.isMaximization = maximization;
 	}
 	
 	
 	public Objective (Objective clone) {
-		this(clone.maximization);
+		this(clone.maximization, clone.expression);
 	}
 
 
@@ -22,6 +22,10 @@ public class Objective extends Property {
 		return 0;
 	}
 	
+	
+	public String toString() {
+		return expression +", Max?"+ maximization +"\n";		
+	}
 	
 
 }

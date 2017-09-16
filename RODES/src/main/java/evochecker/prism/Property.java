@@ -22,10 +22,13 @@ package evochecker.prism;
 public abstract class Property {
 	
 	protected boolean maximization;
+	
+	protected String expression;
 			
 
-	public Property(boolean maximization){
-		this.maximization = maximization;
+	public Property(boolean maximization, String expression){
+		this.maximization 	= maximization;
+		this.expression		= expression;
 	}
 
 	
@@ -45,7 +48,6 @@ public abstract class Property {
 	
 	
 	public abstract double evaluate (double result);// {return 0;};
-	
 	
 
 }

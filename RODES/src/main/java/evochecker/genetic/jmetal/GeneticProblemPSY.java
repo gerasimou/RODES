@@ -114,7 +114,7 @@ public class GeneticProblemPSY extends GeneticModelProblem{
 
 		//Get params
 		String model 				= instantiator.getValidModelInstance(this.genes);
-		String propertyFile 		= instantiator.getPrismPropertyFileName(); 
+		String propertyFile 			= instantiator.getPrismPropertyFileName(); 
 		String paramsWithRanges		= ((InstantiatorInterfacePrismPSY) instantiator).getParamsWithRanges();
 		String accuracy				= ((InstantiatorInterfacePrismPSY) instantiator).getAccuracy();
 		String decompositionType	=((InstantiatorInterfacePrismPSY) instantiator).getDecompositionType();

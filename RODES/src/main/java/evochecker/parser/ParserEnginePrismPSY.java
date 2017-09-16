@@ -42,12 +42,12 @@ public class ParserEnginePrismPSY extends ParserEngine implements InstantiatorIn
 		
 	/**
 	 * Class constructor
-	 * @param fileName
+	 * @param moduleFilename
 	 * @param propertiesFilename
 	 * @throws EvoCheckerException 
 	 */
-	public ParserEnginePrismPSY(String fileName, String propertiesFilename) throws EvoCheckerException {
-		super(fileName, propertiesFilename);
+	public ParserEnginePrismPSY(String moduleFilename, String propertiesFilename) throws EvoCheckerException {
+		super(moduleFilename, propertiesFilename);
 		this.paramsWithRanges 	= new StringBuilder(50);
 		this.decompositionType	= null;
 		this.accuracy			= "1000";
