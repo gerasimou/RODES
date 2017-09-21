@@ -144,6 +144,10 @@ public class RODES implements Runnable{
 		objectivesList  = list.get(0);
 		constraintsList = list.get(1);
 		
+		for (Property p : objectivesList)
+			System.out.println("O: "+p.toString());
+		for (Property p : constraintsList)
+			System.out.println("C: "+p.toString());
 		//5) create properties list
 		//propertyList = new ArrayList<Property>();
 //		objectivesList 	= new ArrayList<Property>();
@@ -301,7 +305,7 @@ public class RODES implements Runnable{
 		
 		//check algorithm
 		if (Utility.getProperty(Constants.ALGORITHM_KEYWORD, NAN).equals(NAN)) 
-			errors.append(Constants.ALGORITHM_KEYWORD + "not found in configuration script!\n");
+			errors.append(Constants.ALGORITHM_KEYWORD + " not found in configuration script!\n");
 		else {
 			try {
 				Constants.ALGORITHM.valueOf(Utility.getProperty(Constants.ALGORITHM_KEYWORD, NAN));
@@ -378,7 +382,7 @@ public class RODES implements Runnable{
 		for (Map.Entry<Object, Object> entry : props.entrySet()) {
 			str.append(entry.getKey() +" = "+ entry.getValue() +"\n");
 		}
-		str.append("==========================================\n\n");
+		str.append("==========================================\n");
 		
 		return str.toString();
 	}

@@ -70,7 +70,7 @@
 		    <version>2.5</version>
 		</dependency>
 	  	
-		<!--  PrismPSY -->
+		<!--  Prism from local repository for property analysis -->
 	  	<dependency>
 	  		<groupId>org.modelchecker.prism</groupId>
 	  		<artifactId>prism</artifactId>

@@ -20,73 +20,76 @@ public class Constants {
   
   
   /** Keyword for probabilistic model template*/
-  public static final String MODEL_FILE_KEYWORD = "MMODEL_TEMPLATE_FILE";
+  public static final String MODEL_FILE_KEYWORD 		= "MODEL_TEMPLATE_FILE";
 
   /** Keyword for probabilistic properties file*/
-  public static final String PROPERTIES_FILE_KEYWORD = "PPROPERTIES_FILE";
+  public static final String PROPERTIES_FILE_KEYWORD 	= "PROPERTIES_FILE";
 
   /** Keyword for properties */
-  public static final String OBJECTIVES_KEYWORD = "OOBJECTIVES";
+  public static final String OBJECTIVES_KEYWORD 		= "OBJECTIVES";
 
   /** Keyword for algorithm*/
-  public static final String ALGORITHM_KEYWORD = "AALGORITHM";
+  public static final String ALGORITHM_KEYWORD 		= "ALGORITHM";
 
   /** Keyword for tolerance*/
-  public static final String TOLERANCE_KEYWORD = "TTOLERANCE";
+  public static final String TOLERANCE_KEYWORD 		= "TOLERANCE";
 
   /** Keyword for multiple tolerance values*/
-  public static final String TOLERANCES_KEYWORD = "TTOLERANCES";
+  public static final String TOLERANCES_KEYWORD 		= "TOLERANCES";
+
+  /** Keyword for multiple runs */
+  public static final String RUNS_KEYWORD 			= "RUNS";
   
   /** Keyword for epsilon*/
-  public static final String EPSILON_KEYWORD = "EEPSILON";
+  public static final String EPSILON_KEYWORD 		= "EPSILON";
 
   /** Keyword for multiple epsilon values*/
-  public static final String EPSILONS_KEYWORD = "EEPSILONS";
+  public static final String EPSILONS_KEYWORD 		= "EPSILONS";
 
   /** Keyword for problem name*/
-  public static final String PROBLEM_KEYWORD = "PPROBLEM";
+  public static final String PROBLEM_KEYWORD 		= "PROBLEM";
   
   /** Keyword for sensitivity*/
-  public static final String SENSITIVITY_KEYWORD = "SSENSITIVITY";
+  public static final String SENSITIVITY_KEYWORD 		= "SENSITIVITY";
   
   /** Keyword for maximum evaluations*/
-  public static final String MAX_EVALUATIONS_KEYWORD = "MMAX_EVALUATIONS";
+  public static final String MAX_EVALUATIONS_KEYWORD 	= "MAX_EVALUATIONS";
 
   /** Keyword for population size*/
-  public static final String POPULATION_SIZE_KEYWORD = "PPOPULATION_SIZE";
+  public static final String POPULATION_SIZE_KEYWORD 	= "POPULATION_SIZE";
 
   /** Keyword for processors*/
-  public static final String PROCESSORS_KEYWORD = "PPROCESSORS";
+  public static final String PROCESSORS_KEYWORD 		= "PROCESSORS";
 
   /** Keyword for initial port number*/
-  public static final String INITIAL_PORT_KEYWORD = "IINIT_PORT";
+  public static final String INITIAL_PORT_KEYWORD 	= "INIT_PORT";
 
   /** Keyword for initial JVM*/
-  public static final String JVM_KEYWORD = "JJVM";
+  public static final String JVM_KEYWORD 			= "JVM";
   
   /** Keyword for interval */
-  public static final String INTERVAL_KEYWORD = "INTERVAL";
+  public static final String INTERVAL_KEYWORD 		= "INTERVAL";
 
   /** Keyword for dominance relation */
-  public static final String DOMINANCE_KEYWORD = "DOMINANCE";
+  public static final String DOMINANCE_KEYWORD 		= "DOMINANCE";
   
   /** Keyword for errors */
-  public static final String ERRORS_KEYWORD = "ERRORS";
+  public static final String ERRORS_KEYWORD 			= "ERRORS";
 
   /** Keyword for messages to be shown on the UI */
-  public static final String MESSAGE_KEYWORD = "MESSAGE";
+  public static final String MESSAGE_KEYWORD 		= "MESSAGE";
   
   /** Keyword for finishing execution  */
-  public static final String DONE_KEYWORD = "DONE";
+  public static final String DONE_KEYWORD 			= "DONE";
   
   /** Keyword for graph path*/
-  public static final String GRAPH_KEYWORD = "GRAPH";
+  public static final String GRAPH_KEYWORD 			= "GRAPH";
 
   /** Keyword for output directory*/
-  public static final String OUTPUT_DIR_KEYWORD = "OUTPUT_DIR";
+  public static final String OUTPUT_DIR_KEYWORD 		= "OUTPUT_DIR";
 
   /** Keyword for output file suffix*/
-  public static final String OUTPUT_FILE_SUFFIX = "OUTPUT_FILE_SUFFIX";
+  public static final String OUTPUT_FILE_SUFFIX 		= "OUTPUT_FILE_SUFFIX";
   
   /** Integer REGEX*/
   public static  final String INTEGER_REGEX = "^\\d+$";

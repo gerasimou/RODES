@@ -78,8 +78,8 @@ public class Utility {
 	public static String getProperty (String key){
 		loadPropertiesInstance();
 		String result = properties.getProperty(key); 
-		if (result == null)
-			  throw new IllegalArgumentException(key.toUpperCase() + " name not found!");
+		if ( (result == null) || (result.isEmpty()))
+			  throw new IllegalArgumentException(key.toUpperCase() + " keyword not found in configuration file!");
 		return result;		
 	}
 	

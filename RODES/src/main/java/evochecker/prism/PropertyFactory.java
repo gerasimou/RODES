@@ -48,9 +48,15 @@ public class PropertyFactory {
 					if (commentElements[0].trim().toUpperCase().equals(OBJECTIVE))
 						objectivesList.add(createObjective(commentElements, prop.toString()));					
 					else if (commentElements[0].trim().toUpperCase().equals(CONSTRAINT))
-						constaintsList.add(createConstraint(commentElements, prop.toString()));					
+						constaintsList.add(createConstraint(commentElements, prop.toString()));
+					else 
+						throw new EvoCheckerException("Property " + prop + " is neither a constraint nor an objective "+ prop.getComment());
 				}
 			}
+			
+			if (objectivesList.isEmpty())
+				throw new EvoCheckerException("No objective found.At least one is required!");
+				
 			
 			List<List<Property>> list= new ArrayList<>();
 			list.add(objectivesList);

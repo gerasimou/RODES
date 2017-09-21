@@ -9,7 +9,6 @@ import evochecker.exception.EvoCheckerException;
 
 public class RODESExperimentRuns {
 
-	private final static int RUNS=1;
 	private static int run=1;
 	
 	public static void main(String[] args) {		
@@ -18,6 +17,7 @@ public class RODESExperimentRuns {
 			String tolerance		= Utility.getProperty(Constants.TOLERANCES_KEYWORD).replaceAll("\\s+","");
 			String epsilon		= Utility.getProperty(Constants.EPSILONS_KEYWORD).replaceAll("\\s+","");
 			String algorithm 	= Utility.getProperty(Constants.ALGORITHM_KEYWORD).toUpperCase();
+			final int	RUNS		= Integer.parseInt(Utility.getProperty(Constants.RUNS_KEYWORD).trim());
 
 			String tolerances[]		= tolerance.split(",");
 			String epsilons[]		= epsilon.split(",");
