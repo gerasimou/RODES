@@ -37,14 +37,14 @@ public class BoundEvaluator {
 	
 	
 	public static void main(String[] args) {
-//		BoundEvaluator evaluator = new BoundEvaluator();
-//		evaluator.startExecutor();
+		BoundEvaluator evaluator = new BoundEvaluator();
+		evaluator.startExecutor();
 		
-		String text = Utility.readFile("data/boundEvaluator-GFS.txt");
-		String t[] = text.split("[0-9]{3,4}][[1-9]{1,3}.");
-		for (String a : t) {
-			System.out.println(a);
-		}
+//		String text = Utility.readFile("data/boundEvaluator-GFS.txt");
+//		String t[] = text.split("[0-9]{3,4}][[1-9]{1,3}.");
+//		for (String a : t) {
+//			System.out.println(a);
+//		}
 	}
 	
 	
@@ -108,6 +108,7 @@ public class BoundEvaluator {
 	
 	private void evaluateSolutions() {
 		StringBuilder results 	= new StringBuilder();
+		String accuracy = "";
 
 		for (String experiment : experiments) {
 			String solutionFile	= solutionsDir + "VAR_REGION_" + experiment;
@@ -131,22 +132,38 @@ public class BoundEvaluator {
 					String paramsWithRanges 	= "c_hw_repair_rate=" + variables[0] +","+
 											  "c_hw_fail_rate="   + variables[1];
 					String decompositionType	= "psecheck";
-					String accuracy			= "1";
+					accuracy			= "0.5";
 	
 					String outputStr 			= model.toString() +"\n";
 					outputStr += "@"+ propertiesFile +"\n@"+ decompositionType +"\n@"+ 
 								paramsWithRanges +"\n@"+ accuracy + "\nEND"; 
 	
 					List<String> resultsList 	= invokePrism(in, out, outputStr);
-					System.out.println(Arrays.toString(variables) +"\t"+ resultsList +"\t["+ front[i]+"]");
-					results.append(Arrays.toString(variables) +","+ resultsList +","+ front[i]);
+//					System.out.println(Arrays.toString(variables) +"\t"+ resultsList +"\t["+ front[i]+"]");
+//					results.append(Arrays.toString(variables) +","+ resultsList +","+ front[i]);
+					
+					String var1[]	= variables[0].split(":");
+					String var2[]	= variables[1].split(":");
+					String fronti[]	= front[i].split(",");
+					String f1[]		= fronti[0].split(":");
+					String f2[]		= fronti[1].split(":");
+					
+					String out =	var1[0] +","+ var1[1] +","+ var2[0] +","+ var2[1] +","+
+								resultsList.get(0) +","+ resultsList.get(1) +","+ resultsList.get(2) +","+ resultsList.get(3) +","+
+								f1[0] +","+ f1[1] +","+ f2[0] +","+ f2[1] +","+
+								(Double.parseDouble(f1[0])-Double.parseDouble(resultsList.get(0))) +","+ 
+								(Double.parseDouble(f1[1])-Double.parseDouble(resultsList.get(1))) +","+
+								(Double.parseDouble(f2[0])-Double.parseDouble(resultsList.get(2))) +","+
+								(Double.parseDouble(f2[1])-Double.parseDouble(resultsList.get(3))) +"\n";
+					System.out.println(out);
+					results.append(out.toString());
 				}
 			} 
 			catch (Exception e) {
 					e.printStackTrace();
 			}
 		}
-		Utility.exportToFile("data/boundEvaluator-GFS.txt", results.toString(), false);
+		Utility.exportToFile("data/boundEvaluator-GFS-" + accuracy +".txt", results.toString(), false);
 	}
 	
 	
