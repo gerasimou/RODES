@@ -2,15 +2,16 @@ label "premium" = (left_n+right_n)>=l & toleft_n=1 & line_n=1 & toright_n=1;
 
 
 
-//max
+//objective, max
 P=?[!"premium" U[20,100] "premium"]
 
 
 
-//max
+//objective, max
 R{"required_operational"}=? [C<=100]
 
 
+//constraint, min, 80
 R{"cost3"}=? [C<=100]
 
 
