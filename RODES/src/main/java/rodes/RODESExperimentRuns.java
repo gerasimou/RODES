@@ -34,6 +34,7 @@ public class RODESExperimentRuns {
 				int i=0;
 				for (String t : tolerances){
 					for (String l : epsilons){
+						Thread.sleep(1000);
 						Utility.setProperty(Constants.TOLERANCE_KEYWORD, t);
 						Utility.setProperty(Constants.EPSILON_KEYWORD,  l);
 						System.out.println("Tolerance: "  + Utility.getProperty(Constants.TOLERANCE_KEYWORD) + 
@@ -48,7 +49,7 @@ public class RODESExperimentRuns {
 			}
 			
 			System.exit(0);			
-		} catch (EvoCheckerException e) {
+		} catch (EvoCheckerException | InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.exit(0);

@@ -9,7 +9,6 @@
 //	This file is part of EvoChecker.
 //	
 //==============================================================================
-
 package evochecker;
 
 import java.util.ArrayList;
