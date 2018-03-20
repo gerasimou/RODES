@@ -324,8 +324,8 @@
 	  		</executions>
   		</plugin>
   		
+  		
 		<!--  Attach javadoc -->
-		<!-- 
   		<plugin>
   			<groupId>org.apache.maven.plugins</groupId>
 		  	<artifactId>maven-javadoc-plugin</artifactId>
@@ -338,28 +338,28 @@
 		    		</execution>
 		  	</executions>
 		</plugin>
-	    -->
+	    
 		  
-		   <plugin>
-		      <groupId>org.codehaus.mojo</groupId>
-		      <artifactId>wagon-maven-plugin</artifactId>
-		      <version>1.0</version>
-	          <configuration>
-	            <fromFile>${project.build.directory}/${pom.name}-${pom.version}.zip</fromFile>
-	            <url>scp://sg778@csresearch1.york.ac.uk:22/shared/storage/cs/webstaff/sg778/RODES_Demo/</url>
-	          </configuration>
-		      <executions>
-		        <execution>
-		          <id>upload-to-server</id>
-		          <phase>install</phase>
-		          <goals>
-		            <goal>upload-single</goal>
-		          </goals>
-		        </execution>
-		      </executions>
-	    </plugin>
+	   	<plugin>
+	      <groupId>org.codehaus.mojo</groupId>
+	      <artifactId>wagon-maven-plugin</artifactId>
+	      <version>1.0</version>
+          <configuration>
+            <fromFile>${project.build.directory}/${pom.name}-${pom.version}.zip</fromFile>
+            <url>scp://sg778@csresearch1.york.ac.uk:22/shared/storage/cs/webstaff/sg778/RODES_Demo/</url>
+          </configuration>
+	      <executions>
+	        <execution>
+	          <id>upload-to-server</id>
+	          <phase>install</phase>
+	          <goals>
+	            <goal>upload-single</goal>
+	          </goals>
+	        </execution>
+	      </executions>
+    		</plugin>
   			
-  		</plugins>
+	</plugins>
   		
   		<extensions>
 		    <extension>
